@@ -18,8 +18,17 @@ router.get(['/rooms', '/rooms/*'], (req, res, next) => {
   next()
 })
 
+router.post('/recipes/*', (req, res, next) => {
+  next()
+})
+
+router.get(['/recipes', '/recipes/*'], (req, res, next) => {
+  next()
+})
 
 require('./Room')(router, controllers.roomController)
+require('./Recipe')(router, controllers.recipeController)
+
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')
