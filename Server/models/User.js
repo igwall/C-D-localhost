@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   password: {type: String, default: '', required: true},
   picture: {type: String, default: ''},
   age: {type: Number, default: ''},
-  collaborator: {type: Schema.Type.ObjectId, ref: 'Collaborator'},
+  collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
   realisations: [{type: Schema.Types.ObjectId, ref: 'Realisation'}],
 })
 mongoose.model('User', UserSchema)

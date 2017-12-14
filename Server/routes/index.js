@@ -10,6 +10,17 @@ router.all('/me/*', (req, res, next) => {
   next()
 })
 
+router.post('/rooms/*', (req, res, next) => {
+  next()
+})
+
+router.get(['/rooms', '/rooms/*'], (req, res, next) => {
+  next()
+})
+
+
+require('./Room')(router, controllers.roomController)
+
 router.get('/', (req, res) => {
   res.redirect('/api-docs')
 })
