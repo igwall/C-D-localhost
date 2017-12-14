@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Util = require('./Util')
 const Recipe = mongoose.model('Recipe')
 const User = mongoose.model('User')
+const materialController = require('./materialController')
 const recipeController = {}
 
 /**
@@ -45,14 +46,21 @@ recipeController.getOneRecipe = function (recipeId) {
  * @param {any} recipe
  * @returns
  */
-recipeController.createRecipe = function (recipe) {
+recipeController.createRecipe = function (req) {
+  const recipe = {...req.body}
   return new Promise((resolve, reject) => {
     const recipeToAdd = new Recipe(recipe)
     recipeToAdd.save((err, item) => {
       if (err) {
         reject(err)
       } else {
-        resolve(item)
+        materialController.addRecipeToMaterial(req.params.materialId, recipeToAdd)
+        .then((data) => {
+          resolve(item)
+        })
+        .catch((err) => {
+          reject(err)
+        })
       }
     })
   })

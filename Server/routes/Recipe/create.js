@@ -1,3 +1,6 @@
+const { recipeExists } = require('../../config/middlewares/recipeAuthorizations')
+const { materialExists } = require('../../config/middlewares/materialAuthorizations')
+
 const Util = require('../../controllers/Util')
 
 module.exports = (router, controller) => {
@@ -18,7 +21,7 @@ module.exports = (router, controller) => {
 
   /**
   * @swagger
-  * /recipes:
+  * /rooms/{roomId}/materials/{materialId}/recipes:
   *   post:
   *     tags:
   *       - Recipes
@@ -27,6 +30,16 @@ module.exports = (router, controller) => {
   *     produces:
   *       - application/json
   *     parameters:
+  *       - name: roomId
+  *         type: string
+  *         description: The room id where we want to insert the recipe
+  *         in: path
+  *         required: true
+  *       - name: materialId
+  *         type: string
+  *         description: The material id where we want to insert the recipe
+  *         in: path
+  *         required: true
   *       - name: body
   *         description: The Recipe object that needs to be added
   *         in: body
@@ -39,8 +52,15 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/recipes', (req, res) => {
+  router.post('/rooms/:roomId/materials/:materialId/recipes', [materialExists], (req, res) => {
     let requiredBody = ['title', 'statement']
+    let requiredParameter = ['roomId', 'materialId']
+    requiredParameter = Util.checkRequest(req.params, requiredParameter)
+    if (requiredParameter.length > 0) {
+      let stringMessage = requiredParameter.join(',')
+      res.status(400).json(`Missing ${stringMessage}`)
+      return
+    }
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')
@@ -49,7 +69,7 @@ module.exports = (router, controller) => {
     }
     else {
       controller
-      .createRecipe({...req.body})
+      .createRecipe(req)
       .then(data => {
         res.status(201).json(data)
       })

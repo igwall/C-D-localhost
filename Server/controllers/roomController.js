@@ -74,4 +74,24 @@ roomController.createRoom = function (room) {
   })
 }
 
+/**
+ *
+ *
+ * @param {any} roomId
+ * @param {any} material
+ * @returns
+ */
+roomController.addMaterialToRoom = function (roomId, material) {
+  return new Promise((resolve, reject) => {
+    Room.findOneAndUpdate({ '_id': roomId }, { $push: { materials: material } }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+
 module.exports = roomController
