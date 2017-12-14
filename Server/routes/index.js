@@ -18,6 +18,14 @@ router.get(['/rooms', '/rooms/*'], (req, res, next) => {
   next()
 })
 
+router.post('/materials/*', (req, res, next) => {
+  next()
+})
+
+router.get(['/materials', '/materials/*'], (req, res, next) => {
+  next()
+})
+
 router.post('/recipes/*', (req, res, next) => {
   next()
 })
@@ -27,8 +35,8 @@ router.get(['/recipes', '/recipes/*'], (req, res, next) => {
 })
 
 require('./Room')(router, controllers.roomController)
+require('./Material')(router, controllers.materialController)
 require('./Recipe')(router, controllers.recipeController)
-
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')

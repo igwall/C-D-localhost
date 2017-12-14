@@ -1,7 +1,9 @@
 const roomController = require('./roomController')
 const recipeController = require('./recipeController')
+const materialController = require('./materialController')
 
 module.exports = {
     roomController: roomController,
-    recipeController: recipeController
+    recipeController: recipeController,
+    materialController: materialController
   }
