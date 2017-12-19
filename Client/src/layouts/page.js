@@ -1,5 +1,6 @@
 import React from 'react'
 import Root from './root'
+import Header from '../components/Header/Header'
 import {connect} from 'react-redux'
 
 @connect(store => {
@@ -11,6 +12,9 @@ export default class Page extends React.Component {
   render () {
     return (
       <Root>
+        <div className='header'>
+          <Header />
+        </div>
         <div className='content'>
           {this.props.children}
         </div>
@@ -24,9 +28,9 @@ export default class Page extends React.Component {
         }
         .content {
           position: absolute;
-          top: 40px;
+          top: 100px;
           left: 0px;
-          height: calc(100% - 40px);
+          height: calc(100% - 100px);
           width: 100%;
         }
         `}</style>
