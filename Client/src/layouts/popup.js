@@ -16,7 +16,13 @@ export default class Page extends React.Component {
           <Header />
         </div>
         <div className='content'>
-          {this.props.children}
+          {React.cloneElement(this.props.children, {
+            popoverManager: {
+              setRenderedComponent: this.props.setRenderedComponent,
+              displayPopover: this.props.displayPopover,
+              dismissPopover: this.props.dismissPopover
+            }
+          })}
         </div>
         <style jsx>{`
         .header {
