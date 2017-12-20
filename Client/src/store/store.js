@@ -22,6 +22,12 @@ export const defaultCurrentUserState = {
   }
 }
 
+export const defaultRoomsState = {
+  rooms: {
+    elements: []
+  }
+}
+
 export const defaultFetchedUserState = {
   userFetched: {
     fetching: false,
@@ -41,5 +47,5 @@ export const defaultNotificationsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultNotificationsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState)
 export default createStore(reducer, { ...defaultState }, enhancer)
