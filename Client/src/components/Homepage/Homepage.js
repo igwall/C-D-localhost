@@ -14,8 +14,8 @@ export default class HomePage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-
     }
+    this.displayRoom = this.displayRoom.bind(this)
   }
 
   componentDidMount () {
@@ -25,16 +25,16 @@ export default class HomePage extends React.Component {
     })
   }
 
-  displayRoom () {
+  displayRoom (room) {
+    console.log(room)
     this.props.popoverManager.setRenderedComponent(
-      <Room {...this.props} dismissPopover={this.props.popoverManager.dismissPopover} />
+      <Room {...room} dismissPopover={this.props.popoverManager.dismissPopover} />
     )
     this.props.popoverManager.displayPopover()
   }
 
   render () {
     const {rooms} = this.props
-    console.log(rooms)
 
     return (<div className='host'>
       <h1>Rooms</h1>
@@ -49,7 +49,7 @@ export default class HomePage extends React.Component {
                   display: 'inline-block',
                   cursor: 'pointer'
                 }}
-                onClick={this.displayRoom.bind(this)}
+                onClick={() => this.displayRoom(room)}
               >
                 <div>{room.name}</div>
               </li>
