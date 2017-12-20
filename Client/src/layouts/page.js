@@ -1,7 +1,7 @@
 import React from 'react'
 import Root from './root'
 import Header from '../components/Header/Header'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 @connect(store => {
   return {

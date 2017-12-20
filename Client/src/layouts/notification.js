@@ -5,7 +5,7 @@ import { removeNotification } from '../store/actions/notification.action'
 
 @connect(store => {
   return {
-    notifications: store.elements
+    notifications: store.notifications.elements
   }
 })
 export default class NotificationContainer extends React.Component {

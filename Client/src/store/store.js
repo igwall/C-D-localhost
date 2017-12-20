@@ -17,32 +17,28 @@ const enhancer = composeEnhancers(
 )
 
 export const defaultCurrentUserState = {
-  username: '',
-  name: '',
-  picture: '',
-  bio: '',
-  teams: []
+  currentUser: {
+    username: ''
+  }
 }
 
 export const defaultFetchedUserState = {
-  fetching: false,
-  fetched: false,
-  error: null,
-  user: {
-    _id: '',
-    provider: '',
-    username: '',
-    name: '',
-    picture: '',
-    bio: '',
-    teams: [],
-    boards: [],
-    modifications: []
+  userFetched: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    user: {
+      _id: '',
+      provider: '',
+      username: ''
+    }
   }
 }
 
 export const defaultNotificationsState = {
-  elements: []
+  notifications: {
+    elements: []
+  }
 }
 
 export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultNotificationsState)
