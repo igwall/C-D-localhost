@@ -1,9 +1,12 @@
 import React from 'react'
-import PageLayout from '../layouts/page'
+import PopupLayout from '../layouts/popup'
 import Homepage from '../components/Homepage/Homepage'
+import PopupManager from '../components/PopupManager/PopupManager'
 
 export default (props) => (
-  <PageLayout>
-    <Homepage />
-  </PageLayout>
+  <PopupManager>
+    <PopupLayout>
+      <Homepage />
+    </PopupLayout>
+  </PopupManager>
 )

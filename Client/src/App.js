@@ -29,7 +29,7 @@ class App extends Component {
           <div className='App'>
             <Route exact path='/' component={MainPage} />
             <Route exact path='/recipes' component={RecipePage} />
-            <PrivateRoute exact path='/bite' component={MainPage} />
+            <PrivateRoute exact path='/bleh' component={MainPage} />
           </div>
         </Provider>
       </Router>
