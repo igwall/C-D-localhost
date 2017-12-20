@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 // import { isAuthenticated } from './services/Authentication.services'
 import store from './store/store'
 import MainPage from './pages/main.page'
+import RecipePage from './pages/recipe.page'
 
 const i = 1
 
@@ -27,6 +28,7 @@ class App extends Component {
         <Provider store={store}>
           <div className='App'>
             <Route exact path='/' component={MainPage} />
+            <Route exact path='/recipes' component={RecipePage} />
             <PrivateRoute exact path='/bite' component={MainPage} />
           </div>
         </Provider>
