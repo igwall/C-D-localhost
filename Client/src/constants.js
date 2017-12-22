@@ -5,5 +5,6 @@ module.exports = Object.freeze({
   HEADER_TEXT_COLOR: '#000',
   DROPDOWN_BACKGROUND: '#eee',
   DROPDOWN_HOVER_BACKGROUND: '#918',
-  DROPDOWN_HOVER_TEXT: 'white'
+  DROPDOWN_HOVER_TEXT: 'white',
+  IMG_NOT_FOUND: '/assets/pictures/imgNotFound.png'
 })

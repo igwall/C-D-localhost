@@ -26,7 +26,6 @@ export default class HomePage extends React.Component {
   }
 
   displayRoom (room) {
-    console.log(room)
     this.props.popoverManager.setRenderedComponent(
       <Room {...room} dismissPopover={this.props.popoverManager.dismissPopover} />
     )
@@ -40,9 +39,10 @@ export default class HomePage extends React.Component {
       <h1>Rooms</h1>
       <ul>
         {
-          rooms.map(room => {
+          rooms.map((room, i) => {
             return (
               <li
+                key={i}
                 style={{
                   background: room.color,
                   border: 'solid 1px black',
