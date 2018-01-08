@@ -9,4 +9,8 @@ export default css`
   padding: 30px 10px;
   overflow-y: auto;  
 }
+
+ul {
+  list-style-type: none;
+}
 `

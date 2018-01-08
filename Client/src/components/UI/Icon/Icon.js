@@ -32,7 +32,7 @@ export default class Icon extends React.Component {
     }
 
     return (
-      <i style={props.style} className={`${solid === true ? 'fas' : 'far'} fa-${name} fa-lg`} />
+      <i style={props.style} class={`${solid === true ? 'fas' : 'far'} fa-${name}`} />
     )
   }
 }

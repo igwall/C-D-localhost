@@ -57,8 +57,6 @@ export default class HomePage extends React.Component {
           })
         }
       </ul>
-      <li>
-      </li>
       <style jsx>{styles}</style>
     </div>
     )
