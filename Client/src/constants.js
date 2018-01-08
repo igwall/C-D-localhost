@@ -1,5 +1,5 @@
 module.exports = Object.freeze({
-  PRIMARY_COLOR: '#cef',
+  PRIMARY_COLOR: '#000',
   SECONDARY_COLOR: '#08c',
   HEADER_COLOR: '#3bf',
   HEADER_TEXT_COLOR: '#000',
