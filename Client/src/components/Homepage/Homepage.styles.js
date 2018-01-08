@@ -11,6 +11,15 @@ export default css`
   color: #fff;
 }
 
+.flat {
+  margin: auto;
+  text-align: center;
+}
+
+.svg {
+  margin-left: -50px;
+}
+
 .room:hover {
   stroke: ${constants.SECONDARY_COLOR};
   stroke-width: 1px;
