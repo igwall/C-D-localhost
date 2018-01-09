@@ -4,14 +4,25 @@ export default css`
 h1{
     font-family: monospace;
     text-align: left;
+    
   }
 
-  .recipe {
-    border-radius: 3px;
-    border: 1px solid black; 
+
+
+.recipe {
+    border: 2px solid black;
+    border-radius: 8px;
     width: 80%;
+    
   }
 
+  .media {
+    width : 500px;
+    height: 400px;
+    background-color: transparent;
+    border: 2px solid red; 
+    border-style: ridge;
+  }
   li{
     font-family: Verdana;
   }
@@ -27,13 +38,14 @@ h1{
   text-align: right;
   margin: 2px 10px;
   display: inline-block;
+  
 
 }
 
 .checkBox {
     
     text-align: left;
-    margin: 2px 10px;
+    margin-left: 500px;
     display: inline-block;
     padding : 20px 50px 50px 75px;
   }
@@ -70,8 +82,12 @@ color: black;
     display: inline-block;
   }
   .content {
-    background-color: rgba(136, 195, 206, 0.596);
-    padding: 20px;
+
+    width : 500px;
+    height: 400px;
+    background-color: transparent;
+    border: 2px solid red; 
+    border-style: ridge;
   }
   .content h2 {
     padding: 0;
