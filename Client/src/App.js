@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 // import { isAuthenticated } from './services/Authentication.services'
 import store from './store/store'
 import MainPage from './pages/main.page'
+import LoginPage from './pages/login.page'
+import RegisterPage from './pages/register.page'
 
 const i = 1
 
@@ -26,6 +28,8 @@ class App extends Component {
       <Router>
         <Provider store={store}>
           <div className='App'>
+            <Route path='/login' component={LoginPage} />
+            <Route path='/register' component={RegisterPage} />
             <Route exact path='/' component={MainPage} />
             <PrivateRoute exact path='/bleh' component={MainPage} />
           </div>

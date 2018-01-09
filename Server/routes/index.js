@@ -37,6 +37,7 @@ router.get(['/recipes', '/recipes/*'], (req, res, next) => {
 require('./Room')(router, controllers.roomController)
 require('./Material')(router, controllers.materialController)
 require('./Recipe')(router, controllers.recipeController)
+require('./User')(router, controllers.userController)
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')

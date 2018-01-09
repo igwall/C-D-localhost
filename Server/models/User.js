@@ -8,6 +8,6 @@ const UserSchema = new Schema({
   picture: {type: String, default: ''},
   age: {type: Number, default: ''},
   collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
-  realisations: [{type: Schema.Types.ObjectId, ref: 'Realisation'}],
+  realisations: [{type: Schema.Types.ObjectId, ref: 'Realisation'}]
 })
 mongoose.model('User', UserSchema)
