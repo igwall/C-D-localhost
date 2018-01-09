@@ -264,6 +264,10 @@
     react-treebeard "^2.0.3"
     redux "^3.7.2"
 
+"@tweenjs/tween.js@16.7.0":
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/@tweenjs/tween.js/-/tween.js-16.7.0.tgz#3ada9785f5bb2d92bb6313515f88102c2e47ddab"
+
 "@types/inline-style-prefixer@^3.0.0":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/inline-style-prefixer/-/inline-style-prefixer-3.0.1.tgz#8541e636b029124b747952e9a28848286d2b5bf6"
@@ -7190,6 +7194,12 @@ react-modal@^3.1.8:
     exenv "^1.2.0"
     prop-types "^15.5.10"
     warning "^3.0.0"
+
+react-mt-svg-lines@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-mt-svg-lines/-/react-mt-svg-lines-0.8.3.tgz#7654b9c8af0cb4a92dbe80d75ab93c412712c59d"
+  dependencies:
+    "@tweenjs/tween.js" "16.7.0"
 
 react-onclickoutside@^6.5.0:
   version "6.7.0"
