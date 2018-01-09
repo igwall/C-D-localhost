@@ -4,6 +4,7 @@ const controllers = require('../controllers')
 
 router.all('/me/*', (req, res, next) => {
   let request = req.originalUrl.split('/').filter(e => e !== '')
+  console.log(req)
   request[0] = `/users/${req.user._id}`
   request = request.join('/')
   req.url = request
