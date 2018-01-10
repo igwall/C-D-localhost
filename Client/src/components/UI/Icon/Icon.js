@@ -5,7 +5,7 @@ export default class Icon extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string,
-    solid: PropTypes.string,
+    solid: PropTypes.bool,
     fontSize: PropTypes.string,
     style: PropTypes.object
   }
@@ -13,7 +13,7 @@ export default class Icon extends React.Component {
   static defaultProps = {
     name: 'star',
     color: '#444',
-    solid: 'false'
+    solid: true
   }
 
   render () {

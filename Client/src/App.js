@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
-// import { isAuthenticated } from './services/Authentication.services'
+import { isAuthenticated } from './services/Authentication.services'
 import store from './store/store'
 import MainPage from './pages/main.page'
-
-const i = 1
+import LoginPage from './pages/login.page'
+import RegisterPage from './pages/register.page'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    i > 1 ? (
+    isAuthenticated() ? (
       <Component {...props} {...rest} />
     ) : (
       <Redirect to={{
@@ -20,13 +20,38 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+const PublicRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAuthenticated() ? (
+      <Component {...props} {...rest} />
+    ) : (
+      <Component {...props} {...rest} />
+    )
+  )} />
+)
+
+const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAuthenticated() ? (
+      <Redirect to={{
+        pathname: '/',
+        state: { from: props.location }
+      }} />
+    ) : (
+      <Component {...props} {...rest} />
+    )
+  )} />
+)
+
 class App extends Component {
   render () {
     return (
       <Router>
         <Provider store={store}>
           <div className='App'>
-            <Route exact path='/' component={MainPage} />
+            <NonAuthenticatedRoute path='/login' component={LoginPage} />
+            <NonAuthenticatedRoute path='/register' component={RegisterPage} />
+            <PublicRoute exact path='/' component={MainPage} />
             <PrivateRoute exact path='/bleh' component={MainPage} />
           </div>
         </Provider>
