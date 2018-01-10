@@ -5,5 +5,7 @@ module.exports = Object.freeze({
   HEADER_TEXT_COLOR: '#000',
   DROPDOWN_BACKGROUND: '#eee',
   DROPDOWN_HOVER_BACKGROUND: '#918',
-  DROPDOWN_HOVER_TEXT: 'white'
+  DROPDOWN_HOVER_TEXT: 'white',
+  ERROR_PANEL_COLOR: 'rgba(255,0,0,0.3)',
+  ERROR_PANEL_BORDER_COLOR: 'rgba(255,0,0,1)'
 })

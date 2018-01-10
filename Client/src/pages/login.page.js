@@ -1,23 +1,51 @@
 import React from 'react'
 import { login, storeToken } from '../services/Authentication.services'
 import { Redirect, Link } from 'react-router-dom'
+import Icon from '../components/UI/Icon/Icon'
+import constants from '../constants'
 
 export default class LoginPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      wrongCredentials: false,
+      emailValid: false,
+      passwordValid: false
     }
     this.submitLogin = this.submitLogin.bind(this)
   }
 
   submitLogin () {
-    login(this.email.value, this.password.value).then((response) => {
-      storeToken(response.token)
-      this.setState({ redirectToReferrer: true })
-    }).catch((err) => {
-      console.error(err)
+    if (this.formIsValid()) {
+      login(this.email.value, this.password.value).then((response) => {
+        storeToken(response.token)
+        this.setState({ redirectToReferrer: true })
+      }).catch((err) => {
+        this.setState({wrongCredentials: true})
+        console.error(err)
+      })
+    }
+  }
+
+  checkPassword () {
+    let res = this.password.value.length > 0
+    this.setState({
+      wrongCredentials: false,
+      passwordValid: res
     })
+  }
+
+  checkEmail () {
+    let res = this.email.value.length > 0
+    this.setState({
+      wrongCredentials: false,
+      emailValid: res
+    })
+  }
+
+  formIsValid () {
+    return this.state.emailValid && this.state.passwordValid
   }
 
   render () {
@@ -33,22 +61,31 @@ export default class LoginPage extends React.Component {
     return (
       <div className='host'>
         <h1>Connexion</h1>
+        {
+          this.state.wrongCredentials
+            ? <div className='error-panel'>
+              <div className='error-content'>
+                <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
+                <div className='error-message'>Mauvaise combinaison Email / Mot de passe</div>
+              </div>
+            </div>
+            : undefined
+        }
+
         <form onSubmit={this.submitLogin}>
           <label>
           Email
           </label>
-          <input type='text' placeholder='Email' ref={(e) => {
+          <input type='text' placeholder='Email' onChange={this.checkEmail.bind(this)} ref={(e) => {
             this.email = e
           }} />
           <label>
           Mot de Passe
           </label>
-          <input type='password' placeholder='Password' ref={(p) => {
+          <input type='password' placeholder='Password' onChange={this.checkPassword.bind(this)} ref={(p) => {
             this.password = p
           }} />
-          <div className='button' onClick={this.submitLogin.bind(this)}>
-          Connexion
-          </div>
+          <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} onClick={this.submitLogin.bind(this)}>Connexion</div>
         </form>
         <div className='register'>
           Pas de compte Compose & Dance ? <span><Link to='/register'>S'enregistrer</Link></span>
@@ -64,13 +101,37 @@ export default class LoginPage extends React.Component {
         margin-left: calc(50% - 190px);
         margin-top: 50px;
       }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      .error-panel {
+        border: 1px solid ${constants.ERROR_PANEL_BORDER_COLOR};
+        background: ${constants.ERROR_PANEL_COLOR};
+        width: 380px;
+      }
+
+      .error-content {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .error-message {
+        padding-left: 20px;
+        text-align: justify;
+      }
+
       form {
         width: 380px;
-        margin-top: 30px;
+        padding-top: 15px;
       }
+
       label {
         font-size: 20px;
       }
+
       input {
         width: 100%;
         background-color: #eee;
@@ -99,21 +160,13 @@ export default class LoginPage extends React.Component {
       .button {
         display: inline-block;
       }
+      .button.disabled {
+        background-color: gray;
+      }
       .forgottenPassword {
         margin-left: 20px;
       }
-      .google-auth {
-        margin-top: 20px;
-      }
-      .google-button {
-        background: white;
-        box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
-        height: 40px;
-        margin-top: 10px;
-        line-height: 40px;
-        padding: 10px;
-        border-radius: 4px;
-      }
+      
       .register {
         padding-top: 20px;
       }

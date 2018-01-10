@@ -1,6 +1,6 @@
 import React from 'react'
 import {register, storeToken} from '../services/Authentication.services'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 export default class RegisterPage extends React.Component {
   constructor (props) {
@@ -141,8 +141,11 @@ export default class RegisterPage extends React.Component {
             onChange={this.checkPasswordMatch.bind(this)}
             ref={p2 => { this.password2 = p2 }}
           />
-          <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} disabled={this.formIsValid()} onClick={this.submitForm.bind(this)}>Sign up</div>
+          <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} onClick={this.submitForm.bind(this)}>Sign up</div>
         </form>
+        <div className='login'>
+          Déjà enregistré ? <span><Link to='/login'>Se connecter</Link></span>
+        </div>
         <style jsx>{`
           .host {
             padding: 10px;
@@ -208,6 +211,15 @@ export default class RegisterPage extends React.Component {
           }
           input.invalid {
             border-bottom: 3px solid #E91E63;
+          }
+
+          .login {
+            padding-top: 20px;
+          }
+          
+          .login span {
+            font-weight: bold;
+            text-decoration: underline;
           }
           `}</style>
       </div>
