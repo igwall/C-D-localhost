@@ -22,7 +22,18 @@ function generateAccessToken (user) {
   }
 }
 
+function decodeAccessToken (token) {
+  return jwt.verify(token.split(' ')[1], secretKey, function (err, decode) {
+    if (err) {
+      return undefined
+    } else {
+      return decode
+    }
+  })
+}
+
 module.exports = {
   generateAccessToken: generateAccessToken,
+  decodeAccessToken: decodeAccessToken,
   getUser: getUser
 }

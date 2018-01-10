@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
   username: {type: String, default: '', required: true},
   email: {type: String, default: '', required: true},
-  passwordHash: {type: String, default: '', required: true},
+  passwordHash: {type: String, default: ''},
   picture: {type: String, default: ''},
   age: {type: Number, default: ''},
   collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
@@ -83,6 +83,9 @@ UserSchema.methods = {
    */
 
   authenticate: function (plainText) {
+    console.log(plainText)
+    console.log(this.passwordHash)
+
     return bcrypt.compareSync(plainText, this.passwordHash)
   },
 
@@ -97,9 +100,7 @@ UserSchema.methods = {
   encryptPassword: function (password) {
     if (!password) return ''
     try {
-      return bcrypt
-        .hashSync(password)
-        .update(password)
+      return bcrypt.hashSync(password)
     } catch (err) {
       return ''
     }

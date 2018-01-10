@@ -36,7 +36,9 @@ export function isAuthenticated () {
     return false
   }
 }
+
 export function setTokenHeader () {
+  console.log(`Bearer ${extractToken()}`)
   axios.defaults.headers.common['authorization'] = `Bearer ${extractToken()}`
 }
 export function unsetTokenHeader () {
@@ -44,7 +46,7 @@ export function unsetTokenHeader () {
 }
 
 export function removeToken () {
-  window.localStorage.removeItem('prello_access_token')
+  window.localStorage.removeItem('hut_access_token')
 }
 
 export function logout () {
@@ -71,8 +73,7 @@ export function register (name, email, password) {
   return new Promise((resolve, reject) => {
     axios.post(`${Config.API_URL}/register`, {
       email: email,
-      name: name,
-      username: name.split(' ').join(''),
+      username: name,
       password: password
     }).then((res) => {
       resolve(res.data)

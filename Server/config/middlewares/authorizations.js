@@ -1,13 +1,16 @@
-const passport = require('../../config/passport/login')
+const passport = require('../passport/login')
 
 exports.requiresLogin = (req, res, next) => {
-  passport.authenticate(req, res)
-    .then(function (token) {
-      // Request is authorized.
+  if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    const token = req.headers.authorization
+    const decodedToken = passport.decodeAccessToken(token)
+    if (decodedToken !== undefined) {
+      req.userId = decodedToken.userId
       next()
-    })
-    .catch(function (err) {
-      // Request is not authorized.
-      res.status(err.code || 500).json(err)
-    })
+    } else {
+      res.status(500).json(('Wrong token'))
+    }
+  } else {
+    res.status(500).json(('Non authorized'))
+  }
 }

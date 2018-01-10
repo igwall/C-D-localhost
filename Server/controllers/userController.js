@@ -41,10 +41,10 @@ userController.login = (userToConnect) => {
   return new Promise((resolve, reject) => {
     User.load({
       where: { email: userToConnect.email },
-      select: 'name username email passwordHash'
+      select: 'username email passwordHash'
     }, (err, user) => {
       if (err) return reject(new Error('Bad request'))
-      if (user) {
+      if (user && user.authenticate(userToConnect.password)) {
         let token = passport.generateAccessToken(user)
         return resolve(token)
       } else {

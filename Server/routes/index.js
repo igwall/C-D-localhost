@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const { requiresLogin } = require('../config/middlewares/authorizations')
 const controllers = require('../controllers')
 
-router.all('/me/*', (req, res, next) => {
+router.all('/me/*', [requiresLogin], (req, res, next) => {
   let request = req.originalUrl.split('/').filter(e => e !== '')
-  console.log(req)
-  request[0] = `/users/${req.user._id}`
+  request[0] = `/users/${req.userId}`
   request = request.join('/')
   req.url = request
   next()

@@ -15,7 +15,7 @@ export default class RegisterPage extends React.Component {
   }
 
   checkName () {
-    let res = this.name.value.split(' ').length > 1
+    let res = this.name.value.length > 3
     this.setState({
       nameValid: res
     })
@@ -84,11 +84,11 @@ export default class RegisterPage extends React.Component {
     return (
       <div className='host'>
         <h1>Inscription</h1>
-        <form>
-          <label>Name</label>
+        <form onSubmit={this.submitForm.bind(this)}>
+          <label>Nom d'utilisateur</label>
           { this.name
-            ? this.name.value.length > 3 && !this.state.nameValid
-              ? <span className='error'>Should be like 'firstName lastName'</span>
+            ? this.name.value.length > 1 && !this.state.nameValid
+              ? <span className='error'>Nom d'utilisateur trop court : 4 caractères min.</span>
               : null
             : null
           }
@@ -99,10 +99,10 @@ export default class RegisterPage extends React.Component {
             onChange={this.checkName.bind(this)}
             ref={n => { this.name = n }}
           />
-          <label>E-mail</label>
+          <label>Email</label>
           { this.email
             ? this.email.value.length > 5 && !this.state.emailValid
-              ? <span className='error'>This email address is not valid</span>
+              ? <span className='error'>Adresse email invalide</span>
               : null
             : null
           }
@@ -113,10 +113,10 @@ export default class RegisterPage extends React.Component {
             onChange={this.checkEmail.bind(this)}
             ref={e => { this.email = e }}
           />
-          <label>Password</label>
+          <label>Mot de passe</label>
           { this.password1
             ? this.password1.value.length > 1 && !this.state.passwordStrengthValid
-              ? <span className='error'>Password should be at least 6 characters long</span>
+              ? <span className='error'>Mot de passe trop court : 6 caractères min.</span>
               : null
             : null
           }
@@ -127,10 +127,10 @@ export default class RegisterPage extends React.Component {
             onChange={this.checkPasswordStrength.bind(this)}
             ref={p1 => { this.password1 = p1 }}
           />
-          <label>Confirm password</label>
+          <label>Confirmation mot de passe</label>
           { this.password2
             ? this.password2.value.length > 1 && !this.state.passwordMatchValid
-              ? <span className='error'>Passwords don't match </span>
+              ? <span className='error'>Les mots de passe ne correspondent pas</span>
               : null
             : null
           }

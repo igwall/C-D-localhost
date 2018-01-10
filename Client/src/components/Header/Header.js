@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Header.styles'
 import PropTypes from 'prop-types'
 import { Link, Redirect } from 'react-router-dom'
+import { isAuthenticated } from '../../services/Authentication.services'
 import constants from '../../constants'
 
 export default class Header extends React.Component {
@@ -41,7 +42,9 @@ export default class Header extends React.Component {
           ? <Redirect to={this.state.redirectTo} />
           : null
       }
-
+      {
+        isAuthenticated ? console.log('oui') : console.log('non')
+      }
       <Link to='/'>
         <div className='brand' />
       </Link>

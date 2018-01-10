@@ -53,9 +53,6 @@ module.exports = (router, userController) => {
   router.post('/register', (req, res) => {
     const user = new User(req.body)
     userController.create(user).then(user => {
-      if (!req.query.withLogin) {
-        return res.status(201).send('Account created!')
-      }
       userController.login(user).then(token => {
         return res.status(201).send({token: token})
       }).catch(err => {

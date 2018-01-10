@@ -8,6 +8,7 @@ export default class LoginPage extends React.Component {
     this.state = {
       redirectToReferrer: false
     }
+    this.submitLogin = this.submitLogin.bind(this)
   }
 
   submitLogin () {
@@ -32,25 +33,25 @@ export default class LoginPage extends React.Component {
     return (
       <div className='host'>
         <h1>Connexion</h1>
-        <form>
+        <form onSubmit={this.submitLogin}>
           <label>
-          E-mail
+          Email
           </label>
-          <input type='text' placeholder='E-mail' ref={(e) => {
+          <input type='text' placeholder='Email' ref={(e) => {
             this.email = e
           }} />
           <label>
-          Password
+          Mot de Passe
           </label>
-          <input type='password' placeholder='Passord' ref={(p) => {
+          <input type='password' placeholder='Password' ref={(p) => {
             this.password = p
           }} />
           <div className='button' onClick={this.submitLogin.bind(this)}>
-          Sign in
+          Connexion
           </div>
         </form>
         <div className='register'>
-          Don't have an account yet? <span><Link to='/register'>Register</Link></span>
+          Pas de compte Compose & Dance ? <span><Link to='/register'>S'enregistrer</Link></span>
         </div>
         <style jsx>
           {`
