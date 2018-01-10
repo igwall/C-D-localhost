@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './Header.styles'
 import PropTypes from 'prop-types'
-import { Link, Redirect } from 'react-router-dom'
-import { isAuthenticated } from '../../services/Authentication.services'
+import { Link } from 'react-router-dom'
+import { isAuthenticated, logout } from '../../services/Authentication.services'
 import constants from '../../constants'
+import Icon from '../UI/Icon/Icon'
 
 export default class Header extends React.Component {
   static propTypes = {
@@ -20,9 +21,7 @@ export default class Header extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      redirectTo: ''
     }
-    this.redirectTo = this.redirectTo.bind(this)
   }
 
   redirectTo (url) {
@@ -36,14 +35,18 @@ export default class Header extends React.Component {
       backgroundColor: this.props.bgColor,
       color: this.props.color
     }}>
-
       {
-        this.state.redirectTo !== ''
-          ? <Redirect to={this.state.redirectTo} />
-          : null
-      }
-      {
-        isAuthenticated ? console.log('oui') : console.log('non')
+        isAuthenticated()
+          ? <div className='log-button' onClick={() => logout()}>
+            <div className='log-icon'><Icon name='sign-out-alt' fontSize='20px' color='' /></div>
+            <div className='log-text'>Déconnexion</div>
+          </div>
+          : <Link to='/login'>
+            <div className='log-button'>
+              <div className='log-icon'><Icon name='sign-in-alt' fontSize='20px' color='' /></div>
+              <div className='log-text'>Connexion</div>
+            </div>
+          </Link>
       }
       <Link to='/'>
         <div className='brand' />
