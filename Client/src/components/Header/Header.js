@@ -1,10 +1,17 @@
 import React from 'react'
 import styles from './Header.styles'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { isAuthenticated, logout } from '../../services/Authentication.services'
 import constants from '../../constants'
 import Icon from '../UI/Icon/Icon'
+
+@connect(store => {
+  return {
+    currentUser: store.currentUser
+  }
+})
 
 export default class Header extends React.Component {
   static propTypes = {
@@ -21,6 +28,7 @@ export default class Header extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      isAuthenticated: isAuthenticated()
     }
   }
 
@@ -31,27 +39,63 @@ export default class Header extends React.Component {
   }
 
   render () {
-    return <div className='host' style={{
-      backgroundColor: this.props.bgColor,
-      color: this.props.color
-    }}>
-      {
-        isAuthenticated()
-          ? <div className='log-button' onClick={() => logout()}>
-            <div className='log-icon'><Icon name='sign-out-alt' fontSize='15px' color='' /></div>
-            <div className='log-text'>Déconnexion</div>
-          </div>
-          : <Link to='/login'>
-            <div className='log-button'>
-              <div className='log-icon'><Icon name='sign-in-alt' fontSize='15px' color='' /></div>
-              <div className='log-text'>Connexion</div>
+    const isAuthenticated = this.state.isAuthenticated
+    // console.log(isAuthenticated)
+    return <div className='host'>
+      <div className='navbar'>
+        <div className='menu-button-group'>
+          <Link to='/'>
+            <div className='menu-button'>
+              <div className='menu-button-text'>ACCUEIL</div>
             </div>
           </Link>
-      }
+          <Link to='/recipes'>
+            <div className='menu-button'>
+              <div className='menu-button-text'>RECETTES</div>
+            </div>
+          </Link>
+          <Link to='/library'>
+            <div className='menu-button'>
+              <div className='menu-button-text'>BIBLIOTHÈQUE</div>
+            </div>
+          </Link>
+          {
+            isAuthenticated
+              ? <Link to={`/user/${this.props.currentUser._id}`} >
+                <div className='menu-button'>
+                  <div className='menu-button-text'>MON PROFIL</div>
+                </div>
+              </Link>
+              : undefined
+          }
+        </div>
+        {
+          isAuthenticated
+            ? <div className='sign-button-group'>
+              <div className='sign-button' onClick={() => logout()}>
+                <div className='sign-button-icon'><Icon name='sign-out-alt' fontSize='15px' color='' /></div>
+                <div className='sign-button-text'>Déconnexion</div>
+              </div>
+            </div>
+            : <div className='sign-button-group'>
+              <Link to='/register'>
+                <div className='sign-button'>
+                  <div className='sign-button-icon'><Icon name='user-plus' fontSize='15px' color='' /></div>
+                  <div className='sign-button-text'>Inscription</div>
+                </div>
+              </Link>
+              <Link to='/login'>
+                <div className='sign-button'>
+                  <div className='sign-button-icon'><Icon name='sign-in-alt' fontSize='15px' color='' /></div>
+                  <div className='sign-button-text'>Connexion</div>
+                </div>
+              </Link>
+            </div>
+        }
+      </div>
       <Link to='/'>
         <div className='brand' />
       </Link>
-
       <style jsx>{styles}</style>
     </div>
   }

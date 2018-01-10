@@ -12,7 +12,7 @@ export function extractToken () {
 
 export function setProfile () {
   if (profileIsInLocalStorage()) {
-    // setConnectedUser(loadProfileFromLocalStorage())
+    setConnectedUser(loadProfileFromLocalStorage())
   } else {
     fetchProfile().then(profile => {
       setConnectedUser(profile)
@@ -82,9 +82,9 @@ export function register (name, email, password) {
   })
 }
 
-/* const loadProfileFromLocalStorage = () => {
+const loadProfileFromLocalStorage = () => {
   return JSON.parse(window.localStorage.getItem('hut_profile'))
-} */
+}
 
 const storeProfileLocalStorage = (profile) => {
   window.localStorage.setItem('hut_profile', JSON.stringify(profile))

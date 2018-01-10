@@ -27,7 +27,6 @@ export default class HomePage extends React.Component {
   }
 
   displayRoom (room) {
-    console.log(room)
     this.props.popoverManager.setRenderedComponent(
       <Room {...room} dismissPopover={this.props.popoverManager.dismissPopover} />
     )

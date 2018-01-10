@@ -6,6 +6,7 @@ import store from './store/store'
 import MainPage from './pages/main.page'
 import LoginPage from './pages/login.page'
 import RegisterPage from './pages/register.page'
+import ProfilePage from './pages/profile.page'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -49,9 +50,10 @@ class App extends Component {
       <Router>
         <Provider store={store}>
           <div className='App'>
+            <PublicRoute exact path='/' component={MainPage} />
             <NonAuthenticatedRoute path='/login' component={LoginPage} />
             <NonAuthenticatedRoute path='/register' component={RegisterPage} />
-            <PublicRoute exact path='/' component={MainPage} />
+            <PublicRoute path='/user/:userId' component={ProfilePage} />
             <PrivateRoute exact path='/bleh' component={MainPage} />
           </div>
         </Provider>

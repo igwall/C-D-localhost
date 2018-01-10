@@ -21,8 +21,8 @@ export const defaultCurrentUserState = {
     username: '',
     realisations: [],
     email: '',
-    age: '',
-    picture: ''
+    picture: '',
+    collaborator: ''
   }
 }
 
