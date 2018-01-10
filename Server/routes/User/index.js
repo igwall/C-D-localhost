@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
+const { emailNotExists, usernameNotExists } = require('../../config/middlewares/registerAuthorizations')
 
 /**
   * @swagger
@@ -50,7 +51,7 @@ module.exports = (router, userController) => {
     *       500:
     *         description: Internal error
     */
-  router.post('/register', (req, res) => {
+  router.post('/register', [emailNotExists, usernameNotExists], (req, res) => {
     const user = new User(req.body)
     userController.create(user).then(user => {
       userController.login(user).then(token => {

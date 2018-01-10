@@ -1,6 +1,8 @@
 import React from 'react'
 import {register, storeToken} from '../services/Authentication.services'
 import { Redirect, Link } from 'react-router-dom'
+import constants from '../constants'
+import Icon from '../components/UI/Icon/Icon'
 
 export default class RegisterPage extends React.Component {
   constructor (props) {
@@ -10,13 +12,16 @@ export default class RegisterPage extends React.Component {
       passwordMatchValid: false,
       emailValid: false,
       nameValid: false,
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      emailExists: false,
+      usernameExists: false
     }
   }
 
   checkName () {
     let res = this.name.value.length > 3
     this.setState({
+      usernameExists: false,
       nameValid: res
     })
   }
@@ -39,6 +44,7 @@ export default class RegisterPage extends React.Component {
   checkEmail () {
     let res = this.email.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     this.setState({
+      emailExists: false,
       emailValid: res
     })
   }
@@ -63,6 +69,11 @@ export default class RegisterPage extends React.Component {
         this.setState({ redirectToReferrer: true })
       }).catch((err) => {
         console.error(err)
+        if (err.response.data === 'Username already exists') {
+          this.setState({usernameExists: true})
+        } else if (err.response.data === 'Email already exists') {
+          this.setState({emailExists: true})
+        }
       })
     }
   }
@@ -84,6 +95,25 @@ export default class RegisterPage extends React.Component {
     return (
       <div className='host'>
         <h1>Inscription</h1>
+        {
+          this.state.emailExists || this.state.usernameExists
+            ? <div className='error-panel'>
+              <div className='error-content'>
+                <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
+                {
+                  this.state.emailExists
+                    ? <div className='error-message'>Adresse email déjà enregistrée</div>
+                    : undefined
+                }
+                {
+                  this.state.usernameExists
+                    ? <div className='error-message'>Nom d'utilisateur déjà pris</div>
+                    : undefined
+                }
+              </div>
+            </div>
+            : undefined
+        }
         <form onSubmit={this.submitForm.bind(this)}>
           <label>Nom d'utilisateur</label>
           { this.name
@@ -152,6 +182,22 @@ export default class RegisterPage extends React.Component {
             width: 380px;
             margin-left: calc(50% - 190px);
             padding-top: 50px;
+          }
+
+          .error-panel {
+            border: 1px solid ${constants.ERROR_PANEL_BORDER_COLOR};
+            background: ${constants.ERROR_PANEL_COLOR};
+            width: 380px;
+          }
+    
+          .error-content {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+          }
+    
+          .error-message {
+            padding-left: 20px;
           }
     
           form {

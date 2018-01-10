@@ -120,7 +120,6 @@ export default class LoginPage extends React.Component {
 
       .error-message {
         padding-left: 20px;
-        text-align: justify;
       }
 
       form {

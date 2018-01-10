@@ -38,12 +38,12 @@ export default class Header extends React.Component {
       {
         isAuthenticated()
           ? <div className='log-button' onClick={() => logout()}>
-            <div className='log-icon'><Icon name='sign-out-alt' fontSize='20px' color='' /></div>
+            <div className='log-icon'><Icon name='sign-out-alt' fontSize='15px' color='' /></div>
             <div className='log-text'>Déconnexion</div>
           </div>
           : <Link to='/login'>
             <div className='log-button'>
-              <div className='log-icon'><Icon name='sign-in-alt' fontSize='20px' color='' /></div>
+              <div className='log-icon'><Icon name='sign-in-alt' fontSize='15px' color='' /></div>
               <div className='log-text'>Connexion</div>
             </div>
           </Link>

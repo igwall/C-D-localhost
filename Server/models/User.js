@@ -36,14 +36,14 @@ UserSchema.path('email').validate(function (email) {
   return email.length > 0
 }, 'Email cannot be blank')
 
-/* UserSchema.path('email').validate(function (email, fn) {
+/* UserSchema.path('email').validate(function (email) {
   const User = mongoose.model('User')
-  if (this.skipValidation()) fn(true)
-  if (this.isNew || this.isModified('email')) {
-    User.find({ email: email }).exec(function (err, users) {
-      fn(!err && users.length === 0)
-    })
-  } else fn(true)
+  User.find({email: email}).exec((user) => {
+    if (user) {
+    } else {
+      return true
+    }
+  })
 }, 'Email already exists') */
 
 UserSchema.path('username').validate(function (username) {
@@ -85,7 +85,6 @@ UserSchema.methods = {
   authenticate: function (plainText) {
     console.log(plainText)
     console.log(this.passwordHash)
-
     return bcrypt.compareSync(plainText, this.passwordHash)
   },
 
