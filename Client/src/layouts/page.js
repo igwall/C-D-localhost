@@ -30,7 +30,7 @@ export default class Page extends React.Component {
           position: absolute;
           top: 100px;
           left: 0px;
-          height: calc(100% - 100px);
+          height: calc(100vh - 100px);
           width: 100%;
         }
         `}</style>
