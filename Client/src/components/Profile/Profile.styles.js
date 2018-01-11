@@ -23,8 +23,7 @@ export default css`
   min-width: 400px;
   width: 60%;
   height: 100%;
-  padding: 20px 5px;
-  padding-right: 20px;
+  padding: 20px 20px;
 }
 
 .panel {
