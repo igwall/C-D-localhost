@@ -22,7 +22,8 @@ export const defaultCurrentUserState = {
     realisations: [],
     email: '',
     picture: '',
-    collaborator: ''
+    collaborator: '',
+    comments: []
   }
 }
 
@@ -39,8 +40,12 @@ export const defaultFetchedUserState = {
     error: null,
     user: {
       _id: '',
-      provider: '',
-      username: ''
+      username: '',
+      realisations: [],
+      email: '',
+      picture: '',
+      collaborator: '',
+      comments: []
     }
   }
 }

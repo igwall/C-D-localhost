@@ -40,8 +40,14 @@ export default class HomePage extends React.Component {
 
   render () {
     return (<div className='host'>
-      <h1>Rooms</h1>
+      <div className='sidebar'>
+        <div className='sidebar-title'>Qu'est-ce que Compose & Danse ?</div>
+        <div className='sidebar-text'>
+          Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris jlrhglzkehgkjgzhlzrhgiurhiurihgrieh vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. Ideoque etiam parietes arcanorum soli conscii timebantur.
+        </div>
+      </div>
       <div className='flat'>
+        <div className='flat-text'>Cliquez sur une des pièces en surbrillance pour accéder à son contenu</div>
         <SvgLines className='svg' animate={ true } duration={4000} timing='ease-out'>
           <svg
             height='600px'

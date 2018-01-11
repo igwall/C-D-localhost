@@ -9,7 +9,7 @@ export default css`
   text-align: center;
   z-index: 1;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
-  background: ${constants.HEADER_COLOR}
+  background: ${constants.SECONDARY_COLOR}
   color: ${constants.HEADER_TEXT_COLOR}
 }
 
@@ -28,7 +28,7 @@ export default css`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #222;
+  background: ${constants.NAVBAR_COLOR};
   color: #eee;
   font-size: 18px;
 }

@@ -3,17 +3,45 @@ import constants from '../../constants'
 
 export default css`
 .host {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  padding: 30px 10px;
   overflow-y: auto; 
   color: #fff;
+  display: flex;
+  align-items: first-baseline;
+  font-size: 20px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 30%;
+  padding: 0 30px;
+  background: ${constants.SECONDARY_COLOR};
+}
+
+.sidebar-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.sidebar-text {
+  text-align: justify;
+  line-height: 175%;
 }
 
 .flat {
+  width: 70%;
+  height: 100%;
   margin: auto;
   text-align: center;
+}
+
+.flat-text {
+  padding: 35px 10px;
+  text-align: left;
 }
 
 .svg {
@@ -21,13 +49,13 @@ export default css`
 }
 
 .room:hover {
-  stroke: ${constants.SECONDARY_COLOR};
+  stroke: green;
   stroke-width: 1px;
   cursor: pointer;
 }
 
 .room-name:hover + .room{
-  stroke: ${constants.SECONDARY_COLOR};
+  stroke: green;
   stroke-width: 1px;
   cursor: pointer;
 }
