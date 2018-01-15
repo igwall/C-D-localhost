@@ -1,16 +1,23 @@
 import React from 'react'
 import styles from './Library.styles'
 import {connect} from 'react-redux'
+import {setCollaborators} from '../../store/actions/collaborators.action'
 
 @connect(store => {
   return {
-    rooms: store.rooms.elements
+    collaborators: store.collaborators.elements
   }
 })
 
 export default class Library extends React.Component {
+  componentDidMount () {
+    setCollaborators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+  }
   render () {
-    const collaborators = [ 1, 2, 3, 4, 5, 6, 7 ]
+    const collaborators = this.props.collaborators
     const books = [ 1, 2, 3, 4, 5, 6, 7 ]
     return (<div className='host'>
       <div className = 'sideBarre'>
