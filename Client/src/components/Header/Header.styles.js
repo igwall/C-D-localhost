@@ -17,8 +17,24 @@ export default css`
   left: calc(50% - 40.5px);
   height: 22px;
   width: 81px;
-  background-image: url("/assets/prello_logo.png");
+  background-image: url("/assets/compare_danse_logo.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.log-button:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+.log-button {
+  float: right;
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.log-text{
+  padding-left: 10px;
+}
+
 `
