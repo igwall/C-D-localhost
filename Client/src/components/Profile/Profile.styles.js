@@ -6,31 +6,21 @@ export default css`
   height: 100%;
   width: 100%;
   background: ${constants.PRIMARY_COLOR};
-  display: flex;
   font-size: 15px;
 }
 
-.left-panels {
-  min-width: 400px;
+.main {
+  margin: 0 20%;
+  min-width: 500px;
   height: 100%;
-  width: 40%;
-  padding: 20px 5px;
-  padding-left: 20px;
-  border-right: 1px solid white;
-}
-
-.right-panels {
-  min-width: 400px;
-  width: 60%;
-  height: 100%;
-  padding: 20px 20px;
+  min-height: 500px;
+  background: ${constants.SECONDARY_COLOR};
 }
 
 .panel {
+  min-width: 500px;
   padding: 10px;
-  background: ${constants.PRIMARY_COLOR};
   width: 100%;
-  /* box-shadow: 0px 1px 5px rgba(255,255,255,0.3); */
 }
 
 .panel-title {
@@ -40,8 +30,6 @@ export default css`
 }
 
 .panel-realisations {
-  height: 100%;
-  margin-bottom: 0px;
 }
 
 .panel-infos {
@@ -60,7 +48,15 @@ export default css`
   height: 100px;
   width: 100px;
   align-items: center;
-  background: #333;
+  background: #000;
+}
+
+.ingredient-picture {
+  display: inline-flex;
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  background: #000;
 }
 
 .infos {
@@ -77,32 +73,68 @@ export default css`
   color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
-.comments {
-  background: ${constants.SECONDARY_COLOR};
-  overflow-y: auto;
-  max-height: 400px;
+.infos-age {
+  
 }
 
-li {
+.sort-bar {
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sort {
+}
+
+.sort-ingredients {
+  margin-left: 20px;
+  width: 350px;
+}
+
+.search-bar {
+  font-size: 14px;
+  height: 36px;
+  color:white;
+  padding: 4px;
+  padding-left: 10px;
+  width: 200px;
+  min-width: 200px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  transition: min-width 0.75s;    
+  background: rgba(255,255,255,0.3);
+}
+
+.realisations {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.realisation {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  align-items: start;
+  padding: 10px 0;
+}
+
+.realisation-infos {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 10px;
 }
 
-.comment {
-  padding: 5px 0;
+.realisation-name {
 }
 
-.comment-text {
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 15px;
-  text-overflow: ellipsis;
-}
-
-.comment-date {
-  padding-top: 5px;
+.realisation-date {
   font-size: 12px;
-  text-align: right;
+  font-style: italic;
+  color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
 .separator{
