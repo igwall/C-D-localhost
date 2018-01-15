@@ -241,7 +241,7 @@ export default class RegisterPage extends React.Component {
               line-height: 40px;
               text-align: center;
               color: white;
-              width: 30%;
+              width: 100%;
               border-radius: 5px;
               background-color: #61bd4f;
               box-shadow: 1px 1px 3px rgba(0,0,0,0.3);

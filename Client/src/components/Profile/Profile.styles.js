@@ -107,6 +107,12 @@ export default css`
   background: rgba(255,255,255,0.3);
 }
 
+.no-realisations {
+  padding-top: 100px;
+  text-align: center;
+  font-size: 15px;
+}
+
 .realisations {
   margin-top: 30px;
   padding: 0 20px;
@@ -118,6 +124,7 @@ export default css`
   height: 70px;
   align-items: start;
   padding: 10px 0;
+  cursor: pointer;
 }
 
 .realisation-infos {

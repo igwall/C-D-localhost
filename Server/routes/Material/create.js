@@ -1,5 +1,4 @@
 const Util = require('../../controllers/Util')
-const {roomExists} = require('../../config/middlewares/roomAuthorizations')
 
 module.exports = (router, controller) => {
     /**
@@ -13,7 +12,7 @@ module.exports = (router, controller) => {
 
   /**
   * @swagger
-  * /rooms/{roomId}/materials:
+  * /materials:
   *   post:
   *     tags:
   *       - Materials
@@ -22,11 +21,6 @@ module.exports = (router, controller) => {
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: roomId
-  *         type: string
-  *         description: The room id where we want to insert the material
-  *         in: path
-  *         required: true
   *       - name: body
   *         description: The Material object that needs to be added
   *         in: body
@@ -39,15 +33,8 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/rooms/:roomId/materials', [roomExists], (req, res) => {
+  router.post('/materials', (req, res) => {
     let requiredBody = ['name']
-    let requiredParameter = ['roomId']
-    requiredParameter = Util.checkRequest(req.params, requiredParameter)
-    if (requiredParameter.length > 0) {
-      let stringMessage = requiredParameter.join(',')
-      res.status(400).json(`Missing ${stringMessage}`)
-      return
-    }
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')

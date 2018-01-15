@@ -6,8 +6,8 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  overflow-y: auto; 
   color: #fff;
+  overflow-y: hidden; 
   display: flex;
   align-items: first-baseline;
   font-size: 20px;
@@ -33,6 +33,7 @@ export default css`
 }
 
 .flat {
+  overflow-y: auto; 
   width: 70%;
   height: 100%;
   margin: auto;

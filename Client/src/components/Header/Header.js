@@ -40,7 +40,6 @@ export default class Header extends React.Component {
 
   render () {
     const isAuthenticated = this.state.isAuthenticated
-    // console.log(isAuthenticated)
     return <div className='host'>
       <div className='navbar'>
         <div className='menu-button-group'>

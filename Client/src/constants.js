@@ -1,6 +1,7 @@
 module.exports = Object.freeze({
   PRIMARY_COLOR: '#000',
   SECONDARY_COLOR: '#333',
+  POPUP_COLOR: '#666',
   TEXT_COLOR: '#fff',
   TEXT_SECONDARY_COLOR: '#bbb',
   NAVBAR_COLOR: '#222',

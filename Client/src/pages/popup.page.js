@@ -52,7 +52,7 @@ export default class PopupPage extends React.Component {
             top: 0;
             height: 100%;
             width: 100vw;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(255,255,255,0.3);
           }
   
           .content {
@@ -65,7 +65,7 @@ export default class PopupPage extends React.Component {
             transform: translateX(-50%);
             margin-top: 50px;
             border-radius: 6px;
-            background-color: white; 
+            background: #000;
             margin-bottom: 50px;
           }
         `}</style>
