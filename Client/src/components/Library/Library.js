@@ -49,8 +49,8 @@ En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie
             <div className = 'collaborator-table-title'>  collaborator List </div>
             <ul>
               {
-                collaborators.map(collaborator =>
-                  <li>
+                collaborators.map((collaborator, i) =>
+                  <li key={i}>
                     <a href="https://www.w3schools.com/html/"><div className = 'collaborator'>
                       <div className = 'collaborator-picture'>
                       </div>
@@ -68,19 +68,23 @@ En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie
         <div className = 'references-list'>
           <div className = 'references-table-title'>  References </div>
           <div className='reference'>
-            < table>
-              <tr>
-                <th> Nom </th>
-                <th> Description </th>
-              </tr>
-              {
-                books.map(book =>
-                  <tr>
-                    <td>Bill Gates</td>
-                    <td>55577854</td>
-                  </tr>
-                )
-              }
+            <table>
+              <thead>
+                <tr>
+                  <th> Nom </th>
+                  <th> Description </th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  books.map((book, i) =>
+                    <tr key={i}>
+                      <td>Bill Gates</td>
+                      <td>55577854</td>
+                    </tr>
+                  )
+                }
+              </tbody>
             </table>
           </div>
 
