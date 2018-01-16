@@ -4,7 +4,7 @@ export default (state = defaultRoomsState, action) => {
   switch (action.type) {
     case 'FETCH_ROOMS_SUCCESS': {
       return {
-        ...state.rooms,
+        ...state,
         elements: action.payload
       }
     }

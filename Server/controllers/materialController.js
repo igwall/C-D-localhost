@@ -38,7 +38,7 @@ materialController.getOneMaterial = function (materialId) {
       }
     })
   })
-}  
+}
 
 /**
  *
@@ -53,13 +53,7 @@ materialController.createMaterial = function (req) {
       if (err) {
         reject(err)
       } else {
-        roomController.addMaterialToRoom(req.params.roomId, materialToAdd)
-          .then((data) => {
-            resolve(item)
-          })
-          .catch((err) => {
-            reject(err)
-          })
+        resolve(item)
       }
     })
   })

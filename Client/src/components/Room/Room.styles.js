@@ -5,7 +5,6 @@ export default css`
   position: relative;
   display: flex;
   width: 100%;
-  background-color: white;
   border-radius: 8px;
   padding: 20px;
   border-radius: 8px;

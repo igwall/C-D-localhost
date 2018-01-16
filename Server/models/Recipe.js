@@ -11,6 +11,7 @@ const RecipeSchema = new Schema({
   duration: {type: Number, default: ''},
   author: {type: Schema.Types.ObjectId, ref: 'User'},
   createdAt: {type: Date, default: Date.now},
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  material: {type: Schema.Types.ObjectId, ref: 'Material'},
+  rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}]
 })
 mongoose.model('Recipe', RecipeSchema)

@@ -21,13 +21,26 @@ export const defaultCurrentUserState = {
     username: '',
     realisations: [],
     email: '',
-    age: '',
-    picture: ''
+    picture: '',
+    collaborator: '',
+    comments: []
   }
 }
 
 export const defaultRoomsState = {
   rooms: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
+export const defaultMaterialsState = {
+  materials: {
+    fetching: false,
+    fetched: false,
+    error: null,
     elements: []
   }
 }
@@ -48,8 +61,12 @@ export const defaultFetchedUserState = {
     error: null,
     user: {
       _id: '',
-      provider: '',
-      username: ''
+      username: '',
+      realisations: [],
+      email: '',
+      picture: '',
+      collaborator: '',
+      comments: []
     }
   }
 }
@@ -60,5 +77,5 @@ export const defaultNotificationsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultCollaboratorsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState)
 export default createStore(reducer, { ...defaultState }, enhancer)

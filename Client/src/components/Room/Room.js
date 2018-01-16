@@ -27,7 +27,7 @@ export default class Room extends React.Component {
   }
 
   render () {
-    console.log(this.props)
+    console.log(this.props.name)
     return (
       <div className='host'>
         <h3>{this.props.name}</h3>
