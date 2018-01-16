@@ -19,8 +19,12 @@ export default class Profile extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      emptySearch: true,
+      matchingRealisations: [],
       selectedMaterials: []
     }
+    this.setMatchingRealisations = this.setMatchingRealisations.bind(this)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
   componentDidMount () {
@@ -38,8 +42,38 @@ export default class Profile extends React.Component {
     this.setState({selectedMaterials: selectedOption})
   }
 
+  handleFocus (event) {
+    event.target.select()
+  }
+
+  handleSearchChange () {
+    const input = this.input.value
+    if (input !== '') {
+      this.setState({emptySearch: false})
+      this.setMatchingRealisations(input)
+    } else {
+      this.setState({
+        emptySearch: true,
+        matchingRealisations: []
+      })
+    }
+  }
+
+  setMatchingRealisations (input) {
+    console.log(input)
+    const reg = new RegExp(input, 'i')
+    let newMatchingRealisations = []
+    this.props.userFetched.user.realisations.map(realisation => realisation.recipe.title.match(reg) ? newMatchingRealisations.push(realisation) : null)
+    this.setState({matchingRealisations: newMatchingRealisations.slice()})
+  }
+
   render () {
-    const { username, email, realisations } = this.props.userFetched.user
+    const { username, email } = this.props.userFetched.user
+    let realisations = this.props.userFetched.user.realisations
+    const { matchingRealisations, emptySearch } = this.state
+    if (!emptySearch) {
+      realisations = matchingRealisations
+    }
     const selectMaterials = []
     if (this.props.materials) {
       this.props.materials.map(material => {
@@ -67,7 +101,7 @@ export default class Profile extends React.Component {
           <div className='panel-title'>RECETTES EXPÉRIMENTÉES</div>
           <div className='sort-bar'>
             <div className='sort sort-search'>
-              <input type='text' className='search-bar' placeholder='Rechercher' />
+              <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
             </div>
             <div className='sort sort-ingredients'>
               <Select

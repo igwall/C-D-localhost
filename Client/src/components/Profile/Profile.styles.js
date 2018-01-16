@@ -11,6 +11,7 @@ export default css`
 
 .main {
   margin: 0 20%;
+  padding-top: 25px;
   min-width: 500px;
   height: 100%;
   min-height: 500px;
