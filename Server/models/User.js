@@ -84,8 +84,6 @@ UserSchema.methods = {
    */
 
   authenticate: function (plainText) {
-    console.log(plainText)
-    console.log(this.passwordHash)
     return bcrypt.compareSync(plainText, this.passwordHash)
   },
 

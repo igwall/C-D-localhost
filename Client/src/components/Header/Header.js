@@ -43,24 +43,24 @@ export default class Header extends React.Component {
     return <div className='host'>
       <div className='navbar'>
         <div className='menu-button-group'>
-          <Link to='/'>
+          <Link to='/' style={{height: '100%'}} >
             <div className='menu-button'>
               <div className='menu-button-text'>ACCUEIL</div>
             </div>
           </Link>
-          <Link to='/recipes'>
+          <Link to='/recipes' style={{height: '100%'}} >
             <div className='menu-button'>
               <div className='menu-button-text'>RECETTES</div>
             </div>
           </Link>
-          <Link to='/library'>
+          <Link to='/library' style={{height: '100%'}} >
             <div className='menu-button'>
               <div className='menu-button-text'>BIBLIOTHÈQUE</div>
             </div>
           </Link>
           {
             isAuthenticated
-              ? <Link to={`/user/${this.props.currentUser._id}`} >
+              ? <Link to={`/user/${this.props.currentUser._id}`} style={{height: '100%'}}>
                 <div className='menu-button'>
                   <div className='menu-button-text'>MON PROFIL</div>
                 </div>
@@ -77,13 +77,13 @@ export default class Header extends React.Component {
               </div>
             </div>
             : <div className='sign-button-group'>
-              <Link to='/register'>
+              <Link to='/register' style={{height: '100%'}} >
                 <div className='sign-button'>
                   <div className='sign-button-icon'><Icon name='user-plus' fontSize='15px' color='' /></div>
                   <div className='sign-button-text'>Inscription</div>
                 </div>
               </Link>
-              <Link to='/login'>
+              <Link to='/login' style={{height: '100%'}} >
                 <div className='sign-button'>
                   <div className='sign-button-icon'><Icon name='sign-in-alt' fontSize='15px' color='' /></div>
                   <div className='sign-button-text'>Connexion</div>

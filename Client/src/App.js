@@ -2,12 +2,28 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { isAuthenticated } from './services/Authentication.services'
+import { isAdminAuthenticated } from './services/AdminAuthentication.services'
 import store from './store/store'
 import MainPage from './pages/main.page'
 import Library from './pages/library.page'
 import LoginPage from './pages/login.page'
 import RegisterPage from './pages/register.page'
 import ProfilePage from './pages/profile.page'
+import AdminPage from './pages/admin.page'
+import AdminLoginPage from './pages/admin_login.page'
+
+const AdminRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAdminAuthenticated() ? (
+      <Component {...props} {...rest} />
+    ) : (
+      <Redirect to={{
+        pathname: '/admin/login',
+        state: { from: props.location }
+      }} />
+    )
+  )} />
+)
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -57,6 +73,8 @@ class App extends Component {
             <NonAuthenticatedRoute path='/register' component={RegisterPage} />
             <PublicRoute path='/user/:userId' component={ProfilePage} />
             <PrivateRoute exact path='/bleh' component={MainPage} />
+            <AdminRoute exact path='/admin' component={AdminPage} />
+            <PublicRoute path='/admin/login' component={AdminLoginPage} />
           </div>
         </Provider>
       </Router>

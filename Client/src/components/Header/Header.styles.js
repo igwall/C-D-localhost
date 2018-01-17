@@ -31,18 +31,23 @@ export default css`
   background: ${constants.NAVBAR_COLOR};
   color: #eee;
   font-size: 18px;
+  height: 45px;
 }
 
 .menu-button-group {
   display: flex;
   float: left;
   align-items: center;
+  height: 100%;
 }
 
 .menu-button {
-  display: inline-block;
+  min-height: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
-  padding: 10px 40px 10px 40px;
+  padding: 0 40px;
 }
 
 .menu-button:hover {
@@ -55,13 +60,16 @@ export default css`
 }
 
 .sign-button-group {
+  height: 100%;
   display: flex;
   float: right;
   align-items: center;
 }
 
 .sign-button {
-  display: inline-block;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   padding: 10px;
 }
@@ -72,6 +80,8 @@ export default css`
 
 .sign-button-icon {
   display: inline-block;
+  line-height: 15px;
+  vertical-align: middle;
 }
 
 .sign-button-text {
