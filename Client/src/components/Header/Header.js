@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './Header.styles'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { isAuthenticated, logout } from '../../services/Authentication.services'
 import constants from '../../constants'
+import DropDown from '../UI/DropDown/DropDown'
 import Icon from '../UI/Icon/Icon'
 
 @connect(store => {
@@ -39,6 +40,12 @@ export default class Header extends React.Component {
   }
 
   render () {
+    const redirectTo = this.state.redirectTo
+    if (redirectTo) {
+      return (
+        <Redirect to={redirectTo} />
+      )
+    }
     const isAuthenticated = this.state.isAuthenticated
     return <div className='host'>
       <div className='navbar'>
@@ -58,6 +65,11 @@ export default class Header extends React.Component {
               <div className='menu-button-text'>BIBLIOTHÈQUE</div>
             </div>
           </Link>
+          <Link to='/guestbook' style={{height: '100%'}} >
+            <div className='menu-button'>
+              <div className='menu-button-text'>LIVRE D'OR</div>
+            </div>
+          </Link>
           {
             isAuthenticated
               ? <Link to={`/user/${this.props.currentUser._id}`} style={{height: '100%'}}>
@@ -67,6 +79,35 @@ export default class Header extends React.Component {
               </Link>
               : undefined
           }
+          <div className='menu-button-plus'>
+            <DropDown
+              orientation='left'
+              menuElements={[
+                {
+                  action: () => { this.redirectTo(`/about`) },
+                  placeholder: 'À Propos'
+                },
+                {
+                  action: () => { this.redirectTo(`/contact`) },
+                  placeholder: 'Nous contacter'
+                },
+                {
+                  action: null,
+                  placeholder: 'Demande de collaboration'
+                },
+                {
+                  action: () => { this.redirectTo(`/admin`) },
+                  placeholder: 'Administration'
+                }
+              ]}
+            >
+              <div className='menu-button' style={{height: '45px', padding: '0 15px'}}>
+                <div className='menu-button-icon'>
+                  <Icon name='plus' fontSize='18px' color='' />
+                </div>
+              </div>
+            </DropDown>
+          </div>
         </div>
         {
           isAuthenticated

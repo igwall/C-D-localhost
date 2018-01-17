@@ -25,6 +25,19 @@ const AdminRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+const AdminNonAuthenticatedRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAdminAuthenticated() ? (
+      <Redirect to={{
+        pathname: '/admin',
+        state: { from: props.location }
+      }} />
+    ) : (
+      <Component {...props} {...rest} />
+    )
+  )} />
+)
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAuthenticated() ? (
@@ -74,7 +87,7 @@ class App extends Component {
             <PublicRoute path='/user/:userId' component={ProfilePage} />
             <PrivateRoute exact path='/bleh' component={MainPage} />
             <AdminRoute exact path='/admin' component={AdminPage} />
-            <PublicRoute path='/admin/login' component={AdminLoginPage} />
+            <AdminNonAuthenticatedRoute path='/admin/login' component={AdminLoginPage} />
           </div>
         </Provider>
       </Router>

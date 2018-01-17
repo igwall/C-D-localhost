@@ -32,11 +32,12 @@ export default css`
   color: #eee;
   font-size: 18px;
   height: 45px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu-button-group {
   display: flex;
-  float: left;
   align-items: center;
   height: 100%;
 }
@@ -47,7 +48,16 @@ export default css`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  padding: 0 40px;
+  padding: 0 25px;
+}
+
+.menu-button-plus {
+  height: 100%;
+  min-height: 100%;
+}
+
+.menu-button-icon {
+  line-height: 15px;
 }
 
 .menu-button:hover {
@@ -62,7 +72,6 @@ export default css`
 .sign-button-group {
   height: 100%;
   display: flex;
-  float: right;
   align-items: center;
 }
 

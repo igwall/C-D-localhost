@@ -85,7 +85,7 @@ module.exports = (router, administratorController) => {
       */
   router.post('/admin/login', function (req, res) {
     let admin = new Administrator({
-      email: req.body.email,
+      username: req.body.username,
       password: req.body.password
     })
     administratorController.login(admin).then(token => {

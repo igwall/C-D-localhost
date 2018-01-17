@@ -20,7 +20,7 @@ adminController.login = (adminToConnect) => {
     }, (err, admin) => {
       if (err) return reject(new Error('Bad request'))
       if (admin && admin.authenticate(adminToConnect.password)) {
-        let token = passport.generateAccessToken(admin)
+        let token = passport.generateAdminAccessToken(admin)
         return resolve(token)
       } else {
         let error = new Error('Wrong credentials')
