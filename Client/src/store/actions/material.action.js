@@ -1,4 +1,4 @@
-import { fetchMaterials } from '../../services/Material.services'
+import { fetchMaterials, addMaterialDistant } from '../../services/Material.services'
 
 import store from '../store'
 
@@ -16,6 +16,21 @@ export function setMaterials (dispatch) {
         type: 'FETCH_MATERIALS_ERROR',
         payload: err
       })
+    })
+  })
+}
+
+export function addMaterial (name) {
+  return new Promise((resolve, reject) => {
+    addMaterialDistant(name).then((data) => {
+      console.log('bleh')
+      store.dispatch({
+        type: 'NEW_MATERIAL',
+        payload: data
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }

@@ -16,7 +16,7 @@ export default css`
 .sidebar {
   height: 100%;
   width: 30%;
-  min-width: 350px;
+  min-width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;

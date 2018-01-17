@@ -22,6 +22,14 @@ export default (state = defaultMaterialsState, action) => {
         error: action.payload
       }
     }
+    case 'NEW_MATERIAL': {
+      let newElements = state.elements.slice()
+      newElements.push(action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state
