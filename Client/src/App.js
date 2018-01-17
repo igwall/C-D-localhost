@@ -11,7 +11,13 @@ import RegisterPage from './pages/register.page'
 import ProfilePage from './pages/profile.page'
 import AdminPage from './pages/admin.page'
 import AdminLoginPage from './pages/admin_login.page'
+import AboutPage from './pages/about.page'
+import ContactPage from './pages/contact.page'
+import GuestBookPage from './pages/guestbook.page'
+import CollaborationPage from './pages/collaboration.page'
+import RecipesPage from './pages/recipes.page'
 
+// You have to be authenticated as an Admin
 const AdminRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAdminAuthenticated() ? (
@@ -25,6 +31,7 @@ const AdminRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+// You can't access if you're already authenticated as an Admin
 const AdminNonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAdminAuthenticated() ? (
@@ -38,6 +45,7 @@ const AdminNonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+// You have to be authenticated as a User
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAuthenticated() ? (
@@ -51,6 +59,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+// Anyone can access
 const PublicRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAuthenticated() ? (
@@ -61,6 +70,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+// You can't access if you're already authenticated as a User
 const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     isAuthenticated() ? (
@@ -82,12 +92,20 @@ class App extends Component {
           <div className='App'>
             <PublicRoute exact path='/' component={MainPage} />
             <PublicRoute exact path='/library' component={Library} />
+            <PublicRoute exact path='/about' component={AboutPage} />
+            <PublicRoute exact path='/guestbook' component={GuestBookPage} />
+            <PublicRoute exact path='/contact' component={ContactPage} />
+            <PublicRoute exact path='/recipes' component={RecipesPage} />
+            <PublicRoute path='/user/:userId' component={ProfilePage} />
+
             <NonAuthenticatedRoute path='/login' component={LoginPage} />
             <NonAuthenticatedRoute path='/register' component={RegisterPage} />
-            <PublicRoute path='/user/:userId' component={ProfilePage} />
-            <PrivateRoute exact path='/bleh' component={MainPage} />
-            <AdminRoute exact path='/admin' component={AdminPage} />
+
+            <PrivateRoute exact path='/collaboration' component={CollaborationPage} />
+
             <AdminNonAuthenticatedRoute path='/admin/login' component={AdminLoginPage} />
+
+            <AdminRoute exact path='/admin' component={AdminPage} />
           </div>
         </Provider>
       </Router>

@@ -101,7 +101,7 @@ export default class Header extends React.Component {
                 }
               ]}
             >
-              <div className='menu-button' style={{height: '45px', padding: '0 15px'}}>
+              <div className='menu-button' style={{height: '43px', padding: '0 15px'}}>
                 <div className='menu-button-icon'>
                   <Icon name='plus' fontSize='18px' color='' />
                 </div>

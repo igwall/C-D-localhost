@@ -15,6 +15,13 @@ export default (state = defaultMaterialsState, action) => {
         elements: action.payload
       }
     }
+    case 'FETCH_MATERIALS_ERROR': {
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
+      }
+    }
     default:
       return {
         ...state

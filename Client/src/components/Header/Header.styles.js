@@ -34,6 +34,8 @@ export default css`
   height: 45px;
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .menu-button-group {

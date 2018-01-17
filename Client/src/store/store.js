@@ -45,6 +45,15 @@ export const defaultMaterialsState = {
   }
 }
 
+export const defaultRecipesState = {
+  recipes: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
 export const defaultCollaboratorsState = {
   collaborators: {
     fetching: false,
@@ -77,5 +86,5 @@ export const defaultNotificationsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState)
 export default createStore(reducer, { ...defaultState }, enhancer)
