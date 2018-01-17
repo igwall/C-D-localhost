@@ -84,20 +84,20 @@ export default class Header extends React.Component {
               orientation='left'
               menuElements={[
                 {
-                  action: () => { this.redirectTo(`/about`) },
-                  placeholder: 'À Propos'
-                },
-                {
-                  action: () => { this.redirectTo(`/contact`) },
-                  placeholder: 'Nous contacter'
+                  action: null,
+                  placeholder: <Link to='/about'>À Propos</Link>
                 },
                 {
                   action: null,
-                  placeholder: 'Demande de collaboration'
+                  placeholder: <Link to='/contact'>Nous contacter</Link>
                 },
                 {
-                  action: () => { this.redirectTo(`/admin`) },
-                  placeholder: 'Administration'
+                  action: null,
+                  placeholder: <Link to='/collaboration'>Demande de collaboration</Link>
+                },
+                {
+                  action: null,
+                  placeholder: <Link to='/admin'>Administration</Link>
                 }
               ]}
             >
