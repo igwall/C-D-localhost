@@ -43,17 +43,18 @@ export default css`
   padding-top: 23%;
   
 }
-.picture {
-  
-  border: 2px solid white;
-  border-radius: 8px;
-  width: 80%;
-  height: 270px;
 
+.pic{
+  width: 225px;
+  height: 225px;
+  margin-left: 7%;
 }
+
 .admin-name {
   text-align: center;
   margin-right: 25%;
+  font-size: 25px;
+  padding-top: 5%;
 }
 .site-description{
   display: inline-block;
@@ -61,6 +62,9 @@ export default css`
 }
 .title {
   text-align: center;
+  margin-right: 60%;
+  font-size: 20px;
+  Font-Weight: Bold;
 }
 
 .textBody {
@@ -76,6 +80,10 @@ export default css`
 }
 .collaborator-table-title{
   text-align: center;
+  margin-right: 74%;
+  Font-Weight: Bold;
+  font-size: 20px;
+  
  
 }
 .collaborator-list{
@@ -116,7 +124,7 @@ export default css`
 }
 
 ul {
-  height: 256px;
+  max-height: 256px;
   
     
 }
@@ -129,8 +137,10 @@ li {
 }
 
 .references-table-title{
-  text-align: center;
-  margin: auto;
+  margin-left: 8%;
+  padding-bottom: 4%;
+  Font-Weight: Bold;
+  font-size: 20px;
 }
 .references-list{
   display: inline-block;

@@ -89,7 +89,7 @@ export default class Profile extends React.Component {
           <div className='panel-title'>INFORMATIONS</div>
           <div className='panel-content'>
             <div className='picture'>
-              <img src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt='' width='100px' />
+              <img src='http://static1.purepeople.com/articles/6/24/48/46/@/3432472-portrait-officiel-du-prince-george-devoi-950x0-3.jpg' alt='' width='100px' />
             </div>
             <div className='infos'>
               <div className='infos-username'>{username}</div>
