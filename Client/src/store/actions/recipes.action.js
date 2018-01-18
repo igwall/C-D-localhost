@@ -1,4 +1,4 @@
-import { fetchRecipes } from '../../services/Recipe.services'
+import { fetchRecipes, addRecipeDistant } from '../../services/Recipe.services'
 
 import store from '../store'
 
@@ -16,6 +16,20 @@ export function setRecipes (dispatch) {
         type: 'FETCH_RECIPES_ERROR',
         payload: err
       })
+    })
+  })
+}
+
+export function addRecipe (recipe) {
+  return new Promise((resolve, reject) => {
+    addRecipeDistant(recipe).then((data) => {
+      store.dispatch({
+        type: 'NEW_RECIPE',
+        payload: data
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }

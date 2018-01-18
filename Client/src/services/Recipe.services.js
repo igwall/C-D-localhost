@@ -10,3 +10,19 @@ export function fetchRecipes () {
     })
   })
 }
+
+export function addRecipeDistant (recipe) {
+  return new Promise((resolve, reject) => {
+    axios.post(`${Config.API_URL}/recipes`, {
+      title: recipe.title,
+      description: recipe.description,
+      number: recipe.number,
+      rooms: recipe.rooms,
+      materials: recipe.materials
+    }).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}

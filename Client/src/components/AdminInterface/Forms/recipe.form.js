@@ -3,6 +3,7 @@ import styles from './forms.styles'
 import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import Select from 'react-select'
+import { addRecipe } from '../../../store/actions/recipes.action'
 
 export default class RecipeForm extends React.Component {
   constructor (props) {
@@ -11,6 +12,7 @@ export default class RecipeForm extends React.Component {
       freeTitle: true,
       added: '',
       titleValid: false,
+      descriptionValid: false,
       selectedMaterials: [],
       materialFull: false,
       selectedRooms: [],
@@ -18,11 +20,43 @@ export default class RecipeForm extends React.Component {
     }
     this.submit = this.submit.bind(this)
     this.checkTitle = this.checkTitle.bind(this)
+    this.checkDescription = this.checkDescription.bind(this)
     this.setMaterialSelect = this.setMaterialSelect.bind(this)
     this.setRoomSelect = this.setRoomSelect.bind(this)
   }
 
-  submit () {
+  submit (e) {
+    if (e) e.preventDefault()
+    const title = this.title.value
+    const description = this.description.value
+    const number = this.state.selectedNumber
+    const rooms = this.state.selectedRooms
+    const materials = this.state.selectedMaterials
+
+    const newRecipe = {
+      title: title,
+      description: description,
+      number: number,
+      rooms: rooms,
+      materials: materials
+    }
+
+    if (this.isFormValid()) {
+      addRecipe(newRecipe).then(recipe => {
+        this.setState({
+          added: recipe.title,
+          selectedMaterials: [],
+          selectedRooms: [],
+          selectedNumber: 'solo',
+          titleValid: false,
+          descriptionValid: false
+        })
+        this.title.value = ''
+        this.description.value = ''
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   }
 
   checkTitle () {
@@ -36,6 +70,15 @@ export default class RecipeForm extends React.Component {
       }
     } else {
       this.setState({titleValid: false})
+    }
+  }
+
+  checkDescription () {
+    this.setState({added: ''})
+    if (this.description.value !== '') {
+      this.setState({descriptionValid: true})
+    } else {
+      this.setState({descriptionValid: false})
     }
   }
 
@@ -94,7 +137,7 @@ export default class RecipeForm extends React.Component {
   }
 
   isFormValid () {
-    return this.state.titleValid && this.state.freeTitle
+    return this.state.titleValid && this.state.freeTitle && this.state.descriptionValid
   }
 
   render () {

@@ -23,7 +23,6 @@ export function setMaterials (dispatch) {
 export function addMaterial (name) {
   return new Promise((resolve, reject) => {
     addMaterialDistant(name).then((data) => {
-      console.log('bleh')
       store.dispatch({
         type: 'NEW_MATERIAL',
         payload: data

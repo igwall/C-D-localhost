@@ -54,7 +54,7 @@ roomController.getOneRoom = function (roomId) {
       }
     })
   })
-}  
+}
 
 /**
  *
@@ -93,5 +93,23 @@ roomController.addMaterialToRoom = function (roomId, material) {
   })
 }
 
+/**
+ *
+ *
+ * @param {any} roomId
+ * @param {any} recipe
+ * @returns
+ */
+roomController.addRecipeToRoom = function (roomId, recipe) {
+  return new Promise((resolve, reject) => {
+    Room.findOneAndUpdate({ '_id': roomId }, { $push: { recipes: recipe } }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
 
 module.exports = roomController
