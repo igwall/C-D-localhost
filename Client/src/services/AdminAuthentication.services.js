@@ -33,7 +33,7 @@ export function removeAdminToken () {
 
 export function adminLogout () {
   removeAdminToken()
-  window.location = '/'
+  window.location = '/admin/login'
 }
 
 export function adminLogin (username, password) {
@@ -47,5 +47,18 @@ export function adminLogin (username, password) {
       }).catch((err) => {
         reject(err)
       })
+  })
+}
+
+export function adminRegister (username, password) {
+  return new Promise((resolve, reject) => {
+    axios.post(`${Config.API_URL}/admin/register`, {
+      username: username,
+      password: password
+    }).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
   })
 }

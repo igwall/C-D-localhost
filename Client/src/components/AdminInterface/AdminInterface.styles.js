@@ -28,10 +28,27 @@ export default css`
   overflow: auto;
 }
 
-.title {
+.title-group {
   padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
   font-size: 25px;
   font-weight: bold;
+}
+
+.logout-button {
+  font-size: 13px;
+  height: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: rgba(255,255,255,0.2)
 }
 
 .panel {

@@ -86,5 +86,14 @@ export const defaultNotificationsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState)
+export const defaultAdministratorsState = {
+  administrators: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState)
 export default createStore(reducer, { ...defaultState }, enhancer)

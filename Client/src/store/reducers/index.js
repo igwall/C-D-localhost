@@ -6,6 +6,7 @@ import rooms from './rooms.reducer'
 import materials from './materials.reducer'
 import collaborators from './collaborators.reducer'
 import recipes from './recipes.reducer'
+import administrators from './administrators.reducer'
 
 export default combineReducers({
   currentUser,
@@ -14,5 +15,6 @@ export default combineReducers({
   notifications,
   materials,
   collaborators,
-  recipes
+  recipes,
+  administrators
 })

@@ -4,7 +4,7 @@ const Administrator = mongoose.model('Administrator')
 /**
   * @swagger
   * definitions:
-  *   NewAdmin:
+  *   Administrator:
   *     properties:
   *       username:
   *         type: string
@@ -28,7 +28,7 @@ module.exports = (router, administratorController) => {
     * /admin/register:
     *   post:
     *     tags:
-    *       - Authentication
+    *       - Administrators
     *     description: Register for a new administrator account
     *     summary: CREATE a new administrator
     *     produces:
@@ -39,7 +39,7 @@ module.exports = (router, administratorController) => {
     *         in: body
     *         required: true
     *         schema:
-    *             $ref: '#/definitions/NewAdmin'
+    *             $ref: '#/definitions/Administrator'
     *     responses:
     *       201:
     *         description: Message confirming the Admin Account has been created
@@ -49,11 +49,7 @@ module.exports = (router, administratorController) => {
   router.post('/admin/register', (req, res) => {
     const admin = new Administrator(req.body)
     administratorController.create(admin).then(admin => {
-      administratorController.login(admin).then(token => {
-        return res.status(201).send({token: token})
-      }).catch(err => {
-        return res.status(400).send(err)
-      })
+      return res.status(201).send(admin._id)
     }).catch(err => {
       console.error(err)
       return res.status(400).send('Bad request') // TODO: Error details
@@ -65,7 +61,7 @@ module.exports = (router, administratorController) => {
       * /admin/login:
       *   post:
       *     tags:
-      *       - Authentication
+      *       - Administrators
       *     description: Login to an admin account
       *     summary: Generate a token
       *     produces:
@@ -94,6 +90,33 @@ module.exports = (router, administratorController) => {
       })
     }).catch(err => {
       return res.status(err.status).send(err.message)
+    })
+  })
+
+  /**
+      * @swagger
+      * /admins:
+      *   get:
+      *     tags:
+      *       - Administrators
+      *     description: Get all admins
+      *     summary: GET ALL Adminsitrators
+      *     produces:
+      *       - application/json
+      *     responses:
+      *       200:
+      *         description: An array of Adminsitrators
+      *         schema:
+      *           $ref: '#/definitions/Administrator'
+      *       500:
+      *         description: Internal error
+      */
+  router.get('/admins', function (req, res) {
+    // TODO: ADD Pagination
+    administratorController.getAdministrators().then(admins => {
+      return res.status(200).send(admins)
+    }).catch(err => {
+      return res.status(400).send(err)
     })
   })
 }

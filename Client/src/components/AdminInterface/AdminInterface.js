@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from './AdminInterface.styles'
 import {connect} from 'react-redux'
+import { setAdministrators } from '../../store/actions/administrators.action'
 import { setCollaborators } from '../../store/actions/collaborators.action'
 import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
+import { setRooms } from '../../store/actions/room.action'
+import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
 import RecipesList from './Lists/recipes.list'
 import MaterialsList from './Lists/materials.list'
@@ -17,7 +20,9 @@ import AdministratorForm from './Forms/administrator.form'
   return {
     materials: store.materials.elements,
     recipes: store.recipes.elements,
-    collaborators: store.materials.elements
+    collaborators: store.materials.elements,
+    administrators: store.administrators.elements,
+    rooms: store.rooms.elements
   }
 })
 
@@ -39,6 +44,14 @@ export default class HomePage extends React.Component {
       console.error(err)
     })
     setCollaborators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setAdministrators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setRooms().then(() => {
     }).catch(err => {
       console.error(err)
     })
@@ -78,40 +91,41 @@ export default class HomePage extends React.Component {
 
   displayContent () {
     const content = this.state.content
+    const { materials, recipes, rooms, collaborators, administrators } = this.props
     switch (content) {
       case 'recipesList': {
         return (
-          <RecipesList />
+          <RecipesList materials={materials} recipes={recipes} rooms={rooms} />
         )
       }
       case 'materialsList': {
         return (
-          <MaterialsList />
+          <MaterialsList materials={materials} />
         )
       }
       case 'collaboratorsList': {
         return (
-          <CollaboratorsList />
+          <CollaboratorsList collaborators={collaborators} />
         )
       }
-      case 'administratorList': {
+      case 'administratorsList': {
         return (
-          <AdministratorsList />
+          <AdministratorsList administrators={administrators} />
         )
       }
       case 'recipeForm': {
         return (
-          <RecipeForm />
+          <RecipeForm materials={materials} recipes={recipes} rooms={rooms} />
         )
       }
       case 'materialForm': {
         return (
-          <MaterialForm materials={this.props.materials} />
+          <MaterialForm materials={materials} />
         )
       }
       case 'administratorForm': {
         return (
-          <AdministratorForm />
+          <AdministratorForm administrators={administrators} />
         )
       }
       default: {
@@ -123,7 +137,10 @@ export default class HomePage extends React.Component {
   render () {
     return (<div className='host'>
       <div className='sidebar'>
-        <div className='title'>ADMINISTRATION</div>
+        <div className='title-group'>
+          <div className='title'>ADMINISTRATION</div>
+          <div className='logout-button' onClick={() => adminLogout()}>DÉCONNEXION</div>
+        </div>
         <div className='panel panel-recipes'>
           <div className='panel-title'>Recettes</div>
           <div className='panel-buttons'>

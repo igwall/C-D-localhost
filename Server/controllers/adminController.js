@@ -31,4 +31,16 @@ adminController.login = (adminToConnect) => {
   })
 }
 
+adminController.getAdministrators = () => {
+  return new Promise((resolve, reject) => {
+    Administrator.find().select('username').exec(function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
 module.exports = adminController
