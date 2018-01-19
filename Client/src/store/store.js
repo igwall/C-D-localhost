@@ -54,6 +54,24 @@ export const defaultCollaboratorsState = {
   }
 }
 
+export const defaultArtistState = {
+  artistFetched: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    artist: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      bio: '',
+      videos: [],
+      pictures: [],
+      profilPicture: '',
+      audio: ''
+    }
+  }
+}
+
 export const defaultFetchedUserState = {
   userFetched: {
     fetching: false,
@@ -77,5 +95,5 @@ export const defaultNotificationsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultArtistState)
 export default createStore(reducer, { ...defaultState }, enhancer)
