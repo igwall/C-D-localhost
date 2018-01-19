@@ -8,7 +8,7 @@ import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
 import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
-import RecipesList from './Lists/recipes.list'
+import RecipesListAdmin from './Lists/recipes.list'
 import MaterialsList from './Lists/materials.list'
 import CollaboratorsList from './Lists/collaborators.list'
 import AdministratorsList from './Lists/administrators.list'
@@ -95,7 +95,7 @@ export default class HomePage extends React.Component {
     switch (content) {
       case 'recipesList': {
         return (
-          <RecipesList materials={materials} recipes={recipes} rooms={rooms} />
+          <RecipesListAdmin materials={materials} recipes={recipes} rooms={rooms} />
         )
       }
       case 'materialsList': {

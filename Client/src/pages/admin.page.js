@@ -1,9 +1,12 @@
 import React from 'react'
-import PageLayout from '../layouts/page'
+import PopupLayout from '../layouts/popup'
+import PopupManager from '../components/PopupManager/PopupManager'
 import AdminInterface from '../components/AdminInterface/AdminInterface'
 
 export default (props) => (
-  <PageLayout>
-    <AdminInterface />
-  </PageLayout>
+  <PopupManager>
+    <PopupLayout>
+      <AdminInterface />
+    </PopupLayout>
+  </PopupManager>
 )

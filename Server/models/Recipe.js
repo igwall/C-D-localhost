@@ -5,6 +5,7 @@ const RecipeSchema = new Schema({
   title: {type: String, default: '', required: true},
   thumbnail: {type: String, default: ''},
   description: {type: String, default: '', required: true},
+  statement: {type: String, default: '', required: true},
   pictures: [{type: String, default: ''}],
   videos: [{type: String, default: ''}],
   audios: [{type: String, default: ''}],

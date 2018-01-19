@@ -13,6 +13,7 @@ export default class RecipeForm extends React.Component {
       added: '',
       titleValid: false,
       descriptionValid: false,
+      statementValid: false,
       selectedMaterials: [],
       materialFull: false,
       selectedRooms: [],
@@ -21,6 +22,7 @@ export default class RecipeForm extends React.Component {
     this.submit = this.submit.bind(this)
     this.checkTitle = this.checkTitle.bind(this)
     this.checkDescription = this.checkDescription.bind(this)
+    this.checkStatement = this.checkStatement.bind(this)
     this.setMaterialSelect = this.setMaterialSelect.bind(this)
     this.setRoomSelect = this.setRoomSelect.bind(this)
   }
@@ -29,6 +31,7 @@ export default class RecipeForm extends React.Component {
     if (e) e.preventDefault()
     const title = this.title.value
     const description = this.description.value
+    const statement = this.statement.value
     const number = this.state.selectedNumber
     const rooms = this.state.selectedRooms
     const materials = this.state.selectedMaterials
@@ -36,6 +39,7 @@ export default class RecipeForm extends React.Component {
     const newRecipe = {
       title: title,
       description: description,
+      statement: statement,
       number: number,
       rooms: rooms,
       materials: materials
@@ -43,20 +47,26 @@ export default class RecipeForm extends React.Component {
 
     if (this.isFormValid()) {
       addRecipe(newRecipe).then(recipe => {
-        this.setState({
-          added: recipe.title,
-          selectedMaterials: [],
-          selectedRooms: [],
-          selectedNumber: 'solo',
-          titleValid: false,
-          descriptionValid: false
-        })
-        this.title.value = ''
-        this.description.value = ''
+        this.setState({added: recipe.title})
+        this.resetForm()
       }).catch(err => {
         console.log(err)
       })
     }
+  }
+
+  resetForm () {
+    this.setState({
+      selectedMaterials: [],
+      selectedRooms: [],
+      selectedNumber: 'solo',
+      titleValid: false,
+      descriptionValid: false,
+      statementValid: false
+    })
+    this.title.value = ''
+    this.description.value = ''
+    this.statement.value = ''
   }
 
   checkTitle () {
@@ -79,6 +89,15 @@ export default class RecipeForm extends React.Component {
       this.setState({descriptionValid: true})
     } else {
       this.setState({descriptionValid: false})
+    }
+  }
+
+  checkStatement () {
+    this.setState({added: ''})
+    if (this.statement.value !== '') {
+      this.setState({statementValid: true})
+    } else {
+      this.setState({statementValid: false})
     }
   }
 
@@ -137,7 +156,12 @@ export default class RecipeForm extends React.Component {
   }
 
   isFormValid () {
-    return this.state.titleValid && this.state.freeTitle && this.state.descriptionValid
+    return this.state.titleValid &&
+      this.state.freeTitle &&
+      this.state.descriptionValid &&
+      this.state.statementValid &&
+      (this.state.selectedRooms.length > 0) &&
+      (this.state.selectedMaterials.length > 0)
   }
 
   render () {
@@ -180,7 +204,11 @@ export default class RecipeForm extends React.Component {
               </div>
               <div className='input-group'>
                 <div className='input-label'>Description de la recette</div>
-                <textarea type='text' placeholder='Objectifs, comment la réaliser...' ref={i => { this.description = i }} onChange={this.checkDescription} />
+                <textarea type='text' placeholder='Description et objectifs de la recette...' ref={i => { this.description = i }} onChange={this.checkDescription} />
+              </div>
+              <div className='input-group'>
+                <div className='input-label'>Consignes</div>
+                <textarea type='text' placeholder='Les consignes de la recette, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
               </div>
             </div>
             <div className='form-column form-column-right'>
