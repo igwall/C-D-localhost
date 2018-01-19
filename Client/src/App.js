@@ -16,6 +16,7 @@ import ContactPage from './pages/contact.page'
 import GuestBookPage from './pages/guestbook.page'
 import CollaborationPage from './pages/collaboration.page'
 import RecipesPage from './pages/recipes.page'
+import Artist from './pages/artist.page'
 
 // You have to be authenticated as an Admin
 const AdminRoute = ({ component: Component, ...rest }) => (
@@ -97,7 +98,8 @@ class App extends Component {
             <PublicRoute exact path='/contact' component={ContactPage} />
             <PublicRoute exact path='/recipes' component={RecipesPage} />
             <PublicRoute path='/user/:userId' component={ProfilePage} />
-
+            <PublicRoute exact path='/artist' component={Artist} />
+            
             <NonAuthenticatedRoute path='/login' component={LoginPage} />
             <NonAuthenticatedRoute path='/register' component={RegisterPage} />
 

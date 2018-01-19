@@ -22,8 +22,8 @@ export default class Library extends React.Component {
     return (<div className='host'>
       <div className = 'sideBarre'>
         <div className= 'admin-info'>
-          <div className = 'picture'>  </div>
-          <div className = 'admin-name'><a href="https://www.w3schools.com/html/"> Muriel PIQUE </a></div>
+          <div className = 'picture'><img className = 'pic' src='https://media-exp2.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/07c/16c/3d00735.jpg' alt=''/></div>
+          <div className = 'admin-name'><a href="/artist"> Muriel PIQUE </a></div>
         </div>
       </div>
       <div className = 'main'>
@@ -46,7 +46,7 @@ En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie
         </div>
         <div className="footer">
           <div className = 'collaborator-list'>
-            <div className = 'collaborator-table-title'>  collaborator List </div>
+            <div className = 'collaborator-table-title'>  Artistes invités </div>
             <ul>
               {
                 collaborators.map((collaborator, i) =>
@@ -66,7 +66,7 @@ En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie
           </div>
         </div>
         <div className = 'references-list'>
-          <div className = 'references-table-title'>  References </div>
+          <div className = 'references-table-title'>  Liste des references </div>
           <div className='reference'>
             <table>
               <thead>
