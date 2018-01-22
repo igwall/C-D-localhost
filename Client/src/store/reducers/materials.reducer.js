@@ -30,6 +30,14 @@ export default (state = defaultMaterialsState, action) => {
         elements: newElements
       }
     }
+    case 'DELETE_MATERIAL': {
+      let newElements = state.elements.slice()
+      newElements = newElements.filter(material => material._id !== action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

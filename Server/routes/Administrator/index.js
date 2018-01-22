@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Util = require('../../controllers/Util')
 const Administrator = mongoose.model('Administrator')
 
 /**
@@ -118,5 +119,45 @@ module.exports = (router, administratorController) => {
     }).catch(err => {
       return res.status(400).send(err)
     })
+  })
+
+  /**
+  * @swagger
+  * /admins/{adminId}:
+  *   delete:
+  *     tags:
+  *       - Administrators
+  *     description: Delete an administrator
+  *     summary: DELETE an Administrator
+  *     produces:
+  *       - application/json
+  *     parameters:
+  *       - name: adminId
+  *         type: string
+  *         description: The admin id to delete
+  *         in: path
+  *         required: true
+  *     responses:
+  *       201:
+  *         description: Message confirming the admin has been deleted
+  *       500:
+  *         description: Internal error
+  */
+  router.delete('/admins/:adminId', function (req, res) {
+    let requiredParameter = ['adminId']
+    requiredParameter = Util.checkRequest(req.params, requiredParameter)
+    if (requiredParameter.length > 0) {
+      let stringMessage = requiredParameter.join(',')
+      res.status(400).json(`Missing ${stringMessage}`)
+      return
+    }
+    administratorController
+      .deleteAdministrator(req.params.adminId)
+      .then(data => {
+        res.status(201).json('Successfully deleted')
+      })
+      .catch(err => {
+        res.status(500).json(err)
+      })
   })
 }

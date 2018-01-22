@@ -22,3 +22,13 @@ export function addMaterialDistant (name) {
     })
   })
 }
+
+export function deleteMaterialDistant (materialId) {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${Config.API_URL}/materials/${materialId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}

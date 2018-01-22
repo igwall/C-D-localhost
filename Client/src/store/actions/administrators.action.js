@@ -1,4 +1,4 @@
-import { fetchAdministrators } from '../../services/Administrators.services'
+import { fetchAdministrators, deleteAdministratorDistant } from '../../services/Administrators.services'
 
 import store from '../store'
 
@@ -16,6 +16,20 @@ export function setAdministrators (dispatch) {
         type: 'FETCH_ADMINISTRATORS_ERROR',
         payload: err
       })
+    })
+  })
+}
+
+export function deleteAdministrator (adminId) {
+  return new Promise((resolve, reject) => {
+    deleteAdministratorDistant(adminId).then((data) => {
+      store.dispatch({
+        type: 'DELETE_ADMINISTRATOR',
+        payload: adminId
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }

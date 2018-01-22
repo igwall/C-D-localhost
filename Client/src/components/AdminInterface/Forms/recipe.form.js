@@ -73,7 +73,7 @@ export default class RecipeForm extends React.Component {
     this.setState({added: ''})
     if (this.title.value !== '') {
       this.setState({titleValid: true})
-      if (this.props.recipes.filter(recipe => recipe.title === this.title.value)[0] !== undefined) {
+      if (this.props.recipes.filter(recipe => recipe.title.toLowerCase() === this.title.value.toLowerCase())[0] !== undefined) {
         this.setState({freeTitle: false})
       } else {
         this.setState({freeTitle: true})

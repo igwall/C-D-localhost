@@ -21,7 +21,7 @@ export default class AdministratorForm extends React.Component {
     this.setState({added: ''})
     if (this.name.value.length > 3) {
       this.setState({nameValid: true})
-      if (this.props.administrators.filter(admin => admin.username === this.name.value)[0] !== undefined) {
+      if (this.props.administrators.filter(admin => admin.username.toLowerCase() === this.name.value.toLowerCase())[0] !== undefined) {
         this.setState({usernameExists: true})
       } else {
         this.setState({usernameExists: false})

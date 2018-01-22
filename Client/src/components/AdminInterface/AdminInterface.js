@@ -100,17 +100,17 @@ export default class HomePage extends React.Component {
       }
       case 'materialsList': {
         return (
-          <MaterialsList materials={materials} />
+          <MaterialsList popoverManager={this.props.popoverManager} materials={materials} />
         )
       }
       case 'collaboratorsList': {
         return (
-          <CollaboratorsList collaborators={collaborators} />
+          <CollaboratorsList popoverManager={this.props.popoverManager} collaborators={collaborators} />
         )
       }
       case 'administratorsList': {
         return (
-          <AdministratorsList administrators={administrators} />
+          <AdministratorsList popoverManager={this.props.popoverManager} administrators={administrators} />
         )
       }
       case 'recipeForm': {

@@ -24,7 +24,7 @@ export default class MaterialForm extends React.Component {
     this.setState({added: ''})
     if (this.name.value !== '') {
       this.setState({nameValid: true})
-      if (this.props.materials.filter(material => material.name === this.name.value)[0] !== undefined) {
+      if (this.props.materials.filter(material => material.name.toLowerCase() === this.name.value.toLowerCase())[0] !== undefined) {
         this.setState({freeName: false})
       } else {
         this.setState({freeName: true})

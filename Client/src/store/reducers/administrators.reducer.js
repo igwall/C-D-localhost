@@ -22,6 +22,14 @@ export default (state = defaultAdministratorsState, action) => {
         error: action.payload
       }
     }
+    case 'DELETE_ADMINISTRATOR': {
+      let newElements = state.elements.slice()
+      newElements = newElements.filter(admin => admin._id !== action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

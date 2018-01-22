@@ -10,3 +10,13 @@ export function fetchAdministrators () {
     })
   })
 }
+
+export function deleteAdministratorDistant (adminId) {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${Config.API_URL}/admins/${adminId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
