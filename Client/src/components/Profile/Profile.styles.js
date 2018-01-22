@@ -108,6 +108,12 @@ export default css`
   background: rgba(255,255,255,0.3);
 }
 
+.search-bar:focus {
+  min-width: 300px;
+  background: rgba(255,255,255,1);
+  color: #000;
+}
+
 .no-realisations {
   padding-top: 100px;
   text-align: center;

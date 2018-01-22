@@ -11,17 +11,15 @@ module.exports = (router, controller) => {
    *     properties:
    *       title:
    *         type: string
-   *       statement:
-   *         type: string
    *       description:
    *         type: string
-   *       duration:
-   *         type: integer
+   *       number:
+   *         type: string
    */
 
   /**
   * @swagger
-  * /rooms/{roomId}/materials/{materialId}/recipes:
+  * /recipes:
   *   post:
   *     tags:
   *       - Recipes
@@ -30,16 +28,6 @@ module.exports = (router, controller) => {
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: roomId
-  *         type: string
-  *         description: The room id where we want to insert the recipe
-  *         in: path
-  *         required: true
-  *       - name: materialId
-  *         type: string
-  *         description: The material id where we want to insert the recipe
-  *         in: path
-  *         required: true
   *       - name: body
   *         description: The Recipe object that needs to be added
   *         in: body
@@ -52,22 +40,14 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/rooms/:roomId/materials/:materialId/recipes', [materialExists], (req, res) => {
-    let requiredBody = ['title', 'statement']
-    let requiredParameter = ['roomId', 'materialId']
-    requiredParameter = Util.checkRequest(req.params, requiredParameter)
-    if (requiredParameter.length > 0) {
-      let stringMessage = requiredParameter.join(',')
-      res.status(400).json(`Missing ${stringMessage}`)
-      return
-    }
+  router.post('/recipes', (req, res) => {
+    let requiredBody = ['title', 'description', 'number', 'rooms']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')
       res.status(400).json(`Missing ${stringMessage}`)
       return
-    }
-    else {
+    } else {
       controller
       .createRecipe(req)
       .then(data => {

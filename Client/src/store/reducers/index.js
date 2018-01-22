@@ -5,6 +5,8 @@ import userFetched from './userFetched.reducer'
 import rooms from './rooms.reducer'
 import materials from './materials.reducer'
 import collaborators from './collaborators.reducer'
+import recipes from './recipes.reducer'
+import administrators from './administrators.reducer'
 import artistFetched from './artist.reducer'
 
 export default combineReducers({
@@ -14,5 +16,7 @@ export default combineReducers({
   notifications,
   materials,
   collaborators,
+  recipes,
+  administrators,
   artistFetched
 })
