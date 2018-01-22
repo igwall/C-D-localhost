@@ -20,7 +20,7 @@ import AdministratorForm from './Forms/administrator.form'
   return {
     materials: store.materials.elements,
     recipes: store.recipes.elements,
-    collaborators: store.materials.elements,
+    collaborators: store.collaborators.elements,
     administrators: store.administrators.elements,
     rooms: store.rooms.elements
   }
