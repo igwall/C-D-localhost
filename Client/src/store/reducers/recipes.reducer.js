@@ -30,6 +30,14 @@ export default (state = defaultRecipesState, action) => {
         elements: newElements
       }
     }
+    case 'DELETE_RECIPE': {
+      let newElements = state.elements.slice()
+      newElements = newElements.filter(recipe => recipe._id !== action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

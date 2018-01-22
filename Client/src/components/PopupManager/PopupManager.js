@@ -6,7 +6,8 @@ export default class PopupManager extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      popoverDisplayed: false
+      popoverDisplayed: false,
+      size: 'normal'
     }
   }
 
@@ -20,8 +21,11 @@ export default class PopupManager extends React.Component {
     })
   }
 
-  setRenderedComponent (component) {
-    this.setState({ renderedComponent: component })
+  setRenderedComponent (component, size = 'normal') {
+    this.setState({
+      renderedComponent: component,
+      size: size
+    })
   }
 
   renderPopover () {
@@ -36,7 +40,7 @@ export default class PopupManager extends React.Component {
               width: '100vw',
               height: '100vh'
             }}>
-              <PopoverPage dismiss={this.dismissPopover.bind(this)} ref={p => { this.popover = p }} component={this.state.renderedComponent} />
+              <PopoverPage size={this.state.size} dismiss={this.dismissPopover.bind(this)} ref={p => { this.popover = p }} component={this.state.renderedComponent} />
             </div>
           )
         ]}

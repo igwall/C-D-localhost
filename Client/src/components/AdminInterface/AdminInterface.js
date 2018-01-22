@@ -95,7 +95,7 @@ export default class HomePage extends React.Component {
     switch (content) {
       case 'recipesList': {
         return (
-          <RecipesListAdmin materials={materials} recipes={recipes} rooms={rooms} />
+          <RecipesListAdmin popoverManager={this.props.popoverManager} materials={materials} recipes={recipes} rooms={rooms} />
         )
       }
       case 'materialsList': {

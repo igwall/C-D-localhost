@@ -13,7 +13,7 @@ const recipeController = {}
  */
 recipeController.getAllRecipes = function () {
   return new Promise((resolve, reject) => {
-    Recipe.find().populate('author').exec(function (err, res) {
+    Recipe.find().populate('author materials rooms').exec(function (err, res) {
       if (err) {
         reject(err)
       } else {
@@ -85,6 +85,18 @@ recipeController.createRecipe = function (req) {
             reject(err)
           })
         })
+      }
+    })
+  })
+}
+
+recipeController.deleteRecipe = (recipeId) => {
+  return new Promise((resolve, reject) => {
+    Recipe.findOneAndRemove({ '_id': recipeId }, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
       }
     })
   })

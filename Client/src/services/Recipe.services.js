@@ -22,3 +22,13 @@ export function addRecipeDistant (recipe) {
     })
   })
 }
+
+export function deleteRecipeDistant (recipeId) {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${Config.API_URL}/recipes/${recipeId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}

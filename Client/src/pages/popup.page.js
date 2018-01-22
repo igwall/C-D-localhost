@@ -25,6 +25,16 @@ export default class PopupPage extends React.Component {
   }
 
   render () {
+    let width = '60%'
+    let minWidth = '600px'
+    let minHeight = '500px'
+    let top = '0'
+    if (this.props.size === 'small') {
+      width = '500px'
+      minWidth = '400px'
+      minHeight = '0'
+      top = '20%'
+    }
     return (
       <div className='host'>
         <div className='overlay' onClick={this.props.dismiss} />
@@ -57,11 +67,12 @@ export default class PopupPage extends React.Component {
   
           .content {
             position: absolute;
-            width: 60%;
+            width: ${width};
             z-index: 1001;
-            min-width: 600px;
-            min-height: 500px;
+            min-width: ${minWidth};
+            min-height: ${minHeight};
             left: 50%;
+            top: ${top}
             transform: translateX(-50%);
             margin-top: 50px;
             border-radius: 6px;
