@@ -17,6 +17,13 @@ export default class Artist extends React.Component {
       console.error(err)
     })
   }
+  show (id) {
+    if (document.getElementById(id)) {
+      console.log('1')
+      document.getElementById(id).style.display = 'block'
+      // document.getElementById(suit).style.display = 'none'
+    }
+  }
   render () {
     const settings = {
       accessibility: true,
@@ -28,7 +35,6 @@ export default class Artist extends React.Component {
       slidesToShow: 3,
       swipeToSlide: true,
       afterChange: function (index) {
-        console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`)
       }
     }
     const setting = {
@@ -65,6 +71,8 @@ export default class Artist extends React.Component {
         </div>
         <div className='headRightSide'>
           <div className = 'artistBio'> {artist.bio} </div>
+          <p id='suit' onClick={() => this.show('next')}>Suite</p>
+          <p className= 'suite' id='next'>Suite de l'article.</p>
         </div>
       </div>
       <div className = 'middle'>

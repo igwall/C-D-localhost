@@ -37,6 +37,10 @@ export default css`
   height: 270px;
 
 }
+.suite {
+  display:none;
+}
+
 .artistName {
   text-align: center;
   margin-right: 25%;
