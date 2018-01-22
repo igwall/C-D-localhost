@@ -74,7 +74,7 @@ export default class LoginPage extends React.Component {
               : undefined
           }
 
-          <form onSubmit={this.submitLogin}>
+          <form onSubmit={this.submitLogin.bind(this)}>
             <label>
             Email
             </label>
@@ -87,8 +87,8 @@ export default class LoginPage extends React.Component {
             <input type='password' placeholder='Password' onChange={this.checkPassword.bind(this)} ref={(p) => {
               this.password = p
             }} />
-            <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} onClick={this.submitLogin.bind(this)}>Connexion</div>
           </form>
+          <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} onClick={this.submitLogin.bind(this)}>Connexion</div>
           <div className='register'>
             Pas de compte Compose & Dance ? <span><Link to='/register'>S'enregistrer</Link></span>
           </div>

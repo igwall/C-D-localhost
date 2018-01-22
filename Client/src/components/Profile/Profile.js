@@ -60,7 +60,6 @@ export default class Profile extends React.Component {
   }
 
   setMatchingRealisations (input) {
-    console.log(input)
     const reg = new RegExp(input, 'i')
     let newMatchingRealisations = []
     this.props.userFetched.user.realisations.map(realisation => realisation.recipe.title.match(reg) ? newMatchingRealisations.push(realisation) : null)

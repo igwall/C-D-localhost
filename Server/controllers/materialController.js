@@ -67,8 +67,21 @@ materialController.createMaterial = function (req) {
  * @returns
  */
 materialController.addRecipeToMaterial = function (materialId, recipe) {
+  console.log(materialId)
   return new Promise((resolve, reject) => {
     Material.findOneAndUpdate({ '_id': materialId }, { $push: { recipes: recipe } }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+materialController.deleteMaterial = (materialId) => {
+  return new Promise((resolve, reject) => {
+    Material.findOneAndRemove({ '_id': materialId }, (err, res) => {
       if (err) {
         reject(err)
       } else {

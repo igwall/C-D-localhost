@@ -38,13 +38,14 @@ button:hover {
 }
 .dropdown-content {
   position: absolute;
-  color: #444;  
+  color: ${constants.DROPDOWN_TEXT_COLOR};  
   background-color: ${constants.DROPDOWN_BACKGROUND};
   min-width: 160px;
   max-width: 600px;
-  border-radius: 3px;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
   z-index: 10000;
+  border: solid 1px rgba(255,255,255,0.1);
+  border-top: none;
 }
 .dropdown-content ul li {
   padding: 12px 16px;
@@ -57,7 +58,7 @@ button:hover {
   cursor: default;
 }
 .dropdown-content ul li .element-title {
-  color: #444; 
+  color: ${constants.DROPDOWN_TEXT_COLOR}; 
   font-size: 15px; 
   font-weight: bold;
 }

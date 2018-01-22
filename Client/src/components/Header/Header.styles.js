@@ -31,18 +31,35 @@ export default css`
   background: ${constants.NAVBAR_COLOR};
   color: #eee;
   font-size: 18px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .menu-button-group {
   display: flex;
-  float: left;
   align-items: center;
+  height: 100%;
 }
 
 .menu-button {
-  display: inline-block;
+  min-height: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
-  padding: 10px 40px 10px 40px;
+  padding: 0 25px;
+}
+
+.menu-button-plus {
+  height: 100%;
+  min-height: 100%;
+}
+
+.menu-button-icon {
+  line-height: 15px;
 }
 
 .menu-button:hover {
@@ -55,13 +72,15 @@ export default css`
 }
 
 .sign-button-group {
+  height: 100%;
   display: flex;
-  float: right;
   align-items: center;
 }
 
 .sign-button {
-  display: inline-block;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   padding: 10px;
 }
@@ -72,6 +91,8 @@ export default css`
 
 .sign-button-icon {
   display: inline-block;
+  line-height: 15px;
+  vertical-align: middle;
 }
 
 .sign-button-text {
