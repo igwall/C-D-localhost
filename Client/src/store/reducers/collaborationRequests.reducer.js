@@ -30,6 +30,17 @@ export default (state = defaultCollaborationRequestsState, action) => {
         elements: newElements
       }
     }
+    case 'ACCEPT_COLLABORATION_REQUEST': {
+      let newElements = state.elements.slice()
+      const requestToUpdate = newElements.filter(request => request._id === action.payload)[0]
+      requestToUpdate.validated = true
+      newElements = newElements.filter(request => request._id !== action.payload)
+      newElements.push(requestToUpdate)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

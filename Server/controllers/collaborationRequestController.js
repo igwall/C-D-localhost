@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Util = require('./Util')
 const CollaborationRequest = mongoose.model('CollaborationRequest')
 const userController = require('./userController')
+const collaboratorController = require('./collaboratorController')
 const collaborationRequestController = {}
 
 /**
@@ -77,6 +78,24 @@ collaborationRequestController.deleteCollaborationRequest = (requestId) => {
               resolve(res)
             }
           })
+        })
+      }
+    })
+  })
+}
+
+collaborationRequestController.acceptCollaborationRequest = (requestId) => {
+  return new Promise((resolve, reject) => {
+    CollaborationRequest.findOneAndUpdate({ '_id': requestId }, { $set: {validated: true} }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        console.log(res)
+        collaboratorController.createCollaborator(res)
+        .then(data => {
+          resolve(data)
+        }).catch(err => {
+          reject(err)
         })
       }
     })

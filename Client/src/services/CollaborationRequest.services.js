@@ -32,3 +32,13 @@ export function deleteCollaborationRequest (requestId) {
     })
   })
 }
+
+export function acceptCollaborationRequestDistant (requestId) {
+  return new Promise((resolve, reject) => {
+    axios.put(`${Config.API_URL}/collaboration/${requestId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}

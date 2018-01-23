@@ -4,6 +4,7 @@ const materialController = require('./materialController')
 const userController = require('./userController')
 const adminController = require('./adminController')
 const collaborationRequestController = require('./collaborationRequestController')
+const collaboratorController = require('./collaboratorController')
 
 module.exports = {
   roomController: roomController,
@@ -11,5 +12,6 @@ module.exports = {
   materialController: materialController,
   userController: userController,
   adminController: adminController,
-  collaborationRequestController: collaborationRequestController
+  collaborationRequestController: collaborationRequestController,
+  collaboratorController: collaboratorController
 }

@@ -1,6 +1,5 @@
 const { roomExists } = require('../../config/middlewares/recipeAuthorizations')
 const { materialExists } = require('../../config/middlewares/materialAuthorizations')
-const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 const Util = require('../../controllers/Util')
 
@@ -42,7 +41,7 @@ module.exports = (router, controller) => {
   *         description: Internal error
   */
   router.post('/recipes', (req, res) => {
-    let requiredBody = ['title', 'description', 'number', 'rooms']
+    let requiredBody = ['title', 'description', 'number', 'rooms', 'materials']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')

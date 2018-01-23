@@ -1,4 +1,4 @@
-import { createCollaborationRequest, fetchCollaborationRequests, deleteCollaborationRequest } from '../../services/CollaborationRequest.services'
+import { createCollaborationRequest, fetchCollaborationRequests, deleteCollaborationRequest, acceptCollaborationRequestDistant } from '../../services/CollaborationRequest.services'
 
 import store from '../store'
 
@@ -39,6 +39,20 @@ export function declineCollaborationRequest (requestId) {
     deleteCollaborationRequest(requestId).then((data) => {
       store.dispatch({
         type: 'DELETE_COLLABORATION_REQUEST',
+        payload: requestId
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
+
+export function acceptCollaborationRequest (requestId) {
+  return new Promise((resolve, reject) => {
+    acceptCollaborationRequestDistant(requestId).then((data) => {
+      store.dispatch({
+        type: 'ACCEPT_COLLABORATION_REQUEST',
         payload: requestId
       })
       resolve(data)

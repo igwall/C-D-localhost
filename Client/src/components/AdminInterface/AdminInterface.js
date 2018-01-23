@@ -202,7 +202,7 @@ export default class HomePage extends React.Component {
             </div>
             <div className='button' onClick={() => this.displayCollaboratorRequests()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>DEMANDES DE COLLABORATIONS</div>
+              <div className='button-text'>DEMANDES DE COLLABORATION</div>
             </div>
           </div>
         </div>

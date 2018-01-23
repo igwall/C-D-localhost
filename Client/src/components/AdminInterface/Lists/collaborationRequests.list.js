@@ -4,7 +4,7 @@ import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import constants from '../../../constants'
 import {dateFormatter} from '../../../util/dateFormatter'
-import { declineCollaborationRequest } from '../../../store/actions/collaborationRequest.action'
+import { declineCollaborationRequest, acceptCollaborationRequest } from '../../../store/actions/collaborationRequest.action'
 
 export default class CollaborationRequests extends React.Component {
   constructor (props) {
@@ -22,7 +22,7 @@ export default class CollaborationRequests extends React.Component {
   declineRequest (request) {
     declineCollaborationRequest(request._id).then(() => {
       const fullname = request.firstname + ' ' + request.lastname
-      this.setState({deleted: fullname})
+      this.setState({deleted: fullname, validated: ''})
       this.props.popoverManager.dismissPopover()
     }).catch(err => {
       console.log(err)
@@ -30,7 +30,12 @@ export default class CollaborationRequests extends React.Component {
   }
 
   acceptRequest (request) {
-
+    acceptCollaborationRequest(request._id).then(() => {
+      const fullname = request.firstname + ' ' + request.lastname
+      this.setState({deleted: '', validated: fullname})
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   // Input search methods

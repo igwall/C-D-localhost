@@ -12,6 +12,7 @@ export default (state = defaultCollaboratorsState, action) => {
       return {
         ...state,
         fetching: false,
+        fetched: true,
         elements: action.payload
       }
     }
