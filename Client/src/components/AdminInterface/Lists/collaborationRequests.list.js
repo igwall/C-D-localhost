@@ -3,27 +3,27 @@ import styles from './lists.styles'
 import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import constants from '../../../constants'
-import { removeUserFromCollaborators } from '../../../store/actions/collaborators.action'
+import {dateFormatter} from '../../../util/dateFormatter'
+// import { removeUserFromCollaborators } from '../../../store/actions/administrators.action'
 
-export default class AdministratorsListAdmin extends React.Component {
+export default class CollaborationRequests extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       emptySearch: true,
-      matchingCollaborators: [],
-      deleted: ''
+      matchingRequests: [],
+      deleted: '',
+      validated: ''
     }
-    this.displayConfirmDelete = this.displayConfirmDelete.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
-  deleteCollaborator (collaborator) {
-    removeUserFromCollaborators(collaborator._id, collaborator.user).then(data => {
-      this.setState({deleted: collaborator.firstname + ' ' + collaborator.lastname})
-      this.props.popoverManager.dismissPopover()
-    }).catch(err => {
-      console.log(err)
-    })
+  declineRequest (request) {
+
+  }
+
+  acceptRequest (request) {
+
   }
 
   // Input search methods
@@ -35,33 +35,33 @@ export default class AdministratorsListAdmin extends React.Component {
     const input = this.input.value
     if (input !== '') {
       this.setState({emptySearch: false})
-      this.setMatchingCollaborators(input)
+      this.setMatchingRequests(input)
     } else {
       this.setState({
         emptySearch: true,
-        matchingCollaborators: []
+        matchingRequests: []
       })
     }
   }
 
-  setMatchingCollaborators (input) {
+  setMatchingRequests (input) {
     const reg = new RegExp(input, 'i')
-    let newMatchingCollaborators = []
-    this.props.collaborators.map(collaborator => {
-      const fullname = collaborator.firstname + ' ' + collaborator.lastname
-      if (collaborator.firstname.toLowerCase().match(reg) || collaborator.lastname.toLowerCase().match(reg) || fullname.toLowerCase().match(reg)) newMatchingCollaborators.push(collaborator)
+    let newMatchingRequests = []
+    this.props.collaborationRequests.map(request => {
+      const fullname = request.firstname + ' ' + request.lastname
+      if (request.firstname.toLowerCase().match(reg) || request.lastname.toLowerCase().match(reg) || fullname.toLowerCase().match(reg)) newMatchingRequests.push(request)
       return undefined
     })
-    this.setState({matchingCollaborators: newMatchingCollaborators.slice()})
+    this.setState({matchingRequests: newMatchingRequests.slice()})
   }
 
-  displayConfirmDelete (collaborator) {
-    const fullname = collaborator.firstname + ' ' + collaborator.lastname
+  displayConfirmDecline (request) {
+    const fullname = request.firstname + ' ' + request.lastname
     this.props.popoverManager.setRenderedComponent(
       <div className='popup'>
-        <div className='popup-title'>SUPPRIMER ARTISTE INVITÉ</div>
+        <div className='popup-title'>REFUSER LA DEMANDE DE COLLABORATION</div>
         <div className='separator' />
-        <div className='popup-text'>Voulez-vous vraiment supprimer l'artiste invité "{fullname}" ?</div>
+        <div className='popup-text'>Voulez-vous vraiment refuser la demande de collaboration de "{fullname}" ?</div>
         <div className='popup-actions'>
           <div className='action action-cancel'>
             <Button
@@ -73,7 +73,7 @@ export default class AdministratorsListAdmin extends React.Component {
           </div>
           <div className='action action-confirm'>
             <Button
-              onClick={() => this.deleteCollaborator(collaborator)}
+              onClick={() => this.declineRequest(request)}
               bgColor={constants.BUTTON_DELETE_BACKGROUND}
               hoverBgColor={constants.BUTTON_DELETE_HOVER_BACKGROUND}
             >Supprimer</Button>
@@ -115,23 +115,23 @@ export default class AdministratorsListAdmin extends React.Component {
   }
 
   render () {
-    const { matchingCollaborators, emptySearch } = this.state
-    let collaborators = []
+    const {emptySearch, matchingRequests} = this.state
+    let collaborationRequests = []
     if (!emptySearch) {
-      collaborators = matchingCollaborators
+      collaborationRequests = matchingRequests
     } else {
-      collaborators = this.props.collaborators
+      collaborationRequests = this.props.collaborationRequests
     }
-
+    const nonValidatedRequests = collaborationRequests.filter(request => !request.validated)
     return (<div className='host'>
-      <div className='list-title'>LISTE DES ARTISTES INVITÉS</div>
+      <div className='list-title'>LISTE DES DEMANDES DE COLLABORATION</div>
       <ul className='list'>
         {
-          this.state.deleted !== ''
+          this.state.validated !== ''
             ? <div className='validation-panel'>
               <div className='validation-content'>
                 <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                <div className='validation-message'>L'artiste invité "{this.state.deleted}" a été supprimé avec succès !</div>
+                <div className='validation-message'>La demande de collaboration de {this.state.validated} a été accepté avec succés !</div>
               </div>
             </div>
             : undefined
@@ -142,21 +142,28 @@ export default class AdministratorsListAdmin extends React.Component {
           </div>
         </div>
         {
-          collaborators.map((collaborator, i) => {
+          nonValidatedRequests.map((request, i) => {
             return (
               <li className='list-element' key={i}>
                 <div className='element'>
                   <div className='element-infos'>
                     <div className='link-container'>
                       <div className='element-description'>
-                        <div className='element-title'>{collaborator.firstname + ' ' + collaborator.lastname}</div>
+                        <div className='element-title'>{request.firstname + ' ' + request.lastname}</div>
+                        <div className='element-other'>Utilisateur : {request.user.username} ({request.user.email})</div>
+                        <div className='element-text'>{request.motivation}</div>
+                        <div className='element-date'>Créée le {dateFormatter(request.createdAt)}</div>
                       </div>
                     </div>
                   </div>
                   <div className='element-actions'>
-                    <div className='action' onClick={() => this.displayConfirmDelete(collaborator)}>
-                      <div className='action-icon'><Icon name='trash-alt' fontSize='15px' color='white' /></div>
-                      <div className='action-text'>SUPPRIMER</div>
+                    <div className='action' onClick={() => this.acceptRequest(request)}>
+                      <div className='action-icon'><Icon name='check' fontSize='15px' color='rgb(0,255,0)' /></div>
+                      <div className='action-text'>ACCEPTER</div>
+                    </div>
+                    <div className='action' onClick={() => this.displayConfirmDecline(request)}>
+                      <div className='action-icon'><Icon name='times' fontSize='15px' color='rgb(255,0,0)' /></div>
+                      <div className='action-text'>REFUSER</div>
                     </div>
                   </div>
                 </div>

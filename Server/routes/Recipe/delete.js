@@ -1,4 +1,5 @@
 const Util = require('../../controllers/Util')
+const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 module.exports = (router, controller) => {
   /**
@@ -23,7 +24,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.delete('/recipes/:recipeId', function (req, res) {
+  router.delete('/recipes/:recipeId', [requiresAdminLogin], function (req, res) {
     let requiredParameter = ['recipeId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {

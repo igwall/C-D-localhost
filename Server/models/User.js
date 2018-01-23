@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   picture: {type: String, default: ''},
   age: {type: Number, default: ''},
   collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
+  collaborationRequest: {type: Schema.Types.ObjectId, ref: 'CollaborationRequest'},
   realisations: [{type: Schema.Types.ObjectId, ref: 'Realisation'}],
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 })

@@ -1,5 +1,6 @@
-const { recipeExists } = require('../../config/middlewares/recipeAuthorizations')
+const { roomExists } = require('../../config/middlewares/recipeAuthorizations')
 const { materialExists } = require('../../config/middlewares/materialAuthorizations')
+const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 const Util = require('../../controllers/Util')
 
@@ -40,7 +41,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/recipes', (req, res) => {
+  router.post('/recipes', [requiresAdminLogin], (req, res) => {
     let requiredBody = ['title', 'description', 'number', 'rooms']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {

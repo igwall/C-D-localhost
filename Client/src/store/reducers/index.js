@@ -8,6 +8,7 @@ import collaborators from './collaborators.reducer'
 import recipes from './recipes.reducer'
 import administrators from './administrators.reducer'
 import artistFetched from './artist.reducer'
+import collaborationRequests from './collaborationRequests.reducer'
 
 export default combineReducers({
   currentUser,
@@ -18,5 +19,6 @@ export default combineReducers({
   collaborators,
   recipes,
   administrators,
-  artistFetched
+  artistFetched,
+  collaborationRequests
 })

@@ -14,6 +14,12 @@ export default (state = defaultCurrentUserState, action) => {
         ...action.payload
       }
     }
+    case 'SET_COLLABORATION_REQUEST': {
+      return {
+        ...state,
+        collaborationRequest: action.payload
+      }
+    }
     default:
       return {
         ...state
