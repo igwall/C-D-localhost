@@ -17,11 +17,10 @@ export default class Artist extends React.Component {
       console.error(err)
     })
   }
-  show (id) {
+  show (id, suit) {
     if (document.getElementById(id)) {
-      console.log('1')
       document.getElementById(id).style.display = 'block'
-      // document.getElementById(suit).style.display = 'none'
+      document.getElementById(suit).style.display = 'none'
     }
   }
   render () {
@@ -58,7 +57,8 @@ export default class Artist extends React.Component {
       nom: nom,
       prenom: prenom,
       bio: bio,
-      books: books
+      books: books,
+      pictureLegend: 'rezez'
     }
     return (<div className='host'>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
@@ -70,9 +70,18 @@ export default class Artist extends React.Component {
           <div className = 'artistAudio'></div>
         </div>
         <div className='headRightSide'>
-          <div className = 'artistBio'> {artist.bio} </div>
-          <p id='suit' onClick={() => this.show('next')}>Suite</p>
-          <p className= 'suite' id='next'>Suite de l'article.</p>
+          <div className = 'artistBio'> {artist.bio}
+            <div className='LireSuite' ><p id='suit' onClick={() => this.show('next', 'suit')}>Lire la suite...</p></div>
+            <p className= 'suite' id='next'>Bonjour à tous,
+
+Vous trouverez ci-joint la composition de votre jury de soutenance de PIFE ...
+J'en profite pour vous rappeler que vous devez "créer" votre fiche projet PIFE sur Poly + pour pouvoir y déposer vos 3 livrables : rapport de synthèse, rapport technique et poster. nb : n'attendez pas le dernier jour pour créer cette fiche car il faut ensuite que je valide le projet sur Poly + pour que vous puissiez déposer ces documents.
+Last but not least, n'oubliez pas le pot/buffet offert par le Département pour fêter votre entrée dans la vie active. Il aura lieu le jeudi 8 février à partir de 18H30 en SC201. Nous vous attendons nombreux ! Ce sera l'occasion de verser une petite larme et de faire un bon repas ;).
+N'hésitez-pas à revenir vers moi si vous avez des questions.</p>
+          </div>
+          <div className='artistDiplome'>
+          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          </div>
         </div>
       </div>
       <div className = 'middle'>
@@ -92,32 +101,46 @@ export default class Artist extends React.Component {
               </ul>
             </div>
           </div>
-          <div className = 'diplomes'>
-            <div className='diplome-title'><h2>Diplômes</h2></div>
-            <div className='diplome'>
-              <ul>
-                {
-                  artist.books.map((book, i) =>
-                    <div className='iteem'><li key={i}>
-                  - Aleph, Flammarion, 2011
-                    </li>
-                    </div>
-                  )
-                }
-              </ul>
+          <div className = 'references-list'>
+            <div className = 'references-table-title'><h2>  Textes et publications </h2></div>
+            <div className='reference'>
+              <table>
+                <thead>
+                  <tr>
+                    <th> Titre </th>
+                    <th> Date de publication </th>
+                    <th> Informations complémenataires </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {
+                    books.map((book, i) =>
+                      <tr key={i}>
+                        <td>Bill Gates</td>
+                        <td>55577854</td>
+                        <td> Musso</td>
+                      </tr>
+
+                    )
+                  }
+                </tbody>
+
+              </table>
             </div>
+
           </div>
         </div>
         <div className= 'pictures'>
           <div>
             <div className='pictures-title'><h2>Photos</h2></div>
             <Slider {...settings}>
-              <div key={1}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              <div key={2}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              <div key={3}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              <div key={5}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              <div key={4}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              <div key={6}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
+              <div key={1}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              <div key={2}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              <div key={3}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              <div key={5}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              <div key={4}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              <div key={6}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
             </Slider>
           </div>
         </div>
@@ -134,29 +157,28 @@ export default class Artist extends React.Component {
             </Slider>
           </div>
         </div>
-        <div className = 'references-list'>
-          <div className = 'references-table-title'><h2>  Textes et publications </h2></div>
-          <div className='reference'>
-            <table>
-              <thead>
-                <tr>
-                  <th> Nom </th>
-                  <th> Description </th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  books.map((book, i) =>
-                    <tr key={i}>
-                      <td>Bill Gates</td>
-                      <td>55577854</td>
-                    </tr>
-                  )
-                }
-              </tbody>
-            </table>
-          </div>
-
+      </div>
+      <div className = 'audios'>
+        <div className='audio-title'><h2>Audios</h2></div>
+        <div className='audio'>
+          <ul>
+            {
+              artist.books.map((book, i) =>
+                <div className='iteeem'><li key={i}>
+                  <div className='audio-label'>
+                    TOTO, smou7at
+                  </div>
+                  <div className='lecteur'>
+                    <audio controls="controls" skin ='TED'>
+                      <source src= 'http://41mag.fr/music.mp3' type="audio/mp3" />
+                       Votre navigateur n'est pas compatible
+                    </audio>
+                  </div>
+                </li>
+                </div>
+              )
+            }
+          </ul>
         </div>
       </div>
       <style jsx>{styles}</style>
