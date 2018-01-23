@@ -93,4 +93,22 @@ userController.addCollaborationRequestToUser = function (userId, collaborationRe
   })
 }
 
+/**
+ *
+ *
+ * @param {any} userId
+ * @returns
+ */
+userController.removeCollaborationRequestFromUser = function (userId) {
+  return new Promise((resolve, reject) => {
+    User.findOneAndUpdate({ '_id': userId }, { $unset: {collaborationRequest: ''} }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
 module.exports = userController

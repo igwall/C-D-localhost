@@ -22,3 +22,13 @@ export function fetchCollaborationRequests () {
     })
   })
 }
+
+export function deleteCollaborationRequest (requestId) {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${Config.API_URL}/collaboration/${requestId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}

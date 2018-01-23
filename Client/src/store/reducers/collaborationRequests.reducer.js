@@ -22,6 +22,14 @@ export default (state = defaultCollaborationRequestsState, action) => {
         error: action.payload
       }
     }
+    case 'DELETE_COLLABORATION_REQUEST': {
+      let newElements = state.elements.slice()
+      newElements = newElements.filter(request => request._id !== action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

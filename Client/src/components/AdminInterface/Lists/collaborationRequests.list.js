@@ -4,7 +4,7 @@ import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import constants from '../../../constants'
 import {dateFormatter} from '../../../util/dateFormatter'
-// import { removeUserFromCollaborators } from '../../../store/actions/administrators.action'
+import { declineCollaborationRequest } from '../../../store/actions/collaborationRequest.action'
 
 export default class CollaborationRequests extends React.Component {
   constructor (props) {
@@ -16,10 +16,17 @@ export default class CollaborationRequests extends React.Component {
       validated: ''
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.displayConfirmDecline = this.displayConfirmDecline.bind(this)
   }
 
   declineRequest (request) {
-
+    declineCollaborationRequest(request._id).then(() => {
+      const fullname = request.firstname + ' ' + request.lastname
+      this.setState({deleted: fullname})
+      this.props.popoverManager.dismissPopover()
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   acceptRequest (request) {
@@ -115,7 +122,7 @@ export default class CollaborationRequests extends React.Component {
   }
 
   render () {
-    const {emptySearch, matchingRequests} = this.state
+    const {emptySearch, matchingRequests, validated, deleted} = this.state
     let collaborationRequests = []
     if (!emptySearch) {
       collaborationRequests = matchingRequests
@@ -127,11 +134,21 @@ export default class CollaborationRequests extends React.Component {
       <div className='list-title'>LISTE DES DEMANDES DE COLLABORATION</div>
       <ul className='list'>
         {
-          this.state.validated !== ''
+          validated !== ''
             ? <div className='validation-panel'>
               <div className='validation-content'>
                 <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
                 <div className='validation-message'>La demande de collaboration de {this.state.validated} a été accepté avec succés !</div>
+              </div>
+            </div>
+            : undefined
+        }
+        {
+          deleted !== ''
+            ? <div className='validation-panel'>
+              <div className='validation-content'>
+                <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
+                <div className='validation-message'>La demande de collaboration de {this.state.deleted} a été supprimée avec succés !</div>
               </div>
             </div>
             : undefined

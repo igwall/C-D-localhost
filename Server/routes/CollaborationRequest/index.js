@@ -17,5 +17,5 @@ module.exports = function (router, controller) {
   require('./create')(router, controller)
   require('./getAll')(router, controller)
   // require('./accept')(router, controller)
-  // require('./delete')(router, controller)
+  require('./delete')(router, controller)
 }

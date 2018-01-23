@@ -19,7 +19,7 @@ exports.requiresLogin = (req, res, next) => {
 exports.requiresAdminLogin = (req, res, next) => {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     const token = req.headers.authorization
-    const decodedToken = adminPassport.decodeAccessToken(token)
+    const decodedToken = adminPassport.decodeAdminAccessToken(token)
     if (decodedToken !== undefined) {
       req.adminId = decodedToken.adminId
       next()

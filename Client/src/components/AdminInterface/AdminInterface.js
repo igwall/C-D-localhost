@@ -142,7 +142,7 @@ export default class HomePage extends React.Component {
       }
       case 'collaboratorRequests': {
         return (
-          <CollaborationRequests collaborationRequests={collaborationRequests} />
+          <CollaborationRequests popoverManager={this.props.popoverManager} collaborationRequests={collaborationRequests} />
         )
       }
       case 'recipeRequests': {

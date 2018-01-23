@@ -64,11 +64,20 @@ collaborationRequestController.createCollaborationRequest = function (req) {
 
 collaborationRequestController.deleteCollaborationRequest = (requestId) => {
   return new Promise((resolve, reject) => {
-    CollaborationRequest.findOneAndRemove({ '_id': requestId }, (err, res) => {
+    CollaborationRequest.findOne({ '_id': requestId }, (err, item) => {
       if (err) {
         reject(err)
       } else {
-        resolve(res)
+        userController.removeCollaborationRequestFromUser(item.user)
+        .then((data) => {
+          CollaborationRequest.findOneAndRemove({ '_id': requestId }, (err, res) => {
+            if (err) {
+              reject(err)
+            } else {
+              resolve(res)
+            }
+          })
+        })
       }
     })
   })

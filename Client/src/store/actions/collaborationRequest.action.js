@@ -1,4 +1,4 @@
-import { createCollaborationRequest, fetchCollaborationRequests } from '../../services/CollaborationRequest.services'
+import { createCollaborationRequest, fetchCollaborationRequests, deleteCollaborationRequest } from '../../services/CollaborationRequest.services'
 
 import store from '../store'
 
@@ -16,7 +16,7 @@ export function sendCollaborationRequest (request) {
   })
 }
 
-export function setCollaborationRequests (dispatch) {
+export function setCollaborationRequests () {
   return new Promise((resolve, reject) => {
     store.dispatch({type: 'FETCH_COLLABORATION_REQUESTS_START'})
     fetchCollaborationRequests().then((data) => {
@@ -30,6 +30,20 @@ export function setCollaborationRequests (dispatch) {
         type: 'FETCH_COLLABORATION_REQUESTS_ERROR',
         payload: err
       })
+    })
+  })
+}
+
+export function declineCollaborationRequest (requestId) {
+  return new Promise((resolve, reject) => {
+    deleteCollaborationRequest(requestId).then((data) => {
+      store.dispatch({
+        type: 'DELETE_COLLABORATION_REQUEST',
+        payload: requestId
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
