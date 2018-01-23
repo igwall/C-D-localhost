@@ -41,7 +41,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/recipes', [requiresAdminLogin], (req, res) => {
+  router.post('/recipes', (req, res) => {
     let requiredBody = ['title', 'description', 'number', 'rooms']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {

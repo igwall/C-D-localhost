@@ -24,7 +24,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.delete('/materials/:materialId', [requiresAdminLogin], function (req, res) {
+  router.delete('/materials/:materialId', function (req, res) {
     let requiredParameter = ['materialId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {
