@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Library.styles'
 import {connect} from 'react-redux'
+import Collaborator from '../Collaborator/Collaborator'
 import {setCollaborators} from '../../store/actions/collaborators.action'
 
 @connect(store => {
@@ -16,8 +17,25 @@ export default class Library extends React.Component {
       console.error(err)
     })
   }
+  displayCollaborator (collaborator) {
+    this.props.popoverManager.setRenderedComponent(
+      <Collaborator {...collaborator} dismissPopover={this.props.popoverManager.dismissPopover} />
+    )
+    this.props.popoverManager.displayPopover()
+  }
+
+  chooseCollaborator (id) {
+    const {collaborators} = this.props
+    this.displayCollaborator(collaborators.filter(collaborator => collaborator.id === id)[0])
+  }
   render () {
-    const collaborators = this.props.collaborators
+    // const collaborators = this.props.collaborators
+    const collaborator = {
+      id: 0,
+      prenom: 'Toto'
+    }
+    const collaborators = [ collaborator, collaborator, collaborator, collaborator, collaborator, collaborator ]
+    collaborators[0].id = 1
     const books = [ 1, 2, 3, 4, 5, 6, 7 ]
     return (<div className='host'>
       <div className = 'sideBarre'>
@@ -51,11 +69,11 @@ En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie
               {
                 collaborators.map((collaborator, i) =>
                   <li key={i}>
-                    <a href="https://www.w3schools.com/html/"><div className = 'collaborator'>
+                    <a onClick={() => this.chooseCollaborator('1')}><div className = 'collaborator'>
                       <div className = 'collaborator-picture'>
                       </div>
                       <div className="collaborator-info">
-                        <div className="collaborator-name">Lara Fabien</div>
+                        <div className="collaborator-name">Lara Fabian</div>
                         <div className = "collaborator-description">Artiste Enseignant Chercheur</div>
                       </div>
                     </div></a>

@@ -60,6 +60,7 @@ export default css`
   display: inline-block;
   width: 100%;
 }
+
 .title {
   text-align: center;
   margin-right: 60%;
@@ -72,7 +73,6 @@ export default css`
  text-align: justify;
  
 }
-
 .footer{
   padding-top: 10%;
   display: flex
@@ -81,6 +81,7 @@ export default css`
 .collaborator-table-title{
   text-align: center;
   margin-right: 74%;
+  padding-bottom: 8%;
   Font-Weight: Bold;
   font-size: 20px;
   
@@ -137,7 +138,7 @@ li {
 }
 
 .references-table-title{
-  margin-left: 8%;
+  margin-left: 6%;
   padding-bottom: 4%;
   Font-Weight: Bold;
   font-size: 20px;

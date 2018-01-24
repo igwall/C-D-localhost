@@ -20,6 +20,9 @@ export default css`
   align-items: center;
   padding-top: 3%;
   padding-right: 5%;
+  min-height: 100px;
+  text-align: justify;
+  transition: min-height 0.75s; 
 }
 
 .headLeftSide{
@@ -37,6 +40,21 @@ export default css`
   height: 270px;
 
 }
+.suite {
+  display:none;
+}
+
+.LireSuite {
+  font-style: italic;
+  font-size: 12px;
+}
+.artistDiplome{
+  margin-top: 5%;
+  font-size: 10px;
+  font-style: italic;
+  text-align: justify;
+  color: #a1a1a7;
+}
 .artistName {
   text-align: center;
   margin-right: 25%;
@@ -47,24 +65,29 @@ export default css`
 .artistBio{
   display: inline-block;
   width: 100%;
+  height:100px;
   text-align: justify;
 }
 .middle{ 
   padding-top: 5%;
 }
+.middleHead{
+  display: flex;
+  padding : 4%;
+}
 .books{
-    padding-bottom: 5%;
-    margin-left: 13%;
-    width: 25%;
-    display : inline-block;
+  padding-bottom: 5%;
+  margin-left: 10%;
+  width: 50%;
+  display: inline-block;
 }
 .books-title{
-  margin-bottom: 5%;
+  margin-bottom: 13%;
   font-size: 20px;
   font-weight: bolder;
 }
 .book{
-  max-height: 140px;
+  max-height: 180px;
   overflow-y: auto;
   margin-left: 5%;
 }
@@ -107,7 +130,12 @@ margin-left: 5%;
   width: 80%;
   margin-left: 64%;
 }
-
+.pictureLegend{
+  text-align: justify;
+  font-size: 12px;
+  padding-top: 3%;
+  padding-left: 40%;
+}
 .videos-title{
   padding-top: 5%
   padding-bottom: 5%;
@@ -129,8 +157,7 @@ margin-left: 5%;
 .references-list{
   display: inline-block;
   width: 100%;
-  padding-right: 5%;
-  padding-top: 5%;
+  padding-left: 5%;
 }
 
 
@@ -140,6 +167,18 @@ margin-left: 5%;
   width:85%;
   margin-left: 10%;
   align-items: center;
+  overflow-y: auto;
+  height: 213px;
+  
+}
+.tableBody {
+  padding: 10px;
+  display: flex;
+  width:85%;
+  margin-left: 10%;
+  align-items: center;
+  overflow-y: auto;
+  height: 213px;
   
 }
 table{
@@ -152,5 +191,32 @@ table, th, td {
 th, td {
   padding: 5px;
   text-align: left;    
+}
+.audios{
+  padding-top: 5%;
+  margin-left: 13%;
+  width: 50%;
+  display: inline-block;
+}
+.audio-title{
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.audio{
+  max-height: 180px;
+  overflow-y: auto;
+  margin-left: 5%;
+}
+.iteeem{
+  display : flex;
+  margin-bottom: 5%;
+}
+.lecteur{
+  display: inline-block;
+  padding-left: 200px;
+}
+.audio-label{
+  display: inline-block;
 }
 `
