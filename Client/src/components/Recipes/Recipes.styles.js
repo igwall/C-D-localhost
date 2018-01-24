@@ -9,7 +9,9 @@ export default css`
 }
 
 .list-title {
-  padding: 20px 0;
+  padding-top: 50px;
+  padding-left: 70px;
+  padding-bottom: 30px;
   font-size: 25px;
   font-weight: bold;
 }
@@ -22,12 +24,15 @@ export default css`
 
 .list-element {
 }
-
+.body{
+  height 405px ;
+  overflow :auto;
+}
 .element {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 0;
+  margin-bottom: 20px;
   background: ${constants.SECONDARY_COLOR};
   box-shadow: 2px 2px 4px rgba(255,255,255,0.4);
 }
@@ -105,6 +110,7 @@ export default css`
 
 .sort-bar {
   width: 100%;
+  padding-bottom:5%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
