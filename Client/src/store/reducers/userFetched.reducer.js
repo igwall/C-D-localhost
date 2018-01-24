@@ -12,6 +12,7 @@ export default (state = defaultFetchedUserState, action) => {
       return {
         ...state,
         fetching: false,
+        fetched: true,
         user: Object.assign(action.payload, {realisations: []}) // Trick not to have an error about realisations undefined on profile page
       }
     }

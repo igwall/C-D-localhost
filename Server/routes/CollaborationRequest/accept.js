@@ -1,31 +1,30 @@
 const Util = require('../../controllers/Util')
-const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 module.exports = (router, controller) => {
   /**
   * @swagger
-  * /materials/{materialId}:
+  * /collaboration/{collaborationRequestId}:
   *   delete:
   *     tags:
-  *       - Materials
-  *     description: Delete a material
-  *     summary: DELETE a Material
+  *       - Collaboration Requests
+  *     description: Delete a collaboration request
+  *     summary: DELETE a Collaboration Request
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: materialId
+  *       - name: collaborationRequestId
   *         type: string
-  *         description: The material id to delete
+  *         description: The collaboration request id to delete
   *         in: path
   *         required: true
   *     responses:
   *       201:
-  *         description: Message confirming the material has been deleted
+  *         description: Message confirming the collaboration request has been deleted
   *       500:
   *         description: Internal error
   */
-  router.delete('/materials/:materialId', function (req, res) {
-    let requiredParameter = ['materialId']
+  router.put('/collaboration/:collaborationRequestId', function (req, res) {
+    let requiredParameter = ['collaborationRequestId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {
       let stringMessage = requiredParameter.join(',')
@@ -33,9 +32,9 @@ module.exports = (router, controller) => {
       return
     }
     controller
-      .deleteMaterial(req.params.materialId)
+      .acceptCollaborationRequest(req.params.collaborationRequestId)
       .then(data => {
-        res.status(201).json('Successfully deleted')
+        res.status(201).json(data)
       })
       .catch(err => {
         res.status(500).json(err)

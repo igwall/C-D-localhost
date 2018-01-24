@@ -92,11 +92,31 @@ recipeController.createRecipe = function (req) {
 
 recipeController.deleteRecipe = (recipeId) => {
   return new Promise((resolve, reject) => {
-    Recipe.findOneAndRemove({ '_id': recipeId }, (err, res) => {
+    Recipe.findOne({ '_id': recipeId }, (err, item) => {
       if (err) {
         reject(err)
       } else {
-        resolve(res)
+        item.rooms.map(room => {
+          roomController.removeRecipeFromRoom(room, recipeId)
+          .then((data) => {
+          }).catch(err => {
+            reject(err)
+          })
+        })
+        item.materials.map(material => {
+          materialController.removeRecipeFromMaterial(material, recipeId)
+          .then((data) => {
+          }).catch(err => {
+            reject(err)
+          })
+        })
+        Recipe.findOneAndRemove({ '_id': recipeId }, (err, res) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(res)
+          }
+        })
       }
     })
   })

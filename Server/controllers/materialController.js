@@ -79,6 +79,25 @@ materialController.addRecipeToMaterial = function (materialId, recipe) {
   })
 }
 
+/**
+ *
+ *
+ * @param {any} roomId
+ * @param {any} recipeId
+ * @returns
+ */
+materialController.removeRecipeFromMaterial = function (materialId, recipeId) {
+  return new Promise((resolve, reject) => {
+    Material.findOneAndUpdate({ '_id': materialId }, { $pull: {recipes: recipeId} }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
 materialController.deleteMaterial = (materialId) => {
   return new Promise((resolve, reject) => {
     Material.findOneAndRemove({ '_id': materialId }, (err, res) => {

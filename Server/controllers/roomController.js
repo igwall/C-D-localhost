@@ -112,4 +112,23 @@ roomController.addRecipeToRoom = function (roomId, recipe) {
   })
 }
 
+/**
+ *
+ *
+ * @param {any} roomId
+ * @param {any} recipeId
+ * @returns
+ */
+roomController.removeRecipeFromRoom = function (roomId, recipeId) {
+  return new Promise((resolve, reject) => {
+    Room.findOneAndUpdate({ '_id': roomId }, { $pull: {recipes: recipeId} }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
 module.exports = roomController

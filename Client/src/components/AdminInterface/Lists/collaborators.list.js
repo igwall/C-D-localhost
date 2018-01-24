@@ -3,7 +3,7 @@ import styles from './lists.styles'
 import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import constants from '../../../constants'
-// import { removeUserFromCollaborators } from '../../../store/actions/administrators.action'
+import { removeUserFromCollaborators } from '../../../store/actions/collaborators.action'
 
 export default class AdministratorsListAdmin extends React.Component {
   constructor (props) {
@@ -18,12 +18,12 @@ export default class AdministratorsListAdmin extends React.Component {
   }
 
   deleteCollaborator (collaborator) {
-    /* removeUserFromCollaborators(collaborator._id, collaborator.user).then(data => {
+    removeUserFromCollaborators(collaborator._id).then(data => {
       this.setState({deleted: collaborator.firstname + ' ' + collaborator.lastname})
       this.props.popoverManager.dismissPopover()
     }).catch(err => {
       console.log(err)
-    }) */
+    })
   }
 
   // Input search methods

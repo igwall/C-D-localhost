@@ -6,6 +6,7 @@ import { setCollaborators } from '../../store/actions/collaborators.action'
 import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
+import { setCollaborationRequests } from '../../store/actions/collaborationRequest.action'
 import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
 import RecipesListAdmin from './Lists/recipes.list'
@@ -15,6 +16,8 @@ import AdministratorsList from './Lists/administrators.list'
 import RecipeForm from './Forms/recipe.form'
 import MaterialForm from './Forms/material.form'
 import AdministratorForm from './Forms/administrator.form'
+import RecipeRequests from './Lists/recipeRequests.list'
+import CollaborationRequests from './Lists/collaborationRequests.list'
 
 @connect(store => {
   return {
@@ -22,7 +25,8 @@ import AdministratorForm from './Forms/administrator.form'
     recipes: store.recipes.elements,
     collaborators: store.collaborators.elements,
     administrators: store.administrators.elements,
-    rooms: store.rooms.elements
+    rooms: store.rooms.elements,
+    collaborationRequests: store.collaborationRequests.elements
   }
 })
 
@@ -55,6 +59,10 @@ export default class HomePage extends React.Component {
     }).catch(err => {
       console.error(err)
     })
+    setCollaborationRequests().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
   }
 
   displayRecipesList () {
@@ -65,12 +73,16 @@ export default class HomePage extends React.Component {
     this.setState({content: 'recipeForm'})
   }
 
+  displayRecipeRequests () {
+    this.setState({content: 'recipeRequests'})
+  }
+
   displayCollaboratorsList () {
     this.setState({content: 'collaboratorsList'})
   }
 
-  displayCollaboratorForm () {
-    this.setState({content: 'collaboratorForm'})
+  displayCollaboratorRequests () {
+    this.setState({content: 'collaboratorRequests'})
   }
 
   displayMaterialsList () {
@@ -91,7 +103,7 @@ export default class HomePage extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { materials, recipes, rooms, collaborators, administrators } = this.props
+    const { materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
     switch (content) {
       case 'recipesList': {
         return (
@@ -128,6 +140,16 @@ export default class HomePage extends React.Component {
           <AdministratorForm administrators={administrators} />
         )
       }
+      case 'collaboratorRequests': {
+        return (
+          <CollaborationRequests popoverManager={this.props.popoverManager} collaborationRequests={collaborationRequests} />
+        )
+      }
+      case 'recipeRequests': {
+        return (
+          <RecipeRequests recipes={recipes} />
+        )
+      }
       default: {
         return null
       }
@@ -152,6 +174,10 @@ export default class HomePage extends React.Component {
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
               <div className='button-text'>NOUVELLE RECETTE</div>
             </div>
+            <div className='button' onClick={() => this.displayRecipeRequests()}>
+              <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
+              <div className='button-text'>VOIR LES RECETTES PROPOSÉES</div>
+            </div>
           </div>
         </div>
         <div className='panel panel-materials'>
@@ -174,22 +200,22 @@ export default class HomePage extends React.Component {
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
               <div className='button-text'>AFFICHER LES ARTISTES INVITÉS</div>
             </div>
-            <div className='button' onClick={() => this.displayCollaboratorForm()}>
+            <div className='button' onClick={() => this.displayCollaboratorRequests()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>DEMANDES DE COLLABORATIONS</div>
+              <div className='button-text'>DEMANDES DE COLLABORATION</div>
             </div>
           </div>
         </div>
         <div className='panel panel-administrators'>
-          <div className='panel-title'>Administrateurs</div>
+          <div className='panel-title'>Modérateurs</div>
           <div className='panel-buttons'>
             <div className='button' onClick={() => this.displayAdministratorsList()}>
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES ADMINISTRATEURS</div>
+              <div className='button-text'>AFFICHER LES MODÉRATEURS</div>
             </div>
             <div className='button' onClick={() => this.displayAdministratorForm()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVEL ADMINISTRATEUR</div>
+              <div className='button-text'>NOUVEAU MODÉRATEUR</div>
             </div>
           </div>
         </div>

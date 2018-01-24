@@ -10,3 +10,13 @@ export function fetchCollaborators () {
     })
   })
 }
+
+export function removeUserFromCollaboratorsDistant (collaboratorId) {
+  return new Promise((resolve, reject) => {
+    axios.delete(`${Config.API_URL}/collaborators/${collaboratorId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
