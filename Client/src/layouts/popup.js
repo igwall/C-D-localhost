@@ -34,9 +34,9 @@ export default class Page extends React.Component {
         }
         .content {
           position: absolute;
-          top: 100px;
+          top: 150px;
           left: 0px;
-          height: calc(100% - 100px);
+          height: calc(100% - 150px);
           width: 100%;
         }
         `}</style>

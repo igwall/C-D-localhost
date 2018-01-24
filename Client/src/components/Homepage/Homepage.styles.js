@@ -16,6 +16,7 @@ export default css`
 .sidebar {
   height: 100%;
   width: 30%;
+  min-width: 350px;
   padding: 0 30px;
   background: ${constants.SECONDARY_COLOR};
 }
@@ -50,9 +51,9 @@ export default css`
 }
 
 .room:hover {
-  stroke: green;
-  stroke-width: 1px;
+  stroke-width: 1.5px;
   cursor: pointer;
+  fill: rgba(0,255,0,0.4);
 }
 
 .room-name:hover + .room{

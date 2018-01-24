@@ -112,6 +112,12 @@ export default class Header extends React.Component {
         {
           isAuthenticated
             ? <div className='sign-button-group'>
+              <div className='user-infos'>
+                <span>Bienvenue</span>
+                <Link to={`/user/${this.props.currentUser._id}`}>
+                  <div className='user-username'>{this.props.currentUser.username}</div>
+                </Link>
+              </div>
               <div className='sign-button' onClick={() => logout()}>
                 <div className='sign-button-icon'><Icon name='sign-out-alt' fontSize='15px' color='' /></div>
                 <div className='sign-button-text'>Déconnexion</div>
