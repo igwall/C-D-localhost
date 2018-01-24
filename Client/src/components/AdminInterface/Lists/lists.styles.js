@@ -57,7 +57,7 @@ export default css`
 .element-description {
   position: relative;
   display: inline-block;
-  height: 75px;
+  min-height: 75px;
   vertical-align: top;
   padding: 0 10px;
 }
@@ -72,6 +72,13 @@ export default css`
 
 .element-other, .element-date {
   font-size: 12px;
+}
+
+.element-text {
+  font-size: 15px;
+  font-style: italic;
+  padding: 10px;
+  padding-bottom: 30px;
 }
 
 .element-date {

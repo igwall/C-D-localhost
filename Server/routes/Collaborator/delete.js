@@ -4,28 +4,28 @@ const { requiresAdminLogin } = require('../../config/middlewares/authorizations'
 module.exports = (router, controller) => {
   /**
   * @swagger
-  * /materials/{materialId}:
+  * /collaborators/{collaboratorId}:
   *   delete:
   *     tags:
-  *       - Materials
-  *     description: Delete a material
-  *     summary: DELETE a Material
+  *       - Collaborators
+  *     description: Delete a collaborator
+  *     summary: DELETE a Collaborator
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: materialId
+  *       - name: collaboratorId
   *         type: string
-  *         description: The material id to delete
+  *         description: The collaborator id to delete
   *         in: path
   *         required: true
   *     responses:
   *       201:
-  *         description: Message confirming the material has been deleted
+  *         description: Message confirming the collaborator has been deleted
   *       500:
   *         description: Internal error
   */
-  router.delete('/materials/:materialId', function (req, res) {
-    let requiredParameter = ['materialId']
+  router.delete('/collaborators/:collaboratorId', function (req, res) {
+    let requiredParameter = ['collaboratorId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {
       let stringMessage = requiredParameter.join(',')
@@ -33,7 +33,7 @@ module.exports = (router, controller) => {
       return
     }
     controller
-      .deleteMaterial(req.params.materialId)
+      .deleteCollaborator(req.params.collaboratorId)
       .then(data => {
         res.status(201).json('Successfully deleted')
       })

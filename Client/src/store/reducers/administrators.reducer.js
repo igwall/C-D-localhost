@@ -12,6 +12,7 @@ export default (state = defaultAdministratorsState, action) => {
       return {
         ...state,
         fetching: false,
+        fetched: true,
         elements: action.payload
       }
     }

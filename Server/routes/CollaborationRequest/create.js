@@ -1,50 +1,55 @@
 const Util = require('../../controllers/Util')
-const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
+const { requiresLogin } = require('../../config/middlewares/authorizations')
 
 module.exports = (router, controller) => {
     /**
    * @swagger
    * definitions:
-   *   NewMaterial:
+   *   NewCollaborationRequest:
    *     properties:
-   *       name:
+   *       firstname:
+   *         type: string
+   *       lastname:
+   *         type: string
+   *       motivation:
+   *         type: string
+   *       user:
    *         type: string
    */
 
   /**
   * @swagger
-  * /materials:
+  * /collaboration:
   *   post:
   *     tags:
-  *       - Materials
-  *     description: Create a new material
-  *     summary: CREATE a new Material
+  *       - Collaboration Requests
+  *     description: Create a new collaboration request
+  *     summary: CREATE a new Collaboration Request
   *     produces:
   *       - application/json
   *     parameters:
   *       - name: body
-  *         description: The Material object that needs to be added
+  *         description: The Collaboration Request object that needs to be added
   *         in: body
   *         required: true
   *         schema:
-  *             $ref: '#/definitions/NewMaterial'
+  *             $ref: '#/definitions/NewCollaborationRequest'
   *     responses:
   *       201:
-  *         description: The newly created material
+  *         description: The newly created collaboration request
   *       500:
   *         description: Internal error
   */
-  router.post('/materials', (req, res) => {
-    let requiredBody = ['name']
+  router.post('/collaboration', (req, res) => {
+    let requiredBody = ['firstname', 'lastname', 'motivation', 'user']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')
       res.status(400).json(`Missing ${stringMessage}`)
       return
-    }
-    else {
+    } else {
       controller
-      .createMaterial(req)
+      .createCollaborationRequest(req)
       .then(data => {
         res.status(201).json(data)
       })

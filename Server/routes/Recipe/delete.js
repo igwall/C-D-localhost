@@ -1,4 +1,5 @@
 const Util = require('../../controllers/Util')
+const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 module.exports = (router, controller) => {
   /**
