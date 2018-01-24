@@ -24,7 +24,7 @@ export function removeUserFromCollaborators (collaboratorId) {
   return new Promise((resolve, reject) => {
     removeUserFromCollaboratorsDistant(collaboratorId).then((data) => {
       store.dispatch({
-        type: 'REMOVE_USER_FROM_COLLABORATORS',
+        type: 'REMOVE_COLLABORATOR',
         payload: collaboratorId
       })
       resolve(data)

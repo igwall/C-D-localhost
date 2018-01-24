@@ -48,12 +48,16 @@ export function declineCollaborationRequest (requestId) {
   })
 }
 
-export function acceptCollaborationRequest (requestId) {
+export function acceptCollaborationRequest (request) {
   return new Promise((resolve, reject) => {
-    acceptCollaborationRequestDistant(requestId).then((data) => {
+    acceptCollaborationRequestDistant(request._id).then((data) => {
       store.dispatch({
         type: 'ACCEPT_COLLABORATION_REQUEST',
-        payload: requestId
+        payload: request._id
+      })
+      store.dispatch({
+        type: 'ADD_COLLABORATOR',
+        payload: data
       })
       resolve(data)
     }).catch((err) => {

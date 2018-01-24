@@ -99,11 +99,15 @@ recipeController.deleteRecipe = (recipeId) => {
         item.rooms.map(room => {
           roomController.removeRecipeFromRoom(room, recipeId)
           .then((data) => {
+          }).catch(err => {
+            reject(err)
           })
         })
         item.materials.map(material => {
           materialController.removeRecipeFromMaterial(material, recipeId)
           .then((data) => {
+          }).catch(err => {
+            reject(err)
           })
         })
         Recipe.findOneAndRemove({ '_id': recipeId }, (err, res) => {

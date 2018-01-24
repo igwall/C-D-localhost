@@ -40,7 +40,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/collaboration', [requiresLogin], (req, res) => {
+  router.post('/collaboration', (req, res) => {
     let requiredBody = ['firstname', 'lastname', 'motivation', 'user']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {

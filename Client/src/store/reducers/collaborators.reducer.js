@@ -23,6 +23,22 @@ export default (state = defaultCollaboratorsState, action) => {
         error: action.payload
       }
     }
+    case 'ADD_COLLABORATOR': {
+      let newElements = state.elements.slice()
+      newElements.push(action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
+    case 'REMOVE_COLLABORATOR': {
+      let newElements = state.elements.slice()
+      newElements = newElements.filter(collaborator => collaborator._id !== action.payload)
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

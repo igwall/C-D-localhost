@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Util = require('./Util')
 const Collaborator = mongoose.model('Collaborator')
+const User = mongoose.model('User')
 const userController = require('./userController')
 const collaboratorController = {}
 
@@ -60,6 +61,41 @@ collaboratorController.createCollaborator = function (collaborator) {
         userController.addCollaboratorToUser(item.user, item)
         .then((data) => {
           resolve(item)
+        })
+      }
+    })
+  })
+}
+
+collaboratorController.deleteCollaborator = (collaboratorId) => {
+  return new Promise((resolve, reject) => {
+    Collaborator.findOne({ '_id': collaboratorId }, (err, item) => {
+      if (err) {
+        reject(err)
+      } else {
+        User.findOne({ '_id': item.user }, (err, user) => {
+          if (err) {
+            reject(err)
+          } else {
+            const collaborationRequestController = require('./collaborationRequestController')
+            collaborationRequestController.deleteCollaborationRequest(user.collaborationRequest)
+            .then((data) => {
+              userController.removeCollaboratorFromUser(item.user)
+              .then((data) => {
+                Collaborator.findOneAndRemove({ '_id': collaboratorId }, (err, res) => {
+                  if (err) {
+                    reject(err)
+                  } else {
+                    resolve(res)
+                  }
+                })
+              }).catch(err => {
+                reject(err)
+              })
+            }).catch(err => {
+              reject(err)
+            })
+          }
         })
       }
     })

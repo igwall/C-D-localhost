@@ -30,7 +30,7 @@ export default class CollaborationRequests extends React.Component {
   }
 
   acceptRequest (request) {
-    acceptCollaborationRequest(request._id).then(() => {
+    acceptCollaborationRequest(request).then(() => {
       const fullname = request.firstname + ' ' + request.lastname
       this.setState({deleted: '', validated: fullname})
     }).catch(err => {

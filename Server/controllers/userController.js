@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
-const userController = {}
 const passport = require('../config/passport/login')
+const userController = {}
 
 userController.create = (user) => {
   return new Promise((resolve, reject) => {
@@ -31,7 +31,6 @@ userController.getUser = (id) => {
       if (err) {
         reject(err)
       } else {
-        console.log(res)
         resolve(res)
       }
     })
@@ -121,6 +120,24 @@ userController.removeCollaborationRequestFromUser = function (userId) {
 userController.addCollaboratorToUser = function (userId, collaborator) {
   return new Promise((resolve, reject) => {
     User.findOneAndUpdate({ '_id': userId }, { collaborator: collaborator }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+/**
+ *
+ *
+ * @param {any} userId
+ * @returns
+ */
+userController.removeCollaboratorFromUser = function (userId) {
+  return new Promise((resolve, reject) => {
+    User.findOneAndUpdate({ '_id': userId }, { $unset: {collaborator: ''} }, { new: true }, function (err, res) {
       if (err) {
         reject(err)
       } else {

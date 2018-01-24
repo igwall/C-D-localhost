@@ -18,7 +18,7 @@ export default class AdministratorsListAdmin extends React.Component {
   }
 
   deleteCollaborator (collaborator) {
-    removeUserFromCollaborators(collaborator._id, collaborator.user).then(data => {
+    removeUserFromCollaborators(collaborator._id).then(data => {
       this.setState({deleted: collaborator.firstname + ' ' + collaborator.lastname})
       this.props.popoverManager.dismissPopover()
     }).catch(err => {
