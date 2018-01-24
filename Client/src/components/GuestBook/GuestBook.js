@@ -3,7 +3,7 @@ import styles from './GuestBook.styles'
 import {connect} from 'react-redux'
 import {setRooms} from '../../store/actions/room.action'
 import Button from '../UI/Button/Button'
-import EmojiField from 'emoji-picker-textfield'
+// import EmojiField from 'emoji-picker-textfield'
 
 @connect(store => {
   return {
@@ -96,7 +96,7 @@ export default class GuestBook extends React.Component {
                       <tr>
                         <td>
                           <div className='element-infos'>
-                            <div className='element-picture'><img src= {comment.owner.pic} alt='' width='80px' max-height='80px' /></div>
+                            <div className='element-picture'><img src= {comment.owner.pic} alt='' width='40px' max-height='40px' /></div>
                             <div className='element-description'>
                               <div className='element-name'>{comment.owner.name}</div>
                               <div className='element-other'>{comment.text}
@@ -115,11 +115,11 @@ export default class GuestBook extends React.Component {
         </div>
       </div>
       <div className='body'>
-        <div className='coments'>
-          <div className='comentsHead'>
-            <h2>Laisser votre avis</h2>
+        <div className='form-column form-column-right'>
+          <div className='input-group'>
+            <div className='input-label'>Laisser votre avis </div>
+            <textarea type='text' placeholder='(20 caractères min...)' ref={i => { this.motivation = i }} onChange={this.checkMotivation} />
           </div>
-          <EmojiField name="my-textarea" rows="7" cols="181" placeholder="Votre text....." />
           <div className='Button'>
             <Button
               bgColor= 'green'
@@ -128,6 +128,7 @@ export default class GuestBook extends React.Component {
 
           </div>
         </div>
+
       </div>
       <style jsx>{styles}</style>
     </div>

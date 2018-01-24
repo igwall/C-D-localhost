@@ -27,7 +27,7 @@ export default css`
 }
 .commentTable{
   width:100%; 
-  height: 337px;; 
+  height: 307px;; 
   overflow:auto;
 }
 table {
@@ -92,19 +92,49 @@ tr:nth-child(even) {
 .body{
   display: inline-block;
   width: 100%;
+  padding-top: 2%;
+  padding-left: 10%;
   
 }
 
-.coments{
-  padding-top :2%;
-  padding-left :10%;
-  padding-right :10%;
-  padding-bottom :2%;
-
+.form-column-right {
+  width: 90%;
+  min-width: 450px;
 }
-.comentsHead{
-  padding-bottom :2%;
-  padding-left: 5%;
+
+.input-group {
+  width: 100%;
+  padding: 20px 0;
+  font-size: 15px;
+}
+
+.input-label {
+  font-size: 18px;
+}
+
+input {
+  width: 100%;
+  background-color: #eee;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 8px;
+  margin-top: 8px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  background-color: #eee;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 8px;
+  margin-top: 8px;
+  font-size: 15px;
+  border-radius: 5px;
+  display: block;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  resize: none;
 }
 .Button {
  padding-left:89%

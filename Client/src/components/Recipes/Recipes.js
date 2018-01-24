@@ -1,13 +1,10 @@
 import React from 'react'
 import styles from './Recipes.styles'
-import Icon from '../UI/Icon/Icon'
-import Button from '../UI/Button/Button'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
 import {connect} from 'react-redux'
 import {dateFormatter} from '../../util/dateFormatter'
-import constants from '../../constants'
-import { deleteRecipe, setRecipes } from '../../store/actions/recipes.action'
+import { setRecipes } from '../../store/actions/recipes.action'
 import { setCollaborators } from '../../store/actions/collaborators.action'
 import { setMaterials } from '../../store/actions/material.action'
 import { setRooms } from '../../store/actions/room.action'
@@ -35,7 +32,6 @@ export default class Recipes extends React.Component {
     this.handleSelectRoomChange = this.handleSelectRoomChange.bind(this)
     this.handleSelectNumberChange = this.handleSelectNumberChange.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
-    this.displayConfirmDelete = this.displayConfirmDelete.bind(this)
   }
   componentDidMount () {
     setRecipes().then(() => {
@@ -53,14 +49,6 @@ export default class Recipes extends React.Component {
     setRooms().then(() => {
     }).catch(err => {
       console.error(err)
-    })
-  }
-  deleteRecipe (recipe) {
-    deleteRecipe(recipe._id).then(data => {
-      this.setState({deleted: recipe.title})
-      this.props.popoverManager.dismissPopover()
-    }).catch(err => {
-      console.log(err)
     })
   }
   displayRecipesList () {
@@ -232,64 +220,6 @@ export default class Recipes extends React.Component {
     return recipes
   }
 
-  displayConfirmDelete (recipe) {
-    this.props.popoverManager.setRenderedComponent(
-      <div className='popup'>
-        <div className='popup-title'>SUPPRIMER RECETTE</div>
-        <div className='separator' />
-        <div className='popup-text'>Voulez-vous vraiment supprimer la recette "{recipe.title}" ?</div>
-        <div className='popup-actions'>
-          <div className='action action-cancel'>
-            <Button
-              onClick={this.props.popoverManager.dismissPopover}
-              color='white'
-              bgColor={constants.BUTTON_BACKGROUND}
-              hoverBgColor={constants.BUTTON_HOVER_BACKGROUND}
-            >Annuler</Button>
-          </div>
-          <div className='action action-confirm'>
-            <Button
-              onClick={() => this.deleteRecipe(recipe)}
-              bgColor={constants.BUTTON_DELETE_BACKGROUND}
-              hoverBgColor={constants.BUTTON_DELETE_HOVER_BACKGROUND}
-            >Supprimer</Button>
-          </div>
-        </div>
-        <style jsx>{`
-        .popup {
-          width: 100%;
-          height: 100%;
-          padding: 10px;
-        }
-
-        .separator {
-          border: 1px solid white;
-          margin: 10px 0;
-        }
-
-        .popup-title {
-          font-size: 18px;
-          font-weight: bold;
-        }
-
-        .popup-text {
-        }
-
-        .popup-actions {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 30px;
-        }
-
-        .action {
-          display: inline-block;
-        }
-      `}</style>
-      </div>, 'small'
-    )
-    this.props.popoverManager.displayPopover()
-  }
-
   render () {
     const { matchingRecipes, emptySearch, selectedMaterials, selectedRooms, selectedNumber } = this.state
     let recipes = this.props.recipes
@@ -306,16 +236,6 @@ export default class Recipes extends React.Component {
     return (<div className='host'>
       <div className='list-title'>LISTE DES RECETTES</div>
       <ul className='list'>
-        {
-          this.state.deleted !== ''
-            ? <div className='validation-panel'>
-              <div className='validation-content'>
-                <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                <div className='validation-message'>La recette "{this.state.deleted}" a été supprimée avec succès !</div>
-              </div>
-            </div>
-            : undefined
-        }
         <div className='sort-bar'>
           <div className='sort sort-search'>
             <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
