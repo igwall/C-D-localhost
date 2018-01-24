@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "emoji-picker-textfield": "^0.0.13",
+    "react-mdl": "^1.11.0",
+    "throttle-debounce": "^1.0.1"
+  }
+}
