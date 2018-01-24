@@ -10,8 +10,8 @@ export function extractToken () {
   return window.localStorage.getItem('hut_access_token')
 }
 
-export function setProfile () {
-  if (profileIsInLocalStorage()) {
+export function setProfile (forced = false) {
+  if (profileIsInLocalStorage() && !forced) {
     setConnectedUser(loadProfileFromLocalStorage())
   } else {
     fetchProfile().then(profile => {

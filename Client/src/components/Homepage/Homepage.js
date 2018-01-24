@@ -60,7 +60,6 @@ export default class HomePage extends React.Component {
     const heightReference2 = heightReference - Math.sqrt(3) * 100
     const svgHeight = '500px'
     const svgWidth = '900px'
-    console.log(this.state.hovered)
 
     return (<div className='host'>
       <div className='sidebar'>

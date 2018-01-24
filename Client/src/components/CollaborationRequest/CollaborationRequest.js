@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {dateFormatter} from '../../util/dateFormatter'
 import Button from '../UI/Button/Button'
 import { sendCollaborationRequest } from '../../store/actions/collaborationRequest.action'
+import { setProfile } from '../../services/Authentication.services'
 
 @connect(store => {
   return {
@@ -25,6 +26,7 @@ export default class HomePage extends React.Component {
   }
 
   componentDidMount () {
+    setProfile(true)
   }
 
   submit () {
