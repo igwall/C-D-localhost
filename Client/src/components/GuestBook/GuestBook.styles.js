@@ -78,7 +78,12 @@ tr:nth-child(even) {
 .element-other, .element-date {
   font-size: 12px;
 }
-
+.element-text {
+  font-size: 15px;
+  font-style: italic;
+  padding: 10px;
+  padding-bottom: 30px;
+}
 .element-date {
   position: absolute;
   bottom: 0;
