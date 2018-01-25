@@ -43,10 +43,27 @@ export default css`
 .suite {
   display:none;
 }
-
+.Bio-title{
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-weight: bolder;
+  }
+  .Demarche-title{
+    margin-bottom: 5%;
+    font-size: 20px;
+    font-weight: bolder;
+    }
+.Demarche{
+  padding-top : 5%;
+}
 .LireSuite {
   font-style: italic;
   font-size: 12px;
+}
+.LireMoins {
+  font-style: italic;
+  font-size: 12px;
+  display : none;
 }
 .artistDiplome{
   margin-top: 5%;
@@ -67,6 +84,7 @@ export default css`
   width: 100%;
   height:100px;
   text-align: justify;
+  padding-left:5%
 }
 .middle{ 
   padding-top: 5%;

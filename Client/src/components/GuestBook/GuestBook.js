@@ -99,9 +99,9 @@ export default class GuestBook extends React.Component {
                             <div className='element-picture'><img src= {comment.owner.pic} alt='' width='40px' max-height='40px' /></div>
                             <div className='element-description'>
                               <div className='element-name'>{comment.owner.name}</div>
-                              <div className='element-other'>{comment.text}
+                              <div className='element-text'>{comment.text}
                               </div>
-                              <div className='element-date'>{(comment.createdAt)}</div>
+                              <div className='element-date'>Publié le: {(comment.createdAt)}</div>
                             </div>
 
                           </div></td>

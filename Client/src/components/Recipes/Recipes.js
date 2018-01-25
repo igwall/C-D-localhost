@@ -265,7 +265,7 @@ export default class Recipes extends React.Component {
           <div className='sort sort-number'>
             <Select
               id='number-select'
-              placeholder='Solo, duo, trio...'
+              placeholder='Nombre de participant'
               simpleValue
               clearable={true}
               value={selectedNumber}
