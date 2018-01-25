@@ -6,7 +6,7 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  overflow-y: auto; 
+  overflow: hidden; 
   color: #fff;
   display: flex;
   align-items: first-baseline;
@@ -21,7 +21,7 @@ export default css`
   width: calc(100% - 350px);
   height: 100%;
   padding: 30px;
-  overflow-y: auto; 
+
 }
 
 .head {
@@ -52,6 +52,17 @@ export default css`
   margin-right: 25%;
   font-size: 25px;
   padding-top: 5%;
+}
+
+.listChoose{
+  padding-top: 80px;
+  text-align: center;
+}
+
+.item{
+    padding-bottom: 4%;
+    font-size: 20px;
+    Font-Weight: Bold;
 }
 .site-description{
   display: inline-block;
