@@ -132,7 +132,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'administratorsList': {
         return (
-          <AdministratorsList popoverManager={this.props.popoverManager} administrators={administrators} />
+          <AdministratorsList popoverManager={this.props.popoverManager} administrators={administrators.filter(admin => admin.role !== 'administrator')} />
         )
       }
       case 'recipeForm': {

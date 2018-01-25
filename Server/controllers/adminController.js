@@ -49,7 +49,7 @@ adminController.getAdministrator = (id) => {
 
 adminController.getAdministrators = () => {
   return new Promise((resolve, reject) => {
-    Administrator.find().select('username').exec(function (err, res) {
+    Administrator.find().select('username role').exec(function (err, res) {
       if (err) {
         reject(err)
       } else {
