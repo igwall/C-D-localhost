@@ -103,12 +103,7 @@ Chantant en plusieurs langues (français, anglais, allemand, néerlandais, itali
           </div>
         </div>
         <div className='leftSide'>
-          <div className= 'videos'>
-            <div>
-              <div className='videos-title'><h2>{collaborator.name}</h2></div>
-              <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='175' src={collaborator.video}></iframe></div></div>
-            </div>
-          </div>
+          <div className='videos-title'><h2>{collaborator.name}</h2></div>
           <div className='recipe'>
             <div className='recipeHead'>
               <h2>Recettes proposées</h2>
@@ -156,6 +151,11 @@ Chantant en plusieurs langues (français, anglais, allemand, néerlandais, itali
 
                 </tbody>
               </table>
+            </div>
+          </div>
+          <div className= 'videos'>
+            <div>
+              <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='175' src={collaborator.video}></iframe></div></div>
             </div>
           </div>
         </div>
