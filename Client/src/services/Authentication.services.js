@@ -29,7 +29,6 @@ export function isAuthenticated () {
   if (window.localStorage.getItem('hut_access_token') !== undefined &&
     window.localStorage.getItem('hut_access_token') !== null) {
     setTokenHeader()
-    setProfile()
     return true
   } else {
     unsetTokenHeader()
@@ -39,9 +38,11 @@ export function isAuthenticated () {
 
 export function isAuthenticatedSimple () {
   if (window.localStorage.getItem('hut_access_token') !== undefined &&
-    window.localStorage.getItem('hut_access_token') !== null) {
+  window.localStorage.getItem('hut_access_token') !== null) {
+    setProfile()
     return true
   } else {
+    unsetTokenHeader()
     return false
   }
 }
