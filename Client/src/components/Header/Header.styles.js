@@ -4,7 +4,7 @@ import constants from '../../constants'
 export default css`
 .host {
   position: relative;
-  height: 100px;
+  height: 150px;
   width: 100%;
   text-align: center;
   z-index: 1;
@@ -75,6 +75,20 @@ export default css`
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.user-infos {
+  font-size: 15px;
+  display: inline-flex;
+  padding: 5px 20px;
+  border-right: 1px solid white;
+  align-items: center;
+}
+
+.user-username {
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 7px;
 }
 
 .sign-button {
