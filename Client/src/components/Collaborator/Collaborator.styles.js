@@ -54,7 +54,7 @@ export default css`
 
 .videos-title{
   padding-top: 5%
-  padding-bottom: 5%;
+  padding-bottom: 2%;
   margin-left: 4%;
   font-size: 20px;
   font-weight: bolder;
@@ -65,10 +65,10 @@ export default css`
   padding-top: 2%;
 }
 .recipe{
-  padding-top :8%;
+  padding-top :3%;
   padding-left :10%;
   padding-right :10%;
-  padding-bottom :2%;
+  padding-bottom :10%;
 }
 .recipeHead{
   padding-bottom :2%;
@@ -76,7 +76,7 @@ export default css`
 }
 .recipeTable{
   width:100%; 
-  height:250px; 
+  max-height:307px;
   overflow:auto;
 }
 
