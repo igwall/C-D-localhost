@@ -54,8 +54,6 @@ collaborationRequestController.createCollaborationRequest = function (req) {
       if (err) {
         reject(err)
       } else {
-        console.log(item)
-        console.log(item.user)
         userController.addCollaborationRequestToUser(item.user, item)
         .then((data) => {
           resolve(item)

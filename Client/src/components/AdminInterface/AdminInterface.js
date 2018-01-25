@@ -18,6 +18,7 @@ import MaterialForm from './Forms/material.form'
 import AdministratorForm from './Forms/administrator.form'
 import RecipeRequests from './Lists/recipeRequests.list'
 import CollaborationRequests from './Lists/collaborationRequests.list'
+import LibraryPanel from './Panels/library.panel'
 
 @connect(store => {
   return {
@@ -26,11 +27,12 @@ import CollaborationRequests from './Lists/collaborationRequests.list'
     collaborators: store.collaborators.elements,
     administrators: store.administrators.elements,
     rooms: store.rooms.elements,
-    collaborationRequests: store.collaborationRequests.elements
+    collaborationRequests: store.collaborationRequests.elements,
+    currentAdmin: store.currentAdmin
   }
 })
 
-export default class HomePage extends React.Component {
+export default class AdminInterface extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -101,6 +103,14 @@ export default class HomePage extends React.Component {
     this.setState({content: 'administratorForm'})
   }
 
+  displayLibraryPanel () {
+    this.setState({content: 'libraryPanel'})
+  }
+
+  displayArtistPanel () {
+    this.setState({content: 'artistPanel'})
+  }
+
   displayContent () {
     const content = this.state.content
     const { materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
@@ -150,13 +160,24 @@ export default class HomePage extends React.Component {
           <RecipeRequests recipes={recipes} />
         )
       }
+      case 'libraryPanel': {
+        return (
+          <LibraryPanel />
+        )
+      }
+      case 'artistPanel': {
+        return (
+          <div>Nothing for the moment</div>
+        )
+      }
       default: {
-        return null
+        return <div>Nothing for the moment</div>
       }
     }
   }
 
   render () {
+    const currentAdmin = this.props.currentAdmin
     return (<div className='host'>
       <div className='sidebar'>
         <div className='title-group'>
@@ -206,19 +227,43 @@ export default class HomePage extends React.Component {
             </div>
           </div>
         </div>
-        <div className='panel panel-administrators'>
-          <div className='panel-title'>Modérateurs</div>
-          <div className='panel-buttons'>
-            <div className='button' onClick={() => this.displayAdministratorsList()}>
-              <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES MODÉRATEURS</div>
+        {
+          currentAdmin.role === 'administrator'
+            ? <div>
+              <div className='panel panel-artist'>
+                <div className='panel-title'>Page Artiste Auteur</div>
+                <div className='panel-buttons'>
+                  <div className='button' onClick={() => this.displayArtistPanel()}>
+                    <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
+                    <div className='button-text'>MODIFIER LA PAGE ARTISTE AUTEUR</div>
+                  </div>
+                </div>
+              </div>
+              <div className='panel panel-library'>
+                <div className='panel-title'>Bibliothèque et Textes</div>
+                <div className='panel-buttons'>
+                  <div className='button' onClick={() => this.displayLibraryPanel()}>
+                    <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
+                    <div className='button-text'>MODIFIER LA BIBLIOTHÈQUE</div>
+                  </div>
+                </div>
+              </div>
+              <div className='panel panel-administrators'>
+                <div className='panel-title'>Modérateurs</div>
+                <div className='panel-buttons'>
+                  <div className='button' onClick={() => this.displayAdministratorsList()}>
+                    <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
+                    <div className='button-text'>AFFICHER LES MODÉRATEURS</div>
+                  </div>
+                  <div className='button' onClick={() => this.displayAdministratorForm()}>
+                    <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
+                    <div className='button-text'>NOUVEAU MODÉRATEUR</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className='button' onClick={() => this.displayAdministratorForm()}>
-              <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVEAU MODÉRATEUR</div>
-            </div>
-          </div>
-        </div>
+            : undefined
+        }
       </div>
       <div className='main'>
         {

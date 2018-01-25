@@ -3,7 +3,7 @@ import styles from './Header.styles'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
-import { isAuthenticated, logout } from '../../services/Authentication.services'
+import { logout, isAuthenticatedSimple } from '../../services/Authentication.services'
 import constants from '../../constants'
 import DropDown from '../UI/DropDown/DropDown'
 import Icon from '../UI/Icon/Icon'
@@ -29,7 +29,7 @@ export default class Header extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isAuthenticated: isAuthenticated()
+      isAuthenticatedSimple: isAuthenticatedSimple()
     }
   }
 
@@ -46,7 +46,7 @@ export default class Header extends React.Component {
         <Redirect to={redirectTo} />
       )
     }
-    const isAuthenticated = this.state.isAuthenticated
+    const isAuthenticated = this.state.isAuthenticatedSimple
     return <div className='host'>
       <div className='navbar'>
         <div className='menu-button-group'>

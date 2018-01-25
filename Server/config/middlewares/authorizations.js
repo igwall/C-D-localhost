@@ -6,6 +6,9 @@ exports.requiresLogin = (req, res, next) => {
     const token = req.headers.authorization
     const decodedToken = passport.decodeAccessToken(token)
     if (decodedToken !== undefined) {
+      if (decodedToken.userId === undefined) {
+        res.status(500).json(('Wrong token'))
+      }
       req.userId = decodedToken.userId
       next()
     } else {
@@ -21,6 +24,9 @@ exports.requiresAdminLogin = (req, res, next) => {
     const token = req.headers.authorization
     const decodedToken = adminPassport.decodeAdminAccessToken(token)
     if (decodedToken !== undefined) {
+      if (decodedToken.adminId === undefined) {
+        res.status(500).json(('Wrong token'))
+      }
       req.adminId = decodedToken.adminId
       next()
     } else {

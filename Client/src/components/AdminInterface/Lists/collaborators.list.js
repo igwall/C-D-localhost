@@ -2,10 +2,11 @@ import React from 'react'
 import styles from './lists.styles'
 import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
+import {Link} from 'react-router-dom'
 import constants from '../../../constants'
 import { removeUserFromCollaborators } from '../../../store/actions/collaborators.action'
 
-export default class AdministratorsListAdmin extends React.Component {
+export default class CollaboratorsListAdmin extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -147,11 +148,16 @@ export default class AdministratorsListAdmin extends React.Component {
               <li className='list-element' key={i}>
                 <div className='element'>
                   <div className='element-infos'>
-                    <div className='link-container'>
-                      <div className='element-description'>
-                        <div className='element-title'>{collaborator.firstname + ' ' + collaborator.lastname}</div>
+                    <Link to={{
+                      path: '/library',
+                      state: {openCollaborator: collaborator._id}
+                    }}>
+                      <div className='link-container'>
+                        <div className='element-description'>
+                          <div className='element-title'>{collaborator.firstname + ' ' + collaborator.lastname}</div>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                   <div className='element-actions'>
                     <div className='action' onClick={() => this.displayConfirmDelete(collaborator)}>

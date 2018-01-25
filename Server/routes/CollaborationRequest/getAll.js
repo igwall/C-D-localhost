@@ -1,10 +1,12 @@
+const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
+
 module.exports = function (router, controller) {
   /**
   * @swagger
-  * /collaborationRequests:
+  * /collaboration:
   *   get:
   *     tags:
-  *       - Collaboration Request
+  *       - Collaboration Requests
   *     description: Get all collaboration requests
   *     summary: GET ALL Collaboration Requests
   *     produces:
@@ -17,7 +19,7 @@ module.exports = function (router, controller) {
   *       500:
   *         description: Internal error
   */
-  router.get('/collaboration', function (req, res) {
+  router.get('/collaboration', [requiresAdminLogin], function (req, res) {
     controller.getAllCollaborationRequests().then((data) => {
       res.status(200).json(data)
     })

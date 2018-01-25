@@ -70,7 +70,7 @@ export default class HomePage extends React.Component {
       </div>
       <div className='flat'>
         <div className='flat-text'>Cliquez sur une des pièces en surbrillance pour accéder à son contenu</div>
-        <SvgLines className='svg' animate={ true } duration={4000} timing='ease-out'>
+        <SvgLines className='svg' animate={ true } duration={10000} timing='ease-out'>
           <svg
             height={svgHeight}
             width={svgWidth}
