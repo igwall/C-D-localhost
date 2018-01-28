@@ -7,6 +7,7 @@ import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
 import { setQuotes } from '../../store/actions/quote.action'
+import { setReferences } from '../../store/actions/references.action'
 import { setCollaborationRequests } from '../../store/actions/collaborationRequest.action'
 import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
@@ -30,6 +31,7 @@ import LibraryPanel from './Panels/library.panel'
     rooms: store.rooms.elements,
     collaborationRequests: store.collaborationRequests.elements,
     quotes: store.quotes.elements,
+    references: store.references.elements,
     currentAdmin: store.currentAdmin
   }
 })
@@ -61,6 +63,10 @@ export default class AdminInterface extends React.Component {
         console.error(err)
       })
       setQuotes().then(() => {
+      }).catch(err => {
+        console.error(err)
+      })
+      setReferences().then(() => {
       }).catch(err => {
         console.error(err)
       })
@@ -121,8 +127,8 @@ export default class AdminInterface extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { quotes, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
-    console.log(quotes)
+    const { quotes, references, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    console.log(references)
     switch (content) {
       case 'recipesList': {
         return (
@@ -171,7 +177,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'libraryPanel': {
         return (
-          <LibraryPanel popoverManager={this.props.popoverManager} quotes={quotes} />
+          <LibraryPanel popoverManager={this.props.popoverManager} quotes={quotes} references={references} />
         )
       }
       case 'artistPanel': {
@@ -249,7 +255,7 @@ export default class AdminInterface extends React.Component {
                 </div>
               </div>
               <div className='panel panel-library'>
-                <div className='panel-title'>Bibliothèque et Textes</div>
+                <div className='panel-title'>Bibliothèque et Citations</div>
                 <div className='panel-buttons'>
                   <div className='button' onClick={() => this.displayLibraryPanel()}>
                     <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>

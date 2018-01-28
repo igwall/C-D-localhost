@@ -3,11 +3,10 @@ import styles from './panels.styles'
 import Icon from '../../UI/Icon/Icon'
 // import Button from '../../UI/Button/Button'
 // import constants from '../../../constants'
-import DescriptionForm from '../Forms/description.form'
-import DemarcheForm from '../Forms/demarche.form'
-import CollaborationTextForm from '../Forms/collaborationText.form'
 import QuotesList from '../Lists/quotes.list'
 import QuoteForm from '../Forms/quotes.form'
+import ReferencesList from '../Lists/references.list'
+import ReferencesForm from '../Forms/reference.form'
 
 export default class LibraryPanel extends React.Component {
   constructor (props) {
@@ -17,24 +16,16 @@ export default class LibraryPanel extends React.Component {
     }
   }
 
-  displayDescription () {
-    this.setState({content: 'description'})
-  }
-
-  displayDemarche () {
-    this.setState({content: 'demarche'})
-  }
-
   displayEnCeMoment () {
     this.setState({content: 'enCeMoment'})
   }
 
-  displayAilleurs () {
-    this.setState({content: 'ailleurs'})
+  displayReferencesList () {
+    this.setState({content: 'referencesList'})
   }
 
-  displayCollaboration () {
-    this.setState({content: 'collaboration'})
+  displayReferenceForm () {
+    this.setState({content: 'referenceForm'})
   }
 
   displayQuotesList () {
@@ -47,31 +38,21 @@ export default class LibraryPanel extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { quotes } = this.props
+    const { quotes, references } = this.props
     switch (content) {
-      case 'description': {
-        return (
-          <DescriptionForm description='' />
-        )
-      }
-      case 'demarche': {
-        return (
-          <DemarcheForm demarche='' />
-        )
-      }
       case 'enCeMoment': {
         return (
           <div>Nothing for the moment</div>
         )
       }
-      case 'ailleurs': {
+      case 'referencesList': {
         return (
-          <div>Nothing for the moment</div>
+          <ReferencesList popoverManager={this.props.popoverManager} references={references} />
         )
       }
-      case 'collaboration': {
+      case 'referenceForm': {
         return (
-          <CollaborationTextForm collaboration='' />
+          <ReferencesForm />
         )
       }
       case 'quotesList': {
@@ -101,27 +82,28 @@ export default class LibraryPanel extends React.Component {
       <div className='sidebar'>
         <div className='panel'>
           <div className='panel-group'>
-            <div className='panel-group-title'>Bibliothèque</div>
+            <div className='panel-group-title'>En ce moment</div>
             <div className='button-group'>
-              <div className='button' onClick={() => this.displayDescription()} >
-                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
-                <div className='button-text'>TEXTE DESCRIPTIF</div>
-              </div>
-              <div className='button' onClick={() => this.displayDemarche()}>
-                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
-                <div className='button-text'>DEMARCHE ARTISTIQUE</div>
-              </div>
-              <div className='button' onClick={() => this.displayCollaboration()}>
-                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
-                <div className='button-text'>POURQUOI COLLABORER</div>
-              </div>
-              <div className='button' onClick={() => this.displayEnCeMoment()}>
-                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
-                <div className='button-text'>EN CE MOMENT</div>
-              </div>
-              <div className='button' onClick={() => this.displayAilleurs()}>
+              <div className='button' onClick={() => this.displayVideosList()}>
                 <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-                <div className='button-text'>AILLEURS NOUS AIMONS</div>
+                <div className='button-text'>LISTE DES VIDEOS A LA UNE</div>
+              </div>
+              <div className='button' onClick={() => this.displayVideosForm()}>
+                <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
+                <div className='button-text'>NOUVELLE VIDEO A LA UNE</div>
+              </div>
+            </div>
+          </div>
+          <div className='panel-group'>
+            <div className='panel-group-title'>Ailleurs nous aimons</div>
+            <div className='button-group'>
+              <div className='button' onClick={() => this.displayReferencesList()}>
+                <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
+                <div className='button-text'>LISTE DES REFERENCES</div>
+              </div>
+              <div className='button' onClick={() => this.displayReferenceForm()}>
+                <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
+                <div className='button-text'>NOUVELLE REFERENCE</div>
               </div>
             </div>
           </div>

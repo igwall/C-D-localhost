@@ -5,6 +5,23 @@ const referenceController = {}
 
 /**
  *
+ *
+ * @returns
+ */
+referenceController.getAllReferences = function () {
+  return new Promise((resolve, reject) => {
+    Reference.find().exec(function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+/**
+ *
  * @param {any} quote
  * @returns
  */
@@ -44,7 +61,7 @@ referenceController.updateReference = (referenceId, body) => {
  * @param {any} referenceId
  * @returns
  */
-referenceController.deleteQuote = (referenceId) => {
+referenceController.deleteReference = (referenceId) => {
   return new Promise((resolve, reject) => {
     Reference.findOneAndRemove({ '_id': referenceId }, (err, res) => {
       if (err) {

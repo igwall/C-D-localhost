@@ -11,6 +11,7 @@ import artistFetched from './artist.reducer'
 import collaborationRequests from './collaborationRequests.reducer'
 import currentAdmin from './currentAdmin.reducer'
 import quotes from './quotes.reducer'
+import references from './references.reducer'
 
 export default combineReducers({
   currentUser,
@@ -24,5 +25,6 @@ export default combineReducers({
   artistFetched,
   collaborationRequests,
   currentAdmin,
-  quotes
+  quotes,
+  references
 })
