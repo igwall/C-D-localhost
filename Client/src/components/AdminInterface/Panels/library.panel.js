@@ -6,6 +6,8 @@ import Icon from '../../UI/Icon/Icon'
 import DescriptionForm from '../Forms/description.form'
 import DemarcheForm from '../Forms/demarche.form'
 import CollaborationTextForm from '../Forms/collaborationText.form'
+import QuotesList from '../Lists/quotes.list'
+import QuoteForm from '../Forms/quotes.form'
 
 export default class LibraryPanel extends React.Component {
   constructor (props) {
@@ -35,12 +37,17 @@ export default class LibraryPanel extends React.Component {
     this.setState({content: 'collaboration'})
   }
 
-  displayQuotes () {
-    this.setState({content: 'quotes'})
+  displayQuotesList () {
+    this.setState({content: 'quotesList'})
+  }
+
+  displayQuoteForm () {
+    this.setState({content: 'quoteForm'})
   }
 
   displayContent () {
     const content = this.state.content
+    const { quotes } = this.props
     switch (content) {
       case 'description': {
         return (
@@ -67,9 +74,14 @@ export default class LibraryPanel extends React.Component {
           <CollaborationTextForm collaboration='' />
         )
       }
-      case 'quotes': {
+      case 'quotesList': {
         return (
-          <div>Nothing for the moment</div>
+          <QuotesList popoverManager={this.props.popoverManager} quotes={quotes} />
+        )
+      }
+      case 'quoteForm': {
+        return (
+          <QuoteForm />
         )
       }
       default: {
@@ -99,6 +111,10 @@ export default class LibraryPanel extends React.Component {
                 <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
                 <div className='button-text'>DEMARCHE ARTISTIQUE</div>
               </div>
+              <div className='button' onClick={() => this.displayCollaboration()}>
+                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
+                <div className='button-text'>POURQUOI COLLABORER</div>
+              </div>
               <div className='button' onClick={() => this.displayEnCeMoment()}>
                 <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
                 <div className='button-text'>EN CE MOMENT</div>
@@ -110,15 +126,15 @@ export default class LibraryPanel extends React.Component {
             </div>
           </div>
           <div className='panel-group'>
-            <div className='panel-group-title'>Textes & Citations</div>
+            <div className='panel-group-title'>Citations</div>
             <div className='button-group'>
-              <div className='button' onClick={() => this.displayCollaboration()}>
-                <div className='button-icon'><Icon name='edit' color='' fontSize='' /></div>
-                <div className='button-text'>POURQUOI COLLABORER</div>
-              </div>
-              <div className='button' onClick={() => this.displayQuotes()}>
+              <div className='button' onClick={() => this.displayQuotesList()}>
                 <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-                <div className='button-text'>CITATIONS</div>
+                <div className='button-text'>LISTE DES CITATIONS</div>
+              </div>
+              <div className='button' onClick={() => this.displayQuoteForm()}>
+                <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
+                <div className='button-text'>NOUVELLE CITATION</div>
               </div>
             </div>
           </div>

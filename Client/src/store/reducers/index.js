@@ -10,6 +10,7 @@ import administrators from './administrators.reducer'
 import artistFetched from './artist.reducer'
 import collaborationRequests from './collaborationRequests.reducer'
 import currentAdmin from './currentAdmin.reducer'
+import quotes from './quotes.reducer'
 
 export default combineReducers({
   currentUser,
@@ -22,5 +23,6 @@ export default combineReducers({
   administrators,
   artistFetched,
   collaborationRequests,
-  currentAdmin
+  currentAdmin,
+  quotes
 })

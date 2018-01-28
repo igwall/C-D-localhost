@@ -6,6 +6,7 @@ import { setCollaborators } from '../../store/actions/collaborators.action'
 import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
+import { setQuotes } from '../../store/actions/quote.action'
 import { setCollaborationRequests } from '../../store/actions/collaborationRequest.action'
 import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
@@ -28,6 +29,7 @@ import LibraryPanel from './Panels/library.panel'
     administrators: store.administrators.elements,
     rooms: store.rooms.elements,
     collaborationRequests: store.collaborationRequests.elements,
+    quotes: store.quotes.elements,
     currentAdmin: store.currentAdmin
   }
 })
@@ -53,10 +55,16 @@ export default class AdminInterface extends React.Component {
     }).catch(err => {
       console.error(err)
     })
-    setAdministrators().then(() => {
-    }).catch(err => {
-      console.error(err)
-    })
+    if (this.props.currentAdmin.role === 'administrator') {
+      setAdministrators().then(() => {
+      }).catch(err => {
+        console.error(err)
+      })
+      setQuotes().then(() => {
+      }).catch(err => {
+        console.error(err)
+      })
+    }
     setRooms().then(() => {
     }).catch(err => {
       console.error(err)
@@ -113,7 +121,8 @@ export default class AdminInterface extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    const { quotes, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    console.log(quotes)
     switch (content) {
       case 'recipesList': {
         return (
@@ -162,7 +171,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'libraryPanel': {
         return (
-          <LibraryPanel />
+          <LibraryPanel popoverManager={this.props.popoverManager} quotes={quotes} />
         )
       }
       case 'artistPanel': {

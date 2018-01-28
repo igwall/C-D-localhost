@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Room from '../Room/Room'
 import {setRooms} from '../../store/actions/room.action'
 import SvgLines from 'react-mt-svg-lines'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 @connect(store => {
   return {
@@ -65,7 +65,7 @@ export default class HomePage extends React.Component {
       <div className='sidebar'>
         <div className='sidebar-title'>Qu'est-ce que Compose & Danse ?</div>
         <div className='sidebar-text'>
-          Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris jlrhglzkehgkjgzhlzrhgiurhiurihgrieh vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. Ideoque etiam parietes arcanorum soli conscii timebantur.
+          Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris jlrhglzkhiurihgrieh vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. Ideoque etiam parietes arcanorum soli conscii timebantur.
         </div>
       </div>
       <div className='flat'>
@@ -80,9 +80,7 @@ export default class HomePage extends React.Component {
               {/* BOTTOM UPSIDE TRIANGLES */}
 
               {/* BIBLIOTHEQUE */}
-              <Link to ='/library'>
-                <path className='room' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} />
-              </Link>
+              <path className='room' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} />
 
               {/* CHAMBRE */}
               <path className='room' d={`M210 ${baseHeightTriangle} H 410 L 310 ${heightReference} Z`} style={ this.state.hovered === 'Chambre' ? { fill: 'rgba(255,0,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Chambre')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Chambre')} />

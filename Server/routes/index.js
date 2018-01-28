@@ -51,6 +51,8 @@ require('./User')(router, controllers.userController)
 require('./Administrator')(router, controllers.adminController)
 require('./CollaborationRequest')(router, controllers.collaborationRequestController)
 require('./Collaborator')(router, controllers.collaboratorController)
+require('./Quote')(router, controllers.quoteController)
+require('./Reference')(router, controllers.referenceController)
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')

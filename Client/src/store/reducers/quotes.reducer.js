@@ -1,14 +1,14 @@
-import {defaultAdministratorsState} from '../store'
+import {defaultQuotesState} from '../store'
 
-export default (state = defaultAdministratorsState, action) => {
+export default (state = defaultQuotesState, action) => {
   switch (action.type) {
-    case 'FETCH_ADMINISTRATORS_START': {
+    case 'FETCH_QUOTES_START': {
       return {
         ...state,
         fetching: true
       }
     }
-    case 'FETCH_ADMINISTRATORS_SUCCESS': {
+    case 'FETCH_QUOTES_SUCCESS': {
       return {
         ...state,
         fetching: false,
@@ -16,14 +16,14 @@ export default (state = defaultAdministratorsState, action) => {
         elements: action.payload
       }
     }
-    case 'FETCH_ADMINISTRATORS_ERROR': {
+    case 'FETCH_QUOTES_ERROR': {
       return {
         ...state,
         fetching: false,
         error: action.payload
       }
     }
-    case 'ADD_ADMINISTRATOR': {
+    case 'NEW_QUOTE': {
       let newElements = state.elements.slice()
       newElements.push(action.payload)
       return {
@@ -31,9 +31,9 @@ export default (state = defaultAdministratorsState, action) => {
         elements: newElements
       }
     }
-    case 'DELETE_ADMINISTRATOR': {
+    case 'DELETE_QUOTE': {
       let newElements = state.elements.slice()
-      newElements = newElements.filter(admin => admin._id !== action.payload)
+      newElements = newElements.filter(quote => quote._id !== action.payload)
       return {
         ...state,
         elements: newElements
