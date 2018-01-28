@@ -29,7 +29,8 @@ export default class Header extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isAuthenticatedSimple: isAuthenticatedSimple()
+      isAuthenticatedSimple: isAuthenticatedSimple(),
+      redirectTo: ''
     }
   }
 
@@ -41,9 +42,9 @@ export default class Header extends React.Component {
 
   render () {
     const redirectTo = this.state.redirectTo
-    if (redirectTo) {
+    if (redirectTo && window.location.pathname !== redirectTo) {
       return (
-        <Redirect to={redirectTo} />
+        <Redirect to={redirectTo} state={{ from: redirectTo }} />
       )
     }
     const isAuthenticated = this.state.isAuthenticatedSimple
@@ -84,20 +85,20 @@ export default class Header extends React.Component {
               orientation='left'
               menuElements={[
                 {
-                  action: null,
-                  placeholder: <Link to='/about'>À Propos</Link>
+                  action: () => { this.redirectTo('/about/') },
+                  placeholder: 'À Propos'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/contact'>Nous contacter</Link>
+                  action: () => { this.redirectTo('/contact/') },
+                  placeholder: 'Nous contacter'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/collaboration'>Demande de collaboration</Link>
+                  action: () => { this.redirectTo('/collaboration/') },
+                  placeholder: 'Demande de collaboration'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/admin'>Administration</Link>
+                  action: () => { this.redirectTo('/admin/') },
+                  placeholder: 'Administration'
                 }
               ]}
             >

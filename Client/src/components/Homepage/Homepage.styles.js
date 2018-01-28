@@ -30,7 +30,12 @@ export default css`
 
 .sidebar-text {
   text-align: justify;
-  line-height: 175%;
+  line-height: 150%;
+}
+
+.sidebar-more {
+  text-align: left;
+  font-weight: bold;
 }
 
 .flat {
