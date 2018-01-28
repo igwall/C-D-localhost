@@ -24,25 +24,6 @@ collaborationRequestController.getAllCollaborationRequests = function () {
 
 /**
  *
- *
- * @param {any} materialId
- * @returns
- */
-collaborationRequestController.getOneMaterial = function (materialId) {
-  return new Promise((resolve, reject) => {
-    CollaborationRequest.findOne({ '_id': materialId }).populate('recipes').exec(function (err, res) {
-      if (err) {
-        err.status = 500
-        reject(err)
-      } else {
-        resolve(res)
-      }
-    })
-  })
-}
-
-/**
- *
  * @param {any} material
  * @returns
  */

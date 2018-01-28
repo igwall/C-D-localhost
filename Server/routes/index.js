@@ -53,6 +53,7 @@ require('./CollaborationRequest')(router, controllers.collaborationRequestContro
 require('./Collaborator')(router, controllers.collaboratorController)
 require('./Quote')(router, controllers.quoteController)
 require('./Reference')(router, controllers.referenceController)
+require('./HotVideo')(router, controllers.hotVideoController)
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')

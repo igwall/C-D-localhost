@@ -3,6 +3,8 @@ import styles from './panels.styles'
 import Icon from '../../UI/Icon/Icon'
 // import Button from '../../UI/Button/Button'
 // import constants from '../../../constants'
+import HotVideosList from '../Lists/hotVideos.list'
+import HotVideoForm from '../Forms/hotVideo.form'
 import QuotesList from '../Lists/quotes.list'
 import QuoteForm from '../Forms/quotes.form'
 import ReferencesList from '../Lists/references.list'
@@ -16,8 +18,12 @@ export default class LibraryPanel extends React.Component {
     }
   }
 
-  displayEnCeMoment () {
-    this.setState({content: 'enCeMoment'})
+  displayHotVideosList () {
+    this.setState({content: 'hotVideosList'})
+  }
+
+  displayHotVideoForm () {
+    this.setState({content: 'hotVideoForm'})
   }
 
   displayReferencesList () {
@@ -38,11 +44,16 @@ export default class LibraryPanel extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { quotes, references } = this.props
+    const { quotes, references, hotVideos } = this.props
     switch (content) {
-      case 'enCeMoment': {
+      case 'hotVideosList': {
         return (
-          <div>Nothing for the moment</div>
+          <HotVideosList popoverManager={this.props.popoverManager} hotVideos={hotVideos} />
+        )
+      }
+      case 'hotVideoForm': {
+        return (
+          <HotVideoForm />
         )
       }
       case 'referencesList': {
@@ -84,11 +95,11 @@ export default class LibraryPanel extends React.Component {
           <div className='panel-group'>
             <div className='panel-group-title'>En ce moment</div>
             <div className='button-group'>
-              <div className='button' onClick={() => this.displayVideosList()}>
+              <div className='button' onClick={() => this.displayHotVideosList()}>
                 <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
                 <div className='button-text'>LISTE DES VIDEOS A LA UNE</div>
               </div>
-              <div className='button' onClick={() => this.displayVideosForm()}>
+              <div className='button' onClick={() => this.displayHotVideoForm()}>
                 <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
                 <div className='button-text'>NOUVELLE VIDEO A LA UNE</div>
               </div>

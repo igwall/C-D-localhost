@@ -2,55 +2,55 @@ import React from 'react'
 import styles from './forms.styles'
 import Button from '../../UI/Button/Button'
 import Icon from '../../UI/Icon/Icon'
-import { addQuote } from '../../../store/actions/quote.action'
+import { addHotVideo } from '../../../store/actions/library.action'
 
-export default class QuoteForm extends React.Component {
+export default class HotVideoForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      textValid: false,
-      authorValid: false,
+      titleValid: false,
+      linkValid: false,
       added: ''
     }
     this.submit = this.submit.bind(this)
-    this.checkText = this.checkText.bind(this)
-    this.checkAuthor = this.checkAuthor.bind(this)
+    this.checkTitle = this.checkTitle.bind(this)
+    this.checkLink = this.checkLink.bind(this)
   }
 
   isFormValid () {
-    return this.state.textValid &&
-      this.state.authorValid
+    return this.state.titleValid &&
+      this.state.linkValid
   }
 
-  checkText () {
+  checkTitle () {
     this.setState({added: ''})
-    if (this.text.value !== '') {
-      this.setState({textValid: true})
+    if (this.title.value !== '') {
+      this.setState({titleValid: true})
     } else {
-      this.setState({textValid: false})
+      this.setState({titleValid: false})
     }
   }
 
-  checkAuthor () {
+  checkLink () {
     this.setState({added: ''})
-    if (this.author.value !== '') {
-      this.setState({authorValid: true})
+    if (this.link.value !== '') {
+      this.setState({linkValid: true})
     } else {
-      this.setState({authorValid: false})
+      this.setState({linkValid: false})
     }
   }
 
   submit (e) {
     if (e) e.preventDefault()
     if (this.isFormValid()) {
-      const quote = {
-        author: this.author.value,
-        text: this.text.value
+      const hotVideo = {
+        title: this.title.value,
+        youtube_link: this.link.value
       }
-      addQuote(quote).then(quote => {
-        this.text.value = ''
-        this.author.value = ''
-        this.setState({added: quote.text})
+      addHotVideo(hotVideo).then(hotVideo => {
+        this.title.value = ''
+        this.link.value = ''
+        this.setState({added: hotVideo.title})
       }).catch(err => {
         console.log(err)
       })
@@ -60,25 +60,25 @@ export default class QuoteForm extends React.Component {
   render () {
     return (<div className='host'>
       <div className='form'>
-        <div className='form-title'>NOUVELLE CITATION</div>
+        <div className='form-title'>NOUVELLE VIDEO A LA UNE</div>
         <form className='form-large' onSubmit={this.submit}>
           {
             this.state.added !== ''
               ? <div className='validation-panel'>
                 <div className='validation-content'>
                   <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='validation-message'>La citation "{this.state.added}" a été ajouté avec succès !</div>
+                  <div className='validation-message'>La vidéo "{this.state.added}" a été ajouté avec succès !</div>
                 </div>
               </div>
               : undefined
           }
           <div className='input-group'>
-            <div className='input-label'>Citation</div>
-            <input placeholder='Citation' ref={i => { this.text = i }} onChange={this.checkText} />
+            <div className='input-label'>Titre</div>
+            <input placeholder='Titre de la vidéo' ref={i => { this.title = i }} onChange={this.checkTitle} />
           </div>
           <div className='input-group'>
-            <div className='input-label'>Auteur</div>
-            <input placeholder='' ref={i => { this.author = i }} onChange={this.checkAuthor} />
+            <div className='input-label'>Lien YouTube</div>
+            <input placeholder='' ref={i => { this.link = i }} onChange={this.checkLink} />
           </div>
           <div className='add-button'>
             <Button
@@ -86,7 +86,7 @@ export default class QuoteForm extends React.Component {
               block
               disabled={!this.isFormValid()}
               onClick={() => this.submit()}>
-              AJOUTER CITATION
+              AJOUTER VIDEO
             </Button>
           </div>
         </form>

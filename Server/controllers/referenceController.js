@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Util = require('./Util')
 const Reference = mongoose.model('Reference')
+// const libraryController = require('./libraryController')
 const referenceController = {}
 
 /**
@@ -22,13 +23,13 @@ referenceController.getAllReferences = function () {
 
 /**
  *
- * @param {any} quote
+ * @param {any} reference
  * @returns
  */
-referenceController.createReference = function (quote) {
+referenceController.createReference = function (reference) {
   return new Promise((resolve, reject) => {
-    const quoteToAdd = new Reference(quote)
-    quoteToAdd.save((err, item) => {
+    const referenceToAdd = new Reference(reference)
+    referenceToAdd.save((err, item) => {
       if (err) {
         reject(err)
       } else {

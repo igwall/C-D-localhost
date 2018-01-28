@@ -80,6 +80,15 @@ export const defaultReferencesState = {
   }
 }
 
+export const defaultHotVideosState = {
+  hotVideos: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
 export const defaultCollaboratorsState = {
   collaborators: {
     fetching: false,
@@ -148,5 +157,5 @@ export const defaultAdministratorsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState)
 export default createStore(reducer, { ...defaultState }, enhancer)

@@ -18,7 +18,7 @@ module.exports = (router, controllers) => {
     * /quotes/{quoteId}:
     *   put:
     *     tags:
-    *       - Texts
+    *       - Quotes
     *     description: Update a quote
     *     summary: UPDATE a Quote
     *     produces:

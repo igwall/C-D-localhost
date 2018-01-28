@@ -74,6 +74,7 @@ export default class QuoteForm extends React.Component {
   render () {
     return (<div className='host'>
       <div className='form'>
+        <div className='form-title'>NOUVELLE REFERENCE</div>
         <form className='form-large' onSubmit={this.submit}>
           {
             this.state.added !== ''

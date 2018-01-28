@@ -20,7 +20,7 @@ module.exports = (router, controllers) => {
     * /references/{referenceId}:
     *   put:
     *     tags:
-    *       - Texts
+    *       - References
     *     description: Update a reference
     *     summary: UPDATE a Reference
     *     produces:

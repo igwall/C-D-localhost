@@ -4,28 +4,28 @@ const { requiresAdminLogin } = require('../../config/middlewares/authorizations'
 module.exports = (router, controller) => {
   /**
   * @swagger
-  * /references/{referenceId}:
+  * /hotvideos/{videoId}:
   *   delete:
   *     tags:
-  *       - References
-  *     description: Delete a reference
-  *     summary: DELETE a Reference
+  *       - Hot Videos
+  *     description: Delete a hot video
+  *     summary: DELETE a Hot Video
   *     produces:
   *       - application/json
   *     parameters:
-  *       - name: referenceId
+  *       - name: videoId
   *         type: string
-  *         description: The reference id to delete
+  *         description: The hot video id to delete
   *         in: path
   *         required: true
   *     responses:
   *       201:
-  *         description: Message confirming the reference has been deleted
+  *         description: Message confirming the hot video has been deleted
   *       500:
   *         description: Internal error
   */
-  router.delete('/references/:referenceId', [requiresAdminLogin], function (req, res) {
-    let requiredParameter = ['referenceId']
+  router.delete('/hotvideos/:videoId', [requiresAdminLogin], function (req, res) {
+    let requiredParameter = ['videoId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {
       let stringMessage = requiredParameter.join(',')
@@ -33,7 +33,7 @@ module.exports = (router, controller) => {
       return
     }
     controller
-      .deleteReference(req.params.referenceId)
+      .deleteHotVideo(req.params.videoId)
       .then(data => {
         res.status(201).json('Successfully deleted')
       })

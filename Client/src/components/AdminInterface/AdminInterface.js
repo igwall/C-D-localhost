@@ -7,7 +7,7 @@ import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
 import { setQuotes } from '../../store/actions/quote.action'
-import { setReferences } from '../../store/actions/references.action'
+import { setReferences, setHotVideos } from '../../store/actions/library.action'
 import { setCollaborationRequests } from '../../store/actions/collaborationRequest.action'
 import { adminLogout } from '../../services/AdminAuthentication.services'
 import Icon from '../UI/Icon/Icon'
@@ -32,6 +32,7 @@ import LibraryPanel from './Panels/library.panel'
     collaborationRequests: store.collaborationRequests.elements,
     quotes: store.quotes.elements,
     references: store.references.elements,
+    hotVideos: store.hotVideos.elements,
     currentAdmin: store.currentAdmin
   }
 })
@@ -67,6 +68,10 @@ export default class AdminInterface extends React.Component {
         console.error(err)
       })
       setReferences().then(() => {
+      }).catch(err => {
+        console.error(err)
+      })
+      setHotVideos().then(() => {
       }).catch(err => {
         console.error(err)
       })
@@ -127,8 +132,7 @@ export default class AdminInterface extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { quotes, references, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
-    console.log(references)
+    const { quotes, references, hotVideos, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
     switch (content) {
       case 'recipesList': {
         return (
@@ -177,7 +181,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'libraryPanel': {
         return (
-          <LibraryPanel popoverManager={this.props.popoverManager} quotes={quotes} references={references} />
+          <LibraryPanel popoverManager={this.props.popoverManager} quotes={quotes} references={references} hotVideos={hotVideos} />
         )
       }
       case 'artistPanel': {
