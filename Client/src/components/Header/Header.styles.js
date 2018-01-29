@@ -16,13 +16,13 @@ export default css`
 .logo-container {
   display: inline-block;
   height: 100%;
-  width: 400px;
+  width: 350px;
   background: ${constants.THIRD_COLOR};
 }
 
 .header-container {
   display: inline-block;
-  width: calc(100% - 400px);
+  width: calc(100% - 350px);
   height: 100%;
   position: relative;
 }

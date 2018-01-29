@@ -12,13 +12,13 @@ export default css`
   align-items: first-baseline;
 }
 .sideBarre {
-  width: 400px;
+  width: 350px;
   background-color: #333;
   height: 100%;
 }
 
 .main {
-  width: calc(100% - 400px);
+  width: calc(100% - 350px);
   height: 100%;
   padding: 30px;
   overflow-y: auto; 

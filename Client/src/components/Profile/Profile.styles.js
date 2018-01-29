@@ -10,7 +10,7 @@ export default css`
 }
 
 .main {
-  margin: 0 20%;
+  margin: 0 350px;
   padding-top: 25px;
   min-width: 500px;
   height: 100%;

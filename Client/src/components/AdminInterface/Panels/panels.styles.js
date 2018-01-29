@@ -11,7 +11,6 @@ export default css`
   display: flex;
   align-items: first-baseline;
   font-size: 20px;
-  padding: 20px;
 }
 
 .sidebar {
@@ -26,7 +25,7 @@ export default css`
   width: calc(100% - 400px);
   height: 100%;
   overflow: auto;
-  padding: 0 25px;
+  padding: 20px 25px;
 }
 
 .panel-title {
