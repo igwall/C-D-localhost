@@ -36,8 +36,8 @@ export default class MaterialForm extends React.Component {
 
   submit (e) {
     if (e) e.preventDefault()
-    const name = this.name.value
     if (this.isFormValid()) {
+      const name = this.name.value
       addMaterial(name).then(material => {
         this.name.value = ''
         this.setState({added: material.name})

@@ -12,6 +12,11 @@ export default css`
   font-weight: bold;
 }
 
+.form-title-sub {
+  font-size: 15px;
+  font-weight: bold;
+}
+
 .form {
   padding: 0 25px;
 }

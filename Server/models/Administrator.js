@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 
 const AdministratorSchema = new Schema({
   username: {type: String, default: '', required: true},
-  passwordHash: {type: String, default: '', required: true}
+  passwordHash: {type: String, default: '', required: true},
+  role: {type: String, default: 'moderator', enum: ['moderator', 'administrator']}
 })
 
 AdministratorSchema
@@ -28,8 +29,6 @@ AdministratorSchema.methods = {
    */
 
   authenticate: function (plainText) {
-    console.log(plainText)
-    console.log(this.passwordHash)
     return bcrypt.compareSync(plainText, this.passwordHash)
   },
 

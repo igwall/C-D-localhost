@@ -1,11 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const { requiresLogin } = require('../config/middlewares/authorizations')
+const { requiresLogin, requiresAdminLogin } = require('../config/middlewares/authorizations')
 const controllers = require('../controllers')
 
 router.all('/me/*', [requiresLogin], (req, res, next) => {
   let request = req.originalUrl.split('/').filter(e => e !== '')
   request[0] = `/users/${req.userId}`
+  request = request.join('/')
+  req.url = request
+  next()
+})
+
+router.all('/admins/me/*', [requiresAdminLogin], (req, res, next) => {
+  let request = req.originalUrl.split('/').filter(e => e !== '')
+  request[0] = `/admins`
+  request[1] = `${req.adminId}`
   request = request.join('/')
   req.url = request
   next()
@@ -42,6 +51,9 @@ require('./User')(router, controllers.userController)
 require('./Administrator')(router, controllers.adminController)
 require('./CollaborationRequest')(router, controllers.collaborationRequestController)
 require('./Collaborator')(router, controllers.collaboratorController)
+require('./Quote')(router, controllers.quoteController)
+require('./Reference')(router, controllers.referenceController)
+require('./HotVideo')(router, controllers.hotVideoController)
 
 router.get('/', (req, res) => {
   res.redirect('/api-docs')

@@ -181,7 +181,7 @@ export default class RegisterPage extends React.Component {
           <style jsx>{`
             .host {
               position: absolute;
-              top: 0;
+              top: 75px;
               left: 0;
               padding: 20px;
               width: 380px;

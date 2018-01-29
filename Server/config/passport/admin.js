@@ -17,7 +17,7 @@ function getAdministrator (username, password) {
 function generateAdminAccessToken (admin) {
   if (admin._id) {
     let payload = { adminId: admin._id }
-    let token = jwt.sign(payload, secretKey, { expiresIn: '1h' })
+    let token = jwt.sign(payload, secretKey)
     return token
   }
 }

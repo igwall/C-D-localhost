@@ -11,6 +11,9 @@ const Administrator = mongoose.model('Administrator')
   *         type: string
   *       password:
   *         type: string
+  *       role:
+  *         type: string
+  *         enum: ['moderator', 'administrator']
   */
 
 /**
@@ -22,6 +25,8 @@ const Administrator = mongoose.model('Administrator')
     *         type: string
     *       password:
     *         type: string
+    *       role:
+    *         type: moderator
     */
 module.exports = (router, administratorController) => {
   /**
@@ -159,5 +164,14 @@ module.exports = (router, administratorController) => {
       .catch(err => {
         res.status(500).json(err)
       })
+  })
+
+  // GET ONE USER
+  router.get('/admins/:adminId', function (req, res) {
+    administratorController.getAdministrator(req.params.adminId).then(admin => {
+      return res.status(200).send(admin)
+    }).catch(err => {
+      return res.status(400).send(err)
+    })
   })
 }

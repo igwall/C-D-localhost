@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {dateFormatter} from '../../util/dateFormatter'
 import Button from '../UI/Button/Button'
 import { sendCollaborationRequest } from '../../store/actions/collaborationRequest.action'
+import { setProfile } from '../../services/Authentication.services'
 
 @connect(store => {
   return {
@@ -25,6 +26,7 @@ export default class HomePage extends React.Component {
   }
 
   componentDidMount () {
+    setProfile(true)
   }
 
   submit () {
@@ -82,7 +84,7 @@ export default class HomePage extends React.Component {
 
     return (<div className='host'>
       <div className='sidebar'>
-        <div className='sidebar-title'>Qu'est qu'un collaborateur ?</div>
+        <div className='sidebar-title'>Qu'est-ce qu'un collaborateur ?</div>
         <div className='sidebar-text'>
           Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris jlrhglzkehgkjgzhlzrhgiurhiurihgrieh vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. Ideoque etiam parietes arcanorum soli conscii timebantur.
         </div>

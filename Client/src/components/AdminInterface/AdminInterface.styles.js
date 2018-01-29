@@ -75,6 +75,7 @@ export default css`
   display: flex;
   align-items: center;
   width: 100%;
+  background: rgba(0,0,0,0);
 }
 
 .button:hover {

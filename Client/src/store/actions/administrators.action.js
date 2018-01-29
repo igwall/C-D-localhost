@@ -2,6 +2,13 @@ import { fetchAdministrators, deleteAdministratorDistant } from '../../services/
 
 import store from '../store'
 
+export function setConnectedAdmin (admin) {
+  store.dispatch({
+    type: 'SET_ADMIN',
+    payload: admin
+  })
+}
+
 export function setAdministrators (dispatch) {
   return new Promise((resolve, reject) => {
     store.dispatch({type: 'FETCH_ADMINISTRATORS_START'})
