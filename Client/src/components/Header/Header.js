@@ -48,6 +48,7 @@ export default class Header extends React.Component {
       )
     }
     const isAuthenticated = this.state.isAuthenticatedSimple
+    const { currentUser } = this.props
     return <div className='host'>
       <div className='navbar'>
         <div className='menu-button-group'>
@@ -94,7 +95,7 @@ export default class Header extends React.Component {
                 },
                 {
                   action: () => { this.redirectTo('/collaboration/') },
-                  placeholder: 'Demande de collaboration'
+                  placeholder: currentUser.collaborator !== '' ? 'Mon interface collaborateur' : ' Demande de Collaboration'
                 },
                 {
                   action: () => { this.redirectTo('/admin/') },
