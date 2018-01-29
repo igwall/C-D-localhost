@@ -88,7 +88,7 @@ class Profile extends React.Component {
           <div className='panel-title'>INFORMATIONS</div>
           <div className='panel-content'>
             <div className='picture'>
-              <img src={picture} alt='' width='100px' />
+              <img src={picture} alt='' width='100px' heihgt='100px' />
             </div>
             <div className='infos'>
               <div className='infos-username'>{username}</div>
@@ -133,7 +133,7 @@ class Profile extends React.Component {
                           <li>
                             <div className='realisation'>
                               <div className='ingredient-picture'>
-                                <img src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt='' width='50px' />
+                                <img src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt='' width='50px' height='50px' />
                               </div>
                               <div className='realisation-infos'>
                                 <div className='realisation-name'>{realisation.material.name}</div>
