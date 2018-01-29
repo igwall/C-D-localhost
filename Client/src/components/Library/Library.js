@@ -3,7 +3,7 @@ import styles from './Library.styles'
 import {connect} from 'react-redux'
 import Collaborator from '../Collaborator/Collaborator'
 import {setCollaborators} from '../../store/actions/collaborators.action'
-import {setHotVideos} from '../../store/actions/library.action'
+import { setReferences, setHotVideos } from '../../store/actions/library.action'
 import News from './composent/News'
 import Outside from './composent/OutSide'
 import ComposeDanse from './composent/ComposeDanse'
@@ -12,7 +12,8 @@ import Collaborators from './composent/Collaborators'
 @connect(store => {
   return {
     collaborators: store.collaborators.elements,
-    hotVideos: store.hotVideos.elements
+    hotVideos: store.hotVideos.elements,
+    references: store.references.elements
   }
 })
 
@@ -28,7 +29,10 @@ export default class Library extends React.Component {
     }).catch(err => {
       console.error(err)
     })
-
+    setReferences().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
     setHotVideos().then(() => {
       this.setState({content: 'news'})
     }).catch(err => {
@@ -61,7 +65,7 @@ export default class Library extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const {collaboratros, hotVideos} = this.props
+    const {collaboratros, hotVideos, references} = this.props
     switch (content) {
       case 'news': {
         return (
@@ -70,7 +74,7 @@ export default class Library extends React.Component {
       }
       case 'out': {
         return (
-          <Outside />
+          <Outside references={references}/>
         )
       }
       case 'composeDanse': {
@@ -98,17 +102,17 @@ export default class Library extends React.Component {
           <div className = 'admin-name'><a href="/artist"> Muriel PIQUE </a></div>
         </div>
         <div className='listChoose'>
-          <div className='button' onClick={() => this.displayNews()}>
-            <div className='button-text'>En ce moment,</div>
-          </div>
-          <div className='button' onClick={() => this.displayOutSide()}>
-            <div className='button-text'>Ailleurs nous aimons</div>
-          </div>
-          <div className='button' onClick={() => this.displayCollaboratos()}>
-            <div className='button-text'>Les collaborateurs</div>
-          </div>
           <div className='button' onClick={() => this.displayComposeDanse()}>
             <div className='button-text'>Qu'est ce que c'est compose & danse</div>
+          </div>
+          <div className='button' onClick={() => this.displayCollaboratos()}>
+            <div className='button-text'>Artistes invités</div>
+          </div>
+          <div className='button' onClick={() => this.displayOutSide()}>
+            <div className='button-text'>Ailleurs nous aimons...</div>
+          </div>
+          <div className='button' onClick={() => this.displayNews()}>
+            <div className='button-text'>En ce moment,</div>
           </div>
         </div>
       </div>

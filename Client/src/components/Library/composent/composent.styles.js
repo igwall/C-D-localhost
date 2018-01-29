@@ -54,7 +54,6 @@ export default css`
 }
 
 .collaborator {
-  padding: 10px;
   display: flex
   align-items: center;
 }
@@ -298,5 +297,72 @@ th, td {
 }
 .audio-label{
   display: inline-block;
+}
+
+.video-label{
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.link-container {
+  height: 100%;
+  width: 100%;
+}
+
+.element-infos {
+  padding: 5px;
+  flex: 3;
+}
+
+.element:hover {
+  transform: translateY(-5px);
+}
+
+.element-picture {
+  display: inline-block;
+  vertical-align: top;
+  height: 75px;
+  width: 75px;
+  background: ${constants.PRIMARY_COLOR};
+}
+
+.element-description {
+  position: relative;
+  display: inline-block;
+  min-height: 75px;
+  vertical-align: top;
+  padding: 0 10px;
+}
+
+.element-title {
+  font-size: 17px;
+}
+
+.element-other {
+  color: ${constants.TEXT_SECONDARY_COLOR}
+}
+
+.element-other, .element-date {
+  font-size: 12px;
+}
+
+.element-text {
+  font-size: 15px;
+  font-style: italic;
+  padding: 10px;
+  padding-bottom: 30px;
+}
+.list-element {
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  background: ${constants.SECONDARY_COLOR};
+  box-shadow: 2px 2px 4px rgba(255,255,255,0.4);
 }
 `

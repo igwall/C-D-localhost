@@ -1,23 +1,8 @@
 import React from 'react'
 import styles from './composent.styles'
-import {setHotVideos} from '../../../store/actions/library.action'
 import Slider from 'react-slick'
 
 export default class News extends React.Component {
-  componentDidMount () {
-    setHotVideos().then(() => {
-    }).catch(err => {
-      console.error(err)
-    })
-  }
-  constructor (props) {
-    super(props)
-    this.state = {
-      emptySearch: true,
-      matchingHotVideos: [],
-      deleted: ''
-    }
-  }
   render () {
     let hotVideos = []
     hotVideos = this.props.hotVideos
@@ -46,7 +31,7 @@ export default class News extends React.Component {
             {
               hotVideos.map((hotVideo, i) => {
                 return (
-                  <div key={i}><div className='video'><iframe id='video-iframe' title={hotVideo.title} width='100%' height='345' src={hotVideo.youtube_link} /></div></div>
+                  <div key={i}><div className='video'><iframe id='video-iframe' title={hotVideo.title} width='100%' height='345' src={hotVideo.youtube_link} /></div><div className='video-label'>{hotVideo.title} </div></div>
                 )
               })
             }

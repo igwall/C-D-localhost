@@ -10,7 +10,8 @@ export default css`
 }
 .rightSide{
   display: inline-block;
-  width:40%
+  width:40%;
+  min-height: 500px;
   background-color: ${constants.SECONDARY_COLOR};
 }
 .collaboratorPicture

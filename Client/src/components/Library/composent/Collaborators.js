@@ -17,15 +17,16 @@ export default class News extends React.Component {
     })
   }
   displayCollaborator (collaborator) {
+    console.log(collaborator)
     this.props.popoverManager.setRenderedComponent(
-      <Collaborator {...collaborator} dismissPopover={this.props.popoverManager.dismissPopover} />
+      <Collaborator collaborator= {collaborator} dismissPopover={this.props.popoverManager.dismissPopover} />
     )
     this.props.popoverManager.displayPopover()
   }
 
   chooseCollaborator (id) {
     const {collaborators} = this.props
-    this.displayCollaborator(collaborators.filter(collaborator => collaborator.id === id)[0])
+    this.displayCollaborator(collaborators.filter(collaborator => collaborator._id === id)[0])
   }
   render () {
     console.log(this.props.collaborators)
@@ -42,15 +43,20 @@ export default class News extends React.Component {
             <ul>
               {
                 collaborators.map((collaborator, i) =>
-                  <li key={i}>
-                    <a onClick={() => this.displayCollaborator('1')}><div className = 'collaborator'>
-                      <div className = 'collaborator-picture'>
+                  <li className='list-element' key={i}>
+                    <a onClick={() => this.chooseCollaborator(collaborator._id)}><div className = 'collaborator'><div className='element'>
+                      <div className='element-infos'>
+                        <div className='link-container'>
+                          <div className='element-picture'><img src={collaborator.picture} alt='' width='75px' max-height='75px' /></div>
+                          <div className='element-description'>
+                            <div className='element-title'>{collaborator.firstname + ' ' + collaborator.lastname}</div>
+                          </div>
+                        </div>
+
                       </div>
-                      <div className="collaborator-info">
-                        <div className="collaborator-name">{collaborator.firstname} {collaborator.lastname}</div>
-                        <div className = "collaborator-description">Artiste Enseignant Chercheur</div>
-                      </div>
-                    </div></a>
+                    </div>
+                    </div>
+                    </a>
                   </li>
                 )
               }
@@ -58,7 +64,6 @@ export default class News extends React.Component {
           </div>
         </div>
       </div>
-
       <style jsx>{styles}</style>
     </div>
 
