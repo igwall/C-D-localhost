@@ -11,21 +11,19 @@ export default css`
   display: flex;
   align-items: first-baseline;
 }
-.sideBarre{
-
-  width: 30%;
+.sideBarre {
+  width: 400px;
   background-color: #333;
   height: 100%;
-  
-
 }
-.main
-{
-  width: 70%;
+
+.main {
+  width: calc(100% - 400px);
   height: 100%;
   padding: 30px;
   overflow-y: auto; 
 }
+
 .head {
   padding: 20px;
   display: flex;
@@ -34,8 +32,7 @@ export default css`
   padding-right: 5%;
 }
 
-.admin-info
-{
+.admin-info {
   display: inline-block;
   width: 100%;
   padding-left: 22%;

@@ -12,7 +12,7 @@ export default css`
 
 .sidebar {
   height: 100%;
-  width: 30%;
+  width: 400px;
   padding: 0 30px;
   background: ${constants.SECONDARY_COLOR};
 }
@@ -30,7 +30,7 @@ export default css`
 
 .content {
   overflow-y: auto; 
-  width: 70%;
+  width: calc(100% - 400px);
   height: 100%;
   margin: auto;
 }

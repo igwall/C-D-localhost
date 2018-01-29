@@ -15,15 +15,14 @@ export default css`
 
 .sidebar {
   height: 100%;
-  width: 30%;
-  min-width: 400px;
+  width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
 }
 
 .main {
-  width: 70%;
+  width: calc(100% - 400px);
   height: 100%;
   overflow: auto;
 }
@@ -68,7 +67,7 @@ export default css`
 }
 
 .button {
-  font-size: 15px;
+  font-size: 13px;
   padding: 10px 0;
   text-align: center;
   cursor: pointer;
