@@ -1,43 +1,19 @@
 import css from 'styled-jsx/css'
-import constants from '../../../constants'
+import constants from '../../../../constants'
 
 export default css`
 .host {
-  height: 100%;
-  width: 100%;
-  background-color: ${constants.PRIMARY_COLOR};
-  display: flex;
-  align-items: first-baseline;
+  color: white;
 }
 
-.sidebar {
-  height: 100%;
-  width: 30%;
-  padding: 0 30px;
-  background: ${constants.SECONDARY_COLOR};
-}
-
-.sidebar-title {
-  font-weight: bold;
-  font-size: 25px;
-  text-align: center;
-  padding: 30px 0;
-}
-
-.sidebar-text {
-  text-align: justify;
-}
-
-.content {
-  overflow-y: auto; 
-  width: 70%;
-  height: 100%;
-  margin: auto;
-}
-
-.title {
+.form-title {
   padding: 20px 0;
   font-size: 25px;
+  font-weight: bold;
+}
+
+.form-title-sub {
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -66,14 +42,14 @@ form {
 }
 
 .form-column-left {
-  width: 30%;
-  min-width: 300px;
+  width: 60%;
+  min-width: 450px;
   margin-right: 20px;
 }
 
 .form-column-right {
-  width: 70%;
-  min-width: 450px;
+  width: 30%;
+  min-width: 300px;
 }
 
 .input-group {
@@ -86,6 +62,14 @@ form {
   font-size: 18px;
 }
 
+.add-button {
+  width: 100%;
+}
+
+.add-button-large {
+  min-width: 770px;
+}
+
 input {
   width: 100%;
   background-color: #eee;
@@ -95,6 +79,10 @@ input {
   font-size: 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.select {
+  margin-top: 8px;
 }
 
 textarea {
@@ -111,37 +99,44 @@ textarea {
   resize: none;
 }
 
+.error {
+  font-size: 11px;
+  line-height: 24px;
+  color: #E91E63;
+  float: right;
+}
 
-.add-button {
+.error-panel {
+  border: 1px solid ${constants.ERROR_PANEL_BORDER_COLOR};
+  background: ${constants.ERROR_PANEL_COLOR};
   width: 100%;
+  font-size: 15px;
 }
 
-.add-button-large {
-  min-width: 770px;
-}
-
-.user-request {
-  width: 80%;
-  margin: auto;
-  min-width: 600px;
-}
-
-.request {
-  background: ${constants.SECONDARY_COLOR}
+.error-content {
+  display: flex;
+  align-items: center;
   padding: 10px;
 }
 
-.request-fullname {
-  font-size: 17px;
+.error-message {
+  padding-left: 20px;
 }
 
-.request-motivation {
-  margin: 20px 0;
+.validation-panel {
+  border: 1px solid ${constants.VALIDATION_PANEL_BORDER_COLOR};
+  background: ${constants.VALIDATION_PANEL_COLOR};
+  width: 100%;
+  font-size: 15px;
 }
 
-.element-date {
-  font-size: 12px;
-  color: ${constants.TEXT_SECONDARY_COLOR}
+.validation-content {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
+.validation-message {
+  padding-left: 20px;
+}
 `

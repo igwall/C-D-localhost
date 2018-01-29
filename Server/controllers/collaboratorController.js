@@ -28,7 +28,7 @@ collaboratorController.getAllCollaborators = function () {
  * @param {any} materialId
  * @returns
  */
-collaboratorController.getOneMaterial = function (materialId) {
+collaboratorController.getOneCollaborator = function (materialId) {
   return new Promise((resolve, reject) => {
     Collaborator.findOne({ '_id': materialId }).populate('recipes').exec(function (err, res) {
       if (err) {

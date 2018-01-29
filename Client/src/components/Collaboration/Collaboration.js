@@ -1,10 +1,7 @@
 import React from 'react'
-import styles from './CollaborationRequest.styles'
 import {connect} from 'react-redux'
-import {dateFormatter} from '../../util/dateFormatter'
-import Button from '../UI/Button/Button'
-import { sendCollaborationRequest } from '../../store/actions/collaborationRequest.action'
-import { setProfile } from '../../services/Authentication.services'
+import CollaborationRequest from './CollaborationRequest/CollaborationRequest'
+import CollaborationInterface from './CollaborationInterface/CollaborationInterface'
 
 @connect(store => {
   return {
@@ -23,8 +20,11 @@ export default class HomePage extends React.Component {
   }
 
   render () {
-    const { currentUser } = this.props.currentUser
+    const { currentUser } = this.props
     return (
+      currentUser.collaborator !== ''
+        ? <CollaborationInterface />
+        : <CollaborationRequest />
     )
   }
 }

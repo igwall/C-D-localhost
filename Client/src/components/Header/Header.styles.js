@@ -9,7 +9,7 @@ export default css`
   text-align: center;
   z-index: 1;
   box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
-  background: ${constants.SECONDARY_COLOR}
+  background: ${constants.PRIMARY_COLOR}
   color: ${constants.HEADER_TEXT_COLOR}
 }
 
