@@ -180,8 +180,26 @@ th, td {
   text-align: left;    
 }
 
+.button {
+  font-size: 15px;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(0,0,0,0);
+}
 
+.button:hover {
+  background: rgba(255,255,255,0.2);
+}
 
+.button-text {
+  font-size: 20px;
+    Font-Weight: Bold;
+    padding-left: 20%;
+}
 
 
 `
