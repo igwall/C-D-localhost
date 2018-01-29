@@ -8,8 +8,6 @@ module.exports = (router, controller) => {
    *     properties:
    *       name:
    *         type: string
-   *       color:
-   *         type: string
    */
 
   /**
@@ -36,7 +34,7 @@ module.exports = (router, controller) => {
   *         description: Internal error
   */
   router.post('/rooms', (req, res) => {
-    let requiredBody = ['name', 'color']
+    let requiredBody = ['name']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')

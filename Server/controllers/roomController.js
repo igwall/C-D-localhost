@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Util = require('./Util')
 const Room = mongoose.model('Room')
 const Recipe = mongoose.model('Recipe')
+const Material = mongoose.model('Material')
 const roomController = {}
 
 /**
@@ -11,19 +12,18 @@ const roomController = {}
  */
 roomController.getAllRooms = function () {
   return new Promise((resolve, reject) => {
-    Room.find().populate('materials').exec(function (err, res) {
+    Room.find().populate({
+      path: 'recipes',
+      model: 'Recipe',
+      populate: {
+        path: 'materials',
+        model: 'Material'
+      }
+    }).exec(function (err, res) {
       if (err) {
         reject(err)
       } else {
-        Recipe.populate(res, {
-          path: 'materials.recipes'
-        }, function (err, res) {
-          if (err) {
-            reject(err)
-          } else {
-            resolve(res)
-          }
-        })
+        resolve(res)
       }
     })
   })
@@ -37,20 +37,19 @@ roomController.getAllRooms = function () {
  */
 roomController.getOneRoom = function (roomId) {
   return new Promise((resolve, reject) => {
-    Room.findOne({ '_id': roomId }).populate('materials').exec(function (err, res) {
+    Room.findOne({ '_id': roomId }).lean().populate({
+      path: 'recipes',
+      model: 'Recipe',
+      populate: {
+        path: 'materials',
+        model: 'Material'
+      }
+    }).exec(function (err, res) {
       if (err) {
         err.status = 500
         reject(err)
       } else {
-        Recipe.populate(res, {
-          path: 'materials.recipes'
-        }, function (err, res) {
-          if (err) {
-            reject(err)
-          } else {
-            resolve(res)
-          }
-        })
+        resolve(res)
       }
     })
   })

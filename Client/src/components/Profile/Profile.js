@@ -67,7 +67,7 @@ class Profile extends React.Component {
   }
 
   render () {
-    const { username, email } = this.props.userFetched.user
+    const { username, email, picture } = this.props.userFetched.user
     let realisations = this.props.userFetched.user.realisations
     const { matchingRealisations, emptySearch } = this.state
     if (!emptySearch) {
@@ -88,7 +88,7 @@ class Profile extends React.Component {
           <div className='panel-title'>INFORMATIONS</div>
           <div className='panel-content'>
             <div className='picture'>
-              <img src='http://static1.purepeople.com/articles/6/24/48/46/@/3432472-portrait-officiel-du-prince-george-devoi-950x0-3.jpg' alt='' width='100px' />
+              <img src={picture} alt='' width='100px' heihgt='100px' />
             </div>
             <div className='infos'>
               <div className='infos-username'>{username}</div>
@@ -133,7 +133,7 @@ class Profile extends React.Component {
                           <li>
                             <div className='realisation'>
                               <div className='ingredient-picture'>
-                                <img src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt='' width='50px' />
+                                <img src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt='' width='50px' height='50px' />
                               </div>
                               <div className='realisation-infos'>
                                 <div className='realisation-name'>{realisation.material.name}</div>

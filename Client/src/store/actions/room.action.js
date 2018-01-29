@@ -2,7 +2,7 @@ import { fetchRooms } from '../../services/Room.services'
 
 import store from '../store'
 
-export function setRooms (dispatch) {
+export function setRooms () {
   return new Promise((resolve, reject) => {
     store.dispatch({type: 'FETCH_ROOMS_START'})
     fetchRooms().then((data) => {

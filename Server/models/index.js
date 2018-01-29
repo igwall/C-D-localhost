@@ -1,4 +1,3 @@
-
 require('./User')
 require('./Collaborator')
 require('./Recipe')
