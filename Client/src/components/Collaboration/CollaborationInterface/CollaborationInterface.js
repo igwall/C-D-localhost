@@ -5,10 +5,18 @@ import {connect} from 'react-redux'
 import RecipeRequestsPendingList from './Lists/recipeRequestPending.list'
 import RecipeRequestForm from './Forms/recipeRequest.form'
 import MyRecipesList from './Lists/recipes.list'
+import { setRecipes } from '../../../store/actions/recipes.action'
+import { setMaterials } from '../../../store/actions/material.action'
+import { setRooms } from '../../../store/actions/room.action'
+import { setCollaborator } from '../../../store/actions/collaborators.action'
 
 @connect(store => {
   return {
-    currentUser: store.currentUser
+    currentUser: store.currentUser,
+    currentCollaborator: store.currentCollaborator,
+    recipes: store.recipes.elements,
+    materials: store.materials.elements,
+    rooms: store.rooms.elements
   }
 })
 
@@ -21,6 +29,22 @@ export default class CollaborationInterface extends React.Component {
   }
 
   componentDidMount () {
+    setRecipes().then(() => {
+    }).catch(err => {
+      console.log(err)
+    })
+    setMaterials().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setRooms().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setCollaborator(this.props.currentUser.collaborator).then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
   }
 
   displayCollaboratorPage () {
@@ -45,6 +69,10 @@ export default class CollaborationInterface extends React.Component {
 
   displayContent () {
     const content = this.state.content
+    const { recipes, rooms, materials, currentCollaborator } = this.props
+    const pendingRecipes = currentCollaborator.recipes.filter(recipe => recipe.validated === false)
+    const validatedRecipes = currentCollaborator.recipes.filter(recipe => recipe.validated === false)
+
     switch (content) {
       case 'collaboratorPage': {
         return (
@@ -58,17 +86,17 @@ export default class CollaborationInterface extends React.Component {
       }
       case 'recipeRequestsValidatedList': {
         return (
-          <MyRecipesList recipes={[]} />
+          <MyRecipesList recipes={validatedRecipes} />
         )
       }
       case 'recipeRequestsPendingList': {
         return (
-          <RecipeRequestsPendingList recipes={[]} />
+          <RecipeRequestsPendingList recipes={pendingRecipes} />
         )
       }
       case 'recipeRequestForm': {
         return (
-          <RecipeRequestForm />
+          <RecipeRequestForm recipes={recipes} materials={materials} rooms={rooms} />
         )
       }
       default: {

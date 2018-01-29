@@ -42,7 +42,8 @@ export default class RecipeForm extends React.Component {
       statement: statement,
       number: number,
       rooms: rooms,
-      materials: materials
+      materials: materials,
+      validated: true
     }
 
     if (this.isFormValid()) {

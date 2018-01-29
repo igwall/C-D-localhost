@@ -1,4 +1,4 @@
-import { fetchCollaborators, removeUserFromCollaboratorsDistant } from '../../services/Collaborators.services'
+import { fetchCollaborators, fetchCollaborator, removeUserFromCollaboratorsDistant } from '../../services/Collaborators.services'
 
 import store from '../store'
 
@@ -16,6 +16,20 @@ export function setCollaborators (dispatch) {
         type: 'FETCH_COLLABORATORS_ERROR',
         payload: err
       })
+    })
+  })
+}
+
+export function setCollaborator (collaboratorId) {
+  return new Promise((resolve, reject) => {
+    fetchCollaborator(collaboratorId).then((data) => {
+      store.dispatch({
+        type: 'SET_COLLABORATOR',
+        payload: data
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
     })
   })
 }

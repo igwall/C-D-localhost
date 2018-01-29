@@ -30,7 +30,14 @@ collaboratorController.getAllCollaborators = function () {
  */
 collaboratorController.getOneCollaborator = function (materialId) {
   return new Promise((resolve, reject) => {
-    Collaborator.findOne({ '_id': materialId }).populate('recipes').exec(function (err, res) {
+    Collaborator.findOne({ '_id': materialId }).populate({
+      path: 'recipes',
+      model: 'Recipe',
+      populate: {
+        path: 'materials',
+        model: 'Material'
+      }
+    }).exec(function (err, res) {
       if (err) {
         err.status = 500
         reject(err)

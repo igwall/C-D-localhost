@@ -9,10 +9,11 @@ const RecipeSchema = new Schema({
   pictures: [{type: String, default: ''}],
   videos: [{type: String, default: ''}],
   audios: [{type: String, default: ''}],
-  author: {type: Schema.Types.ObjectId, ref: 'User'},
+  collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
   createdAt: {type: Date, default: Date.now},
   materials: [{type: Schema.Types.ObjectId, ref: 'Material'}],
   rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}],
-  number: {type: String, enum: ['solo', 'duo', 'trio', 'quatuor', 'quintuor', 'more']}
+  number: {type: String, enum: ['solo', 'duo', 'trio', 'quatuor', 'quintuor', 'more']},
+  validated: {type: Boolean, default: false}
 })
 mongoose.model('Recipe', RecipeSchema)

@@ -4,12 +4,12 @@ import constants from '../../../../constants'
 export default css`
 .host {
   color: white;
-  padding: 0 25px;
+  padding: 20px 25px;
   height: 100%;
 }
 
 .list-title {
-  padding: 20px 0;
+  margin-bottom: 20px;
   font-size: 25px;
   font-weight: bold;
 }

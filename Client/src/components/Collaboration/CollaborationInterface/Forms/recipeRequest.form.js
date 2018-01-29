@@ -3,6 +3,7 @@ import styles from './forms.styles'
 import Icon from '../../../UI/Icon/Icon'
 import Button from '../../../UI/Button/Button'
 import Select from 'react-select'
+import { addRecipe } from '../../../../store/actions/recipes.action'
 
 export default class RecipeRequestForm extends React.Component {
   constructor (props) {
@@ -34,6 +35,7 @@ export default class RecipeRequestForm extends React.Component {
     const number = this.state.selectedNumber
     const rooms = this.state.selectedRooms
     const materials = this.state.selectedMaterials
+    const collaborator = this.props.currentCollaborator._id
 
     const newRecipe = {
       title: title,
@@ -41,11 +43,17 @@ export default class RecipeRequestForm extends React.Component {
       statement: statement,
       number: number,
       rooms: rooms,
-      materials: materials
+      materials: materials,
+      collaborator: collaborator
     }
 
     if (this.isFormValid()) {
-      console.log(newRecipe)
+      addRecipe(newRecipe).then(recipe => {
+        this.setState({added: recipe.title})
+        this.resetForm()
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 
