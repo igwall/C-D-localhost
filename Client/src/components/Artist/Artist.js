@@ -71,7 +71,7 @@ export default class Artist extends React.Component {
     }
     const nom = 'Muriel'
     const prenom = 'PIQUE'
-    const bio = 'Zinédine Yazid Zidane, né le 23 juin 1972 à Marseille, est un footballeur international français devenu entraîneur. Durant sa carrière de joueur, entre 1988 et 2006, il évolue au poste de milieu offensif, comme meneur de jeu. Depuis 2016, il est entraîneur du Real Madrid, où il a terminé sa carrière de joueurr  Surnommé « Zizou », il est considéré comme l un des plus grands joueurs de l histoire du football. Doté d un profil atypique, il remporte de nombreux titres, tant avec l équipe de France qu avec les clubs où il a joué, comme les Girondins de Bordeaux, la Juventus de Turin et le Real Madrid. Il a, de plus, été nommé meilleur joueur de l année au moins une fois dans chaque championnat où il a évolué.  Zidane est selon la BBC le meilleur joueur européen de l histoire. Il est désigné meilleur joueur européen des cinquante dernières années par l UEFA '
+    const bio = 'Zinédine Yazid Zidane, né le 23 juin 1972 à Marseille, est un footballeur international français devenu entraîneur. Durant sa carrière de joueur, entre 1988 et 2006, il évolue au poste de milieu offensif, comme meneur de jeu. Depuis 2016, il est entraîneur du Real Madrid, où il a terminé sa carrière de joueurr  Surnommé « Zizou » '
     const book = {
       id: 0,
       title: '- Aleph, Flammarion, 2011'
