@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const RecipeSchema = new Schema({
   title: {type: String, default: '', required: true},
-  thumbnail: {type: String, default: ''},
+  thumbnail: {type: String, default: '/assets/imgs/imgDefault.png'},
   description: {type: String, default: '', required: true},
   statement: {type: String, default: '', required: true},
   pictures: [{type: String, default: ''}],

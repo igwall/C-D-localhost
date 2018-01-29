@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   username: {type: String, default: '', required: true},
   email: {type: String, default: '', required: true},
   passwordHash: {type: String, default: ''},
-  picture: {type: String, default: ''},
+  picture: {type: String, default: '/assets/imgs/avatarDefault.png'},
   age: {type: Number, default: ''},
   collaborator: {type: Schema.Types.ObjectId, ref: 'Collaborator'},
   collaborationRequest: {type: Schema.Types.ObjectId, ref: 'CollaborationRequest'},
