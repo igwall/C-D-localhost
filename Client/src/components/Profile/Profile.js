@@ -70,7 +70,6 @@ class Profile extends React.Component {
     const { username, email, picture } = this.props.userFetched.user
     let realisations = this.props.userFetched.user.realisations
     const { matchingRealisations, emptySearch } = this.state
-    console.log(picture)
     if (!emptySearch) {
       realisations = matchingRealisations
     }

@@ -3,13 +3,15 @@ import styles from './Homepage.styles'
 import {connect} from 'react-redux'
 import Room from '../Room/Room'
 import {setRooms} from '../../store/actions/room.action'
+import {setRecipes} from '../../store/actions/recipes.action'
 import SvgLines from 'react-mt-svg-lines'
 import constants from '../../constants'
 import { Link, Redirect } from 'react-router-dom'
 
 @connect(store => {
   return {
-    rooms: store.rooms.elements
+    rooms: store.rooms.elements,
+    recipes: store.recipes.elements
   }
 })
 
@@ -30,11 +32,15 @@ export default class HomePage extends React.Component {
     }).catch(err => {
       console.error(err)
     })
+    setRecipes().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
   }
 
   displayRoom (room) {
     this.props.popoverManager.setRenderedComponent(
-      <Room {...room} dismissPopover={this.props.popoverManager.dismissPopover} />
+      <Room {...room} allRecipes={this.props.recipes} dismissPopover={this.props.popoverManager.dismissPopover} />
     )
     this.props.popoverManager.displayPopover()
   }
@@ -100,7 +106,7 @@ export default class HomePage extends React.Component {
               <path className='room' d={`M210 ${baseHeightTriangle} H 410 L 310 ${heightReference} Z`} style={ this.state.hovered === 'Chambre' ? { fill: 'rgba(255,0,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Chambre')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Chambre')} />
 
               {/* SALLE DE BAINS */}
-              <path className='room' d={`M410 ${baseHeightTriangle} H 610 L 510 ${heightReference} Z`} style={ this.state.hovered === 'Salle de bains' ? { fill: 'rgba(0,0,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Salle de bains')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Salle de bains')} />
+              <path className='room' d={`M410 ${baseHeightTriangle} H 610 L 510 ${heightReference} Z`} style={ this.state.hovered === 'Salle de bain' ? { fill: 'rgba(0,0,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Salle de bain')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Salle de bain')} />
 
               {/* BOTTOM DOWNSIDE TRIANGLES */}
 
@@ -132,7 +138,7 @@ export default class HomePage extends React.Component {
               <path className='room' d={`M210 ${baseHeightTriangle} L 240 ${baseHeightTrapeze} H 380 L 410 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Porte' ? { fill: 'rgba(100,255,125,0.4)' } : undefined } onMouseOver={() => this.setHover('Porte')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Porte')} />
 
               {/* ESCALIERS */}
-              <path className='room' d={`M410 ${baseHeightTriangle} L 440 ${baseHeightTrapeze} H 580 L 610 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Escaliers' ? { fill: 'rgba(125,255,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Escaliers')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Escaliers')} />
+              <path className='room' d={`M410 ${baseHeightTriangle} L 440 ${baseHeightTrapeze} H 580 L 610 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Escalier' ? { fill: 'rgba(125,255,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Escalier')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Escalier')} />
 
               {/* UPSIDE TRAPEZES */}
 

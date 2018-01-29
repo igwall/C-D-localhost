@@ -143,7 +143,7 @@ export default class MaterialsListAdmin extends React.Component {
                 <div className='element'>
                   <div className='element-infos'>
                     <div className='link-container'>
-                      <div className='element-picture'><img src={material.thumbnail} alt='' width='100px' max-height='100px' /></div>
+                      <div className='element-picture'><img src={material.thumbnail} alt='' width='75px' max-height='75px' /></div>
                       <div className='element-description'>
                         <div className='element-title'>{material.name}</div>
                       </div>
