@@ -3,7 +3,7 @@ import styles from './lists.styles'
 import Icon from '../../UI/Icon/Icon'
 import Button from '../../UI/Button/Button'
 import constants from '../../../constants'
-import { deleteReference } from '../../../store/actions/references.action'
+import { deleteReference } from '../../../store/actions/library.action'
 
 export default class ReferencesListAdmin extends React.Component {
   constructor (props) {

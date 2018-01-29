@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './forms.styles'
 import Button from '../../UI/Button/Button'
 import Icon from '../../UI/Icon/Icon'
-import { addReference } from '../../../store/actions/references.action'
+import { addReference } from '../../../store/actions/library.action'
 
 export default class QuoteForm extends React.Component {
   constructor (props) {
