@@ -34,11 +34,8 @@ export function setAdminProfile (forced = false) {
 }
 
 export function setAdminTokenHeader () {
-  console.log('setting token header')
   axios.defaults.headers.common['authorization'] = null
-  console.log(axios.defaults.headers.common['authorization'])
   axios.defaults.headers.common['authorization'] = `Bearer ${extractAdminToken()}`
-  console.log(axios.defaults.headers.common['authorization'])
 }
 export function unsetAdminTokenHeader () {
   axios.defaults.headers.common['authorization'] = null

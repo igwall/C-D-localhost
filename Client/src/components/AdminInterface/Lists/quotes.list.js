@@ -117,7 +117,6 @@ export default class QuotesListAdmin extends React.Component {
     } else {
       quotes = this.props.quotes
     }
-    console.log(quotes)
     return (<div className='host'>
       <div className='list-title'>LISTE DES CITATIONS</div>
       <ul className='list'>

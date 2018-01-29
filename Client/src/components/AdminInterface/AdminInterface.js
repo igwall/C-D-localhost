@@ -190,7 +190,7 @@ export default class AdminInterface extends React.Component {
         )
       }
       default: {
-        return <div>Nothing for the moment</div>
+        return <div />
       }
     }
   }

@@ -153,6 +153,7 @@ export default class CollaboratorsListAdmin extends React.Component {
                       state: {openCollaborator: collaborator._id}
                     }}>
                       <div className='link-container'>
+                        <div className='element-picture'><img src={collaborator.picture} alt='' width='75px' max-height='75px' /></div>
                         <div className='element-description'>
                           <div className='element-title'>{collaborator.firstname + ' ' + collaborator.lastname}</div>
                         </div>
