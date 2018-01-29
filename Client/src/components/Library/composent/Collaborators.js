@@ -28,12 +28,8 @@ export default class News extends React.Component {
     this.displayCollaborator(collaborators.filter(collaborator => collaborator.id === id)[0])
   }
   render () {
-    const collaborator = {
-      id: 0,
-      prenom: 'Toto'
-    }
-    const collaborators = [ collaborator, collaborator, collaborator, collaborator, collaborator, collaborator ]
-    collaborators[0].id = 1
+    console.log(this.props.collaborators)
+    const collaborators = this.props.collaborators
     return (<div className='host'>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
@@ -51,7 +47,7 @@ export default class News extends React.Component {
                       <div className = 'collaborator-picture'>
                       </div>
                       <div className="collaborator-info">
-                        <div className="collaborator-name">Lara Fabian</div>
+                        <div className="collaborator-name">{collaborator.firstname} {collaborator.lastname}</div>
                         <div className = "collaborator-description">Artiste Enseignant Chercheur</div>
                       </div>
                     </div></a>

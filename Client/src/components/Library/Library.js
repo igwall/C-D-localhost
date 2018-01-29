@@ -3,6 +3,7 @@ import styles from './Library.styles'
 import {connect} from 'react-redux'
 import Collaborator from '../Collaborator/Collaborator'
 import {setCollaborators} from '../../store/actions/collaborators.action'
+import {setHotVideos} from '../../store/actions/library.action'
 import News from './composent/News'
 import Outside from './composent/OutSide'
 import ComposeDanse from './composent/ComposeDanse'
@@ -10,7 +11,8 @@ import Collaborators from './composent/Collaborators'
 
 @connect(store => {
   return {
-    collaborators: store.collaborators.elements
+    collaborators: store.collaborators.elements,
+    hotVideos: store.hotVideos.elements
   }
 })
 
@@ -23,6 +25,12 @@ export default class Library extends React.Component {
   }
   componentDidMount () {
     setCollaborators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+
+    setHotVideos().then(() => {
+      this.setState({content: 'news'})
     }).catch(err => {
       console.error(err)
     })
@@ -53,11 +61,11 @@ export default class Library extends React.Component {
 
   displayContent () {
     const content = this.state.content
-
+    const {collaboratros, hotVideos} = this.props
     switch (content) {
       case 'news': {
         return (
-          <News />
+          <News hotVideos={hotVideos} />
         )
       }
       case 'out': {
@@ -72,25 +80,17 @@ export default class Library extends React.Component {
       }
       case 'collaborators': {
         return (
-          <Collaborators popoverManager={this.props.popoverManager}/>
+          <Collaborators popoverManager={this.props.popoverManager} collaboratros={collaboratros}/>
         )
       }
       default: {
         return (
-          <News />
+          <div />
         )
       }
     }
   }
   render () {
-    // const collaborators = this.props.collaborators
-    const collaborator = {
-      id: 0,
-      prenom: 'Toto'
-    }
-    const collaborators = [ collaborator, collaborator, collaborator, collaborator, collaborator, collaborator ]
-    collaborators[0].id = 1
-    // const books = [ 1, 2, 3, 4, 5, 6, 7 ]
     return (<div className='host'>
       <div className = 'sideBarre'>
         <div className= 'admin-info'>
@@ -98,10 +98,18 @@ export default class Library extends React.Component {
           <div className = 'admin-name'><a href="/artist"> Muriel PIQUE </a></div>
         </div>
         <div className='listChoose'>
-          <div className = 'item' onClick={() => this.displayNews()}>En ce moment,</div>
-          <div className = 'item' onClick={() => this.displayOutSide()}>Ailleurs nous aimons,</div>
-          <div className = 'item' onClick={() => this.displayCollaboratos()}>Les collaborateurs</div>
-          <div className = 'item' onClick={() => this.displayComposeDanse()}>Qu'est ce que c'est compose & danse</div>
+          <div className='button' onClick={() => this.displayNews()}>
+            <div className='button-text'>En ce moment,</div>
+          </div>
+          <div className='button' onClick={() => this.displayOutSide()}>
+            <div className='button-text'>Ailleurs nous aimons</div>
+          </div>
+          <div className='button' onClick={() => this.displayCollaboratos()}>
+            <div className='button-text'>Les collaborateurs</div>
+          </div>
+          <div className='button' onClick={() => this.displayComposeDanse()}>
+            <div className='button-text'>Qu'est ce que c'est compose & danse</div>
+          </div>
         </div>
       </div>
       <div className = 'main'>

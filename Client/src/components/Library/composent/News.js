@@ -1,15 +1,27 @@
 import React from 'react'
 import styles from './composent.styles'
-import {connect} from 'react-redux'
+import {setHotVideos} from '../../../store/actions/library.action'
 import Slider from 'react-slick'
-@connect(store => {
-  return {
-    Videos: store.artistFetched.artist
-  }
-})
 
 export default class News extends React.Component {
+  componentDidMount () {
+    setHotVideos().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+  constructor (props) {
+    super(props)
+    this.state = {
+      emptySearch: true,
+      matchingHotVideos: [],
+      deleted: ''
+    }
+  }
   render () {
+    let hotVideos = []
+    hotVideos = this.props.hotVideos
+    console.log(hotVideos)
     const setting = {
       className: '',
       dots: true,
@@ -25,18 +37,19 @@ export default class News extends React.Component {
     }
 
     return (<div className='host'>
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-      <div className= 'videos'>
+      <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
+      <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' />
+      <div className='videos'>
         <div>
           <div className='videos-title'><h2>En ce moment</h2></div>
           <Slider {...setting}>
-            <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            <div key={2}><div className = 'video'><iframe title ='2' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            <div key={3}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            <div key={4}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            <div key={5}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            <div key={6}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
+            {
+              hotVideos.map((hotVideo, i) => {
+                return (
+                  <div key={i}><div className='video'><iframe id='video-iframe' title={hotVideo.title} width='100%' height='345' src={hotVideo.youtube_link} /></div></div>
+                )
+              })
+            }
           </Slider>
         </div>
       </div>
