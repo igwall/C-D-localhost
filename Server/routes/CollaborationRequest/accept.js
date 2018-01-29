@@ -1,29 +1,30 @@
 const Util = require('../../controllers/Util')
+const { requiresAdminLogin } = require('../../config/middlewares/authorizations')
 
 module.exports = (router, controller) => {
   /**
   * @swagger
   * /collaboration/{collaborationRequestId}:
-  *   delete:
+  *   put:
   *     tags:
   *       - Collaboration Requests
-  *     description: Delete a collaboration request
-  *     summary: DELETE a Collaboration Request
+  *     description: Accept a collaboration request
+  *     summary: ACCEPT a Collaboration Request
   *     produces:
   *       - application/json
   *     parameters:
   *       - name: collaborationRequestId
   *         type: string
-  *         description: The collaboration request id to delete
+  *         description: The collaboration request id to accept
   *         in: path
   *         required: true
   *     responses:
   *       201:
-  *         description: Message confirming the collaboration request has been deleted
+  *         description: Message confirming the collaboration request has been accepted
   *       500:
   *         description: Internal error
   */
-  router.put('/collaboration/:collaborationRequestId', function (req, res) {
+  router.put('/collaboration/:collaborationRequestId', [requiresAdminLogin], function (req, res) {
     let requiredParameter = ['collaborationRequestId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {

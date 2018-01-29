@@ -28,6 +28,13 @@ export const defaultCurrentUserState = {
   }
 }
 
+export const defaultCurrentAdminState = {
+  currentAdmin: {
+    username: '',
+    role: ''
+  }
+}
+
 export const defaultRoomsState = {
   rooms: {
     fetching: false,
@@ -48,6 +55,33 @@ export const defaultMaterialsState = {
 
 export const defaultRecipesState = {
   recipes: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
+export const defaultQuotesState = {
+  quotes: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
+export const defaultReferencesState = {
+  references: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    elements: []
+  }
+}
+
+export const defaultHotVideosState = {
+  hotVideos: {
     fetching: false,
     fetched: false,
     error: null,
@@ -123,5 +157,5 @@ export const defaultAdministratorsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState)
 export default createStore(reducer, { ...defaultState }, enhancer)

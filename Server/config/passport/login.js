@@ -17,7 +17,7 @@ function getUser (email, password) {
 function generateAccessToken (user) {
   if (user._id) {
     let payload = { userId: user._id }
-    let token = jwt.sign(payload, secretKey, { expiresIn: '1h' })
+    let token = jwt.sign(payload, secretKey)
     return token
   }
 }

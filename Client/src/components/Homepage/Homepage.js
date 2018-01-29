@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import Room from '../Room/Room'
 import {setRooms} from '../../store/actions/room.action'
 import SvgLines from 'react-mt-svg-lines'
-import { Link } from 'react-router-dom'
+import constants from '../../constants'
+import { Link, Redirect } from 'react-router-dom'
 
 @connect(store => {
   return {
@@ -16,10 +17,12 @@ export default class HomePage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      hovered: ''
+      hovered: '',
+      redirect: false
     }
     this.displayRoom = this.displayRoom.bind(this)
     this.setHover = this.setHover.bind(this)
+    this.goToLibrary = this.goToLibrary.bind(this)
   }
 
   componentDidMount () {
@@ -53,6 +56,10 @@ export default class HomePage extends React.Component {
     return (y - Math.sqrt(3) * 100)
   }
 
+  goToLibrary () {
+    this.setState({redirect: true})
+  }
+
   render () {
     const baseHeightTriangle = 395
     const baseHeightTrapeze = baseHeightTriangle + 40
@@ -61,16 +68,23 @@ export default class HomePage extends React.Component {
     const svgHeight = '500px'
     const svgWidth = '900px'
 
+    if (this.state.redirect) return (<Redirect push to="/library"/>)
+
     return (<div className='host'>
       <div className='sidebar'>
         <div className='sidebar-title'>Qu'est-ce que Compose & Danse ?</div>
         <div className='sidebar-text'>
-          Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris jlrhglzkehgkjgzhlzrhgiurhiurihgrieh vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. Ideoque etiam parietes arcanorum soli conscii timebantur.
+          {constants.DESCRIPTION_TEXT_SHORT}
         </div>
+        <Link to='/library'>
+          <div className='sidebar-more'>
+            [Lire la suite...]
+          </div>
+        </Link>
       </div>
       <div className='flat'>
         <div className='flat-text'>Cliquez sur une des pièces en surbrillance pour accéder à son contenu</div>
-        <SvgLines className='svg' animate={ true } duration={4000} timing='ease-out'>
+        <SvgLines className='svg' animate={ true } duration={10000} timing='ease-out'>
           <svg
             height={svgHeight}
             width={svgWidth}
@@ -80,9 +94,7 @@ export default class HomePage extends React.Component {
               {/* BOTTOM UPSIDE TRIANGLES */}
 
               {/* BIBLIOTHEQUE */}
-              <Link to ='/library'>
-                <path className='room' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} />
-              </Link>
+              <path className='room' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} onClick={this.goToLibrary}/>
 
               {/* CHAMBRE */}
               <path className='room' d={`M210 ${baseHeightTriangle} H 410 L 310 ${heightReference} Z`} style={ this.state.hovered === 'Chambre' ? { fill: 'rgba(255,0,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Chambre')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Chambre')} />

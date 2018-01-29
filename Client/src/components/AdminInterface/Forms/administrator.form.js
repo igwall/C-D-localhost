@@ -81,7 +81,7 @@ export default class AdministratorForm extends React.Component {
   render () {
     return (<div className='host'>
       <div className='form'>
-        <div className='form-title'>NOUVEL ADMINISTRATEUR</div>
+        <div className='form-title'>NOUVEAU MODÉRATEUR</div>
         <form onSubmit={this.submit.bind(this)}>
           {
             this.state.usernameExists

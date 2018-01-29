@@ -1,0 +1,38 @@
+version: "2"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+  mongoClientTemp:
+    image: mongo:latest
+    container_name: mongoClientTemp
+    links:
+      - mongo:mongo
+    command: mongo --host mongo --eval  "db.getSiblingDB('hut').createUser({user:'hut', pwd:'prello', roles:[{role:'readWrite',db:'hut'}]});db.getSiblingDB('hut_test').createUser({user:'hut', pwd:'prello', roles:[{role:'readWrite',db:'hut_test'}]});"
+    depends_on:
+      - mongo
+  api:
+    build: ./Server
+    container_name: hut_api
+    ports:
+      - "3333:3333"
+    links:
+      - mongo:mongo
+    depends_on:
+      - mongoClientTemp
+    environment:
+      - MONGODB_URL_DEV=mongodb://hut:prello@mongo:27017/hut
+  reactapp:
+    build: ./Client
+    container_name: hut_client
+    ports:
+      - "3000:3000"
+    links:
+      - api:api
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:3333

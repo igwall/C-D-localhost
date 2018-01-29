@@ -1,21 +1,21 @@
 import React from 'react'
 import styles from './Profile.styles'
-import {connect} from 'react-redux'
 import Select from 'react-select'
+import {connect} from 'react-redux'
 import 'react-select/dist/react-select.css'
 import { Link } from 'react-router-dom'
 import { setFetchedUser } from '../../store/actions/user.action'
 import { setMaterials } from '../../store/actions/material.action'
 
-@connect(store => {
+const stateMap = (state) => {
   return {
-    currentUser: store.currentUser,
-    userFetched: store.userFetched,
-    materials: store.materials.elements
+    currentUser: state.currentUser,
+    userFetched: state.userFetched,
+    materials: state.materials.elements
   }
-})
+}
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -156,3 +156,5 @@ export default class Profile extends React.Component {
     )
   }
 }
+
+export default connect(stateMap)(Profile)

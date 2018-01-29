@@ -5,6 +5,8 @@ const userController = {}
 
 userController.create = (user) => {
   return new Promise((resolve, reject) => {
+    const email = user.email.toLowerCase()
+    user.email = email
     user.provider = 'jwt'
     user.save((err, user) => {
       if (err) return reject(err) // Error details
@@ -39,6 +41,8 @@ userController.getUser = (id) => {
 
 userController.login = (userToConnect) => {
   return new Promise((resolve, reject) => {
+    const email = userToConnect.email.toLowerCase()
+    userToConnect.email = email
     User.load({
       where: { email: userToConnect.email },
       select: 'username email passwordHash'

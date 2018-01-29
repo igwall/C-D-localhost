@@ -3,7 +3,7 @@ import styles from './Header.styles'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
-import { isAuthenticated, logout } from '../../services/Authentication.services'
+import { logout, isAuthenticatedSimple } from '../../services/Authentication.services'
 import constants from '../../constants'
 import DropDown from '../UI/DropDown/DropDown'
 import Icon from '../UI/Icon/Icon'
@@ -29,7 +29,8 @@ export default class Header extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isAuthenticated: isAuthenticated()
+      isAuthenticatedSimple: isAuthenticatedSimple(),
+      redirectTo: ''
     }
   }
 
@@ -41,12 +42,12 @@ export default class Header extends React.Component {
 
   render () {
     const redirectTo = this.state.redirectTo
-    if (redirectTo) {
+    if (redirectTo && window.location.pathname !== redirectTo) {
       return (
-        <Redirect to={redirectTo} />
+        <Redirect to={redirectTo} state={{ from: redirectTo }} />
       )
     }
-    const isAuthenticated = this.state.isAuthenticated
+    const isAuthenticated = this.state.isAuthenticatedSimple
     return <div className='host'>
       <div className='navbar'>
         <div className='menu-button-group'>
@@ -84,20 +85,20 @@ export default class Header extends React.Component {
               orientation='left'
               menuElements={[
                 {
-                  action: null,
-                  placeholder: <Link to='/about'>À Propos</Link>
+                  action: () => { this.redirectTo('/about/') },
+                  placeholder: 'À Propos'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/contact'>Nous contacter</Link>
+                  action: () => { this.redirectTo('/contact/') },
+                  placeholder: 'Nous contacter'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/collaboration'>Demande de collaboration</Link>
+                  action: () => { this.redirectTo('/collaboration/') },
+                  placeholder: 'Demande de collaboration'
                 },
                 {
-                  action: null,
-                  placeholder: <Link to='/admin'>Administration</Link>
+                  action: () => { this.redirectTo('/admin/') },
+                  placeholder: 'Administration'
                 }
               ]}
             >

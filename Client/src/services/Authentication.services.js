@@ -29,6 +29,16 @@ export function isAuthenticated () {
   if (window.localStorage.getItem('hut_access_token') !== undefined &&
     window.localStorage.getItem('hut_access_token') !== null) {
     setTokenHeader()
+    return true
+  } else {
+    unsetTokenHeader()
+    return false
+  }
+}
+
+export function isAuthenticatedSimple () {
+  if (window.localStorage.getItem('hut_access_token') !== undefined &&
+  window.localStorage.getItem('hut_access_token') !== null) {
     setProfile()
     return true
   } else {
@@ -38,6 +48,7 @@ export function isAuthenticated () {
 }
 
 export function setTokenHeader () {
+  axios.defaults.headers.common['authorization'] = null
   axios.defaults.headers.common['authorization'] = `Bearer ${extractToken()}`
 }
 export function unsetTokenHeader () {
