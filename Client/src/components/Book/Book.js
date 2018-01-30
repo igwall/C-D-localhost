@@ -1,17 +1,91 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import styles from './Collaborator.styles'
+import styles from './Book.styles'
 
 @connect(store => {
   return {
     currentUser: store.currentUser
   }
 })
-export default class Collaborator extends React.Component {
+export default class Book extends React.Component {
+  static propTypes = {
+  }
+
+  static defaultProps = {
+  }
+
+  constructor (props) {
+    super(props)
+    this.state = {
+    }
+  }
+
+  componentDidMount () {
+  }
+
+  componentWillUnmount () {
+  }
+
   render () {
-    console.log(this.props.collaborator)
-    const collaborator = this.props.collaborator
+    const room = {
+      name: 'salon'
+    }
+    const room1 = {
+      name: 'chambre'
+    }
+    const room2 = {
+      name: 'cuisine'
+    }
+    const room3 = {
+      name: 'sdb'
+    }
+    const material = {
+      name: 'verre'
+    }
+    const material2 = {
+      name: 'PQ'
+    }
+    const material3 = {
+      name: 'bouteille'
+    }
+    const material4 = {
+      name: 'telephone'
+    }
+    const recipe = {
+      title: 'Tiki Tiki',
+      rooms: [room, room1, room2],
+      materials: [material, material2, material3, material4],
+      createdAt: '12/01/2018'
+    }
+    const recipe2 = {
+      title: 'Pic Pok',
+      rooms: [room2, room3, room1],
+      materials: [material, material2, material3, material4],
+      createdAt: '12/01/2018'
+    }
+    const recipe3 = {
+      title: 'Boom boom Boom',
+      rooms: [room2, room, room3],
+      materials: [material, material2, material3, material4],
+      createdAt: '12/01/2018'
+    }
+    const recipe4 = {
+      title: 'Mariachi',
+      rooms: [room3, room1, room2],
+      materials: [material, material2, material3, material4],
+      createdAt: '12/01/2018'
+    }
+
+    const collaborator = {
+      name: 'Lara Fabian',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Lara_Fabian_2012.jpg',
+      bio: '',
+      blog: 'http://lara-fabian-9.skyrock.com/',
+      video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+      recipes: [recipe, recipe2, recipe3, recipe4]
+
+    }
 
     return (
       <div className='host'>
@@ -20,14 +94,21 @@ export default class Collaborator extends React.Component {
             <img className = 'pic' src= {collaborator.picture} alt=''/>
           </div>
           <div className='collaboratorBio'>
-            {collaborator.bio}
+          Lara Fabian, née Lara Crokaert le 9 janvier 1970 à Etterbeek, en Belgique, est une auteure-compositrice-interprète belgo-canadienne. Elle reçoit la nationalité canadienne à l’âge de 26 ans, en 19964, et détient donc la double nationalité5.
+
+Chantant en plusieurs langues (français, anglais, allemand, néerlandais, italien, portugais, espagnol, russe, hébreu et turc), elle a vendu plus de 12 millions de disques6,7,8,9,10. En 2018, elle deviendra un coach à l'émission québécoise La voix.
           </div>
           <div className='collaboratorBlog'>
-            <p><a width = '20%' href={collaborator.link}>{collaborator.link}</a></p>
+            <p><a width = '20%' href={collaborator.blog}>{collaborator.blog}</a></p>
           </div>
         </div>
         <div className='leftSide'>
-          <div className='videos-title'><h2>{collaborator.firstname} {collaborator.lastname}</h2></div>
+          <div className= 'videos'>
+            <div>
+              <div className='videos-title'><h2>{collaborator.name}</h2></div>
+              <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='175' src={collaborator.video}></iframe></div></div>
+            </div>
+          </div>
           <div className='recipe'>
             <div className='recipeHead'>
               <h2>Recettes proposées</h2>
@@ -75,11 +156,6 @@ export default class Collaborator extends React.Component {
 
                 </tbody>
               </table>
-            </div>
-          </div>
-          <div className= 'videos'>
-            <div>
-              <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='175' src={collaborator.video}></iframe></div></div>
             </div>
           </div>
         </div>

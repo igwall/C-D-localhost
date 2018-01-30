@@ -6,7 +6,7 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  overflow-y: auto; 
+  overflow: hidden; 
   color: #fff;
   display: flex;
   align-items: first-baseline;
@@ -24,7 +24,7 @@ export default css`
   width: 70%;
   height: 100%;
   padding: 30px;
-  overflow-y: auto; 
+
 }
 .head {
   padding: 20px;
@@ -55,6 +55,17 @@ export default css`
   margin-right: 25%;
   font-size: 25px;
   padding-top: 5%;
+}
+
+.listChoose{
+  padding-top: 80px;
+  text-align: center;
+}
+
+.item{
+    padding-bottom: 4%;
+    font-size: 20px;
+    Font-Weight: Bold;
 }
 .site-description{
   display: inline-block;
@@ -169,8 +180,26 @@ th, td {
   text-align: left;    
 }
 
+.button {
+  font-size: 15px;
+  padding: 10px 0;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(0,0,0,0);
+}
 
+.button:hover {
+  background: rgba(255,255,255,0.2);
+}
 
+.button-text {
+  font-size: 20px;
+    Font-Weight: Bold;
+    padding-left: 20%;
+}
 
 
 `

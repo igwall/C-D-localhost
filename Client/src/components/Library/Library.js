@@ -3,16 +3,38 @@ import styles from './Library.styles'
 import {connect} from 'react-redux'
 import Collaborator from '../Collaborator/Collaborator'
 import {setCollaborators} from '../../store/actions/collaborators.action'
+import { setReferences, setHotVideos } from '../../store/actions/library.action'
+import News from './composent/News'
+import Outside from './composent/OutSide'
+import ComposeDanse from './composent/ComposeDanse'
+import Collaborators from './composent/Collaborators'
 
 @connect(store => {
   return {
-    collaborators: store.collaborators.elements
+    collaborators: store.collaborators.elements,
+    hotVideos: store.hotVideos.elements,
+    references: store.references.elements
   }
 })
 
 export default class Library extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      content: ''
+    }
+  }
   componentDidMount () {
     setCollaborators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setReferences().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setHotVideos().then(() => {
+      this.setState({content: 'news'})
     }).catch(err => {
       console.error(err)
     })
@@ -28,85 +50,75 @@ export default class Library extends React.Component {
     const {collaborators} = this.props
     this.displayCollaborator(collaborators.filter(collaborator => collaborator.id === id)[0])
   }
-  render () {
-    // const collaborators = this.props.collaborators
-    const collaborator = {
-      id: 0,
-      prenom: 'Toto'
+  displayNews () {
+    this.setState({content: 'news'})
+  }
+  displayOutSide () {
+    this.setState({content: 'out'})
+  }
+  displayComposeDanse () {
+    this.setState({content: 'composeDanse'})
+  }
+  displayCollaboratos () {
+    this.setState({content: 'collaborators'})
+  }
+
+  displayContent () {
+    const content = this.state.content
+    const {collaboratros, hotVideos, references} = this.props
+    switch (content) {
+      case 'news': {
+        return (
+          <News hotVideos={hotVideos} />
+        )
+      }
+      case 'out': {
+        return (
+          <Outside references={references}/>
+        )
+      }
+      case 'composeDanse': {
+        return (
+          <ComposeDanse />
+        )
+      }
+      case 'collaborators': {
+        return (
+          <Collaborators popoverManager={this.props.popoverManager} collaboratros={collaboratros}/>
+        )
+      }
+      default: {
+        return (
+          <div />
+        )
+      }
     }
-    const collaborators = [ collaborator, collaborator, collaborator, collaborator, collaborator, collaborator ]
-    collaborators[0].id = 1
-    const books = [ 1, 2, 3, 4, 5, 6, 7 ]
+  }
+  render () {
     return (<div className='host'>
       <div className = 'sideBarre'>
         <div className= 'admin-info'>
           <div className = 'picture'><img className = 'pic' src='https://media-exp2.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/07c/16c/3d00735.jpg' alt=''/></div>
           <div className = 'admin-name'><a href="/artist"> Muriel PIQUE </a></div>
         </div>
+        <div className='listChoose'>
+          <div className='button' onClick={() => this.displayComposeDanse()}>
+            <div className='button-text'>Qu'est ce que c'est compose & danse</div>
+          </div>
+          <div className='button' onClick={() => this.displayCollaboratos()}>
+            <div className='button-text'>Artistes invités</div>
+          </div>
+          <div className='button' onClick={() => this.displayOutSide()}>
+            <div className='button-text'>Ailleurs nous aimons...</div>
+          </div>
+          <div className='button' onClick={() => this.displayNews()}>
+            <div className='button-text'>En ce moment,</div>
+          </div>
+        </div>
       </div>
       <div className = 'main'>
         <h1>BIBLIOTHÈQUE</h1>
-        <div className='head'>
-
-          <div className='site-description'>
-            <div className = 'title'>Qu'est ce que c'est compose & danse</div>
-            <div className='textBody'> Sarah Belouezzane : Bonjour, pour l’entreprise la rupture conventionnelle est plus sûre juridiquement qu’un plan de sauvegarde de l’emploi qui, lui, repose principalement sur la jurisprudence. Il est beaucoup plus difficile de contester la première que le second et elle ne s’accompagne pas des mêmes obligations de reclassement et de formation que le PSE.
-
-Maestro : Les ruptures conventionnelles sont-elles aussi protectrices pour les salariés qu’un plan de sauvegarde de l’emploi ?
-
-S.B. : Elles peuvent être plus avantageuses financièrement mais pas plus protectrices. Plus difficiles à contester que le PSE, elles ont, par ailleurs, le défaut de priver la personne du CSP, le contrat de sécurisation professionnelle. Ce dispositif permet un suivi plus intensif des demandeurs d’emploi victimes d’un licenciement économique et leur assure, pendant un an, une indemnité plus importante que celle de base.
-
-Yolo : Mais les ruptures conventionnelles collectives ne seraient-elles pas un bon moyen de faire des plans sociaux déguisés ?
-
-S.B : Le gouvernement a normalement prévu des garde-fous : il faut, pour signer une RCC, la signature des syndicats représentant plus de 50 % des salariés. Il faut par ailleurs obtenir l’accord des services déconcentrés du ministère du travail pour chaque projet de RCC. Cela dit, les syndicats craignent que le système ne soit dévoyé. Pour eux, des employeurs mal intentionnés pourraient recourir à des pressions pour faire signer ce type de plans par les syndicats et éviter le plan social, plus contraignant.
-En savoir plus sur http://www.lemonde.fr/politique/article/2018/01/09/le-salarie-n-aura-pas-droit-au-contrat-de-securisation-qui-permet-un-suivi-plus-intensif_5239300_823448.html#3DoLHM7QHHjCPIlL.99 </div>
-          </div>
-        </div>
-        <div className="footer">
-          <div className = 'collaborator-list'>
-            <div className = 'collaborator-table-title'>  Artistes invités </div>
-            <ul>
-              {
-                collaborators.map((collaborator, i) =>
-                  <li key={i}>
-                    <a onClick={() => this.chooseCollaborator('1')}><div className = 'collaborator'>
-                      <div className = 'collaborator-picture'>
-                      </div>
-                      <div className="collaborator-info">
-                        <div className="collaborator-name">Lara Fabian</div>
-                        <div className = "collaborator-description">Artiste Enseignant Chercheur</div>
-                      </div>
-                    </div></a>
-                  </li>
-                )
-              }
-            </ul>
-          </div>
-        </div>
-        <div className = 'references-list'>
-          <div className = 'references-table-title'>  Liste des references </div>
-          <div className='reference'>
-            <table>
-              <thead>
-                <tr>
-                  <th> Nom </th>
-                  <th> Description </th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  books.map((book, i) =>
-                    <tr key={i}>
-                      <td>Bill Gates</td>
-                      <td>55577854</td>
-                    </tr>
-                  )
-                }
-              </tbody>
-            </table>
-          </div>
-
-        </div>
+        {this.displayContent()}
       </div>
       <style jsx>{styles}</style>
     </div>

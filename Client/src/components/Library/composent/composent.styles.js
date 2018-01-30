@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css'
-import constants from '../../constants'
+import constants from '../../../constants'
 
 export default css`
 .host {
@@ -8,7 +8,6 @@ export default css`
   background-color: ${constants.PRIMARY_COLOR};
   color: #fff;
   align-items: first-baseline;
-  overflow-x: hidden;
 
 }
 
@@ -32,6 +31,68 @@ export default css`
 .headRightSide{
   diplay: inline-block;
   width : 65%;
+}
+.textBody {
+  margin-top: 10px;
+  text-align: justify;
+  
+ }
+ .collaborator-table-title{
+  text-align: center;
+  margin-right: 74%;
+  padding-bottom: 8%;
+  Font-Weight: Bold;
+  font-size: 20px;
+  
+ 
+}
+.collaborator-list{
+  display: inline-block;
+  width: 100%;
+  padding-right: 5%;
+  
+}
+
+.collaborator {
+  display: flex
+  align-items: center;
+}
+
+
+.collaborator-picture {
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 8px;
+  width: 70px;
+  height: 55px;
+}
+
+.collaborator-name {
+  color: #bd4141e0;
+}
+
+.collaborator-description{
+  font-size: 12px;
+  color: #dedbddd6;
+}
+
+.collaborator-info
+{
+  display: inline-block;
+  margin-left: 7%;
+}
+
+ ul {
+  max-height: 256px;
+  
+    
+}
+ul {
+  overflow-y: auto;
+}
+
+li {
+  border: 1px solid white;
 }
 
 .artistPicture {
@@ -236,5 +297,72 @@ th, td {
 }
 .audio-label{
   display: inline-block;
+}
+
+.video-label{
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.link-container {
+  height: 100%;
+  width: 100%;
+}
+
+.element-infos {
+  padding: 5px;
+  flex: 3;
+}
+
+.element:hover {
+  transform: translateY(-5px);
+}
+
+.element-picture {
+  display: inline-block;
+  vertical-align: top;
+  height: 75px;
+  width: 75px;
+  background: ${constants.PRIMARY_COLOR};
+}
+
+.element-description {
+  position: relative;
+  display: inline-block;
+  min-height: 75px;
+  vertical-align: top;
+  padding: 0 10px;
+}
+
+.element-title {
+  font-size: 17px;
+}
+
+.element-other {
+  color: ${constants.TEXT_SECONDARY_COLOR}
+}
+
+.element-other, .element-date {
+  font-size: 12px;
+}
+
+.element-text {
+  font-size: 15px;
+  font-style: italic;
+  padding: 10px;
+  padding-bottom: 30px;
+}
+.list-element {
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+  background: ${constants.SECONDARY_COLOR};
+  box-shadow: 2px 2px 4px rgba(255,255,255,0.4);
 }
 `
