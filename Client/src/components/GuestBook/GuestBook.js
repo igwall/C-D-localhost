@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from './GuestBook.styles'
 import {connect} from 'react-redux'
-import {setRooms} from '../../store/actions/room.action'
+import {setComments} from '../../store/actions/comment.action'
 import Button from '../UI/Button/Button'
-// import EmojiField from 'emoji-picker-textfield'
 
 @connect(store => {
   return {
@@ -12,7 +11,7 @@ import Button from '../UI/Button/Button'
 
 export default class GuestBook extends React.Component {
   componentDidMount () {
-    setRooms().then(() => {
+    setComments().then(() => {
     }).catch(err => {
       console.error(err)
     })
