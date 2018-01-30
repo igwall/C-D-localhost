@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Artist.styles'
 import {connect} from 'react-redux'
 import Slider from 'react-slick'
+import Book from '../Collaborator/Collaborator'
 import {setArtist} from '../../store/actions/artist.action'
 
 @connect(store => {
@@ -17,11 +18,30 @@ export default class Artist extends React.Component {
       console.error(err)
     })
   }
-  show (id, suit) {
+  show (id, suit, moins) {
     if (document.getElementById(id)) {
       document.getElementById(id).style.display = 'block'
       document.getElementById(suit).style.display = 'none'
+      document.getElementById(moins).style.display = 'block'
     }
+  }
+
+  hidden (id, suit, moins) {
+    if (document.getElementById(id)) {
+      document.getElementById(id).style.display = 'none'
+      document.getElementById(suit).style.display = 'block'
+      document.getElementById(moins).style.display = 'none'
+    }
+  }
+  displayBook (book) {
+    this.props.popoverManager.setRenderedComponent(
+      <Book {...book} dismissPopover={this.props.popoverManager.dismissPopover} />
+    )
+    this.props.popoverManager.displayPopover()
+  }
+  chooseBook (id) {
+    const {books} = this.props.artist.books
+    this.displayBook(books.filter(book => book.id === id)[0])
   }
   render () {
     const settings = {
@@ -51,8 +71,12 @@ export default class Artist extends React.Component {
     }
     const nom = 'Muriel'
     const prenom = 'PIQUE'
-    const bio = 'Zinédine Yazid Zidane, né le 23 juin 1972 à Marseille, est un footballeur international français devenu entraîneur. Durant sa carrière de joueur, entre 1988 et 2006, il évolue au poste de milieu offensif, comme meneur de jeu. Depuis 2016, il est entraîneur du Real Madrid, où il a terminé sa carrière de joueurr  Surnommé « Zizou », il est considéré comme l un des plus grands joueurs de l histoire du football. Doté d un profil atypique, il remporte de nombreux titres, tant avec l équipe de France qu avec les clubs où il a joué, comme les Girondins de Bordeaux, la Juventus de Turin et le Real Madrid. Il a, de plus, été nommé meilleur joueur de l année au moins une fois dans chaque championnat où il a évolué.  Zidane est selon la BBC le meilleur joueur européen de l histoire. Il est désigné meilleur joueur européen des cinquante dernières années par l UEFA en 2004. Il est cité parmi les 125 meilleurs joueurs mondiaux encore vivants en 2004, dans un classement conjoint de Pelé et de la FIFA. Il est à trois reprises nommé meilleur joueur mondial de l année par la FIFA, en 1998, 2000 et 2003, et remporte le Ballon d or en 1998. Il est par deux fois classé second meilleur joueur français de tous les temps par France Football. En 2011, toujours par l UEFA, il est élu meilleur joueur de la Ligue des champions des vingt dernières années. Membre de l équipe UEFA du xxie siècle, du Onze des Légendes de l Euro (meilleure équipe de l histoire du Championnat d Europe), de la FIFA World Cup Dream Team (meilleure équipe de l histoire de la Coupe du monde) et de la Dream Team World Soccer (meilleure équipe de l histoire), Zinédine Zidane a, en outre, été élu meilleur joueur de la décennie 2000 par Marca, Sports Illustrated, Fox Sports, ESPN et Don Balón.'
-    const books = [ 1, 2, 3, 4, 5, 6 ]
+    const bio = 'Zinédine Yazid Zidane, né le 23 juin 1972 à Marseille, est un footballeur international français devenu entraîneur. Durant sa carrière de joueur, entre 1988 et 2006, il évolue au poste de milieu offensif, comme meneur de jeu. Depuis 2016, il est entraîneur du Real Madrid, où il a terminé sa carrière de joueurr  Surnommé « Zizou » '
+    const book = {
+      id: 0,
+      title: '- Aleph, Flammarion, 2011'
+    }
+    const books = [ book, book, book, book, book, book ]
     const artist = {
       nom: nom,
       prenom: prenom,
@@ -70,15 +94,37 @@ export default class Artist extends React.Component {
           <div className = 'artistAudio'></div>
         </div>
         <div className='headRightSide'>
+          <div className = 'Bio-title'><h2>  Biographie </h2></div>
           <div className = 'artistBio'> {artist.bio}
-            <div className='LireSuite' ><p id='suit' onClick={() => this.show('next', 'suit')}>Lire la suite...</p></div>
-            <p className= 'suite' id='next'>Bonjour à tous,
-
+            <p className='LireSuite' id='suit' onClick={() => this.show('next', 'suit', 'moins')}>Lire la suite...</p>
+            <p className= 'suite' id='next'>
+            en 2004. Il est cité parmi les 125 meilleurs joueurs mondiaux encore vivants en 2004, dans un classement conjoint de Pelé et de la FIFA. Il est à trois reprises nommé meilleur joueur mondial de l année par la FIFA, en 1998, 2000 et 2003, et remporte le Ballon d or en 1998. Il est par deux fois classé second meilleur joueur français de tous les temps par France Football. En 2011, toujours par l UEFA, il est élu meilleur joueur de la Ligue des champions des vingt dernières années. Membre de l équipe UEFA du xxie siècle, du Onze des Légendes de l Euro (meilleure équipe de l histoire du Championnat d Europe), de la FIFA World Cup Dream Team (meilleure équipe de l histoire de la Coupe du monde) et de la Dream Team World Soccer (meilleure équipe de l histoire), Zinédine Zidane a, en outre, été élu meilleur joueur de la décennie 2000 par Marca, Sports Illustrated, Fox Sports, ESPN et Don Balón.
+            Bonjour à tous,
 Vous trouverez ci-joint la composition de votre jury de soutenance de PIFE ...
 J'en profite pour vous rappeler que vous devez "créer" votre fiche projet PIFE sur Poly + pour pouvoir y déposer vos 3 livrables : rapport de synthèse, rapport technique et poster. nb : n'attendez pas le dernier jour pour créer cette fiche car il faut ensuite que je valide le projet sur Poly + pour que vous puissiez déposer ces documents.
 Last but not least, n'oubliez pas le pot/buffet offert par le Département pour fêter votre entrée dans la vie active. Il aura lieu le jeudi 8 février à partir de 18H30 en SC201. Nous vous attendons nombreux ! Ce sera l'occasion de verser une petite larme et de faire un bon repas ;).
-N'hésitez-pas à revenir vers moi si vous avez des questions.</p>
+N'hésitez-pas à revenir vers moi si vous avez des questions.
+            </p>
+            <div className='LireMoins' id='moins'><p id='moins' onClick={() => this.hidden('next', 'suit', 'moins')}>Lire Moins.....</p></div>
+
           </div>
+          <div className= 'Demarche'>
+            <div className = 'Bio-title'><h2>  Démarche artistique </h2></div>
+            <div className = 'artistBio'> {artist.bio}
+              <p className='LireSuite' id='suit1' onClick={() => this.show('next1', 'suit1', 'moins1')}>Lire la suite...</p>
+              <p className= 'suite' id='next1'>
+            en 2004. Il est cité parmi les 125 meilleurs joueurs mondiaux encore vivants en 2004, dans un classement conjoint de Pelé et de la FIFA. Il est à trois reprises nommé meilleur joueur mondial de l année par la FIFA, en 1998, 2000 et 2003, et remporte le Ballon d or en 1998. Il est par deux fois classé second meilleur joueur français de tous les temps par France Football. En 2011, toujours par l UEFA, il est élu meilleur joueur de la Ligue des champions des vingt dernières années. Membre de l équipe UEFA du xxie siècle, du Onze des Légendes de l Euro (meilleure équipe de l histoire du Championnat d Europe), de la FIFA World Cup Dream Team (meilleure équipe de l histoire de la Coupe du monde) et de la Dream Team World Soccer (meilleure équipe de l histoire), Zinédine Zidane a, en outre, été élu meilleur joueur de la décennie 2000 par Marca, Sports Illustrated, Fox Sports, ESPN et Don Balón.
+            Bonjour à tous,
+Vous trouverez ci-joint la composition de votre jury de soutenance de PIFE ...
+J'en profite pour vous rappeler que vous devez "créer" votre fiche projet PIFE sur Poly + pour pouvoir y déposer vos 3 livrables : rapport de synthèse, rapport technique et poster. nb : n'attendez pas le dernier jour pour créer cette fiche car il faut ensuite que je valide le projet sur Poly + pour que vous puissiez déposer ces documents.
+Last but not least, n'oubliez pas le pot/buffet offert par le Département pour fêter votre entrée dans la vie active. Il aura lieu le jeudi 8 février à partir de 18H30 en SC201. Nous vous attendons nombreux ! Ce sera l'occasion de verser une petite larme et de faire un bon repas ;).
+N'hésitez-pas à revenir vers moi si vous avez des questions.
+              </p>
+              <div className='LireMoins' id='moins1'><p id='moins' onClick={() => this.hidden('next1', 'suit1', 'moins1')}>Lire Moins.....</p></div>
+
+            </div>
+          </div>
+
           <div className='artistDiplome'>
           bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
           </div>
@@ -92,8 +138,8 @@ N'hésitez-pas à revenir vers moi si vous avez des questions.</p>
               <ul>
                 {
                   artist.books.map((book, i) =>
-                    <div className='iteem'><li key={i}>
-                  - Aleph, Flammarion, 2011
+                    <div onClick={() => this.displayBook(book.id)} className='iteem'><li key={i}>
+                      {book.title}
                     </li>
                     </div>
                   )
@@ -102,7 +148,7 @@ N'hésitez-pas à revenir vers moi si vous avez des questions.</p>
             </div>
           </div>
           <div className = 'references-list'>
-            <div className = 'references-table-title'><h2>  Textes et publications </h2></div>
+            <div className = 'references-table-title'><h2>  Communications écrite </h2></div>
             <div className='reference'>
               <table>
                 <thead>

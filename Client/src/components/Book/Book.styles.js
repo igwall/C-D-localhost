@@ -10,8 +10,7 @@ export default css`
 }
 .rightSide{
   display: inline-block;
-  width:40%;
-  min-height: 500px;
+  width:40%
   background-color: ${constants.SECONDARY_COLOR};
 }
 .collaboratorPicture
@@ -55,7 +54,7 @@ export default css`
 
 .videos-title{
   padding-top: 5%
-  padding-bottom: 2%;
+  padding-bottom: 5%;
   margin-left: 4%;
   font-size: 20px;
   font-weight: bolder;
@@ -66,10 +65,10 @@ export default css`
   padding-top: 2%;
 }
 .recipe{
-  padding-top :3%;
+  padding-top :8%;
   padding-left :10%;
   padding-right :10%;
-  padding-bottom :10%;
+  padding-bottom :2%;
 }
 .recipeHead{
   padding-bottom :2%;
@@ -77,7 +76,7 @@ export default css`
 }
 .recipeTable{
   width:100%; 
-  max-height:307px;
+  height:250px; 
   overflow:auto;
 }
 
