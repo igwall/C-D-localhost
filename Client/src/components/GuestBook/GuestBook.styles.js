@@ -7,14 +7,45 @@ export default css`
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
   color: #fff;
-  display: inline-block;
+  overflow: hidden; 
+  display: flex;
   align-items: first-baseline;
   font-size: 20px;
+}
+.sideBarre{
+
+  height: 100%;
+  width: 30%;
+  min-width: 400px;
+  padding: 0 15px;
+  background: ${constants.SECONDARY_COLOR};
+  overflow: auto;
+
+}
+.Main
+{
+  width: 70%;
+  height: 100%;
+  padding: 30px;
+  overflow: auto;
+
 }
 .head{
   width: 100%;
 
 }
+
+.PageTitle{
+  padding-top: 20%;
+  padding-left: 35%;
+  padding-bottom: 10%;
+}
+
+.Description{
+  padding: 5%;
+  text-align: justify;
+}
+
 .comments{
   padding-top :4%;
   padding-left :10%;
@@ -23,7 +54,6 @@ export default css`
 }
 .commentsHead{
   padding-bottom :2%;
-  padding-left: 5%;
 }
 .commentTable{
   width:100%; 
@@ -36,9 +66,13 @@ table {
   border-collapse: collapse;
 }
 td, th {
+  
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 2px;
+}
+tr{
+  height : 75px;
 }
 tr:nth-child(even) {
   background-color: ${constants.SECONDARY_COLOR};
@@ -47,7 +81,9 @@ tr:nth-child(even) {
   padding: 5px;
   flex: 3;
 }
-
+.element{
+  
+}
 .element:hover {
   transform: translateY(-5px);
 }
@@ -62,13 +98,13 @@ tr:nth-child(even) {
   position: relative;
   display: inline-block;
   width: 80%;
-  height: 75px;
+  height: 50px;
   vertical-align: top;
   padding: 0 10px;
 }
 
 .element-title {
-  font-size: 17px;
+  font-size: 11px;
 }
 
 .element-other {
@@ -79,13 +115,14 @@ tr:nth-child(even) {
   font-size: 12px;
 }
 .element-text {
-  font-size: 15px;
+  font-size: 12px;
   font-style: italic;
-  padding: 10px;
-  padding-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .element-date {
   position: absolute;
+  font-size: 8px;
   bottom: 0;
   white-space: nowrap;
 }
@@ -130,7 +167,7 @@ input {
 
 textarea {
   width: 100%;
-  height: 200px;
+  height: 120px;
   background-color: #eee;
   border: 1px solid rgba(0,0,0,0.2);
   padding: 8px;

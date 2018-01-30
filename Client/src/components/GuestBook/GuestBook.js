@@ -82,53 +82,62 @@ export default class GuestBook extends React.Component {
     const comments = [ comment, comment1, comment2, comment3, comment4, comment5 ]
 
     return (<div className='host'>
-      <div className='head'>
-        <div className='comments'>
-          <div className='commentsHead'>
-            <h2>Livre d'or</h2>
-          </div>
-          <div className='commentTable'>
-            <table>
-              <tbody>
-                {
-                  comments.map((comment, i) => {
-                    return (
-                      <tr>
-                        <td>
-                          <div className='element-infos'>
-                            <div className='element-picture'><img src= {comment.owner.pic} alt='' width='40px' max-height='40px' /></div>
-                            <div className='element-description'>
-                              <div className='element-name'>{comment.owner.name}</div>
-                              <div className='element-text'>{comment.text}
-                              </div>
-                              <div className='element-date'>Publié le: {(comment.createdAt)}</div>
-                            </div>
-
-                          </div></td>
-                      </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div className = 'sideBarre'>
+        <div className='PageTitle'><h1>Livre d'or</h1></div>
+        <div className='Description'> Un concept qui se développe petit à petit sur différents sites : les champs forment un texte à trous cohérent, que l’utilisateur doit remplir. Un bon moyen de faire participer activement l’utilisateur, sans devoir remplir un formulaire rébarbatif. </div>
       </div>
-      <div className='body'>
-        <div className='form-column form-column-right'>
-          <div className='input-group'>
-            <div className='input-label'>Laisser votre avis </div>
-            <textarea type='text' placeholder='(20 caractères min...)' ref={i => { this.motivation = i }} onChange={this.checkMotivation} />
-          </div>
-          <div className='Button'>
-            <Button
-              bgColor= 'green'
-              hoverBgColor='#58FAAC'
-            >Envoyer</Button>
+      <div className= 'Main'>
+        <div className='head'>
 
+          <div className='comments'>
+            <div className='commentsHead'>
+              <div className='input-label'>Avis des utilisateurs </div>
+            </div>
+            <div className='commentTable'>
+              <table>
+                <tbody>
+                  {
+                    comments.map((comment, i) => {
+                      return (
+                        <tr>
+                          <td>
+                            <div className='element'>
+                              <div className='element-infos'>
+                                <div className='element-picture'><img src= {comment.owner.pic} alt='' width='40px' max-height='40px' /></div>
+                                <div className='element-description'>
+                                  <div className='element-title'>{comment.owner.name}</div>
+                                  <div className='element-text'>{comment.text}
+                                  </div>
+                                  <div className='element-date'>Publié le: {(comment.createdAt)}</div>
+                                </div>
+
+                              </div>
+                            </div></td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+        <div className='body'>
+          <div className='form-column form-column-right'>
+            <div className='input-group'>
+              <div className='input-label'>Laisser votre avis </div>
+              <textarea type='text' placeholder='(20 caractères min...)' ref={i => { this.motivation = i }} onChange={this.checkMotivation} />
+            </div>
+            <div className='Button'>
+              <Button
+                bgColor= 'green'
+                hoverBgColor='#58FAAC'
+              >Envoyer</Button>
 
+            </div>
+          </div>
+
+        </div>
       </div>
       <style jsx>{styles}</style>
     </div>
