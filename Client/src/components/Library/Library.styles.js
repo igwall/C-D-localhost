@@ -6,17 +6,20 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  overflow: hidden; 
   color: #fff;
+  overflow: hidden; 
   display: flex;
   align-items: first-baseline;
+  font-size: 20px;
 }
 .sideBarre{
 
-  width: 30%;
-  background-color: #333;
   height: 100%;
-  
+  width: 30%;
+  min-width: 400px;
+  padding: 0 15px;
+  background: ${constants.SECONDARY_COLOR};
+  overflow: auto;
 
 }
 .main
@@ -24,6 +27,7 @@ export default css`
   width: 70%;
   height: 100%;
   padding: 30px;
+  overflow: auto;
 
 }
 .head {
@@ -183,6 +187,7 @@ th, td {
 .button {
   font-size: 15px;
   padding: 10px 0;
+  padding-left: 20%;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -196,9 +201,7 @@ th, td {
 }
 
 .button-text {
-  font-size: 20px;
-    Font-Weight: Bold;
-    padding-left: 20%;
+  
 }
 
 

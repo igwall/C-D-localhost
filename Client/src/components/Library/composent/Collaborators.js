@@ -37,9 +37,8 @@ export default class News extends React.Component {
 
       <div className= 'videos'>
         <div>
-          <div className='videos-title'><h2>Collaborateurs</h2></div>
+          <div className='videos-title'><h2>Artistes invités</h2></div>
           <div className = 'collaborator-list'>
-            <div className = 'collaborator-table-title'>  Artistes invités </div>
             <ul>
               {
                 collaborators.map((collaborator, i) =>

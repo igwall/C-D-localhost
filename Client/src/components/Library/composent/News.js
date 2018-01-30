@@ -26,7 +26,7 @@ export default class News extends React.Component {
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' />
       <div className='videos'>
         <div>
-          <div className='videos-title'><h2>En ce moment</h2></div>
+          <div className='videos-title'><h2>En ce moment  ({hotVideos.length} videos)</h2></div>
           <Slider {...setting}>
             {
               hotVideos.map((hotVideo, i) => {

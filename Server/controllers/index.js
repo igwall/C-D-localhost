@@ -8,6 +8,7 @@ const collaboratorController = require('./collaboratorController')
 const quoteController = require('./quoteController')
 const referenceController = require('./referenceController')
 const hotVideoController = require('./hotVideoController')
+const mailController = require('./mailController')
 
 module.exports = {
   roomController: roomController,
@@ -19,5 +20,6 @@ module.exports = {
   collaboratorController: collaboratorController,
   quoteController: quoteController,
   referenceController: referenceController,
-  hotVideoController: hotVideoController
+  hotVideoController: hotVideoController,
+  mailController: mailController
 }

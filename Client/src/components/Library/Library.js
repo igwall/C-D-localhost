@@ -103,16 +103,16 @@ export default class Library extends React.Component {
         </div>
         <div className='listChoose'>
           <div className='button' onClick={() => this.displayComposeDanse()}>
-            <div className='button-text'>Qu'est ce que c'est compose & danse</div>
+            <div className='button-text'>QU'EST CE QUE C'EST COMPOSE & DANSE</div>
           </div>
           <div className='button' onClick={() => this.displayCollaboratos()}>
-            <div className='button-text'>Artistes invités</div>
+            <div className='button-text'>ARTISTES INVITES</div>
           </div>
           <div className='button' onClick={() => this.displayOutSide()}>
-            <div className='button-text'>Ailleurs nous aimons...</div>
+            <div className='button-text'>AILLEURS NOUS AIMONS...</div>
           </div>
           <div className='button' onClick={() => this.displayNews()}>
-            <div className='button-text'>En ce moment,</div>
+            <div className='button-text'>EN CE MOMENT</div>
           </div>
         </div>
       </div>
