@@ -183,7 +183,7 @@ export default class RecipeRequestForm extends React.Component {
               ? <div className='error-panel'>
                 <div className='error-content'>
                   <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='error-message'>Cette recette existe déjà. Choisissez un autre titre.</div>
+                  <div className='error-message'>Cette composition existe déjà. Choisissez un autre titre.</div>
                 </div>
               </div>
               : undefined
@@ -201,11 +201,11 @@ export default class RecipeRequestForm extends React.Component {
           <div className='form-group'>
             <div className='form-column form-column-left'>
               <div className='input-group'>
-                <div className='input-label'>Nom de la recette</div>
+                <div className='input-label'>Nom de la composition</div>
                 <input type='text' placeholder='Lapin à la moutarde' ref={i => { this.title = i }} onChange={this.checkTitle} />
               </div>
               <div className='input-group'>
-                <div className='input-label'>Description de la recette</div>
+                <div className='input-label'>Description de la composition</div>
                 <textarea type='text' placeholder='Description et objectifs de la recette...' ref={i => { this.description = i }} onChange={this.checkDescription} />
               </div>
               <div className='input-group'>
@@ -215,7 +215,7 @@ export default class RecipeRequestForm extends React.Component {
             </div>
             <div className='form-column form-column-right'>
               <div className='input-group'>
-                <div className='input-label'>Ingrédients (5 au max)</div>
+                <div className='input-label'>Composants (5 au max)</div>
                 <div className='select'>
                   <Select
                     id='material-select'
@@ -223,7 +223,7 @@ export default class RecipeRequestForm extends React.Component {
                     closeOnSelect={false}
                     removeSelected
                     simpleValue
-                    placeholder='Sélectionnez un ou plusieurs ingrédients...'
+                    placeholder='Sélectionnez un ou plusieurs composants...'
                     value={selectedMaterials}
                     onChange={this.handleSelectMaterialChange.bind(this)}
                     options={selectMaterials}

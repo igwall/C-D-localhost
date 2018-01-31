@@ -175,14 +175,14 @@ export default class RecipeForm extends React.Component {
 
     return (<div className='host'>
       <div className='form'>
-        <div className='form-title'>NOUVELLE RECETTE</div>
+        <div className='form-title'>NOUVELLE COMPOSITION</div>
         <form className='form-large' onSubmit={this.submit}>
           {
             !this.state.freeTitle
               ? <div className='error-panel'>
                 <div className='error-content'>
                   <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='error-message'>Cette recette existe déjà. Choisissez un autre titre.</div>
+                  <div className='error-message'>Cette composition existe déjà. Choisissez un autre titre.</div>
                 </div>
               </div>
               : undefined
@@ -192,7 +192,7 @@ export default class RecipeForm extends React.Component {
               ? <div className='validation-panel'>
                 <div className='validation-content'>
                   <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='validation-message'>La recette "{this.state.added}" a été ajouté avec succès !</div>
+                  <div className='validation-message'>La composition "{this.state.added}" a été ajouté avec succès !</div>
                 </div>
               </div>
               : undefined
@@ -200,21 +200,21 @@ export default class RecipeForm extends React.Component {
           <div className='form-group'>
             <div className='form-column form-column-left'>
               <div className='input-group'>
-                <div className='input-label'>Nom de la recette</div>
+                <div className='input-label'>Nom de la composition</div>
                 <input type='text' placeholder='Lapin à la moutarde' ref={i => { this.title = i }} onChange={this.checkTitle} />
               </div>
               <div className='input-group'>
-                <div className='input-label'>Description de la recette</div>
-                <textarea type='text' placeholder='Description et objectifs de la recette...' ref={i => { this.description = i }} onChange={this.checkDescription} />
+                <div className='input-label'>Description de la composition</div>
+                <textarea type='text' placeholder='Description et objectifs de la composition...' ref={i => { this.description = i }} onChange={this.checkDescription} />
               </div>
               <div className='input-group'>
                 <div className='input-label'>Consignes</div>
-                <textarea type='text' placeholder='Les consignes de la recette, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
+                <textarea type='text' placeholder='Les consignes de la composition, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
               </div>
             </div>
             <div className='form-column form-column-right'>
               <div className='input-group'>
-                <div className='input-label'>Ingrédients (5 au max)</div>
+                <div className='input-label'>Composants (5 au max)</div>
                 <div className='select'>
                   <Select
                     id='material-select'
@@ -222,7 +222,7 @@ export default class RecipeForm extends React.Component {
                     closeOnSelect={false}
                     removeSelected
                     simpleValue
-                    placeholder='Sélectionnez un ou plusieurs ingrédients...'
+                    placeholder='Sélectionnez un ou plusieurs composants...'
                     value={selectedMaterials}
                     onChange={this.handleSelectMaterialChange.bind(this)}
                     options={selectMaterials}
@@ -268,7 +268,7 @@ export default class RecipeForm extends React.Component {
               block
               disabled={!this.isFormValid()}
               onClick={() => this.submit()}>
-              AJOUTER RECETTE
+              AJOUTER COMPOSITION
             </Button>
           </div>
         </form>

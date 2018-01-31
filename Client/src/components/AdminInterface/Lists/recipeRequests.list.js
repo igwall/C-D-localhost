@@ -161,9 +161,9 @@ export default class RecipeRequestsListAdmin extends React.Component {
   displayConfirmDelete (recipe) {
     this.props.popoverManager.setRenderedComponent(
       <div className='popup'>
-        <div className='popup-title'>SUPPRIMER PROPOSITION DE RECETTE</div>
+        <div className='popup-title'>SUPPRIMER PROPOSITION DE COMPOSITION</div>
         <div className='separator' />
-        <div className='popup-text'>Voulez-vous vraiment supprimer la proposition de recette "{recipe.title}" ?</div>
+        <div className='popup-text'>Voulez-vous vraiment supprimer la proposition de composition "{recipe.title}" ?</div>
         <div className='popup-actions'>
           <div className='action action-cancel'>
             <Button
@@ -259,7 +259,7 @@ export default class RecipeRequestsListAdmin extends React.Component {
             <Select
               name='ingredient-select'
               value={selectedMaterials}
-              placeholder='Trier par ingrédients'
+              placeholder='Trier par composants'
               multi
               closeOnSelect={false}
               onChange={this.handleSelectMaterialChange.bind(this)}
@@ -297,7 +297,7 @@ export default class RecipeRequestsListAdmin extends React.Component {
                             })
                           }
                           </div>
-                          <div className='element-other'>Ingrédients : {
+                          <div className='element-other'>Composants : {
                             recipe.materials.map((material, i) => {
                               let text = material.name
                               if (i + 1 !== recipe.materials.length) text = text + ', '

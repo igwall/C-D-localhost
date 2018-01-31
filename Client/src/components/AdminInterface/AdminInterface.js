@@ -229,15 +229,15 @@ export default class AdminInterface extends React.Component {
           </div>
         </div>
         <div className='panel panel-materials'>
-          <div className='panel-title'>Ingrédients</div>
+          <div className='panel-title'>Composants</div>
           <div className='panel-buttons'>
             <div className='button' onClick={() => this.displayMaterialsList()}>
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES INGRÉDIENTS</div>
+              <div className='button-text'>AFFICHER LES COMPOSANTS</div>
             </div>
             <div className='button' onClick={() => this.displayMaterialForm()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVEL INGRÉDIENT</div>
+              <div className='button-text'>NOUVEAU COMPOSANT</div>
             </div>
           </div>
         </div>

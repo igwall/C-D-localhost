@@ -155,7 +155,7 @@ export default class MyRecipesList extends React.Component {
             <Select
               name='ingredient-select'
               value={selectedMaterials}
-              placeholder='Trier par ingrédients'
+              placeholder='Trier par composants'
               multi
               closeOnSelect={false}
               onChange={this.handleSelectMaterialChange.bind(this)}
@@ -193,7 +193,7 @@ export default class MyRecipesList extends React.Component {
                             })
                           }
                           </div>
-                          <div className='element-other'>Ingrédients : {
+                          <div className='element-other'>Composants : {
                             recipe.materials.map((material, i) => {
                               let text = material.name
                               if (i + 1 !== recipe.materials.length) text = text + ', '

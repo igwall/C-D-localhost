@@ -70,11 +70,12 @@ export default css`
   background: ${constants.NAVBAR_COLOR};
   color: #eee;
   font-size: 15px;
-  height: 45px;
+  min-height: 45px;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  overflow: auto;
 }
 
 .menu-button-group {
@@ -107,7 +108,6 @@ export default css`
 
 .menu-button-text{
   display: inline-block;  
-  font-weight: bold;
 }
 
 .sign-button-group {
