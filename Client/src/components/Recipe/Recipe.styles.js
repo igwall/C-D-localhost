@@ -10,7 +10,7 @@ export default css`
   overflow: hidden; 
   display: flex;
   align-items: first-baseline;
-  font-size: 20px;
+  font-size: 16px;
 }
 .sideBarre{
   height: 100%;
@@ -37,11 +37,79 @@ export default css`
   padding-top: 10%;
   text-align: center;
   padding-bottom: 10%;
+  font-size: 20px;
 }
 .Description{
-  padding: 5%;
+  padding-top: 15px;
+  padding-left: 5%;
+  padding-right: 5%;
   font-size: 16px;
   text-align: justify;
+}
+.videos-title{
+  padding-bottom: 20px;
+  font-size:20px;
+}
+.videos{
+  width: 80%
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.videoelement{
+  padding-left: 10%;
+}
+.pictureelement{
+  padding-left: 10%;
+}
+.audioelement{
+  padding-left: 10%;
+}
+.pictures-title{
+  padding-bottom: 5%;
+  margin-left: 4%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.pictures{
+  width: 80%
+  padding-left: 5%;
+  padding-top: 2%;
+
+}
+
+.pic{
+  width:100%;
+  height:100%
+}
+.picture{
+  width: 80%;
+}
+
+.pictureLegend{
+  text-align: justify;
+  font-size: 12px;
+  padding-top: 3%;
+  padding-left: 40%;
+}
+.Title{
+
+  padding-top: 2%;
+  padding-left: 5%;
+  font-size: 20px;
+  text-align: justify;
+}
+.number1{
+  padding-top : 15%;
+  padding-bottom : 5%;
+}
+.numberTitle{
+  padding-left: 5%;
+  font-size: 20px;
+  text-align: justify;
+  display: inline-block;
+  margin-right: 4%;
+
 }
 .comments{
   padding-top :4%;
@@ -80,56 +148,25 @@ tr:nth-child(even) {
 
 .sideBarreFoot{
   padding: 5%;
-  display: flex;
+  
 }
 
 .item{
-  display: inline-block;
-  padding-right: 15%;
+  display:
+  padding-right: 7%;
+}
+.itemleft{
+ padding-left:35%;
+}
+.itemTitle{
+  font-size: 20px;
 }
 .element{
-  
+  padding-left:30%;
+  padding-bottom: 4%;
 }
-.element:hover {
-  transform: translateY(-5px);
-}
-.element-picture {
-  display: inline-block;
-  vertical-align: top;
-}
-.element-description {
-  position: relative;
-  display: inline-block;
-  width: 80%;
-  height: 50px;
-  vertical-align: top;
-  padding: 0 10px;
-}
-.element-title {
-  font-size: 11px;
-}
-.element-other {
-  color: ${constants.TEXT_SECONDARY_COLOR}
-}
-.element-other, .element-date {
-  font-size: 12px;
-}
-.element-text {
-  font-size: 12px;
-  font-style: italic;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.element-date {
-  position: absolute;
-  font-size: 8px;
-  bottom: 0;
-  white-space: nowrap;
-}
-.element-actions {
-  flex: 1;
-  font-size: 17px;
-}
+
+
 .body{
   display: inline-block;
   width: 100%;
@@ -213,5 +250,32 @@ textarea {
 }
 .error-message {
   padding-left: 20px;
+}
+
+.audios{
+  padding-left: 5%;
+  padding-top: 2%;
+  width: 50%;
+  display: inline-block;
+}
+.audio-title{
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.audio{
+  max-height: 180px;
+  overflow-y: auto;
+}
+.iteeem{
+  display : flex;
+  margin-bottom: 5%;
+}
+.lecteur{
+  display: inline-block;
+  padding-left: 200px;
+}
+.audio-label{
+  display: inline-block;
 }
 `
