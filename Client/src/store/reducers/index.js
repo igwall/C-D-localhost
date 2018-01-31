@@ -14,6 +14,7 @@ import quotes from './quotes.reducer'
 import references from './references.reducer'
 import hotVideos from './hotVideos.reducer'
 import mails from './mail.reducer'
+import comments from './comment.reducer'
 
 export default combineReducers({
   currentUser,
@@ -30,5 +31,6 @@ export default combineReducers({
   quotes,
   references,
   hotVideos,
-  mails
+  mails,
+  comments
 })

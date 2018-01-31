@@ -1,84 +1,71 @@
 import React from 'react'
 import styles from './GuestBook.styles'
 import {connect} from 'react-redux'
-import {setComments} from '../../store/actions/comment.action'
-import Button from '../UI/Button/Button'
+import {dateFormatter} from '../../util/dateFormatter'
+import {setComments, addComment} from '../../store/actions/comment.action'
+import Icon from '../UI/Icon/Icon'
 
 @connect(store => {
   return {
+    currentUser: store.currentUser,
+    comments: store.comments.elements
   }
 })
 
 export default class GuestBook extends React.Component {
-  componentDidMount () {
+  constructor (props) {
+    super(props)
+    this.state = {
+      messageValid: false,
+      commentSend: false
+    }
+  }
+  checkComment () {
+    let res = this.message.value.length > 9
+    this.setState({
+      messageValid: res
+    })
+  }
+  formIsValid () {
+    return this.state.messageValid
+  }
+  confirmSend () {
+    this.message.value = null
+    this.checkComment()
+    this.setState({ commentSend: true })
     setComments().then(() => {
     }).catch(err => {
       console.error(err)
     })
   }
+  submitForm () {
+    if (this.formIsValid()) {
+      addComment(this.message.value, this.props.currentUser).then((response) => {
+        this.confirmSend()
+      }).catch((err) => {
+        console.error(err)
+        if (err.response.data === 'Username already exists') {
+          this.setState({usernameExists: true})
+        } else if (err.response.data === 'Email already exists') {
+          this.setState({emailExists: true})
+        }
+      })
+    }
+  }
+  componentDidMount () {
+    console.log(this.props.currentUser)
+    setComments().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    this.checkComment()
+  }
   render () {
-    const user = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
-    }
+    const comments = this.props.comments
     const user1 = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
+      picture: '/assets/imgs/avatarDefault.png',
+      username: 'Anonyme'
     }
-    const user2 = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
-    }
-    const user3 = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
-    }
-    const user4 = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
-    }
-    const user5 = {
-      pic: 'https://www.rwepa.com/userdata/music/artist/48/148d32f237247b9478ef6d8de8429c21c.jpg',
-      name: 'Toto'
-    }
-    const comment = {
-      id: 1,
-      text: 'Amazing site',
-      owner: user,
-      createdAt: '12/01/2018'
-    }
-    const comment1 = {
-      id: 2,
-      text: 'Amazing site',
-      owner: user1,
-      createdAt: '12/01/2018'
-    }
-    const comment2 = {
-      id: 3,
-      text: 'Amazing site',
-      owner: user2,
-      createdAt: '12/01/2018'
-    }
-    const comment3 = {
-      id: 4,
-      text: 'Amazing site',
-      owner: user3,
-      createdAt: '12/01/2018'
-    }
-    const comment4 = {
-      id: 5,
-      text: 'Amazing site',
-      owner: user4,
-      createdAt: '12/01/2018'
-    }
-    const comment5 = {
-      id: 6,
-      text: 'Amazing site',
-      owner: user5,
-      createdAt: '12/01/2018'
-    }
-
-    const comments = [ comment, comment1, comment2, comment3, comment4, comment5 ]
 
     return (<div className='host'>
       <div className = 'sideBarre'>
@@ -87,7 +74,16 @@ export default class GuestBook extends React.Component {
       </div>
       <div className= 'Main'>
         <div className='head'>
-
+          {
+            this.state.commentSend
+              ? <div className='error-panel'>
+                <div className='error-content'>
+                  <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='green' /></div>
+                  <div className='error-message'>Merci pour votre avis</div>
+                </div>
+              </div>
+              : undefined
+          }
           <div className='comments'>
             <div className='commentsHead'>
               <div className='input-label'>Avis des utilisateurs </div>
@@ -97,17 +93,21 @@ export default class GuestBook extends React.Component {
                 <tbody>
                   {
                     comments.map((comment, i) => {
+                      if (!comment.user) {
+                        comment.user = user1
+                      }
                       return (
-                        <tr>
+
+                        <tr key={i}>
                           <td>
-                            <div className='element'>
+                            <div className='element' >
                               <div className='element-infos'>
-                                <div className='element-picture'><img src= {comment.owner.pic} alt='' width='40px' max-height='40px' /></div>
+                                <div className='element-picture'><img src= {comment.user.picture} alt='' width='40px' max-height='40px' /></div>
                                 <div className='element-description'>
-                                  <div className='element-title'>{comment.owner.name}</div>
+                                  <div className='element-title'>{comment.user.username} </div>
                                   <div className='element-text'>{comment.text}
                                   </div>
-                                  <div className='element-date'>Publié le: {(comment.createdAt)}</div>
+                                  <div className='element-date'>Publié le: {dateFormatter(comment.createdAt)}</div>
                                 </div>
 
                               </div>
@@ -125,13 +125,10 @@ export default class GuestBook extends React.Component {
           <div className='form-column form-column-right'>
             <div className='input-group'>
               <div className='input-label'>Laisser votre avis </div>
-              <textarea type='text' placeholder='(20 caractères min...)' ref={i => { this.motivation = i }} onChange={this.checkMotivation} />
+              <textarea type='text' placeholder='(10 caractères min...)' onChange={this.checkComment.bind(this)} ref={i => { this.message = i }} />
             </div>
             <div className='Button'>
-              <Button
-                bgColor= 'green'
-                hoverBgColor='#58FAAC'
-              >Envoyer</Button>
+              <div className={`button ${this.formIsValid() ? '' : 'disabled'}`} onClick={this.submitForm.bind(this)}>Envoyer</div>
 
             </div>
           </div>

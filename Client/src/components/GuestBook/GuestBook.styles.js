@@ -15,7 +15,7 @@ export default css`
 .sideBarre{
 
   height: 100%;
-  width: 30%;
+  width: 350px;
   min-width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
@@ -24,7 +24,7 @@ export default css`
 }
 .Main
 {
-  width: 70%;
+  width: calc(100% - 350px);
   height: 100%;
   padding: 30px;
   overflow: auto;
@@ -37,7 +37,7 @@ export default css`
 
 .PageTitle{
   padding-top: 20%;
-  padding-left: 35%;
+  padding-left: 25%;
   padding-bottom: 10%;
 }
 
@@ -91,7 +91,6 @@ tr:nth-child(even) {
 .element-picture {
   display: inline-block;
   vertical-align: top;
-  background: ${constants.PRIMARY_COLOR};
 }
 
 .element-description {
@@ -180,5 +179,48 @@ textarea {
 }
 .Button {
  padding-left:89%
+}
+.button {
+  cursor: pointer;
+  height: 40px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  width: 95%;
+  border-radius: 5px;
+  background-color: #61bd4f;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.button {
+  display: inline-block;
+}
+.button.disabled {
+  background-color: gray;
+}
+
+.error {
+  font-size: 11px;
+  line-height: 25px;
+  margin-right: 5%;
+  color: #E91E63;
+  float: right;
+}
+.error-panel {
+  border: 1px solid rgb(0, 255, 81);
+  background: rgba(0, 255, 84, 0.3);
+  width: 380px;
+  margin-left: 26%;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.error-message {
+  padding-left: 20px;
 }
 `

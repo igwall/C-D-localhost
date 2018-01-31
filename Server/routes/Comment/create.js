@@ -34,7 +34,7 @@ module.exports = (router, controller) => {
   *         description: Internal error
   */
   router.post('/comments', (req, res) => {
-    let requiredBody = ['text']
+    let requiredBody = ['text', 'createdAt']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {
       let stringMessage = requiredBody.join(',')

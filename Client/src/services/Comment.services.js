@@ -11,12 +11,12 @@ export function fetchComments () {
   })
 }
 
-export function addCommentDistant (name, comment, date) {
+export function addCommentDistant (comment, user) {
   return new Promise((resolve, reject) => {
     axios.post(`${Config.API_URL}/comments`, {
-      name: name,
-      comment: comment,
-      date: date
+      text: comment,
+      createdAt: Date.now(),
+      user: user
     }).then((res) => {
       resolve(res.data)
     }).catch((err) => {

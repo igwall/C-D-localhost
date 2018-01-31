@@ -167,7 +167,7 @@ export const defaultMailState = {
 }
 
 export const defaultCommentsState = {
-  materials: {
+  comments: {
     fetching: false,
     fetched: false,
     error: null,
