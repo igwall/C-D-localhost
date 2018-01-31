@@ -2,9 +2,6 @@
 # yarn lockfile v1
 
 
-slick-carousel@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
 asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
@@ -119,6 +116,10 @@ react-mdl@^1.11.0:
     lodash.isequal "^4.4.0"
     prop-types "^15.5.0"
 
+react-recaptcha@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/react-recaptcha/-/react-recaptcha-2.3.6.tgz#afe07b5552f3ea4d37ecd22d9881c2776719ec2b"
+
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -126,6 +127,10 @@ regenerator-runtime@^0.11.0:
 setimmediate@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
+
+slick-carousel@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
 
 throttle-debounce@^1.0.1:
   version "1.0.1"

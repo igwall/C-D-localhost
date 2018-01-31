@@ -6,21 +6,28 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  overflow: hidden; 
   color: #fff;
+  overflow: hidden; 
   display: flex;
   align-items: first-baseline;
+  font-size: 20px;
 }
-.sideBarre {
-  width: 350px;
-  background-color: #333;
-  height: 100%;
-}
+.sideBarre{
 
-.main {
-  width: calc(100% - 350px);
+  height: 100%;
+  width: 25%;
+  min-width: 400px;
+  padding: 0 15px;
+  background: ${constants.SECONDARY_COLOR};
+  overflow: auto;
+
+}
+.main
+{
+  width: 75%;
   height: 100%;
   padding: 30px;
+  overflow: auto;
 
 }
 
@@ -35,16 +42,22 @@ export default css`
 .admin-info {
   display: inline-block;
   width: 100%;
-  padding-left: 22%;
-  padding-right: 10%;
+  padding-left: 20%;
+  padding-right: 20%;
   padding-top: 23%;
   
 }
 
+.picture{
+  min-width: 120px;
+  margin-right: 25%;
+  padding-top: 5%;
+}
+
 .pic{
+  min-width: 120px;
   width: 225px;
   height: 225px;
-  margin-left: 7%;
 }
 
 .admin-name {
@@ -180,6 +193,10 @@ th, td {
 .button {
   font-size: 15px;
   padding: 10px 0;
+<<<<<<< HEAD
+=======
+  padding-left: 20%;
+>>>>>>> master
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -193,9 +210,13 @@ th, td {
 }
 
 .button-text {
+<<<<<<< HEAD
   font-size: 20px;
     Font-Weight: Bold;
     padding-left: 20%;
+=======
+  
+>>>>>>> master
 }
 
 

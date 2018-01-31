@@ -44,6 +44,19 @@ router.get(['/recipes', '/recipes/*'], (req, res, next) => {
   next()
 })
 
+router.post('/mail/*', (req, res, next) => {
+  next()
+})
+
+router.post('/comments/*', (req, res, next) => {
+  next()
+})
+
+router.get(['/comments', '/comments/*'], (req, res, next) => {
+  next()
+})
+require('./Comment')(router, controllers.commentController)
+require('./Mail')(router, controllers.mailController)
 require('./Room')(router, controllers.roomController)
 require('./Material')(router, controllers.materialController)
 require('./Recipe')(router, controllers.recipeController)
