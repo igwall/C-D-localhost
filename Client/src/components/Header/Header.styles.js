@@ -32,6 +32,8 @@ export default css`
   width: calc(100% - 350px);
   height: 100%;
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .app-name {
@@ -70,12 +72,11 @@ export default css`
   background: ${constants.NAVBAR_COLOR};
   color: #eee;
   font-size: 15px;
-  min-height: 45px;
+  height: 45px;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  overflow: auto;
 }
 
 .menu-button-group {

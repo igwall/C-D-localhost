@@ -99,11 +99,6 @@ export default class Header extends React.Component {
                 <div className='menu-button-text'>BIBLIOTHÈQUE</div>
               </div>
             </Link>
-            <Link to='/guestbook' style={{height: '100%'}} >
-              <div className='menu-button'>
-                <div className='menu-button-text'>LIVRE D'OR</div>
-              </div>
-            </Link>
             {
               isAuthenticated
                 ? <Link to={`/user/${this.props.currentUser._id}`} style={{height: '100%'}}>
@@ -120,6 +115,10 @@ export default class Header extends React.Component {
                   {
                     action: () => { this.redirectTo('/about/') },
                     placeholder: 'À Propos'
+                  },
+                  {
+                    action: () => { this.redirectTo('/guestbook/') },
+                    placeholder: "Livre d'or"
                   },
                   {
                     action: () => { this.redirectTo('/contact/') },
