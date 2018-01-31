@@ -13,6 +13,7 @@ import currentAdmin from './currentAdmin.reducer'
 import quotes from './quotes.reducer'
 import references from './references.reducer'
 import hotVideos from './hotVideos.reducer'
+import recipeFetched from './currentRecipe.reducer'
 
 export default combineReducers({
   currentUser,
@@ -28,5 +29,7 @@ export default combineReducers({
   currentAdmin,
   quotes,
   references,
-  hotVideos
+  hotVideos,
+  recipeFetched
+
 })

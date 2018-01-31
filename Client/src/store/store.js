@@ -125,6 +125,28 @@ export const defaultArtistState = {
   }
 }
 
+export const defaultRecipeState = {
+  recipeFetched: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    recipe: {
+      _id: '',
+      title: '',
+      thumbnail: '',
+      description: '',
+      pictures: [],
+      videos: [],
+      audios: [],
+      author: '',
+      createdAt: '',
+      materials: [],
+      rooms: [],
+      number: ''
+
+    }
+  }
+}
 export const defaultFetchedUserState = {
   userFetched: {
     fetching: false,
@@ -157,5 +179,5 @@ export const defaultAdministratorsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState, defaultRecipeState)
 export default createStore(reducer, { ...defaultState }, enhancer)

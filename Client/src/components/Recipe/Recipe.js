@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './Recipe.styles'
 import Slider from 'react-slick'
+import { setRecipe } from '../../store/actions/recipes.action'
 import {connect} from 'react-redux'
 
 @connect(store => {
   return {
-
+    recipe: store.recipeFetched.recipe
   }
 })
 
@@ -27,7 +28,11 @@ export default class Recipe extends React.Component {
     return this.state.messageValid
   }
   componentDidMount () {
-
+    console.log(this.props.recipeId)
+    setRecipe(this.props.recipeId).then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
   }
   render () {
     const setting = {

@@ -11,6 +11,15 @@ export function fetchRecipes () {
   })
 }
 
+export function fetchRecipe (recipeId) {
+  return new Promise((resolve, reject) => {
+    axios.get(`${Config.API_URL}/recipes/${recipeId}`).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
 export function addRecipeDistant (recipe) {
   return new Promise((resolve, reject) => {
     axios.post(`${Config.API_URL}/recipes`, {

@@ -99,7 +99,7 @@ class App extends Component {
             <PublicRoute exact path='/contact' component={ContactPage} />
             <PublicRoute exact path='/recipes' component={RecipesPage} />
             <PublicRoute path='/user/:userId' component={ProfilePage} />
-            <PublicRoute path='/recipe' component={Recipe} />
+            <PublicRoute path='/recipe/:recipeId' component={Recipe} />
             <PublicRoute exact path='/artist' component={Artist} />
 
             <NonAuthenticatedRoute path='/login' component={LoginPage} />

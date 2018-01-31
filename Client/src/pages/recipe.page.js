@@ -4,6 +4,8 @@ import PageLayout from '../layouts/page'
 
 export default (props) => (
   <PageLayout>
-    <Recipe />
+    <Recipe
+      recipeId={props.match.params.recipeId}
+    />
   </PageLayout>
 )
