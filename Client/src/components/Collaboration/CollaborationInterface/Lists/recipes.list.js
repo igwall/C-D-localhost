@@ -184,7 +184,7 @@ export default class MyRecipesList extends React.Component {
                       <div className='link-container'>
                         <div className='element-picture'><img src={recipe.thumbnail} alt='' width='75px' height='75px' /></div>
                         <div className='element-description'>
-                          <div className='element-title'>{recipe.title}</div>
+                          <div className='element-title'><p>{recipe.title}</p></div>
                           <div className='element-other'>Pièces : {
                             recipe.rooms.map((room, i) => {
                               let text = room.name

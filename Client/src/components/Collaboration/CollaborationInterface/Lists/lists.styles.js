@@ -66,6 +66,13 @@ export default css`
   font-size: 17px;
 }
 
+.element-title p {
+  max-width: 350px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .element-other {
   color: ${constants.TEXT_SECONDARY_COLOR}
 }

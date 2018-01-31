@@ -3,7 +3,7 @@ import styles from './forms.styles'
 import Icon from '../../../UI/Icon/Icon'
 import Button from '../../../UI/Button/Button'
 import Select from 'react-select'
-import { addRecipe } from '../../../../store/actions/recipes.action'
+import { addRecipeRequest } from '../../../../store/actions/recipes.action'
 
 export default class RecipeRequestForm extends React.Component {
   constructor (props) {
@@ -48,7 +48,7 @@ export default class RecipeRequestForm extends React.Component {
     }
 
     if (this.isFormValid()) {
-      addRecipe(newRecipe).then(recipe => {
+      addRecipeRequest(newRecipe).then(recipe => {
         this.setState({added: recipe.title})
         this.resetForm()
       }).catch(err => {

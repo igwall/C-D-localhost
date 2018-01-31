@@ -74,6 +74,11 @@ collaboratorController.createCollaborator = function (collaborator) {
   })
 }
 
+/**
+ *
+ * @param {any} collaboratorId
+ * @returns
+ */
 collaboratorController.deleteCollaborator = (collaboratorId) => {
   return new Promise((resolve, reject) => {
     Collaborator.findOne({ '_id': collaboratorId }, (err, item) => {
@@ -104,6 +109,44 @@ collaboratorController.deleteCollaborator = (collaboratorId) => {
             })
           }
         })
+      }
+    })
+  })
+}
+
+/**
+ *
+ *
+ * @param {any} collaboratorId
+ * @param {any} recipe
+ * @returns
+ */
+collaboratorController.addRecipeToCollaborator = function (collaboratorId, recipe) {
+  return new Promise((resolve, reject) => {
+    Collaborator.findOneAndUpdate({ '_id': collaboratorId }, { $push: { recipes: recipe } }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+/**
+ *
+ *
+ * @param {any} collaboratorId
+ * @param {any} recipeId
+ * @returns
+ */
+collaboratorController.removeRecipeFromCollaborator = function (collaboratorId, recipeId) {
+  return new Promise((resolve, reject) => {
+    Collaborator.findOneAndUpdate({ '_id': collaboratorId }, { $pull: {recipes: recipeId} }, { new: true }, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
       }
     })
   })

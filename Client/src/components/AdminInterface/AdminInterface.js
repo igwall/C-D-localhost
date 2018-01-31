@@ -133,10 +133,18 @@ export default class AdminInterface extends React.Component {
   displayContent () {
     const content = this.state.content
     const { quotes, references, hotVideos, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    const pendingRecipes = recipes.filter(recipe => {
+      if (recipe !== null) return recipe.validated === false
+      else return false
+    })
+    const validatedRecipes = recipes.filter(recipe => {
+      if (recipe !== null) return recipe.validated === true
+      else return false
+    })
     switch (content) {
       case 'recipesList': {
         return (
-          <RecipesListAdmin popoverManager={this.props.popoverManager} materials={materials} recipes={recipes} rooms={rooms} />
+          <RecipesListAdmin popoverManager={this.props.popoverManager} materials={materials} recipes={validatedRecipes} rooms={rooms} />
         )
       }
       case 'materialsList': {
@@ -176,7 +184,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'recipeRequests': {
         return (
-          <RecipeRequests recipes={recipes} />
+          <RecipeRequests popoverManager={this.props.popoverManager} materials={materials} recipes={pendingRecipes} rooms={rooms} />
         )
       }
       case 'libraryPanel': {

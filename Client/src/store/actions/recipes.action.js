@@ -34,6 +34,20 @@ export function addRecipe (recipe) {
   })
 }
 
+export function addRecipeRequest (recipe) {
+  return new Promise((resolve, reject) => {
+    addRecipeDistant(recipe).then((data) => {
+      store.dispatch({
+        type: 'NEW_RECIPE_REQUEST',
+        payload: data
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
+
 export function deleteRecipe (recipeId) {
   return new Promise((resolve, reject) => {
     deleteRecipeDistant(recipeId).then((data) => {

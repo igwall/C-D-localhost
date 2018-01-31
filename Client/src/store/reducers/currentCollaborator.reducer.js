@@ -8,6 +8,14 @@ export default (state = defaultCurrentCollaboratorState, action) => {
         ...action.payload
       }
     }
+    case 'NEW_RECIPE_REQUEST': {
+      let newElements = state.recipes.slice()
+      newElements.push(action.payload)
+      return {
+        ...state,
+        recipes: newElements
+      }
+    }
     default:
       return {
         ...state

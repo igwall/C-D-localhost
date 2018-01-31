@@ -70,8 +70,8 @@ export default class CollaborationInterface extends React.Component {
   displayContent () {
     const content = this.state.content
     const { recipes, rooms, materials, currentCollaborator } = this.props
-    const pendingRecipes = currentCollaborator.recipes.filter(recipe => recipe.validated === false)
-    const validatedRecipes = currentCollaborator.recipes.filter(recipe => recipe.validated === false)
+    const pendingRecipes = currentCollaborator.recipes.filter(recipe => { if (recipe !== null) return recipe.validated === false })
+    const validatedRecipes = currentCollaborator.recipes.filter(recipe => { if (recipe !== null) return recipe.validated === true })
 
     switch (content) {
       case 'collaboratorPage': {
@@ -96,7 +96,7 @@ export default class CollaborationInterface extends React.Component {
       }
       case 'recipeRequestForm': {
         return (
-          <RecipeRequestForm recipes={recipes} materials={materials} rooms={rooms} />
+          <RecipeRequestForm recipes={recipes} materials={materials} rooms={rooms} currentCollaborator={currentCollaborator} />
         )
       }
       default: {
