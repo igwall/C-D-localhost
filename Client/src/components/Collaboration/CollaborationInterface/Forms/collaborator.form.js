@@ -23,8 +23,11 @@ export default class CollaboratorForm extends React.Component {
     const bio = this.bio.value
     const description = this.description.value
     const link = this.link.value
-    const videoId = this.getVideoId(this.video.value)
-    const video = 'http://www.youtube.com/embed/' + videoId
+    let video = ''
+    if (this.video.value !== '') {
+      const videoId = this.getVideoId(this.video.value)
+      video = 'http://www.youtube.com/embed/' + videoId
+    }
     const newCollaborator = {
       description: description,
       bio: bio,

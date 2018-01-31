@@ -62,6 +62,7 @@ export default css`
 .text {
   font-size: 15px;
   padding: 0 20px;
+  white-space: pre-line;
 }
 
 .video {
