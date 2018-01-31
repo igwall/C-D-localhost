@@ -149,9 +149,9 @@ export default class RecipeRequestsListAdmin extends React.Component {
   displayConfirmDelete (recipe) {
     this.props.popoverManager.setRenderedComponent(
       <div className='popup'>
-        <div className='popup-title'>SUPPRIMER RECETTE</div>
+        <div className='popup-title'>SUPPRIMER PROPOSITION DE RECETTE</div>
         <div className='separator' />
-        <div className='popup-text'>Voulez-vous vraiment supprimer la recette "{recipe.title}" ?</div>
+        <div className='popup-text'>Voulez-vous vraiment supprimer la proposition de recette "{recipe.title}" ?</div>
         <div className='popup-actions'>
           <div className='action action-cancel'>
             <Button
@@ -217,14 +217,14 @@ export default class RecipeRequestsListAdmin extends React.Component {
     recipes = this.filter(recipes)
 
     return (<div className='host'>
-      <div className='list-title'>LISTE DES RECETTES</div>
+      <div className='list-title'>LISTE DES PROPOSITIONS DE RECETTES</div>
       <ul className='list'>
         {
           this.state.deleted !== ''
             ? <div className='validation-panel'>
               <div className='validation-content'>
                 <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                <div className='validation-message'>La recette "{this.state.deleted}" a été supprimée avec succès !</div>
+                <div className='validation-message'>La proposition recette "{this.state.deleted}" a été supprimée avec succès !</div>
               </div>
             </div>
             : undefined
@@ -290,9 +290,13 @@ export default class RecipeRequestsListAdmin extends React.Component {
                     </Link>
                   </div>
                   <div className='element-actions'>
+                    <div className='action' onClick={() => this.acceptRequest(recipe)}>
+                      <div className='action-icon'><Icon name='check' fontSize='15px' color='rgb(0,255,0)' /></div>
+                      <div className='action-text'>ACCEPTER</div>
+                    </div>
                     <div className='action' onClick={() => this.displayConfirmDelete(recipe)}>
-                      <div className='action-icon'><Icon name='trash-alt' fontSize='15px' color='white' /></div>
-                      <div className='action-text'>SUPPRIMER</div>
+                      <div className='action-icon'><Icon name='times' fontSize='15px' color='rgb(255,0,0)' /></div>
+                      <div className='action-text'>REFUSER</div>
                     </div>
                   </div>
                 </div>
