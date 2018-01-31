@@ -8,7 +8,8 @@ export function sendMail (name, email, number, sujet, message) {
       name: name,
       number: number,
       sujet: sujet,
-      message: message
+      message: message,
+      createdAt: Date.now()
     }).then((res) => {
       resolve(res.data)
     }).catch((err) => {

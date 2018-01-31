@@ -30,7 +30,7 @@ export default class Contact extends React.Component {
   }
 
   checkMessage () {
-    let res = this.message.value.length > 0
+    let res = this.message.value.length > 19
     this.setState({
       messageValid: res
     })
@@ -121,6 +121,12 @@ export default class Contact extends React.Component {
               { this.email
                 ? this.email.value.length > 5 && !this.state.emailValid
                   ? <span className='error'>Adresse email invalide</span>
+                  : null
+                : null
+              }
+              { this.email
+                ? this.email.value.length < 6 && !this.state.emailValid
+                  ? <span className='error'>Champs requis</span>
                   : null
                 : null
               }

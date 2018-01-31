@@ -8,7 +8,7 @@ import Icon from '../UI/Icon/Icon'
 @connect(store => {
   return {
     currentUser: store.currentUser,
-    comments: store.comments.elements
+    comments: store.comments.elements.reverse()
   }
 })
 

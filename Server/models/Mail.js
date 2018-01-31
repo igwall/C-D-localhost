@@ -6,6 +6,7 @@ const MailSchema = new Schema({
   name: {type: String, default: '', required: true},
   number: {type: String, default: ''},
   sujet: {type: String, default: '', required: true},
+  createdAt: {type: Date, default: Date.now},
   message: {type: String, default: '', required: true}
 })
 mongoose.model('Mail', MailSchema)
