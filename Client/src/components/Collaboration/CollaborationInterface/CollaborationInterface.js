@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import RecipeRequestsPendingList from './Lists/recipeRequestPending.list'
 import RecipeRequestForm from './Forms/recipeRequest.form'
 import MyRecipesList from './Lists/recipes.list'
+import CollaboratorPage from './CollaboratorPage/CollaboratorPage'
+import CollaboratorForm from './Forms/collaborator.form'
 import { setRecipes } from '../../../store/actions/recipes.action'
 import { setMaterials } from '../../../store/actions/material.action'
 import { setRooms } from '../../../store/actions/room.action'
@@ -76,12 +78,12 @@ export default class CollaborationInterface extends React.Component {
     switch (content) {
       case 'collaboratorPage': {
         return (
-          <div />
+          <CollaboratorPage collaborator={currentCollaborator} />
         )
       }
       case 'collaboratorEditForm': {
         return (
-          <div />
+          <CollaboratorForm {...currentCollaborator} />
         )
       }
       case 'recipeRequestsValidatedList': {

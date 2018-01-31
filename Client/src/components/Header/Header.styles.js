@@ -14,10 +14,17 @@ export default css`
 }
 
 .logo-container {
+  position: relative;
   display: inline-block;
   height: 100%;
   width: 350px;
   background: ${constants.THIRD_COLOR};
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
 }
 
 .header-container {
@@ -62,7 +69,7 @@ export default css`
   width: 100%;
   background: ${constants.NAVBAR_COLOR};
   color: #eee;
-  font-size: 18px;
+  font-size: 15px;
   height: 45px;
   display: flex;
   justify-content: space-between;

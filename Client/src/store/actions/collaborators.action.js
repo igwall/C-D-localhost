@@ -1,4 +1,4 @@
-import { fetchCollaborators, fetchCollaborator, removeUserFromCollaboratorsDistant } from '../../services/Collaborators.services'
+import { fetchCollaborators, fetchCollaborator, removeUserFromCollaboratorsDistant, updateCollaboratorDistant } from '../../services/Collaborators.services'
 
 import store from '../store'
 
@@ -26,6 +26,20 @@ export function setCollaborator (collaboratorId) {
       store.dispatch({
         type: 'SET_COLLABORATOR',
         payload: data
+      })
+      resolve(data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
+
+export function updateCollaborator (collaboratorId, collaborator) {
+  return new Promise((resolve, reject) => {
+    updateCollaboratorDistant(collaboratorId, collaborator).then((data) => {
+      store.dispatch({
+        type: 'UPDATE_COLLABORATOR',
+        payload: collaborator
       })
       resolve(data)
     }).catch((err) => {

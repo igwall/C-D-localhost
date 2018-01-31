@@ -67,7 +67,7 @@ export default class Header extends React.Component {
     const quote = this.getRandomQuote()
     return <div className='host'>
       <div className='logo-container'>
-
+        <img className='logo' src='/hut_logo.png' alt='hut_logo' height='150px' />
       </div>
       <div className='header-container'>
         <Link to='/' style={{height: '100%'}}>

@@ -21,6 +21,18 @@ export function fetchCollaborator (collaboratorId) {
   })
 }
 
+export function updateCollaboratorDistant (collaboratorId, collaborator) {
+  return new Promise((resolve, reject) => {
+    axios.put(`${Config.API_URL}/collaborators/${collaboratorId}`, {
+      ...collaborator
+    }).then((res) => {
+      resolve(res.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+}
+
 export function removeUserFromCollaboratorsDistant (collaboratorId) {
   return new Promise((resolve, reject) => {
     axios.delete(`${Config.API_URL}/collaborators/${collaboratorId}`).then((res) => {

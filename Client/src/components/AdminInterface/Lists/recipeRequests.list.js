@@ -283,6 +283,7 @@ export default class RecipeRequestsListAdmin extends React.Component {
                             })
                           }
                           </div>
+                          <div className='element-text'>Proposée par : {recipe.collaborator.firstname + ' ' + recipe.collaborator.lastname}</div>
                           <div className='element-date'>Créée le {dateFormatter(recipe.createdAt)}</div>
                         </div>
                       </div>

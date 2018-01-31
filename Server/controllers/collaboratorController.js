@@ -77,6 +77,25 @@ collaboratorController.createCollaborator = function (collaborator) {
 /**
  *
  * @param {any} collaboratorId
+ * @param {any} body
+ * @returns
+ */
+collaboratorController.updateCollaborator = (collaboratorId, body) => {
+  console.log(body)
+  return new Promise((resolve, reject) => {
+    Collaborator.findOneAndUpdate({'_id': collaboratorId}, body, { new: true }).exec((err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+/**
+ *
+ * @param {any} collaboratorId
  * @returns
  */
 collaboratorController.deleteCollaborator = (collaboratorId) => {

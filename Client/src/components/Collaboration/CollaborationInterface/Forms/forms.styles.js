@@ -4,10 +4,10 @@ import constants from '../../../../constants'
 export default css`
 .host {
   color: white;
+  padding: 25px;
 }
 
 .form-title {
-  padding: 20px 0;
   font-size: 25px;
   font-weight: bold;
 }
@@ -18,7 +18,7 @@ export default css`
 }
 
 .form {
-  padding: 0 25px;
+
 }
 
 form {

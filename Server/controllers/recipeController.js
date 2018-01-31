@@ -14,7 +14,7 @@ const recipeController = {}
  */
 recipeController.getAllRecipes = function () {
   return new Promise((resolve, reject) => {
-    Recipe.find().populate('author materials rooms').exec(function (err, res) {
+    Recipe.find().populate('collaborator materials rooms').exec(function (err, res) {
       if (err) {
         reject(err)
       } else {

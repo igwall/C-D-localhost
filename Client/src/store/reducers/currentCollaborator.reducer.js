@@ -8,6 +8,12 @@ export default (state = defaultCurrentCollaboratorState, action) => {
         ...action.payload
       }
     }
+    case 'UPDATE_COLLABORATOR': {
+      return {
+        ...state,
+        ...action.payload
+      }
+    }
     case 'NEW_RECIPE_REQUEST': {
       let newElements = state.recipes.slice()
       newElements.push(action.payload)

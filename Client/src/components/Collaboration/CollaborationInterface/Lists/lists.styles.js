@@ -4,7 +4,7 @@ import constants from '../../../../constants'
 export default css`
 .host {
   color: white;
-  padding: 20px 25px;
+  padding: 25px;
   height: 100%;
 }
 
