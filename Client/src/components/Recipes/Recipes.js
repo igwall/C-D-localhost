@@ -282,7 +282,7 @@ export default class Recipes extends React.Component {
                 <li className='list-element' key={i}>
                   <div className='element'>
                     <div className='element-infos'>
-                      <Link to={`/recipes/${recipe._id}`}>
+                      <Link to={`/recipe/`}>
                         <div className='link-container'>
                           <div className='element-picture'><img src={recipe.thumbnail} alt='' width='100px' max-height='100px' /></div>
                           <div className='element-description'>
