@@ -5,6 +5,7 @@ export default css`
 .host {
   height: 100%;
   width: 100%;
+  min-width: 150px;
   background-color: ${constants.PRIMARY_COLOR};
   color: #fff;
   align-items: first-baseline;
@@ -146,6 +147,39 @@ li {
   height:100px;
   text-align: justify;
   padding-left:5%
+}
+
+.sort-bar {
+  width: 100%;
+  padding-bottom:5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 15px;
+}
+
+.sort {
+  padding-bottom: 3%;
+  flex: 2;
+  padding-right: 10px;
+}
+
+.sort:last-of-type {
+  padding-right: 0;
+}
+
+.search-bar {
+  font-size: 14px;
+  height: 36px;
+  color:white;
+  padding: 4px;
+  padding-left: 10px;
+  width: 200px;
+  min-width: 200px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  transition: min-width 0.75s;    
+  background: rgba(255,255,255,0.3);
 }
 .middle{ 
   padding-top: 5%;
