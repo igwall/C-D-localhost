@@ -30,13 +30,17 @@ export default css`
 .head{
   width: 100%;
 }
+.RecipePictrue{
+  padding-left:30%;
+}
 .PageTitle{
-  padding-top: 20%;
-  padding-left: 25%;
+  padding-top: 10%;
+  text-align: center;
   padding-bottom: 10%;
 }
 .Description{
   padding: 5%;
+  font-size: 16px;
   text-align: justify;
 }
 .comments{
@@ -72,6 +76,16 @@ tr:nth-child(even) {
 .element-infos {
   padding: 5px;
   flex: 3;
+}
+
+.sideBarreFoot{
+  padding: 5%;
+  display: flex;
+}
+
+.item{
+  display: inline-block;
+  padding-right: 15%;
 }
 .element{
   
