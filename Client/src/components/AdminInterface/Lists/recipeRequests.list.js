@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Select from 'react-select'
 import {dateFormatter} from '../../../util/dateFormatter'
 import constants from '../../../constants'
-import { deleteRecipe } from '../../../store/actions/recipes.action'
+import { deleteRecipe, updateRecipe } from '../../../store/actions/recipes.action'
 
 export default class RecipeRequestsListAdmin extends React.Component {
   constructor (props) {
@@ -16,7 +16,8 @@ export default class RecipeRequestsListAdmin extends React.Component {
       matchingRecipes: [],
       selectedMaterials: [],
       selectedRooms: [],
-      deleted: ''
+      deleted: '',
+      accepted: ''
     }
     this.handleSelectMaterialChange = this.handleSelectMaterialChange.bind(this)
     this.handleSelectRoomChange = this.handleSelectRoomChange.bind(this)
@@ -28,6 +29,17 @@ export default class RecipeRequestsListAdmin extends React.Component {
     deleteRecipe(recipe._id).then(data => {
       this.setState({deleted: recipe.title})
       this.props.popoverManager.dismissPopover()
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  acceptRecipeRequest (recipe) {
+    const newRecipe = {
+      validated: true
+    }
+    updateRecipe(recipe._id, newRecipe).then(() => {
+      this.setState({accepted: recipe.title})
     }).catch(err => {
       console.log(err)
     })
@@ -229,6 +241,16 @@ export default class RecipeRequestsListAdmin extends React.Component {
             </div>
             : undefined
         }
+        {
+          this.state.accepted !== ''
+            ? <div className='validation-panel'>
+              <div className='validation-content'>
+                <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
+                <div className='validation-message'>La proposition recette "{this.state.accepted}" a été supprimée avec succès !</div>
+              </div>
+            </div>
+            : undefined
+        }
         <div className='sort-bar'>
           <div className='sort sort-search'>
             <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
@@ -290,7 +312,7 @@ export default class RecipeRequestsListAdmin extends React.Component {
                     </Link>
                   </div>
                   <div className='element-actions'>
-                    <div className='action' onClick={() => this.acceptRequest(recipe)}>
+                    <div className='action' onClick={() => this.acceptRecipeRequest(recipe)}>
                       <div className='action-icon'><Icon name='check' fontSize='15px' color='rgb(0,255,0)' /></div>
                       <div className='action-text'>ACCEPTER</div>
                     </div>

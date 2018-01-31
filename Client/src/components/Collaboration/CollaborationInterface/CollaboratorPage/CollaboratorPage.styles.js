@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css'
-// import constants from '../../../../constants'
+import constants from '../../../../constants'
 
 export default css`
 .host {
@@ -63,6 +63,7 @@ export default css`
   font-size: 15px;
   padding: 0 20px;
   white-space: pre-line;
+  color: ${constants.TEXT_SECONDARY_COLOR}
 }
 
 .video {

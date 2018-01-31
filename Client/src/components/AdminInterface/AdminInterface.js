@@ -212,19 +212,19 @@ export default class AdminInterface extends React.Component {
           <div className='logout-button' onClick={() => adminLogout()}>DÉCONNEXION</div>
         </div>
         <div className='panel panel-recipes'>
-          <div className='panel-title'>Recettes</div>
+          <div className='panel-title'>Compositions</div>
           <div className='panel-buttons'>
             <div className='button' onClick={() => this.displayRecipesList()}>
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES RECETTES</div>
+              <div className='button-text'>AFFICHER LES COMPOSITIONS</div>
             </div>
             <div className='button' onClick={() => this.displayRecipeForm()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVELLE RECETTE</div>
+              <div className='button-text'>NOUVELLE COMPOSITION</div>
             </div>
             <div className='button' onClick={() => this.displayRecipeRequests()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>VOIR LES RECETTES PROPOSÉES</div>
+              <div className='button-text'>VOIR LES COMPOSITIONS PROPOSÉES</div>
             </div>
           </div>
         </div>

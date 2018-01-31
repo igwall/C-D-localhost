@@ -91,7 +91,7 @@ export default class Header extends React.Component {
             </Link>
             <Link to='/recipes' style={{height: '100%'}} >
               <div className='menu-button'>
-                <div className='menu-button-text'>RECETTES</div>
+                <div className='menu-button-text'>COMPOSITIONS</div>
               </div>
             </Link>
             <Link to='/library' style={{height: '100%'}} >

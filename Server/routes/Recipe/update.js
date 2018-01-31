@@ -3,41 +3,41 @@ const Util = require('../../controllers/Util')
 module.exports = (router, controllers) => {
   /**
     * @swagger
-    * /collaborators/{collaboratorId}:
+    * /recipes/{recipeId}:
     *   put:
     *     tags:
-    *       - Collaborators
-    *     description: Update a collaborator
-    *     summary: UPDATE a Collaborator
+    *       - Recipes
+    *     description: Update a recipe
+    *     summary: UPDATE a Recipe
     *     produces:
     *       - application/json
     *     parameters:
-    *       - name: collaboratorId
+    *       - name: recipeId
     *         type: string
-    *         description: The collaborator id we want to update
+    *         description: The recipe id we want to update
     *         in: path
     *         required: true
     *       - name: body
-    *         description: The Collaborator object that needs to be updated
+    *         description: The Recipe object that needs to be updated
     *         in: body
     *         required: true
     *         schema:
-    *             $ref: '#/definitions/NewCollaborator'
+    *             $ref: '#/definitions/NewRecipe'
     *     responses:
     *       200:
-    *         description: Message confirming the Collaborator has been updated
+    *         description: Message confirming the Recipe has been updated
     *       500:
     *         description: Internal error
     */
-  router.put('/collaborators/:collaboratorId', function (req, res) {
-    let requiredParameter = ['collaboratorId']
+  router.put('/recipes/:recipeId', function (req, res) {
+    let requiredParameter = ['recipeId']
     requiredParameter = Util.checkRequest(req.params, requiredParameter)
     if (requiredParameter.length > 0) {
       let stringMessage = requiredParameter.join(',')
       res.status(400).json(`Missing ${stringMessage}`)
       return
     }
-    controllers.updateCollaborator(req.params.collaboratorId, req.body).then((data) => {
+    controllers.updateRecipe(req.params.recipeId, req.body).then((data) => {
       res.status(200).json('Successfully updated')
     }).catch((err) => {
       res.status(500).json(err)

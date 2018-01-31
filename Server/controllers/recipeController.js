@@ -108,6 +108,24 @@ recipeController.createRecipe = function (req) {
   })
 }
 
+/**
+ *
+ * @param {any} recipeId
+ * @param {any} body
+ * @returns
+ */
+recipeController.updateRecipe = (recipeId, body) => {
+  return new Promise((resolve, reject) => {
+    Recipe.findOneAndUpdate({'_id': recipeId}, body, { new: true }).exec((err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
 recipeController.deleteRecipe = (recipeId) => {
   return new Promise((resolve, reject) => {
     Recipe.findOne({ '_id': recipeId }, (err, item) => {
