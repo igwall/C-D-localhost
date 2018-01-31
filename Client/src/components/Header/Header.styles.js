@@ -32,8 +32,6 @@ export default css`
   width: calc(100% - 350px);
   height: 100%;
   position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 .app-name {
