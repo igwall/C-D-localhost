@@ -15,8 +15,7 @@ export default css`
 .sideBarre{
 
   height: 100%;
-  width: 25%;
-  min-width: 400px;
+  width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
@@ -24,7 +23,7 @@ export default css`
 }
 .main
 {
-  width: 75%;
+  width: calc(100% - 350px);
   height: 100%;
   padding: 30px;
   overflow: auto;
@@ -193,10 +192,6 @@ th, td {
 .button {
   font-size: 15px;
   padding: 10px 0;
-<<<<<<< HEAD
-=======
-  padding-left: 20%;
->>>>>>> master
   text-align: center;
   cursor: pointer;
   display: flex;
