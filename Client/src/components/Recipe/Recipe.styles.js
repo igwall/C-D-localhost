@@ -15,7 +15,6 @@ export default css`
 .sideBarre{
   height: 100%;
   width: 350px;
-  min-width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
@@ -26,6 +25,14 @@ export default css`
   height: 100%;
   padding: 30px;
   overflow: auto;
+}
+.MainTitle
+{
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 40px;
+  padding-left: 50px;
+  padding-bottom: 30px;
 }
 .head{
   width: 100%;
@@ -183,6 +190,7 @@ li{
 .element{
   padding-bottom: 4%;
   display: flex;
+  padding-left: 23px;
 }
 
 

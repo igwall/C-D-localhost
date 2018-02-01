@@ -66,7 +66,7 @@ export default class Recipe extends React.Component {
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' />
       <div className = 'sideBarre'>
-        <div className='PageTitle'><h1>{recipe.title}</h1></div>
+        <div className='PageTitle' />
         <div className='RecipePictrue'>
           <img src= {recipe.thumbnail} width= '128px' height = '128px' alt=''/>
         </div>
@@ -107,6 +107,7 @@ export default class Recipe extends React.Component {
         </div>
       </div>
       <div className= 'Main'>
+        <div className='MainTitle'>{recipe.title}</div>
         <div className='Title'>Description: </div>
         <div className='Description'>{recipe.description} </div>
 
@@ -128,26 +129,25 @@ export default class Recipe extends React.Component {
           </div>
         </div>
 
-        <div className= 'pictures'>
+        {recipe.pictures.length > 0 ? <div className= 'pictures'>
           <div>
             <div className='videos-title'>Photos</div>
             <div className='pictureelement'>
-              {recipe.pictures.length > 0 ? <Slider {...settings}> {
+              <Slider {...settings}> {
                 recipe.pictures.map((picture, i) => {
                   return (
                     <div key={1}><div className = 'picture'><img className = 'picture' src= {picture.link} alt=''/></div></div>
                   )
                 })
-              } </Slider> : <div className="Description"> Pas de photo disponible pour cette composition </div> }
+              } </Slider>
             </div>
           </div>
-        </div>
-
-        <div className = 'audios'>
+        </div> : <div className="Description"> </div> }
+        {recipe.audios.length > 0 ? <div className = 'audios'>
           <div className='videos-title'>Audios</div>
           <div className='audioelement'>
             <div className='audio'>
-              {recipe.audios.length > 0 ? <ul>
+              <ul>
                 {
                   recipe.audios.map((audio, i) =>
                     <div className='iteeem'><li key={i}>
@@ -164,11 +164,11 @@ export default class Recipe extends React.Component {
                     </div>
                   )
                 }
-              </ul> : <div className="Description"> Pas de fichier audio disponible pour cette composition </div> }
+              </ul>  }
 
             </div>
           </div>
-        </div>
+        </div> : <div className="Description"> </div> }
       </div>
       <style jsx>{styles}</style>
     </div>
