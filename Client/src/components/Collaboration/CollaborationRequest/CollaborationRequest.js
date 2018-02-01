@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './CollaborationRequest.styles'
 import {connect} from 'react-redux'
-import {dateFormatter} from '../../util/dateFormatter'
-import Button from '../UI/Button/Button'
-import { sendCollaborationRequest } from '../../store/actions/collaborationRequest.action'
-import { setProfile } from '../../services/Authentication.services'
+import {dateFormatter} from '../../../util/dateFormatter'
+import Button from '../../UI/Button/Button'
+import { sendCollaborationRequest } from '../../../store/actions/collaborationRequest.action'
+import { setProfile } from '../../../services/Authentication.services'
 
 @connect(store => {
   return {
@@ -12,7 +12,7 @@ import { setProfile } from '../../services/Authentication.services'
   }
 })
 
-export default class HomePage extends React.Component {
+export default class CollaborationRequest extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

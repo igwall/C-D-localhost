@@ -39,6 +39,20 @@ export default (state = defaultRecipesState, action) => {
         elements: newElements
       }
     }
+    case 'UPDATE_RECIPE': {
+      let newElements = state.elements.slice()
+      let recipe = state.elements.filter((recipe, i) => recipe._id === action.payload.recipeId)[0]
+      const recipeIndex = newElements.indexOf(recipe)
+      recipe = {
+        ...recipe,
+        ...action.payload.recipe
+      }
+      newElements[recipeIndex] = recipe
+      return {
+        ...state,
+        elements: newElements
+      }
+    }
     default:
       return {
         ...state

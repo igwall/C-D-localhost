@@ -15,24 +15,20 @@ export default css`
 
 .sidebar {
   height: 100%;
-  width: 30%;
-  min-width: 400px;
+  width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
 }
 
 .main {
-  width: 70%;
+  width: calc(100% - 350px);
   height: 100%;
   overflow: auto;
 }
 
 .title-group {
   padding: 20px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .title {
@@ -41,9 +37,10 @@ export default css`
 }
 
 .logout-button {
+  display: inline-flex;
   font-size: 13px;
   height: 100%;
-  padding: 5px 10px;
+  padding: 5px 0;
   cursor: pointer;
 }
 
@@ -68,9 +65,9 @@ export default css`
 }
 
 .button {
-  font-size: 15px;
+  font-size: 13px;
   padding: 10px 0;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   display: flex;
   align-items: center;

@@ -4,6 +4,7 @@ const Recipe = mongoose.model('Recipe')
 const User = mongoose.model('User')
 const materialController = require('./materialController')
 const roomController = require('./roomController')
+const collaboratorController = require('./collaboratorController')
 const recipeController = {}
 
 /**
@@ -55,6 +56,7 @@ recipeController.createRecipe = function (req) {
   }
   const materials = req.body.materials.split(',')
   const rooms = req.body.rooms.split(',')
+  const collaboratorId = req.body.collaborator
   return new Promise((resolve, reject) => {
     const recipeToAdd = new Recipe(recipe)
     recipeToAdd.save((err, item) => {
@@ -67,14 +69,30 @@ recipeController.createRecipe = function (req) {
             rooms.map(roomId => {
               roomController.addRecipeToRoom(roomId, recipeToAdd)
               .then((data) => {
-                Recipe.findOne({ '_id': item._id }).populate('rooms materials author').exec(function (err, res) {
-                  if (err) {
-                    err.status = 500
+                if (collaboratorId !== undefined) {
+                  collaboratorController.addRecipeToCollaborator(collaboratorId, recipeToAdd)
+                  .then((data) => {
+                    Recipe.findOne({ '_id': item._id }).populate('rooms materials').exec(function (err, res) {
+                      if (err) {
+                        err.status = 500
+                        reject(err)
+                      } else {
+                        resolve(res)
+                      }
+                    })
+                  }).catch(err => {
                     reject(err)
-                  } else {
-                    resolve(res)
-                  }
-                })
+                  })
+                } else {
+                  Recipe.findOne({ '_id': item._id }).populate('rooms materials collaborator').exec(function (err, res) {
+                    if (err) {
+                      err.status = 500
+                      reject(err)
+                    } else {
+                      resolve(res)
+                    }
+                  })
+                }
               })
               .catch((err) => {
                 reject(err)
@@ -85,6 +103,24 @@ recipeController.createRecipe = function (req) {
             reject(err)
           })
         })
+      }
+    })
+  })
+}
+
+/**
+ *
+ * @param {any} recipeId
+ * @param {any} body
+ * @returns
+ */
+recipeController.updateRecipe = (recipeId, body) => {
+  return new Promise((resolve, reject) => {
+    Recipe.findOneAndUpdate({'_id': recipeId}, body, { new: true }).exec((err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
       }
     })
   })
@@ -110,6 +146,13 @@ recipeController.deleteRecipe = (recipeId) => {
             reject(err)
           })
         })
+        if (item.collaborator !== undefined) {
+          collaboratorController.removeRecipeFromCollaborator(item.collaborator, recipeId)
+          .then((data) => {
+          }).catch(err => {
+            reject(err)
+          })
+        }
         Recipe.findOneAndRemove({ '_id': recipeId }, (err, res) => {
           if (err) {
             reject(err)

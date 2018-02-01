@@ -217,14 +217,14 @@ export default class RecipesListAdmin extends React.Component {
     recipes = this.filter(recipes)
 
     return (<div className='host'>
-      <div className='list-title'>LISTE DES RECETTES</div>
+      <div className='list-title'>LISTE DES COMPOSITIONS</div>
       <ul className='list'>
         {
           this.state.deleted !== ''
             ? <div className='validation-panel'>
               <div className='validation-content'>
                 <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                <div className='validation-message'>La recette "{this.state.deleted}" a été supprimée avec succès !</div>
+                <div className='validation-message'>La composition "{this.state.deleted}" a été supprimée avec succès !</div>
               </div>
             </div>
             : undefined
@@ -266,7 +266,7 @@ export default class RecipesListAdmin extends React.Component {
                       <div className='link-container'>
                         <div className='element-picture'><img src={recipe.thumbnail} alt='' width='75px' height='75px' /></div>
                         <div className='element-description'>
-                          <div className='element-title'>{recipe.title}</div>
+                          <div className='element-title'><p>{recipe.title}</p></div>
                           <div className='element-other'>Pièces : {
                             recipe.rooms.map((room, i) => {
                               let text = room.name
@@ -275,7 +275,7 @@ export default class RecipesListAdmin extends React.Component {
                             })
                           }
                           </div>
-                          <div className='element-other'>Ingrédients : {
+                          <div className='element-other'>Composants : {
                             recipe.materials.map((material, i) => {
                               let text = material.name
                               if (i + 1 !== recipe.materials.length) text = text + ', '

@@ -15,18 +15,17 @@ export default css`
 
 .sidebar {
   height: 100%;
-  width: 30%;
-  min-width: 300px;
+  width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
 }
 
 .main {
-  width: 70%;
+  width: calc(100% - 400px);
   height: 100%;
   overflow: auto;
-  padding: 0 25px;
+  padding: 20px 25px;
 }
 
 .panel-title {

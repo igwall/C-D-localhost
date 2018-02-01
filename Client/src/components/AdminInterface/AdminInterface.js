@@ -133,10 +133,18 @@ export default class AdminInterface extends React.Component {
   displayContent () {
     const content = this.state.content
     const { quotes, references, hotVideos, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    const pendingRecipes = recipes.filter(recipe => {
+      if (recipe !== null) return recipe.validated === false
+      else return false
+    })
+    const validatedRecipes = recipes.filter(recipe => {
+      if (recipe !== null) return recipe.validated === true
+      else return false
+    })
     switch (content) {
       case 'recipesList': {
         return (
-          <RecipesListAdmin popoverManager={this.props.popoverManager} materials={materials} recipes={recipes} rooms={rooms} />
+          <RecipesListAdmin popoverManager={this.props.popoverManager} materials={materials} recipes={validatedRecipes} rooms={rooms} />
         )
       }
       case 'materialsList': {
@@ -176,7 +184,7 @@ export default class AdminInterface extends React.Component {
       }
       case 'recipeRequests': {
         return (
-          <RecipeRequests recipes={recipes} />
+          <RecipeRequests popoverManager={this.props.popoverManager} materials={materials} recipes={pendingRecipes} rooms={rooms} />
         )
       }
       case 'libraryPanel': {
@@ -204,32 +212,32 @@ export default class AdminInterface extends React.Component {
           <div className='logout-button' onClick={() => adminLogout()}>DÉCONNEXION</div>
         </div>
         <div className='panel panel-recipes'>
-          <div className='panel-title'>Recettes</div>
+          <div className='panel-title'>Compositions</div>
           <div className='panel-buttons'>
             <div className='button' onClick={() => this.displayRecipesList()}>
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES RECETTES</div>
+              <div className='button-text'>AFFICHER LES COMPOSITIONS</div>
             </div>
             <div className='button' onClick={() => this.displayRecipeForm()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVELLE RECETTE</div>
+              <div className='button-text'>NOUVELLE COMPOSITION</div>
             </div>
             <div className='button' onClick={() => this.displayRecipeRequests()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>VOIR LES RECETTES PROPOSÉES</div>
+              <div className='button-text'>VOIR LES COMPOSITIONS PROPOSÉES</div>
             </div>
           </div>
         </div>
         <div className='panel panel-materials'>
-          <div className='panel-title'>Ingrédients</div>
+          <div className='panel-title'>Composants</div>
           <div className='panel-buttons'>
             <div className='button' onClick={() => this.displayMaterialsList()}>
               <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
-              <div className='button-text'>AFFICHER LES INGRÉDIENTS</div>
+              <div className='button-text'>AFFICHER LES COMPOSANTS</div>
             </div>
             <div className='button' onClick={() => this.displayMaterialForm()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
-              <div className='button-text'>NOUVEL INGRÉDIENT</div>
+              <div className='button-text'>NOUVEAU COMPOSANT</div>
             </div>
           </div>
         </div>

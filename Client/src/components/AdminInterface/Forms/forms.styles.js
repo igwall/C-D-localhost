@@ -4,6 +4,7 @@ import constants from '../../../constants'
 export default css`
 .host {
   color: white;
+  padding: 20px;
 }
 
 .form-title {

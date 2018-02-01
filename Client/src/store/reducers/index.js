@@ -10,10 +10,13 @@ import administrators from './administrators.reducer'
 import artistFetched from './artist.reducer'
 import collaborationRequests from './collaborationRequests.reducer'
 import currentAdmin from './currentAdmin.reducer'
+import currentCollaborator from './currentCollaborator.reducer'
 import quotes from './quotes.reducer'
 import references from './references.reducer'
 import hotVideos from './hotVideos.reducer'
 import recipeFetched from './currentRecipe.reducer'
+import mails from './mail.reducer'
+import comments from './comment.reducer'
 
 export default combineReducers({
   currentUser,
@@ -30,6 +33,8 @@ export default combineReducers({
   quotes,
   references,
   hotVideos,
-  recipeFetched
-
+  recipeFetched,
+  currentCollaborator,
+  mails,
+  comments
 })
