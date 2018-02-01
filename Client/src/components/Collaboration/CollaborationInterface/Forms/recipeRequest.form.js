@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './forms.styles'
-import Icon from '../../UI/Icon/Icon'
-import Button from '../../UI/Button/Button'
+import Icon from '../../../UI/Icon/Icon'
+import Button from '../../../UI/Button/Button'
 import Select from 'react-select'
-import { addRecipe } from '../../../store/actions/recipes.action'
+import { addRecipeRequest } from '../../../../store/actions/recipes.action'
 
-export default class RecipeForm extends React.Component {
+export default class RecipeRequestForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -35,6 +35,7 @@ export default class RecipeForm extends React.Component {
     const number = this.state.selectedNumber
     const rooms = this.state.selectedRooms
     const materials = this.state.selectedMaterials
+    const collaborator = this.props.currentCollaborator._id
 
     const newRecipe = {
       title: title,
@@ -43,11 +44,11 @@ export default class RecipeForm extends React.Component {
       number: number,
       rooms: rooms,
       materials: materials,
-      validated: true
+      collaborator: collaborator
     }
 
     if (this.isFormValid()) {
-      addRecipe(newRecipe).then(recipe => {
+      addRecipeRequest(newRecipe).then(recipe => {
         this.setState({added: recipe.title})
         this.resetForm()
       }).catch(err => {
@@ -175,7 +176,7 @@ export default class RecipeForm extends React.Component {
 
     return (<div className='host'>
       <div className='form'>
-        <div className='form-title'>NOUVELLE COMPOSITION</div>
+        <div className='form-title'>NOUVELLE PROPOSITION DE COMPOSITION</div>
         <form className='form-large' onSubmit={this.submit}>
           {
             !this.state.freeTitle
@@ -192,7 +193,7 @@ export default class RecipeForm extends React.Component {
               ? <div className='validation-panel'>
                 <div className='validation-content'>
                   <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='validation-message'>La composition "{this.state.added}" a été ajouté avec succès !</div>
+                  <div className='validation-message'>La proposition "{this.state.added}" a été envoyée avec succès ! Elle est maintenant en attente de validation.</div>
                 </div>
               </div>
               : undefined
@@ -205,11 +206,11 @@ export default class RecipeForm extends React.Component {
               </div>
               <div className='input-group'>
                 <div className='input-label'>Description de la composition</div>
-                <textarea type='text' placeholder='Description et objectifs de la composition...' ref={i => { this.description = i }} onChange={this.checkDescription} />
+                <textarea type='text' placeholder='Description et objectifs de la recette...' ref={i => { this.description = i }} onChange={this.checkDescription} />
               </div>
               <div className='input-group'>
                 <div className='input-label'>Consignes</div>
-                <textarea type='text' placeholder='Les consignes de la composition, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
+                <textarea type='text' placeholder='Les consignes de la recette, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
               </div>
             </div>
             <div className='form-column form-column-right'>
@@ -268,7 +269,7 @@ export default class RecipeForm extends React.Component {
               block
               disabled={!this.isFormValid()}
               onClick={() => this.submit()}>
-              AJOUTER COMPOSITION
+              ENVOYER PROPOSITION
             </Button>
           </div>
         </form>

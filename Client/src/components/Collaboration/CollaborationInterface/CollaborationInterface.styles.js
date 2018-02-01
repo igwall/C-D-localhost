@@ -1,51 +1,44 @@
 import css from 'styled-jsx/css'
-import constants from '../../constants'
+import constants from '../../../constants'
 
 export default css`
 .host {
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  color: #fff;
-  overflow: hidden; 
   display: flex;
   align-items: first-baseline;
-  font-size: 20px;
 }
 
 .sidebar {
   height: 100%;
   width: 350px;
-  padding: 0 15px;
+  padding: 0 30px;
   background: ${constants.SECONDARY_COLOR};
-  overflow: auto;
 }
 
-.main {
+.sidebar-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.sidebar-text {
+  text-align: justify;
+}
+
+.content {
+  overflow-y: auto; 
   width: calc(100% - 350px);
   height: 100%;
-  overflow: auto;
-}
-
-.title-group {
-  padding: 20px 10px;
+  margin: auto;
 }
 
 .title {
+  padding: 20px 0;
   font-size: 25px;
   font-weight: bold;
-}
-
-.logout-button {
-  display: inline-flex;
-  font-size: 13px;
-  height: 100%;
-  padding: 5px 0;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background: rgba(255,255,255,0.2)
 }
 
 .panel {
@@ -65,9 +58,9 @@ export default css`
 }
 
 .button {
-  font-size: 13px;
+  font-size: 15px;
   padding: 10px 0;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   display: flex;
   align-items: center;

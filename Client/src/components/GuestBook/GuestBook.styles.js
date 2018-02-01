@@ -16,7 +16,6 @@ export default css`
 
   height: 100%;
   width: 350px;
-  min-width: 400px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;

@@ -181,6 +181,7 @@ li {
   transition: min-width 0.75s;    
   background: rgba(255,255,255,0.3);
 }
+
 .middle{ 
   padding-top: 5%;
 }

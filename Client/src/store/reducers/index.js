@@ -10,6 +10,7 @@ import administrators from './administrators.reducer'
 import artistFetched from './artist.reducer'
 import collaborationRequests from './collaborationRequests.reducer'
 import currentAdmin from './currentAdmin.reducer'
+import currentCollaborator from './currentCollaborator.reducer'
 import quotes from './quotes.reducer'
 import references from './references.reducer'
 import hotVideos from './hotVideos.reducer'
@@ -31,6 +32,7 @@ export default combineReducers({
   quotes,
   references,
   hotVideos,
+  currentCollaborator,
   mails,
   comments
 })

@@ -50,14 +50,14 @@ export default class MaterialForm extends React.Component {
   render () {
     return (<div className='host'>
       <div className='form'>
-        <div className='form-title'>NOUVEL INGRÉDIENT</div>
+        <div className='form-title'>NOUVEAU COMPOSANT</div>
         <form onSubmit={this.submit}>
           {
             !this.state.freeName
               ? <div className='error-panel'>
                 <div className='error-content'>
                   <div className='error-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='error-message'>Cet ingrédient existe déjà. Choisissez un autre nom.</div>
+                  <div className='error-message'>Ce composant existe déjà. Choisissez un autre nom.</div>
                 </div>
               </div>
               : undefined
@@ -67,13 +67,13 @@ export default class MaterialForm extends React.Component {
               ? <div className='validation-panel'>
                 <div className='validation-content'>
                   <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                  <div className='validation-message'>L'ingrédient "{this.state.added}" a été ajouté avec succès !</div>
+                  <div className='validation-message'>Le composant "{this.state.added}" a été ajouté avec succès !</div>
                 </div>
               </div>
               : undefined
           }
           <div className='input-group'>
-            <div className='input-label'>Nom de l'ingrédient</div>
+            <div className='input-label'>Nom du composant</div>
             <input type='text' placeholder='Verre de vin' ref={i => { this.name = i }} onChange={this.checkName} />
           </div>
           <div className='add-button'>
@@ -82,7 +82,7 @@ export default class MaterialForm extends React.Component {
               block
               disabled={!this.isFormValid()}
               onClick={() => this.submit()}>
-              AJOUTER INGRÉDIENT
+              AJOUTER COMPOSANT
             </Button>
           </div>
         </form>

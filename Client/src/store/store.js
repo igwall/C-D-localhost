@@ -28,6 +28,20 @@ export const defaultCurrentUserState = {
   }
 }
 
+export const defaultCurrentCollaboratorState = {
+  currentCollaborator: {
+    firstname: '',
+    lastname: '',
+    recipes: [],
+    picture: '',
+    bio: '',
+    description: '',
+    video: '',
+    link: '',
+    user: ''
+  }
+}
+
 export const defaultCurrentAdminState = {
   currentAdmin: {
     username: '',
@@ -175,5 +189,5 @@ export const defaultCommentsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState, defaultMailState, defaultCommentsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultFetchedUserState, defaultRoomsState, defaultNotificationsState, defaultMaterialsState, defaultCollaboratorsState, defaultRecipesState, defaultAdministratorsState, defaultArtistState, defaultCollaborationRequestsState, defaultCurrentAdminState, defaultQuotesState, defaultReferencesState, defaultHotVideosState, defaultMailState, defaultCommentsState, defaultCurrentCollaboratorState)
 export default createStore(reducer, { ...defaultState }, enhancer)

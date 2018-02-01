@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from './lists.styles'
-import Icon from '../../UI/Icon/Icon'
-import Button from '../../UI/Button/Button'
+import Icon from '../../../UI/Icon/Icon'
+import Button from '../../../UI/Button/Button'
 import { Link } from 'react-router-dom'
+import {dateFormatter} from '../../../../util/dateFormatter'
 import Select from 'react-select'
-import {dateFormatter} from '../../../util/dateFormatter'
-import constants from '../../../constants'
-import { deleteRecipe } from '../../../store/actions/recipes.action'
+import constants from '../../../../constants'
 
-export default class RecipesListAdmin extends React.Component {
+export default class RecipeRequestPendingList extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -24,13 +23,7 @@ export default class RecipesListAdmin extends React.Component {
     this.displayConfirmDelete = this.displayConfirmDelete.bind(this)
   }
 
-  deleteRecipe (recipe) {
-    deleteRecipe(recipe._id).then(data => {
-      this.setState({deleted: recipe.title})
-      this.props.popoverManager.dismissPopover()
-    }).catch(err => {
-      console.log(err)
-    })
+  deleteRecipeRequest (recipe) {
   }
 
   // Input search methods
@@ -149,9 +142,9 @@ export default class RecipesListAdmin extends React.Component {
   displayConfirmDelete (recipe) {
     this.props.popoverManager.setRenderedComponent(
       <div className='popup'>
-        <div className='popup-title'>SUPPRIMER RECETTE</div>
+        <div className='popup-title'>SUPPRIMER PROPOSITION DE COMPOSITION</div>
         <div className='separator' />
-        <div className='popup-text'>Voulez-vous vraiment supprimer la recette "{recipe.title}" ?</div>
+        <div className='popup-text'>Voulez-vous vraiment supprimer votre proposition pour la recette "{recipe.title}" ?</div>
         <div className='popup-actions'>
           <div className='action action-cancel'>
             <Button
@@ -163,7 +156,7 @@ export default class RecipesListAdmin extends React.Component {
           </div>
           <div className='action action-confirm'>
             <Button
-              onClick={() => this.deleteRecipe(recipe)}
+              onClick={() => this.deleteRecipeRequest(recipe)}
               bgColor={constants.BUTTON_DELETE_BACKGROUND}
               hoverBgColor={constants.BUTTON_DELETE_HOVER_BACKGROUND}
             >Supprimer</Button>
@@ -217,14 +210,14 @@ export default class RecipesListAdmin extends React.Component {
     recipes = this.filter(recipes)
 
     return (<div className='host'>
-      <div className='list-title'>LISTE DES COMPOSITIONS</div>
+      <div className='list-title'>MES PROPOSITIONS DE COMPOSITION EN ATTENTE</div>
       <ul className='list'>
         {
           this.state.deleted !== ''
             ? <div className='validation-panel'>
               <div className='validation-content'>
                 <div className='validation-icon'><Icon name='exclamation-triangle' fontSize='20px' color='#fff' /></div>
-                <div className='validation-message'>La composition "{this.state.deleted}" a été supprimée avec succès !</div>
+                <div className='validation-message'>La proposition "{this.state.deleted}" a été supprimée avec succès !</div>
               </div>
             </div>
             : undefined
@@ -237,7 +230,7 @@ export default class RecipesListAdmin extends React.Component {
             <Select
               name='ingredient-select'
               value={selectedMaterials}
-              placeholder='Trier par ingrédients'
+              placeholder='Trier par composants'
               multi
               closeOnSelect={false}
               onChange={this.handleSelectMaterialChange.bind(this)}
@@ -266,7 +259,7 @@ export default class RecipesListAdmin extends React.Component {
                       <div className='link-container'>
                         <div className='element-picture'><img src={recipe.thumbnail} alt='' width='75px' height='75px' /></div>
                         <div className='element-description'>
-                          <div className='element-title'><p>{recipe.title}</p></div>
+                          <div className='element-title'>{recipe.title}</div>
                           <div className='element-other'>Pièces : {
                             recipe.rooms.map((room, i) => {
                               let text = room.name

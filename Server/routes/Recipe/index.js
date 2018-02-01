@@ -4,13 +4,13 @@ module.exports = function (router, controller) {
    * definitions:
    *   Recipe:
    *     properties:
-   *       name:
+   *       title:
    *         type: string
    *       description:
    *         type: string
    *       statement:
    *         type: string
-   *       duration:
+   *       number:
    *         type: integer
    */
 
@@ -18,4 +18,5 @@ module.exports = function (router, controller) {
   require('./getAll')(router, controller)
   require('./getOne')(router, controller)
   require('./delete')(router, controller)
+  require('./update')(router, controller)
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import PageLayout from '../layouts/page'
-import CollaborationRequest from '../components/CollaborationRequest/CollaborationRequest'
+import Collaboration from '../components/Collaboration/Collaboration'
 
 export default (props) => (
   <PageLayout>
-    <CollaborationRequest />
+    <Collaboration />
   </PageLayout>
 )

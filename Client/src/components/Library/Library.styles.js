@@ -30,6 +30,7 @@ export default css`
   overflow: auto;
 
 }
+
 .head {
   padding: 20px;
   display: flex;
@@ -38,8 +39,7 @@ export default css`
   padding-right: 5%;
 }
 
-.admin-info
-{
+.admin-info {
   display: inline-block;
   width: 100%;
   padding-left: 20%;
@@ -193,7 +193,10 @@ th, td {
 .button {
   font-size: 15px;
   padding: 10px 0;
+<<<<<<< HEAD
+=======
   padding-left: 20%;
+>>>>>>> master
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -207,7 +210,13 @@ th, td {
 }
 
 .button-text {
+<<<<<<< HEAD
+  font-size: 20px;
+    Font-Weight: Bold;
+    padding-left: 20%;
+=======
   
+>>>>>>> master
 }
 
 
