@@ -44,7 +44,22 @@ export default css`
   padding-left: 5%;
   padding-right: 5%;
   font-size: 16px;
+  color: #797979;
   text-align: justify;
+}
+.text{
+  padding-top: 10px;
+  padding-left: 45px;
+  color: #a0a0a0;
+}
+.text1{
+  padding-top: 10px;
+  padding-left: 10px;
+  color: #a0a0a0;
+  display: inline-block;
+}
+.recipeInfo{
+  padding-left:20px;
 }
 .videos-title{
   padding-bottom: 20px;
@@ -141,6 +156,10 @@ tr{
 tr:nth-child(even) {
   background-color: ${constants.SECONDARY_COLOR};
 }
+
+li{
+  color:#a0a0a0;
+}
 .element-infos {
   padding: 5px;
   flex: 3;
@@ -162,8 +181,8 @@ tr:nth-child(even) {
   font-size: 20px;
 }
 .element{
-  padding-left:30%;
   padding-bottom: 4%;
+  display: flex;
 }
 
 

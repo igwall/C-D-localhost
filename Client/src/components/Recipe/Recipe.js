@@ -28,13 +28,13 @@ export default class Recipe extends React.Component {
     return this.state.messageValid
   }
   componentDidMount () {
-    console.log(this.props.recipeId)
     setRecipe(this.props.recipeId).then(() => {
     }).catch(err => {
       console.error(err)
     })
   }
   render () {
+    console.log(this.props.recipe.author)
     const setting = {
       className: '',
       dots: true,
@@ -60,20 +60,8 @@ export default class Recipe extends React.Component {
       afterChange: function (index) {
       }
     }
-    const recipe =
-    {
-      title: 'salsa',
-      thumbnail: '/assets/imgs/imgDefault.png',
-      description: 'setState() enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses Think of setState() as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately.',
-      pictures: [],
-      videos: ['https://www.youtube.com/embed/tgbNymZ7vqY'],
-      audios: [1, 2, 3, 4, 5, 6, 8],
-      author: 'TOTO',
-      createdAt: Date.now,
-      materials: [],
-      rooms: [],
-      number: 'duo'
-    }
+
+    const recipe = this.props.recipe
     return (<div className='host'>
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' />
@@ -82,28 +70,38 @@ export default class Recipe extends React.Component {
         <div className='RecipePictrue'>
           <img src= {recipe.thumbnail} width= '128px' height = '128px' alt=''/>
         </div>
-        <div className='number1'><div className='numberTitle' >Proposée par: </div>{recipe.author}</div>
-
-        <div className='number'><div className='numberTitle' >Nombre de participant: </div>{recipe.number}</div>
-        <div className='sideBarreFoot'>
-          <div className='item'>
-            <div className ='itemTitle'>Ingrédients: </div>
-            <div className='element'>
-              <ul>
-                <li>Coffee</li>
-                <li>Tea</li>
-                <li>Milk</li>
-              </ul>
-            </div>
+        <div className='recipeInfo'>
+          <div className='number1'><div className='numberTitle' >Proposée par: </div>
+            <div className='text'> {recipe.author}</div>
+            {recipe.author !== undefined ? <div className='text'> {recipe.author.name}</div>
+              : <div className='text'> Muriel PIQUE</div> }
           </div>
-          <div className='item'>
-            <div className ='itemTitle'>Pièces: </div>
-            <div className='element'>
-              <ul>
-                <li>Coffee</li>
-                <li>Tea</li>
-                <li>Milk</li>
-              </ul>
+
+          <div className='number'><div className='numberTitle' >Nombre de participant: </div><div className='text'>{recipe.number.toUpperCase()}</div> </div>
+          <div className='sideBarreFoot'>
+            <div className='item'>
+              <div className ='itemTitle'>Ingrédients: </div>
+              <div className='element'>
+                {
+                  recipe.materials.map((material, i) => {
+                    return (
+                      <div key={i}><div className='text1'>{material.name}</div></div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <div className='item'>
+              <div className ='itemTitle'>Pièces: </div>
+              <div className='element'>
+                {
+                  recipe.rooms.map((room, i) => {
+                    return (
+                      <div key={i}><div className='text1'>{room.name}</div></div>
+                    )
+                  })
+                }
+              </div>
             </div>
           </div>
         </div>
@@ -113,21 +111,19 @@ export default class Recipe extends React.Component {
         <div className='Description'>{recipe.description} </div>
 
         <div className='Title'>Consignes: </div>
-        <div className='Description'>{recipe.description} </div>
+        <div className='Description'>{recipe.statement} </div>
 
         <div className='videos'>
           <div>
             <div className='videos-title'>Videos:</div>
             <div className= 'videoelement'>
-              <Slider {...setting}>
-                {
-                  recipe.videos.map((hotVideo, i) => {
-                    return (
-                      <div key={i}><div className='video'><iframe id='video-iframe' title='{hotVideo.title}' width='100%' height='345' src={hotVideo} /></div></div>
-                    )
-                  })
-                }
-              </Slider>
+              {recipe.videos.length > 0 ? <Slider {...setting}> {
+                recipe.videos.map((video, i) => {
+                  return (
+                    <div key={i}><div className='video'><iframe id='video-iframe' title={video.title} width='100%' height='345' src={video.link} /></div></div>
+                  )
+                })
+              } </Slider> : <div className="Description"> Pas de video disponible pour cette composition </div> }
             </div>
           </div>
         </div>
@@ -136,9 +132,13 @@ export default class Recipe extends React.Component {
           <div>
             <div className='videos-title'>Photos</div>
             <div className='pictureelement'>
-              <Slider {...settings}>
-                <div key={1}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div></div>
-              </Slider>
+              {recipe.pictures.length > 0 ? <Slider {...settings}> {
+                recipe.pictures.map((picture, i) => {
+                  return (
+                    <div key={1}><div className = 'picture'><img className = 'picture' src= {picture.link} alt=''/></div></div>
+                  )
+                })
+              } </Slider> : <div className="Description"> Pas de photo disponible pour cette composition </div> }
             </div>
           </div>
         </div>
@@ -147,16 +147,16 @@ export default class Recipe extends React.Component {
           <div className='videos-title'>Audios</div>
           <div className='audioelement'>
             <div className='audio'>
-              <ul>
+              {recipe.audios.length > 0 ? <ul>
                 {
-                  recipe.audios.map((book, i) =>
+                  recipe.audios.map((audio, i) =>
                     <div className='iteeem'><li key={i}>
                       <div className='audio-label'>
-                    TOTO, smou7at
+                        {audio.title}
                       </div>
                       <div className='lecteur'>
                         <audio controls="controls" skin ='TED'>
-                          <source src= 'http://41mag.fr/music.mp3' type="audio/mp3" />
+                          <source src= {audio.link} type="audio/mp3" />
                        Votre navigateur n'est pas compatible
                         </audio>
                       </div>
@@ -164,7 +164,8 @@ export default class Recipe extends React.Component {
                     </div>
                   )
                 }
-              </ul>
+              </ul> : <div className="Description"> Pas de fichier audio disponible pour cette composition </div> }
+
             </div>
           </div>
         </div>

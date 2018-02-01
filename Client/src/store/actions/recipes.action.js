@@ -23,10 +23,10 @@ export function setRecipes (dispatch) {
 export function setRecipe (recipeId) {
   return new Promise((resolve, reject) => {
     store.dispatch({type: 'FETCH_RECIPE_START'})
-    fetchRecipe().then((data) => {
+    fetchRecipe(recipeId).then((data) => {
       store.dispatch({
         type: 'FETCH_RECIPE_SUCCESS',
-        payload: recipeId
+        payload: data
       })
       resolve(data)
     }).catch((err) => {

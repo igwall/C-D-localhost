@@ -13,7 +13,7 @@ export default (state = defaultRecipeState, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        elements: action.payload
+        recipe: action.payload
       }
     }
     case 'FETCH_RECIPE_ERROR': {
