@@ -234,91 +234,95 @@ export default class Recipes extends React.Component {
     const selectNumber = this.setNumberSelect()
     recipes = this.filter(recipes)
     return (<div className='host'>
-      <div className='list-title'>LISTE DES RECETTES</div>
-      <ul className='list'>
-        <div className='sort-bar'>
-          <div className='sort sort-search'>
-            <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
-          </div>
-          <div className='sort sort-material'>
-            <Select
-              name='ingredient-select'
-              value={selectedMaterials}
-              placeholder='Trier par ingrédients'
-              multi
-              closeOnSelect={false}
-              onChange={this.handleSelectMaterialChange.bind(this)}
-              options={selectMaterials}
-            />
-          </div>
-          <div className='sort sort-room'>
-            <Select
-              name='room-select'
-              value={selectedRooms}
-              placeholder='Trier par pièces'
-              multi
-              closeOnSelect={false}
-              onChange={this.handleSelectRoomChange.bind(this)}
-              options={selectRooms}
-            />
-          </div>
-          <div className='sort sort-number'>
-            <Select
-              id='number-select'
-              placeholder='Nombre de participant'
-              simpleValue
-              clearable={true}
-              value={selectedNumber}
-              onChange={this.handleSelectNumberChange.bind(this)}
-              options={selectNumber}
-            />
+      <div className='sidebar'>
+        <div className='sidebar-title'>LISTE DES RECETTES</div>
+      </div>
+      <div className= 'Main'>
+        <ul className='list'>
+          <div className='sort-bar'>
+            <div className='sort sort-search'>
+              <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
+            </div>
+            <div className='sort sort-material'>
+              <Select
+                name='ingredient-select'
+                value={selectedMaterials}
+                placeholder='Trier par ingrédients'
+                multi
+                closeOnSelect={false}
+                onChange={this.handleSelectMaterialChange.bind(this)}
+                options={selectMaterials}
+              />
+            </div>
+            <div className='sort sort-room'>
+              <Select
+                name='room-select'
+                value={selectedRooms}
+                placeholder='Trier par pièces'
+                multi
+                closeOnSelect={false}
+                onChange={this.handleSelectRoomChange.bind(this)}
+                options={selectRooms}
+              />
+            </div>
+            <div className='sort sort-number'>
+              <Select
+                id='number-select'
+                placeholder='Nombre de participant'
+                simpleValue
+                clearable={true}
+                value={selectedNumber}
+                onChange={this.handleSelectNumberChange.bind(this)}
+                options={selectNumber}
+              />
 
+            </div>
           </div>
-        </div>
-        <div className='body'>
-          {
-            recipes.map((recipe, i) => {
-              return (
-                <li className='list-element' key={i}>
-                  <div className='element'>
-                    <div className='element-infos'>
-                      <Link to={`/recipes/${recipe._id}`}>
-                        <div className='link-container'>
-                          <div className='element-picture'><img src={recipe.thumbnail} alt='' width='75px' max-height='75px' /></div>
-                          <div className='element-description'>
-                            <div className='element-title'>{recipe.title}</div>
-                            <div className='element-other'>Pièces : {
-                              recipe.rooms.map((room, i) => {
-                                let text = room.name
-                                if (i + 1 !== recipe.rooms.length) text = text + ', '
-                                return text
-                              })
-                            }
+          <div className='body'>
+            {
+              recipes.map((recipe, i) => {
+                return (
+                  <li className='list-element' key={i}>
+                    <div className='element'>
+                      <div className='element-infos'>
+                        <Link to={`/recipes/${recipe._id}`}>
+                          <div className='link-container'>
+                            <div className='element-picture'><img src={recipe.thumbnail} alt='' width='75px' max-height='75px' /></div>
+                            <div className='element-description'>
+                              <div className='element-title'>{recipe.title}</div>
+                              <div className='element-other'>Pièces : {
+                                recipe.rooms.map((room, i) => {
+                                  let text = room.name
+                                  if (i + 1 !== recipe.rooms.length) text = text + ', '
+                                  return text
+                                })
+                              }
+                              </div>
+                              <div className='element-other'>Ingrédients : {
+                                recipe.materials.map((material, i) => {
+                                  let text = material.name
+                                  if (i + 1 !== recipe.materials.length) text = text + ', '
+                                  return text
+                                })
+                              }
+                              </div>
+                              <div className='element-other'>Nombre de participants : {
+                                recipe.number
+                              }
+                              </div>
+                              <div className='element-date'>Créée le {dateFormatter(recipe.createdAt)}</div>
                             </div>
-                            <div className='element-other'>Ingrédients : {
-                              recipe.materials.map((material, i) => {
-                                let text = material.name
-                                if (i + 1 !== recipe.materials.length) text = text + ', '
-                                return text
-                              })
-                            }
-                            </div>
-                            <div className='element-other'>Nombre de participants : {
-                              recipe.number
-                            }
-                            </div>
-                            <div className='element-date'>Créée le {dateFormatter(recipe.createdAt)}</div>
                           </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              )
-            })
-          }
-        </div>
-      </ul>
+                  </li>
+                )
+              })
+            }
+          </div>
+        </ul>
+      </div>
       <style jsx>{styles}</style>
     </div>)
   }

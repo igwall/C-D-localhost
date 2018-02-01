@@ -15,8 +15,7 @@ export default css`
 .sideBarre{
 
   height: 100%;
-  width: 25%;
-  min-width: 400px;
+  width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
@@ -24,7 +23,7 @@ export default css`
 }
 .main
 {
-  width: 75%;
+  width: calc(100% - 350px);
   height: 100%;
   padding: 30px;
   overflow: auto;
@@ -35,16 +34,16 @@ export default css`
   padding: 20px;
   display: flex;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 2%;
   padding-right: 5%;
 }
 
 .admin-info {
   display: inline-block;
   width: 100%;
-  padding-left: 20%;
+  padding-left: 13%;
   padding-right: 20%;
-  padding-top: 23%;
+  padding-top: 40px;
   
 }
 
@@ -62,7 +61,6 @@ export default css`
 
 .admin-name {
   text-align: center;
-  margin-right: 25%;
   font-size: 25px;
   padding-top: 5%;
 }
@@ -193,10 +191,6 @@ th, td {
 .button {
   font-size: 15px;
   padding: 10px 0;
-<<<<<<< HEAD
-=======
-  padding-left: 20%;
->>>>>>> master
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -210,14 +204,12 @@ th, td {
 }
 
 .button-text {
-<<<<<<< HEAD
-  font-size: 20px;
-    Font-Weight: Bold;
-    padding-left: 20%;
-=======
-  
->>>>>>> master
 }
-
+.sidebar-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 30px 0;
+}
 
 `

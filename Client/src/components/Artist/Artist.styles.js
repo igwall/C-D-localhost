@@ -27,17 +27,32 @@ export default css`
 
 .headLeftSide{
   diplay: inline-block;
-  width : 35%;
+  width : 350px;
 }
 .headRightSide{
   diplay: inline-block;
-  width : 65%;
+  width : calc(100% - 350px);
 }
+.SideBar{
 
+  width: 400px;
+  padding: 0 15px;
+  background: ${constants.SECONDARY_COLOR};
+  overflow: auto;
+
+}
+.Main
+{
+  width: calc(100% - 400px);
+  height: 100%;
+  padding: 30px;
+  overflow: auto;
+
+}
 .artistPicture {
-  width: 40%;
-  margin-left: 18%;
+  width: 270px;
   height: 270px;
+  padding-left: 10%;
 
 }
 .suite {
@@ -87,7 +102,8 @@ export default css`
   padding-left:5%
 }
 .middle{ 
-  padding-top: 5%;
+
+  display: flex;
 }
 .middleHead{
   display: flex;
@@ -209,6 +225,9 @@ table, th, td {
 th, td {
   padding: 5px;
   text-align: left;    
+}
+td {
+  font-size: 10px;
 }
 .audios{
   padding-top: 5%;
