@@ -40,29 +40,28 @@ export default class GuestBook extends React.Component {
   }
   submitForm () {
     if (this.formIsValid()) {
-      if (this.props.currentUser.username.length === 0) {
-        addComment(this.message.value).then((response) => {
-          this.confirmSend()
-        }).catch((err) => {
-          console.error(err)
-          if (err.response.data === 'Username already exists') {
-            this.setState({usernameExists: true})
-          } else if (err.response.data === 'Email already exists') {
-            this.setState({emailExists: true})
-          }
-        })
+      let comment
+      if (this.props.currentUser.username.length !== 0) {
+        comment = {
+          text: this.message.value,
+          user: this.props.currentUser._id
+        }
+        console.log(comment.user)
       } else {
-        addComment(this.message.value, this.props.currentUser).then((response) => {
-          this.confirmSend()
-        }).catch((err) => {
-          console.error(err)
-          if (err.response.data === 'Username already exists') {
-            this.setState({usernameExists: true})
-          } else if (err.response.data === 'Email already exists') {
-            this.setState({emailExists: true})
-          }
-        })
+        comment = {
+          text: this.message.value
+        }
       }
+      addComment(comment).then((response) => {
+        this.confirmSend()
+      }).catch((err) => {
+        console.error(err)
+        if (err.response.data === 'Username already exists') {
+          this.setState({usernameExists: true})
+        } else if (err.response.data === 'Email already exists') {
+          this.setState({emailExists: true})
+        }
+      })
     }
   }
   componentDidMount () {
