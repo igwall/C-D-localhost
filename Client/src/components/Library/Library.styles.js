@@ -204,6 +204,8 @@ th, td {
 }
 
 .button-text {
+  text-align: left;
+  padding-left: 10px;
 }
 .sidebar-title {
   font-weight: bold;
