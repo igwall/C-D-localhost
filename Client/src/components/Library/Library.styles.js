@@ -205,13 +205,7 @@ th, td {
 }
 
 .button-text {
-<<<<<<< HEAD
-  font-size: 20px;
-    Font-Weight: Bold;
-    padding-left: 20%;
-=======
-  
->>>>>>> master
+
 }
 
 

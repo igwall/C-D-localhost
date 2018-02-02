@@ -40,16 +40,29 @@ export default class GuestBook extends React.Component {
   }
   submitForm () {
     if (this.formIsValid()) {
-      addComment(this.message.value, this.props.currentUser).then((response) => {
-        this.confirmSend()
-      }).catch((err) => {
-        console.error(err)
-        if (err.response.data === 'Username already exists') {
-          this.setState({usernameExists: true})
-        } else if (err.response.data === 'Email already exists') {
-          this.setState({emailExists: true})
-        }
-      })
+      if (this.props.currentUser.username.length === 0) {
+        addComment(this.message.value).then((response) => {
+          this.confirmSend()
+        }).catch((err) => {
+          console.error(err)
+          if (err.response.data === 'Username already exists') {
+            this.setState({usernameExists: true})
+          } else if (err.response.data === 'Email already exists') {
+            this.setState({emailExists: true})
+          }
+        })
+      } else {
+        addComment(this.message.value, this.props.currentUser).then((response) => {
+          this.confirmSend()
+        }).catch((err) => {
+          console.error(err)
+          if (err.response.data === 'Username already exists') {
+            this.setState({usernameExists: true})
+          } else if (err.response.data === 'Email already exists') {
+            this.setState({emailExists: true})
+          }
+        })
+      }
     }
   }
   componentDidMount () {
@@ -61,12 +74,12 @@ export default class GuestBook extends React.Component {
     this.checkComment()
   }
   render () {
+    console.log(this.props.currentUser.username.length === 0)
     const comments = this.props.comments
     const user1 = {
       picture: '/assets/imgs/avatarDefault.png',
       username: 'Anonyme'
     }
-
     return (<div className='host'>
       <div className = 'sideBarre'>
         <div className='PageTitle'><h1>Livre d'or</h1></div>
