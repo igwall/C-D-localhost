@@ -32,7 +32,7 @@ recipeController.getAllRecipes = function () {
  */
 recipeController.getOneRecipe = function (recipeId) {
   return new Promise((resolve, reject) => {
-    Recipe.findOne({ '_id': recipeId }).populate('author').exec(function (err, res) {
+    Recipe.findOne({ '_id': recipeId }).populate('collaborator rooms materials').exec(function (err, res) {
       if (err) {
         err.status = 500
         reject(err)

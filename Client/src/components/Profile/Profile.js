@@ -97,7 +97,7 @@ class Profile extends React.Component {
           </div>
         </div>
         <div className='panel panel-realisations'>
-          <div className='panel-title'>RECETTES EXPÉRIMENTÉES</div>
+          <div className='panel-title'>COMPOSITIONS EXPÉRIMENTÉES</div>
           <div className='sort-bar'>
             <div className='sort sort-search'>
               <input type='text' className='search-bar' placeholder='Rechercher' ref={(input) => { this.input = input }} onChange={this.handleSearchChange} onFocus={this.handleFocus} />
@@ -116,7 +116,7 @@ class Profile extends React.Component {
           </div>
           {
             realisations.length === 0
-              ? <div className='no-realisations'>Cet utilisateur n'a pas encore expérimenté de recettes...</div>
+              ? <div className='no-realisations'>Vous n'avez pas encore expérimenté de compositions...</div>
               : <ul className='realisations'>
                 {
                   realisations.map(realisation => {

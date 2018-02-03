@@ -51,7 +51,7 @@ export default class Artist extends React.Component {
       autoplaySpeed: 5000,
       className: 'center',
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 4,
       swipeToSlide: true,
       afterChange: function (index) {
       }
@@ -182,11 +182,6 @@ N'hésitez-pas à revenir vers moi si vous avez des questions.
             <div className='pictures-title'><h2>Photos</h2></div>
             <Slider {...settings}>
               <div key={1}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-              <div key={2}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-              <div key={3}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-              <div key={5}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-              <div key={4}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-              <div key={6}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
             </Slider>
           </div>
         </div>
