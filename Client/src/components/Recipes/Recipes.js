@@ -235,7 +235,7 @@ export default class Recipes extends React.Component {
     recipes = this.filter(recipes)
     return (<div className='host'>
       <div className='sidebar'>
-        <div className='sidebar-title'>LISTE DES RECETTES</div>
+        <div className='sidebar-title'>LISTE DES COMPOSITIONS</div>
       </div>
       <div className= 'Main'>
         <ul className='list'>
