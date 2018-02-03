@@ -11,7 +11,7 @@ import { setRooms } from '../../store/actions/room.action'
 
 @connect(store => {
   return {
-    recipes: store.recipes.elements,
+    recipes: store.recipes.elements.reverse(),
     materials: store.materials.elements,
     rooms: store.rooms.elements
   }
