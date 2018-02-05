@@ -94,11 +94,11 @@ export default class Artist extends React.Component {
           <div className = 'Bio-title'><h2>  Biographie </h2></div>
           <div className = 'artistBio'> {artist.bio}
             <p className='LireSuite' id='suit' onClick={() => this.show('next', 'suit', 'moins')}>Lire la suite...</p>
-            <p className= 'suite' id='next'>
+            <div className= 'suite' id='next'>
               <p>{constants.BIO_MURIEL_SUITE1}</p>
               <p>{constants.BIO_MURIEL_SUITE2}</p>
               <p>{constants.BIO_MURIEL_SUITE3}</p>
-            </p>
+            </div>
             <div className='LireMoins' id='moins'><p id='moins' onClick={() => this.hidden('next', 'suit', 'moins')}>Lire Moins.....</p></div>
             Actuellement
             <div className= 'artistBio2' id='next'>
@@ -150,7 +150,7 @@ export default class Artist extends React.Component {
 
                     <tr >
                       <td>{constants.ECRIT_MURIEL.ECRIVAIN}</td>
-                      <a href={constants.ECRIT_MURIEL.LINK}> <td>{constants.ECRIT_MURIEL.TITRE}</td> </a>
+                      <td><a href={constants.ECRIT_MURIEL.LINK}> {constants.ECRIT_MURIEL.TITRE}</a></td>
                       <td>{constants.ECRIT_MURIEL.DESCRIPTION}</td>
                     </tr>
 
@@ -165,12 +165,12 @@ export default class Artist extends React.Component {
             <div>
               <div className='pictures-title'><h2>Photos</h2></div>
               <Slider {...settings}>
-                <div key={1}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img1.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-                <div key={2}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img2.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-                <div key={3}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img3.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-                <div key={5}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img4.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-                <div key={4}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img5.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-                <div key={6}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img6.jpg' width="250px" height="250px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={1}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img1.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={2}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img2.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={3}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img3.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={5}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img4.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={4}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img5.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={6}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img6.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
               </Slider>
             </div>
           </div>
@@ -189,22 +189,6 @@ export default class Artist extends React.Component {
             <div className='audio-title'><h2>Audios</h2></div>
             <div className='audio'>
               <ul>
-                {
-                  artist.books.map((book, i) =>
-                    <div className='iteeem'><li key={i}>
-                      <div className='audio-label'>
-                    TOTO, smou7at
-                      </div>
-                      <div className='lecteur'>
-                        <audio controls="controls" skin ='TED'>
-                          <source src= 'http://41mag.fr/music.mp3' type="audio/mp3" />
-                       Votre navigateur n'est pas compatible
-                        </audio>
-                      </div>
-                    </li>
-                    </div>
-                  )
-                }
               </ul>
             </div>
           </div>

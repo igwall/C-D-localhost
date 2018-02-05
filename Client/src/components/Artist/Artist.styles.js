@@ -74,11 +74,15 @@ export default css`
 .LireSuite {
   font-style: italic;
   font-size: 12px;
+  cursor: pointer;
+  padding: 10px;
 }
 .LireMoins {
   font-style: italic;
   font-size: 12px;
   display : none;
+  cursor: pointer;
+  padding: 10px;
 }
 .artistDiplome{
   margin-top: 5%;
@@ -92,7 +96,6 @@ export default css`
   margin-right: 25%;
   margin-top: 5%;
   font-size: 20px;
-  font-weight: bold;
 }
 .artistBio{
   display: inline-block;
@@ -127,6 +130,7 @@ export default css`
 }
 .iteem{
   margin-bottom: 5%;
+  cursor: pointer;
 }
 .diplomes{
   padding-bottom: 5%;
