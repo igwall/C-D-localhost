@@ -13,7 +13,7 @@ export default css`
   padding-left: 70px;
   padding-bottom: 30px;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .list {

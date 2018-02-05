@@ -31,7 +31,6 @@ export function isAuthenticated () {
     setTokenHeader()
     return true
   } else {
-    unsetTokenHeader()
     return false
   }
 }

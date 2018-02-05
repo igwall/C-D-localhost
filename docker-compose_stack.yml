@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest
+    volumes:
+      - /data/db:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    image: pife_api:latest
+    ports:
+      - "3333:3333"
+    links:
+      - mongo:mongo
+    environment:
+      - MONGODB_URL_DEV=mongodb://hut:prello@mongo:27017/hut
+  reactapp:
+    image: pife_reactapp:latest
+    ports:
+      - "80:5000"
+    links:
+      - api:api
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:3333

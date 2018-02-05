@@ -30,6 +30,10 @@ export default css`
 
 }
 
+h1 {
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
+}
+
 .head {
   padding: 20px;
   display: flex;
@@ -74,7 +78,7 @@ export default css`
 .item{
     padding-bottom: 4%;
     font-size: 20px;
-    Font-Weight: Bold;
+    font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .site-description{
   display: inline-block;
@@ -85,7 +89,7 @@ export default css`
   text-align: center;
   margin-right: 60%;
   font-size: 20px;
-  Font-Weight: Bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .textBody {
@@ -102,7 +106,7 @@ export default css`
   text-align: center;
   margin-right: 74%;
   padding-bottom: 8%;
-  Font-Weight: Bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 20px;
   
  
@@ -160,7 +164,7 @@ li {
 .references-table-title{
   margin-left: 6%;
   padding-bottom: 4%;
-  Font-Weight: Bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 20px;
 }
 .references-list{

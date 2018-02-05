@@ -21,7 +21,7 @@ export default css`
 }
 
 .sidebar-title {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   text-align: center;
   padding: 30px 0;
@@ -34,7 +34,7 @@ export default css`
 
 .sidebar-more {
   text-align: left;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .flat {

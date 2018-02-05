@@ -48,14 +48,14 @@ export default css`
 .quote-container {
   position: absolute;
   bottom: 59px;
-  left: 660px;
+  left: 80%;
   color: #fff;
   font-size: 17px;
 }
 
 .quote-text {
   font-style: italic;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .quote-author {
@@ -124,7 +124,7 @@ export default css`
 }
 
 .user-username {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   display: inline-block;
   margin-left: 7px;
 }

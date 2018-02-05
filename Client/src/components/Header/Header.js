@@ -66,9 +66,11 @@ export default class Header extends React.Component {
     const { currentUser } = this.props
     const quote = this.getRandomQuote()
     return <div className='host'>
-      <div className='logo-container'>
-        <img className='logo' src='/hut_logo.png' alt='hut_logo' height='150px' />
-      </div>
+      <Link to='/' style={{height: '100%'}}>
+        <div className='logo-container'>
+          <img className='logo' src='/hut_logo.png' alt='hut_logo' height='150px' />
+        </div>
+      </Link>
       <div className='header-container'>
         <Link to='/' style={{height: '100%'}}>
           <div className='app-name'>COMPOSE & DANSE</div>

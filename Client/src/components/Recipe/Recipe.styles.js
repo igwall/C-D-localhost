@@ -28,7 +28,7 @@ export default css`
 }
 .MainTitle
 {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   padding-top: 40px;
   padding-left: 50px;
@@ -91,7 +91,7 @@ export default css`
   padding-bottom: 5%;
   margin-left: 4%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .pictures{
   width: 80%
@@ -242,7 +242,7 @@ textarea {
 .button {
   cursor: pointer;
   height: 40px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   line-height: 40px;
   text-align: center;
   color: white;
@@ -288,7 +288,7 @@ textarea {
 .audio-title{
   margin-bottom: 5%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .audio{
   max-height: 180px;
