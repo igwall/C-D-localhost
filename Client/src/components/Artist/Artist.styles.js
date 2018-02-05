@@ -5,10 +5,11 @@ export default css`
 .host {
   height: 100%;
   width: 100%;
+  min-width: 1665px;
   background-color: ${constants.PRIMARY_COLOR};
   color: #fff;
   align-items: first-baseline;
-  overflow-x: hidden;
+  overflow-x: auto;
 
 }
 
@@ -39,7 +40,7 @@ export default css`
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
-
+  overflow-x: auto;
 }
 .Main
 {
