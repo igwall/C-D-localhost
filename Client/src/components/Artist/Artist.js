@@ -52,7 +52,7 @@ export default class Artist extends React.Component {
       autoplaySpeed: 5000,
       className: 'center',
       infinite: true,
-      slidesToShow: 4,
+      slidesToShow: 3,
       swipeToSlide: true,
       afterChange: function (index) {
       }
