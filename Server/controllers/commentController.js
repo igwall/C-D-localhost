@@ -45,6 +45,7 @@ CommentController.getOneComment = function (commentId) {
  * @returns
  */
 CommentController.createComment = function (req) {
+  console.log(req.body)
   const comment = {...req.body}
   return new Promise((resolve, reject) => {
     const commentToAdd = new Comment(comment)

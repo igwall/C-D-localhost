@@ -20,9 +20,10 @@ export function setComments (dispatch) {
   })
 }
 
-export function addComment (name, comment, date) {
+export function addComment (comment) {
+  console.log(comment)
   return new Promise((resolve, reject) => {
-    addCommentDistant(name, comment, date).then((data) => {
+    addCommentDistant(comment).then((data) => {
       store.dispatch({
         type: 'NEW_COMMENT',
         payload: data
