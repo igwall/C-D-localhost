@@ -9,7 +9,7 @@ const mailController = {}
  *
  * @returns
  */
-mailController.getAllmails = function () {
+mailController.getAllMails = function () {
   return new Promise((resolve, reject) => {
     Mail.find().exec(function (err, res) {
       if (err) {
@@ -23,7 +23,7 @@ mailController.getAllmails = function () {
 
 /**
  *
- * @param {any} hotVideo
+ * @param {any} mail
  * @returns
  */
 mailController.createMail = function (mail) {
@@ -34,6 +34,23 @@ mailController.createMail = function (mail) {
         reject(err)
       } else {
         resolve(item)
+      }
+    })
+  })
+}
+
+/**
+ *
+ * @param {any} mailId
+ * @returns
+ */
+mailController.deleteMail = (mailId) => {
+  return new Promise((resolve, reject) => {
+    Mail.findOneAndRemove({ '_id': mailId }, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
       }
     })
   })

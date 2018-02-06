@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Contact.styles'
-import {sendMail} from '../../services/Contact.services'
+import {addMail} from '../../store/actions/mail.action'
 import ReCAPTCHA from 'react-google-recaptcha'
 import Icon from '../UI/Icon/Icon'
 
@@ -67,7 +67,14 @@ export default class Contact extends React.Component {
 
   submitForm () {
     if (this.formIsValid()) {
-      sendMail(this.name.value, this.email.value, this.numero.value, this.sujet.value, this.message.value).then((response) => {
+      const mail = {
+        name: this.name.value,
+        email: this.email.value,
+        number: this.numero.value,
+        sujet: this.sujet.value,
+        message: this.message.value
+      }
+      addMail(mail).then((response) => {
         this.setState({ mailSend: true })
         this.confirmSend()
       }).catch((err) => {
