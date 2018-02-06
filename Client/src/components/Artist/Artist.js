@@ -2,8 +2,9 @@ import React from 'react'
 import styles from './Artist.styles'
 import {connect} from 'react-redux'
 import Slider from 'react-slick'
-import Book from '../Collaborator/Collaborator'
+import Book from '../Book/Book'
 import {setArtist} from '../../store/actions/artist.action'
+import constants from '../../constants'
 
 @connect(store => {
   return {
@@ -51,7 +52,7 @@ export default class Artist extends React.Component {
       autoplaySpeed: 5000,
       className: 'center',
       infinite: true,
-      slidesToShow: 4,
+      slidesToShow: 3,
       swipeToSlide: true,
       afterChange: function (index) {
       }
@@ -71,18 +72,14 @@ export default class Artist extends React.Component {
     }
     const nom = 'Muriel'
     const prenom = 'PIQUE'
-    const bio = 'Zinédine Yazid Zidane, né le 23 juin 1972 à Marseille, est un footballeur international français devenu entraîneur. Durant sa carrière de joueur, entre 1988 et 2006, il évolue au poste de milieu offensif, comme meneur de jeu. Depuis 2016, il est entraîneur du Real Madrid, où il a terminé sa carrière de joueurr  Surnommé « Zizou » '
-    const book = {
-      id: 0,
-      title: '- Aleph, Flammarion, 2011'
-    }
-    const books = [ book, book, book, book, book, book ]
+    const bio = constants.BIO_MURIEL_DEBUT
+    const books = [ constants.OEUVRE_MURIEL, constants.OEUVRE1_MURIEL, constants.OEUVRE2_MURIEL, constants.OEUVRE3_MURIEL, constants.OEUVRE4_MURIEL ]
     const artist = {
       nom: nom,
       prenom: prenom,
       bio: bio,
       books: books,
-      pictureLegend: 'rezez'
+      pictureLegend: ''
     }
     return (<div className='host'>
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
@@ -97,130 +94,106 @@ export default class Artist extends React.Component {
           <div className = 'Bio-title'><h2>  Biographie </h2></div>
           <div className = 'artistBio'> {artist.bio}
             <p className='LireSuite' id='suit' onClick={() => this.show('next', 'suit', 'moins')}>Lire la suite...</p>
-            <p className= 'suite' id='next'>
-            en 2004. Il est cité parmi les 125 meilleurs joueurs mondiaux encore vivants en 2004, dans un classement conjoint de Pelé et de la FIFA. Il est à trois reprises nommé meilleur joueur mondial de l année par la FIFA, en 1998, 2000 et 2003, et remporte le Ballon d or en 1998. Il est par deux fois classé second meilleur joueur français de tous les temps par France Football. En 2011, toujours par l UEFA, il est élu meilleur joueur de la Ligue des champions des vingt dernières années. Membre de l équipe UEFA du xxie siècle, du Onze des Légendes de l Euro (meilleure équipe de l histoire du Championnat d Europe), de la FIFA World Cup Dream Team (meilleure équipe de l histoire de la Coupe du monde) et de la Dream Team World Soccer (meilleure équipe de l histoire), Zinédine Zidane a, en outre, été élu meilleur joueur de la décennie 2000 par Marca, Sports Illustrated, Fox Sports, ESPN et Don Balón.
-            Bonjour à tous,
-Vous trouverez ci-joint la composition de votre jury de soutenance de PIFE ...
-J'en profite pour vous rappeler que vous devez "créer" votre fiche projet PIFE sur Poly + pour pouvoir y déposer vos 3 livrables : rapport de synthèse, rapport technique et poster. nb : n'attendez pas le dernier jour pour créer cette fiche car il faut ensuite que je valide le projet sur Poly + pour que vous puissiez déposer ces documents.
-Last but not least, n'oubliez pas le pot/buffet offert par le Département pour fêter votre entrée dans la vie active. Il aura lieu le jeudi 8 février à partir de 18H30 en SC201. Nous vous attendons nombreux ! Ce sera l'occasion de verser une petite larme et de faire un bon repas ;).
-N'hésitez-pas à revenir vers moi si vous avez des questions.
-            </p>
+            <div className= 'suite' id='next'>
+              <p>{constants.BIO_MURIEL_SUITE1}</p>
+              <p>{constants.BIO_MURIEL_SUITE2}</p>
+              <p>{constants.BIO_MURIEL_SUITE3}</p>
+            </div>
             <div className='LireMoins' id='moins'><p id='moins' onClick={() => this.hidden('next', 'suit', 'moins')}>Lire Moins.....</p></div>
-
+            Actuellement
+            <div className= 'artistBio2' id='next'>
+              {constants.BIO_MURIEL_FIN}
+            </div>
           </div>
           <div className= 'Demarche'>
             <div className = 'Bio-title'><h2>  Démarche artistique </h2></div>
-            <div className = 'artistBio'> {artist.bio}
-              <p className='LireSuite' id='suit1' onClick={() => this.show('next1', 'suit1', 'moins1')}>Lire la suite...</p>
-              <p className= 'suite' id='next1'>
-            en 2004. Il est cité parmi les 125 meilleurs joueurs mondiaux encore vivants en 2004, dans un classement conjoint de Pelé et de la FIFA. Il est à trois reprises nommé meilleur joueur mondial de l année par la FIFA, en 1998, 2000 et 2003, et remporte le Ballon d or en 1998. Il est par deux fois classé second meilleur joueur français de tous les temps par France Football. En 2011, toujours par l UEFA, il est élu meilleur joueur de la Ligue des champions des vingt dernières années. Membre de l équipe UEFA du xxie siècle, du Onze des Légendes de l Euro (meilleure équipe de l histoire du Championnat d Europe), de la FIFA World Cup Dream Team (meilleure équipe de l histoire de la Coupe du monde) et de la Dream Team World Soccer (meilleure équipe de l histoire), Zinédine Zidane a, en outre, été élu meilleur joueur de la décennie 2000 par Marca, Sports Illustrated, Fox Sports, ESPN et Don Balón.
-            Bonjour à tous,
-Vous trouverez ci-joint la composition de votre jury de soutenance de PIFE ...
-J'en profite pour vous rappeler que vous devez "créer" votre fiche projet PIFE sur Poly + pour pouvoir y déposer vos 3 livrables : rapport de synthèse, rapport technique et poster. nb : n'attendez pas le dernier jour pour créer cette fiche car il faut ensuite que je valide le projet sur Poly + pour que vous puissiez déposer ces documents.
-Last but not least, n'oubliez pas le pot/buffet offert par le Département pour fêter votre entrée dans la vie active. Il aura lieu le jeudi 8 février à partir de 18H30 en SC201. Nous vous attendons nombreux ! Ce sera l'occasion de verser une petite larme et de faire un bon repas ;).
-N'hésitez-pas à revenir vers moi si vous avez des questions.
-              </p>
-              <div className='LireMoins' id='moins1'><p id='moins' onClick={() => this.hidden('next1', 'suit1', 'moins1')}>Lire Moins.....</p></div>
-
+            <div className = 'artistBio'> {constants.DEMARCHE_MURIEL_TEXT}
             </div>
           </div>
-
           <div className='artistDiplome'>
-          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
           </div>
         </div>
       </div>
       <div className = 'middle'>
-        <div className = 'middleHead'>
-          <div className = 'books'>
-            <div className='books-title'><h2>Œuvres</h2></div>
-            <div className='book'>
+        <div className = 'SideBar'>
+        </div>
+        <div className = 'Main'>
+          <div className = 'middleHead'>
+            <div className = 'books'>
+              <div className='books-title'><h2>Œuvres</h2></div>
+              <div className='book'>
+                <ul>
+                  {
+                    artist.books.map((book, i) =>
+                      <div onClick={() => this.displayBook(book)} className='iteem'><li key={i}>
+                        {book.TITRE}
+                      </li>
+                      </div>
+                    )
+                  }
+                </ul>
+              </div>
+            </div>
+            <div className = 'references-list'>
+              <div className = 'references-table-title'><h2>  Communications écrite </h2></div>
+              <div className='reference'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th> Ecrivain </th>
+                      <th> TITRE </th>
+                      <th> Informations complémenataires </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <tr >
+                      <td>{constants.ECRIT_MURIEL.ECRIVAIN}</td>
+                      <td><a href={constants.ECRIT_MURIEL.LINK}> {constants.ECRIT_MURIEL.TITRE}</a></td>
+                      <td>{constants.ECRIT_MURIEL.DESCRIPTION}</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+
+            </div>
+          </div>
+          <div className= 'pictures'>
+            <div>
+              <div className='pictures-title'><h2>Photos</h2></div>
+              <Slider {...settings}>
+                <div key={1}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img1.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={2}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img2.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={3}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img3.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={5}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img4.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={4}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img5.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+                <div key={6}><div className = 'picture'><img className = 'picture' src='/assets/tmp/img6.jpg' width="250px" height="180px" alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
+              </Slider>
+            </div>
+          </div>
+          <div className= 'videos'>
+            <div>
+              <div className='videos-title'><h2>Videos</h2></div>
+              <Slider {...setting}>
+                <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='345' src='https://www.youtube.com/embed/SXQXI8C9TMM'></iframe></div></div>
+                <div key={2}><div className = 'video'><iframe title ='2' width='100%' height='345' src='https://www.youtube.com/embed/01SuTN-wPX0'></iframe></div></div>
+                <div key={3}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/mLZltzFD3oc'></iframe></div></div>
+                <div key={4}><div className = 'video'><iframe title ='1' width='100%' height='345' src='src=https://www.youtube.com/embed/BDWfLDTn6W0'></iframe></div></div>
+              </Slider>
+            </div>
+          </div>
+          <div className = 'audios'>
+            <div className='audio-title'><h2>Audios</h2></div>
+            <div className='audio'>
               <ul>
-                {
-                  artist.books.map((book, i) =>
-                    <div onClick={() => this.displayBook(book.id)} className='iteem'><li key={i}>
-                      {book.title}
-                    </li>
-                    </div>
-                  )
-                }
               </ul>
             </div>
           </div>
-          <div className = 'references-list'>
-            <div className = 'references-table-title'><h2>  Communications écrite </h2></div>
-            <div className='reference'>
-              <table>
-                <thead>
-                  <tr>
-                    <th> Titre </th>
-                    <th> Date de publication </th>
-                    <th> Informations complémenataires </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {
-                    books.map((book, i) =>
-                      <tr key={i}>
-                        <td>Bill Gates</td>
-                        <td>55577854</td>
-                        <td> Musso</td>
-                      </tr>
-
-                    )
-                  }
-                </tbody>
-
-              </table>
-            </div>
-
-          </div>
         </div>
-        <div className= 'pictures'>
-          <div>
-            <div className='pictures-title'><h2>Photos</h2></div>
-            <Slider {...settings}>
-              <div key={1}><div className = 'picture'><img className = 'picture' src='https://static.pexels.com/photos/46710/pexels-photo-46710.jpeg' alt=''/></div><div className='pictureLegend'>{artist.pictureLegend} </div></div>
-            </Slider>
-          </div>
-        </div>
-        <div className= 'videos'>
-          <div>
-            <div className='videos-title'><h2>Videos</h2></div>
-            <Slider {...setting}>
-              <div key={1}><div className = 'video'><iframe id="video-iframe" title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-              <div key={2}><div className = 'video'><iframe title ='2' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-              <div key={3}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-              <div key={4}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-              <div key={5}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-              <div key={6}><div className = 'video'><iframe title ='1' width='100%' height='345' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe></div></div>
-            </Slider>
-          </div>
-        </div>
-      </div>
-      <div className = 'audios'>
-        <div className='audio-title'><h2>Audios</h2></div>
-        <div className='audio'>
-          <ul>
-            {
-              artist.books.map((book, i) =>
-                <div className='iteeem'><li key={i}>
-                  <div className='audio-label'>
-                    TOTO, smou7at
-                  </div>
-                  <div className='lecteur'>
-                    <audio controls="controls" skin ='TED'>
-                      <source src= 'http://41mag.fr/music.mp3' type="audio/mp3" />
-                       Votre navigateur n'est pas compatible
-                    </audio>
-                  </div>
-                </li>
-                </div>
-              )
-            }
-          </ul>
-        </div>
+
       </div>
       <style jsx>{styles}</style>
     </div>

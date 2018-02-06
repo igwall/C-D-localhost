@@ -97,6 +97,7 @@ export default class Library extends React.Component {
   render () {
     return (<div className='host'>
       <div className = 'sideBarre'>
+        <div className='sidebar-title'>BIBLIOTHÈQUE</div>
         <div className= 'admin-info'>
           <div className = 'picture'><img className = 'pic' src='https://media-exp2.licdn.com/mpr/mpr/shrinknp_200_200/p/2/005/07c/16c/3d00735.jpg' alt=''/></div>
           <div className = 'admin-name'><a href="/artist"> Muriel PIQUE </a></div>
@@ -117,7 +118,6 @@ export default class Library extends React.Component {
         </div>
       </div>
       <div className = 'main'>
-        <h1>BIBLIOTHÈQUE</h1>
         {this.displayContent()}
       </div>
       <style jsx>{styles}</style>
