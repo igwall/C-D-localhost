@@ -209,7 +209,7 @@ export default class RecipeRequestForm extends React.Component {
                 <textarea type='text' placeholder='Description et objectifs de la recette...' ref={i => { this.description = i }} onChange={this.checkDescription} />
               </div>
               <div className='input-group'>
-                <div className='input-label'>Consignes</div>
+                <div className='input-label'>Scénario</div>
                 <textarea type='text' placeholder='Les consignes de la recette, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
               </div>
             </div>

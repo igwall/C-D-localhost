@@ -57,7 +57,7 @@ export default css`
 .element-description {
   position: relative;
   display: inline-block;
-  min-height: 75px;
+  min-height: 100px;
   vertical-align: top;
   padding: 0 10px;
 }
@@ -75,6 +75,8 @@ export default css`
 
 .element-other {
   color: ${constants.TEXT_SECONDARY_COLOR}
+  padding: 2px 0;
+  max-width: 390px;
 }
 
 .element-other, .element-date {
@@ -85,13 +87,11 @@ export default css`
   font-size: 15px;
   font-style: italic;
   padding: 10px;
-  padding-bottom: 30px;
 }
 
 .element-date {
-  position: absolute;
-  bottom: 0;
   white-space: nowrap;
+  padding: 5px 0;
 }
 
 .element-actions {
