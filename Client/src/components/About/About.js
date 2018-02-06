@@ -25,7 +25,7 @@ export default class About extends React.Component {
           </div>
           <div className='item'>
             <div className='itemTitle'> Sur une idée de: </div>
-            <div className='itemContent1'> PIQUE Muriel </div>
+            <div className='itemContent1'><a href='/artist'> PIQUE Muriel </a></div>
           </div>
           <div className='item'>
             <div className='itemTitle'> Logo conçu par: </div>
