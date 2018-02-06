@@ -36,7 +36,7 @@ export default css`
 .textBody {
   margin-top: 10px;
   text-align: justify;
-  
+  white-space: pre-line;
  }
  .collaborator-table-title{
   text-align: center;

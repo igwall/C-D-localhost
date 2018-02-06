@@ -12,13 +12,14 @@ export default css`
   align-items: first-baseline;
   font-size: 16px;
 }
+
 .sideBarre{
   height: 100%;
   width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
-  overflow: auto;
 }
+
 .Main
 {
   width: calc(100% - 350px);
@@ -178,19 +179,25 @@ li{
 }
 
 .item{
-  display:
-  padding-right: 7%;
+  width: 100%;
 }
+
 .itemleft{
  padding-left:35%;
 }
+
 .itemTitle{
   font-size: 20px;
 }
+
 .element{
-  padding-bottom: 4%;
   display: flex;
-  padding-left: 23px;
+  padding: 15px 0;
+  padding-left: 27px;
+  overflow-wrap: break-word;
+  width: 100%;
+  color: #a0a0a0;
+  font-size: 13px;
 }
 
 

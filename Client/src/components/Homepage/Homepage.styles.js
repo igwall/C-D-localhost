@@ -29,11 +29,14 @@ export default css`
 
 .sidebar-text {
   text-align: justify;
-  line-height: 150%;
+  line-height: 130%;
+  font-size: 17px;
+  color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
 .sidebar-more {
-  text-align: left;
+  text-align: right;
+  font-size: 15px;
   font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
@@ -79,9 +82,4 @@ svg {
   fill: rgba(255,255,0,0.6);
 }
 
-.room-name:hover + .room{
-  stroke: green;
-  stroke-width: 1px;
-  cursor: pointer;
-}
 `

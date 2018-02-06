@@ -99,9 +99,9 @@ export default class Recipe extends React.Component {
               <div className='element'>
                 {
                   recipe.materials.map((material, i) => {
-                    return (
-                      <div key={i}><div className='text1'>{material.name}</div></div>
-                    )
+                    let text = material.name
+                    if (i + 1 !== recipe.materials.length) text = text + ', '
+                    return text
                   })
                 }
               </div>
@@ -111,9 +111,9 @@ export default class Recipe extends React.Component {
               <div className='element'>
                 {
                   recipe.rooms.map((room, i) => {
-                    return (
-                      <div key={i}><div className='text1'>{room.name}</div></div>
-                    )
+                    let text = room.name
+                    if (i + 1 !== recipe.rooms.length) text = text + ', '
+                    return text
                   })
                 }
               </div>
@@ -129,20 +129,24 @@ export default class Recipe extends React.Component {
         <div className='Title'>Scénario</div>
         <div className='Description'>{recipe.statement} </div>
 
-        <div className='videos'>
-          <div>
-            <div className='videos-title'>Vidéos</div>
-            <div className= 'videoelement'>
-              {recipe.videos.length > 0 ? <Slider {...setting}> {
-                recipe.videos.map((video, i) => {
-                  return (
-                    <div key={i}><div className='video'><iframe id='video-iframe' title={video.title} width='100%' height='345' src={video.link} /></div></div>
-                  )
-                })
-              } </Slider> : <div className="Description"> Pas de video disponible pour cette composition </div> }
+        {
+          recipe.videos.length > 0
+            ? <div className='videos'>
+              <div>
+                <div className='videos-title'>Vidéos</div>
+                <div className= 'videoelement'>
+                  {recipe.videos.length > 0 ? <Slider {...setting}> {
+                    recipe.videos.map((video, i) => {
+                      return (
+                        <div key={i}><div className='video'><iframe id='video-iframe' title={video.title} width='100%' height='345' src={video.link} /></div></div>
+                      )
+                    })
+                  } </Slider> : <div className="Description"> Pas de video disponible pour cette composition </div> }
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+            : undefined
+        }
 
         {recipe.pictures.length > 0 ? <div className= 'pictures'>
           <div>
