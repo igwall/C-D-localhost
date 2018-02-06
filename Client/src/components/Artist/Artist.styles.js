@@ -5,10 +5,11 @@ export default css`
 .host {
   height: 100%;
   width: 100%;
+  min-width: 1665px;
   background-color: ${constants.PRIMARY_COLOR};
   color: #fff;
   align-items: first-baseline;
-  overflow-x: hidden;
+  overflow-x: auto;
 
 }
 
@@ -27,17 +28,32 @@ export default css`
 
 .headLeftSide{
   diplay: inline-block;
-  width : 35%;
+  width : 350px;
 }
 .headRightSide{
   diplay: inline-block;
-  width : 65%;
+  width : calc(100% - 350px);
 }
+.SideBar{
 
+  width: 400px;
+  padding: 0 15px;
+  background: ${constants.SECONDARY_COLOR};
+  overflow: auto;
+  overflow-x: auto;
+}
+.Main
+{
+  width: calc(100% - 400px);
+  height: 100%;
+  padding: 30px;
+  overflow: auto;
+
+}
 .artistPicture {
-  width: 40%;
-  margin-left: 18%;
+  width: 270px;
   height: 270px;
+  padding-left: 10%;
 
 }
 .suite {
@@ -59,11 +75,15 @@ export default css`
 .LireSuite {
   font-style: italic;
   font-size: 12px;
+  cursor: pointer;
+  padding: 10px;
 }
 .LireMoins {
   font-style: italic;
   font-size: 12px;
   display : none;
+  cursor: pointer;
+  padding: 10px;
 }
 .artistDiplome{
   margin-top: 5%;
@@ -77,7 +97,6 @@ export default css`
   margin-right: 25%;
   margin-top: 5%;
   font-size: 20px;
-  font-weight: bold;
 }
 .artistBio{
   display: inline-block;
@@ -87,7 +106,8 @@ export default css`
   padding-left:5%
 }
 .middle{ 
-  padding-top: 5%;
+
+  display: flex;
 }
 .middleHead{
   display: flex;
@@ -111,6 +131,7 @@ export default css`
 }
 .iteem{
   margin-bottom: 5%;
+  cursor: pointer;
 }
 .diplomes{
   padding-bottom: 5%;
@@ -209,6 +230,9 @@ table, th, td {
 th, td {
   padding: 5px;
   text-align: left;    
+}
+td {
+  font-size: 10px;
 }
 .audios{
   padding-top: 5%;

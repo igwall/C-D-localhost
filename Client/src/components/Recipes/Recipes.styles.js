@@ -4,10 +4,28 @@ import constants from '../../constants'
 export default css`
 .host {
   color: white;
-  padding: 0 25px;
   height: 100%;
+  display:flex;
+  overflow: auto;
+}
+.sidebar {
+  height: 100%;
+  width: 350px;
+  padding: 0 30px;
+  display:inline-block;
+  background: ${constants.SECONDARY_COLOR};
 }
 
+.sidebar-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 30px 0;
+}
+.Main{
+  width: calc(100% - 350px);
+  padding-top: 70px;
+}
 .list-title {
   padding-top: 50px;
   padding-left: 70px;
@@ -48,6 +66,7 @@ export default css`
 .element-infos {
   padding: 5px;
   flex: 3;
+  min-height: 100px;
 }
 
 .element:hover {
@@ -63,7 +82,7 @@ export default css`
 }
 
 .element-description {
-  position: relative;
+
   display: inline-block;
   min-height: 100px;
   vertical-align: top;

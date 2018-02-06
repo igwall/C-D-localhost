@@ -38,16 +38,16 @@ h1 {
   padding: 20px;
   display: flex;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 2%;
   padding-right: 5%;
 }
 
 .admin-info {
   display: inline-block;
   width: 100%;
-  padding-left: 20%;
+  padding-left: 13%;
   padding-right: 20%;
-  padding-top: 23%;
+  padding-top: 40px;
   
 }
 
@@ -65,7 +65,6 @@ h1 {
 
 .admin-name {
   text-align: center;
-  margin-right: 25%;
   font-size: 25px;
   padding-top: 5%;
 }
@@ -209,8 +208,14 @@ th, td {
 }
 
 .button-text {
-
+  text-align: left;
+  padding-left: 10px;
 }
-
+.sidebar-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 30px 0;
+}
 
 `

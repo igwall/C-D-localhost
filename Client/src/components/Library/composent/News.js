@@ -27,7 +27,7 @@ export default class News extends React.Component {
       <div className='videos'>
         <div>
           <div className='videos-title'><h2>En ce moment  ({hotVideos.length} videos)</h2></div>
-          <Slider {...setting}>
+          {hotVideos.length > 0 ? <Slider {...setting}>
             {
               hotVideos.map((hotVideo, i) => {
                 return (
@@ -35,7 +35,7 @@ export default class News extends React.Component {
                 )
               })
             }
-          </Slider>
+          </Slider> : <div className='Description' /> }
         </div>
       </div>
 

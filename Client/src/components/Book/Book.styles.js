@@ -5,6 +5,7 @@ export default css`
 .host {
   position: relative;
   display: flex;
+  padding-top: 50px;
   width: 100%;
   overflow-y: auto;
 }
@@ -144,5 +145,45 @@ tr:nth-child(even) {
 .element-actions {
   flex: 1;
   font-size: 17px;
+}
+.content{
+  padding: 30px;
+}
+.titre{
+  padding-right: 10px;
+  padding-top: 20px;
+  text-align:justify;
+  display: felx;
+  color: #a0a0a0;
+}
+
+.definition{
+  padding-right: 10px;
+  padding-top: 20px;
+  text-align:justify;
+  display: felx;
+  color: #a0a0a0;
+}
+
+.detail{
+  padding-right: 10px;
+  padding-top: 20px;
+  text-align:justify;
+  display: felx;
+  color: #a0a0a0;
+}
+
+.description{
+  padding-right: 10px;
+  padding-top: 20px;
+  text-align:justify;
+  display: felx;
+  color: #a0a0a0;
+}
+.title{
+  display: inline-block;
+  font-size: 20px;
+  margin-right 10px;
+  color: white;
 }
 `
