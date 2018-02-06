@@ -150,7 +150,7 @@ export default class RecipeForm extends React.Component {
       {value: 'duo', label: 'Duo'},
       {value: 'trio', label: 'Trio'},
       {value: 'quatuor', label: 'Quatuor'},
-      {value: 'quintuor', label: 'Quintuor'},
+      {value: 'quintette', label: 'Quintette'},
       {value: 'more', label: 'Plus de 5 personnes...'}
     ]
     return selectNumbers

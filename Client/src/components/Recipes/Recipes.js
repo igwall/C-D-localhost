@@ -220,6 +220,17 @@ export default class Recipes extends React.Component {
     return recipes
   }
 
+  getNumber (number) {
+    switch (number) {
+      case 'more': {
+        return 'Plus de 5 personnes...'
+      }
+      default: {
+        return number.charAt(0).toUpperCase() + number.slice(1)
+      }
+    }
+  }
+
   render () {
     const { matchingRecipes, emptySearch, selectedMaterials, selectedRooms, selectedNumber } = this.state
     let recipes = this.props.recipes
@@ -227,7 +238,6 @@ export default class Recipes extends React.Component {
       recipes = matchingRecipes
     } else {
       recipes = this.props.recipes
-      console.log(1)
     }
     const selectRooms = this.setRoomSelect()
     const selectMaterials = this.setMaterialSelect()
@@ -295,7 +305,7 @@ export default class Recipes extends React.Component {
                               })
                             }
                             </div>
-                            <div className='element-other'>Ingrédients : {
+                            <div className='element-other'>Composants : {
                               recipe.materials.map((material, i) => {
                                 let text = material.name
                                 if (i + 1 !== recipe.materials.length) text = text + ', '
@@ -303,10 +313,7 @@ export default class Recipes extends React.Component {
                               })
                             }
                             </div>
-                            <div className='element-other'>Nombre de participants : {
-                              recipe.number
-                            }
-                            </div>
+                            <div className='element-other'>Nombre de participants : {this.getNumber(recipe.number)}</div>
                             <div className='element-date'>Créée le {dateFormatter(recipe.createdAt)}</div>
                           </div>
                         </div>

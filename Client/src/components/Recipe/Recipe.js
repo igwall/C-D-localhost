@@ -18,23 +18,37 @@ export default class Recipe extends React.Component {
       commentSend: false
     }
   }
+
   checkComment () {
     let res = this.message.value.length > 9
     this.setState({
       messageValid: res
     })
   }
+
   formIsValid () {
     return this.state.messageValid
   }
+
   componentDidMount () {
     setRecipe(this.props.recipeId).then(() => {
     }).catch(err => {
       console.error(err)
     })
   }
+
+  getNumber (number) {
+    switch (number) {
+      case 'more': {
+        return 'Plus de 5 personnes...'
+      }
+      default: {
+        return number.charAt(0).toUpperCase() + number.slice(1)
+      }
+    }
+  }
+
   render () {
-    console.log(this.props.recipe.author)
     const setting = {
       className: '',
       dots: true,
@@ -62,6 +76,8 @@ export default class Recipe extends React.Component {
     }
 
     const recipe = this.props.recipe
+    recipe.number = this.getNumber(recipe.number)
+
     return (<div className='host'>
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css' />
       <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css' />
@@ -77,10 +93,10 @@ export default class Recipe extends React.Component {
               : <div className='text'> Muriel PIQUE</div> }
           </div>
 
-          <div className='number'><div className='numberTitle' >Nombre de participant: </div><div className='text'>{recipe.number.toUpperCase()}</div> </div>
+          <div className='number'><div className='numberTitle' >Nombre de participants </div><div className='text'>{recipe.number}</div> </div>
           <div className='sideBarreFoot'>
             <div className='item'>
-              <div className ='itemTitle'>Ingrédients: </div>
+              <div className ='itemTitle'>Composants </div>
               <div className='element'>
                 {
                   recipe.materials.map((material, i) => {
@@ -108,15 +124,15 @@ export default class Recipe extends React.Component {
       </div>
       <div className= 'Main'>
         <div className='MainTitle'>{recipe.title}</div>
-        <div className='Title'>Description: </div>
+        <div className='Title'>Description</div>
         <div className='Description'>{recipe.description} </div>
 
-        <div className='Title'>Consignes: </div>
+        <div className='Title'>Scénario</div>
         <div className='Description'>{recipe.statement} </div>
 
         <div className='videos'>
           <div>
-            <div className='videos-title'>Videos:</div>
+            <div className='videos-title'>Vidéos</div>
             <div className= 'videoelement'>
               {recipe.videos.length > 0 ? <Slider {...setting}> {
                 recipe.videos.map((video, i) => {
