@@ -98,6 +98,7 @@ class App extends Component {
             <PublicRoute exact path='/guestbook' component={GuestBookPage} />
             <PublicRoute exact path='/contact' component={ContactPage} />
             <PublicRoute exact path='/recipes' component={RecipesPage} />
+            <PublicRoute exact path='/about' component={AboutPage} />
             <PublicRoute path='/user/:userId' component={ProfilePage} />
             <PublicRoute path='/recipes/:recipeId' component={Recipe} />
             <PublicRoute exact path='/artist' component={Artist} />
