@@ -72,7 +72,8 @@ export default class HomePage extends React.Component {
     const baseHeightTrapeze = baseHeightTriangle + 40
     const heightReference = 395 - Math.sqrt(3) * 100
     const heightReference2 = heightReference - Math.sqrt(3) * 100
-    const svgHeight = '500px'
+    const heightReference3 = 395 + Math.sqrt(3) * 100
+    const svgHeight = '720px'
     const svgWidth = '900px'
 
     if (this.state.redirect) return (<Redirect push to="/library"/>)
@@ -91,63 +92,104 @@ export default class HomePage extends React.Component {
       </div>
       <div className='flat'>
         <div className='flat-text'>Cliquez sur une des pièces en surbrillance pour accéder à son contenu</div>
-        <SvgLines className='svg' animate={ true } duration={10000} timing='ease-out'>
+        <SvgLines className='svg' animate={ true } duration={1000} timing='ease-out'>
           <svg
             height={svgHeight}
             width={svgWidth}
-            viewBox={`0 0 710 450`}
+            viewBox={`0 0 860 450`}
           >
             <g fill='rgba(0,0,0,0)' stroke='#fff' strokeWidth='1px' strokeLinecap='butt' strokeLinejoin='miter' strokeOpacity='1' >
+
+              {/* ESPACES PUBLICS */}
+              <path className='room room-triangle' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference3} Z`} onClick={() => this.chooseRoom('Espaces publics')} />
+              <text fill="#fff">
+                <tspan x="65" y="440">ESPACES</tspan>
+                <tspan x="65" y="460">PUBLICS</tspan>
+              </text>
+
               {/* BOTTOM UPSIDE TRIANGLES */}
 
               {/* BIBLIOTHEQUE */}
-              <path className='room' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} onClick={this.goToLibrary}/>
+              <path className='room room-library' d={`M10 ${baseHeightTriangle} H 210 L 110 ${heightReference} Z`} onClick={this.goToLibrary}/>
 
               {/* CHAMBRE */}
-              <path className='room' d={`M210 ${baseHeightTriangle} H 410 L 310 ${heightReference} Z`} style={ this.state.hovered === 'Chambre' ? { fill: 'rgba(255,0,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Chambre')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Chambre')} />
+              <path className='room room-triangle' d={`M210 ${baseHeightTriangle} H 410 L 310 ${heightReference} Z`} onClick={() => this.chooseRoom('Chambre')} />
+              <text fill="#fff">
+                <tspan x="255" y="350">CHAMBRE</tspan>
+              </text>
 
               {/* SALLE DE BAINS */}
-              <path className='room' d={`M410 ${baseHeightTriangle} H 610 L 510 ${heightReference} Z`} style={ this.state.hovered === 'Salle de bain' ? { fill: 'rgba(0,0,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Salle de bain')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Salle de bain')} />
+              <path className='room room-triangle' d={`M410 ${baseHeightTriangle} H 610 L 510 ${heightReference} Z`} onClick={() => this.chooseRoom('Salle de bain')} />
+              <text fill="#fff">
+                <tspan x="480" y="330">SALLE</tspan>
+                <tspan x="495" y="350">DE</tspan>
+                <tspan x="485" y="370">BAIN</tspan>
+              </text>
 
               {/* BOTTOM DOWNSIDE TRIANGLES */}
 
               {/* SALON */}
-              <path className='room' d={`M110 ${heightReference} H 310 L 210 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Salon' ? { fill: 'rgba(255,0,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Salon')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Salon')} />
+              <path className='room room-triangle' d={`M110 ${heightReference} H 310 L 210 ${baseHeightTriangle} Z`} onClick={() => this.chooseRoom('Salon')} />
+              <text fill="#fff">
+                <tspan x="175" y="275">SALON</tspan>
+              </text>
 
               {/* ESPACES VERTS */}
-              <path className='room' d={`M310 ${heightReference} H 510 L 410 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Espaces verts' ? { fill: 'rgba(0,255,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Espaces verts')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Espaces verts')} />
+              <path className='room room-triangle' d={`M310 ${heightReference} H 510 L 410 ${baseHeightTriangle} Z`} onClick={() => this.chooseRoom('Espaces verts')} />
+              <text fill="#fff">
+                <tspan x="365" y="270">ESPACES</tspan>
+                <tspan x="380" y="290">VERTS</tspan>
+              </text>
 
               {/* ENTREE */}
-              <path className='room' d={`M510 ${heightReference} H 710 L 610 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Entrée' ? { fill: 'rgba(255,255,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Entrée')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Entrée')} />
+              <path className='room room-triangle' d={`M510 ${heightReference} H 710 L 610 ${baseHeightTriangle} Z`} onClick={() => this.chooseRoom('Entrée')} />
+              <text fill="#fff">
+                <tspan x="570" y="275">ENTRÉE</tspan>
+              </text>
 
               {/* TOP UPSIDE TRIANGLES */}
 
               {/* CUISINE */}
-              <path className='room' d={`M510 ${heightReference} H 710 L 610 ${heightReference2} Z`} style={ this.state.hovered === 'Cuisine' ? { fill: 'rgba(125,0,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Cuisine')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Cuisine')} />
-
-              {/* ESPACES PUBLICS */}
-              <path className='room' d={`M310 ${heightReference} H 510 L 410 ${heightReference2} Z`} style={ this.state.hovered === 'Espaces publics' ? { fill: 'rgba(255,0,125,0.4)' } : undefined } onMouseOver={() => this.setHover('Espaces publics')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Espaces publics')} />
+              <path className='room room-triangle' d={`M510 ${heightReference} H 710 L 610 ${heightReference2} Z`} onClick={() => this.chooseRoom('Cuisine')} />
+              <text fill="#fff">
+                <tspan x="570" y="170">CUISINE</tspan>
+              </text>
 
               {/* TOP DOWNSIDE TRIANGLE */}
 
               {/* TERASSE */}
-              <path className='room' d={`M410 ${heightReference2} H 610 L 510 ${heightReference} Z`} style={ this.state.hovered === 'Terrasse' ? { fill: 'rgba(255,100,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Terrasse')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Terrasse')} />
+              <path className='room room-triangle' d={`M410 ${heightReference2} H 610 L 510 ${heightReference} Z`} onClick={() => this.chooseRoom('Terrasse')} />
+              <text fill="#fff">
+                <tspan x="457" y="100">TERRASSE</tspan>
+              </text>
 
               {/* DOWNSIDE TRAPEZES */}
 
               {/* PORTE */}
-              <path className='room' d={`M210 ${baseHeightTriangle} L 240 ${baseHeightTrapeze} H 380 L 410 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Porte' ? { fill: 'rgba(100,255,125,0.4)' } : undefined } onMouseOver={() => this.setHover('Porte')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Porte')} />
+              <path className='room room-trapeze' d={`M210 ${baseHeightTriangle} L 240 ${baseHeightTrapeze} H 380 L 410 ${baseHeightTriangle} Z`} onClick={() => this.chooseRoom('Porte')} />
+              <text className='title-trapeze' fill="#fff">
+                <tspan x="285" y="420">PORTE</tspan>
+              </text>
 
               {/* ESCALIERS */}
-              <path className='room' d={`M410 ${baseHeightTriangle} L 440 ${baseHeightTrapeze} H 580 L 610 ${baseHeightTriangle} Z`} style={ this.state.hovered === 'Escalier' ? { fill: 'rgba(125,255,0,0.4)' } : undefined } onMouseOver={() => this.setHover('Escalier')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Escalier')} />
-
+              <path className='room room-trapeze' d={`M410 ${baseHeightTriangle} L 440 ${baseHeightTrapeze} H 580 L 610 ${baseHeightTriangle} Z`} onClick={() => this.chooseRoom('Escaliers')} />
+              <text className='title-trapeze' fill="#fff">
+                <tspan x="473" y="420">ESCALIERS</tspan>
+              </text>
               {/* UPSIDE TRAPEZES */}
 
               {/* FENETRE */}
-              <path className='room' d={`M110 ${heightReference} L 140 ${heightReference - 40} H 280 L 310 ${heightReference} Z`} style={ this.state.hovered === 'Fenêtre' ? { fill: 'rgba(125,50,50,0.4)' } : undefined } onMouseOver={() => this.setHover('Fenêtre')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Fenêtre')} />
+              <path className='room room-trapeze' d={`M110 ${heightReference} L 140 ${heightReference - 40} H 280 L 310 ${heightReference} Z`} onClick={() => this.chooseRoom('Fenêtre')} />
+              <text className='title-trapeze' fill="#fff">
+                <tspan x="180" y="205">FENÊTRE</tspan>
+              </text>
 
               {/* TOILETTES */}
-              <path className='room' d={`M410 ${heightReference2} L 440 ${heightReference2 - 40} H 580 L 610 ${heightReference2} Z`} style={ this.state.hovered === 'Toilettes' ? { fill: 'rgba(50,50,255,0.4)' } : undefined } onMouseOver={() => this.setHover('Toilettes')} onMouseLeave={() => this.setHover('')} onClick={() => this.chooseRoom('Toilettes')} />
+              <path className='room room-trapeze' d={`M410 ${heightReference2} L 440 ${heightReference2 - 40} H 580 L 610 ${heightReference2} Z`} onClick={() => this.chooseRoom('Petit coin')} />
+              <text className='title-trapeze' fill="#fff">
+                <tspan x="473" y="33">PETIT COIN</tspan>
+              </text>
+
             </g>
           </svg>
         </SvgLines>
