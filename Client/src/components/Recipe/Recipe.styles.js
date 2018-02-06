@@ -12,13 +12,14 @@ export default css`
   align-items: first-baseline;
   font-size: 16px;
 }
+
 .sideBarre{
   height: 100%;
   width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
-  overflow: auto;
 }
+
 .Main
 {
   width: calc(100% - 350px);
@@ -28,7 +29,7 @@ export default css`
 }
 .MainTitle
 {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   padding-top: 40px;
   padding-left: 50px;
@@ -91,7 +92,7 @@ export default css`
   padding-bottom: 5%;
   margin-left: 4%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .pictures{
   width: 80%
@@ -178,19 +179,25 @@ li{
 }
 
 .item{
-  display:
-  padding-right: 7%;
+  width: 100%;
 }
+
 .itemleft{
  padding-left:35%;
 }
+
 .itemTitle{
   font-size: 20px;
 }
+
 .element{
-  padding-bottom: 4%;
   display: flex;
-  padding-left: 23px;
+  padding: 15px 0;
+  padding-left: 27px;
+  overflow-wrap: break-word;
+  width: 100%;
+  color: #a0a0a0;
+  font-size: 13px;
 }
 
 
@@ -242,7 +249,7 @@ textarea {
 .button {
   cursor: pointer;
   height: 40px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   line-height: 40px;
   text-align: center;
   color: white;
@@ -288,7 +295,7 @@ textarea {
 .audio-title{
   margin-bottom: 5%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .audio{
   max-height: 180px;

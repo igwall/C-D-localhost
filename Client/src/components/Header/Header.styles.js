@@ -47,20 +47,30 @@ export default css`
 
 .quote-container {
   position: absolute;
-  bottom: 59px;
-  left: 660px;
-  color: #fff;
-  font-size: 17px;
+  top: 20px;
+  right: 20px;
+  width: calc(100% - 700px);
+  height: 80px;
+  overflow: auto;
+  font-size: 13px;
+  color: ${constants.TEXT_COLOR};
+}
+
+.quote-title {
+ margin-bottom: 10px;
+ font-weight: ${constants.FONT_WEIGHT_BOLD}
+ font-size: 15px;
 }
 
 .quote-text {
   font-style: italic;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
+  color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
 .quote-author {
   margin-left: 10px;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .navbar {
@@ -124,7 +134,7 @@ export default css`
 }
 
 .user-username {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   display: inline-block;
   margin-left: 7px;
 }

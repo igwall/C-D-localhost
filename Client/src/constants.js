@@ -25,6 +25,9 @@ module.exports = Object.freeze({
   COLLABORATION_TEXT: '',
   DEMARCHE_TEXT: '',
 
+  FONT_WEIGHT_NORMAL: 300,
+  FONT_WEIGHT_BOLD: 400,
+
   BIO_MURIEL_DEBUT: 'Née en 1968, à Montpellier',
   BIO_MURIEL_SUITE1: '[1988-2002] Est formée à la danse contemporaine au CNDC d’Angers, débute sa carrière d’interprète auprès de D. Bagouet d’abord comme danseuse stagiaire, puis danse avec plaisir auprès de Jean-Pierre Perreault (Montréal – Québec), Orazio Massaro, Olivier Farge, Mirjam Berns (Caracas – Venezuela), Bernard Glandier, Hervé Robbe, Felix Ruckert (Berlin – Allemagne), etc. ',
   BIO_MURIEL_SUITE2: '[1999-2014] Chorégraphe de la Cie comme ça, crée 23 pièces essentiellement hors des espaces scéniques, dans l intermédialité des écritures chorégraphiques, dramatiques et poétiques. Notamment, reçoit une bourse d’Aide à l Ecriture Chorégraphique du Ministère de la Culture [...]',

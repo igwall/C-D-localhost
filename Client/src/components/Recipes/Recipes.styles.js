@@ -6,6 +6,7 @@ export default css`
   color: white;
   height: 100%;
   display:flex;
+  overflow: auto;
 }
 .sidebar {
   height: 100%;
@@ -30,7 +31,7 @@ export default css`
   padding-left: 70px;
   padding-bottom: 30px;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .list {
@@ -43,9 +44,11 @@ export default css`
 }
 
 .body{
-  height 405px ;
-  overflow :auto;
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 20px;
 }
+
 .element {
   display: flex;
   align-items: center;
@@ -63,7 +66,7 @@ export default css`
 .element-infos {
   padding: 5px;
   flex: 3;
-  height: 100px;
+  min-height: 100px;
 }
 
 .element:hover {
@@ -81,7 +84,7 @@ export default css`
 .element-description {
 
   display: inline-block;
-  height: 75px;
+  min-height: 100px;
   vertical-align: top;
   padding: 0 10px;
 }
@@ -91,7 +94,9 @@ export default css`
 }
 
 .element-other {
-  color: ${constants.TEXT_SECONDARY_COLOR}
+  color: ${constants.TEXT_SECONDARY_COLOR};
+  padding: 2px 0;
+  max-width: 600px;
 }
 
 .element-other, .element-date {
@@ -99,9 +104,8 @@ export default css`
 }
 
 .element-date {
-
-  bottom: 0;
   white-space: nowrap;
+  padding: 5px 0;
 }
 
 .element-actions {

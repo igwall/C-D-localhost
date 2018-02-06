@@ -150,7 +150,7 @@ export default class RecipeForm extends React.Component {
       {value: 'duo', label: 'Duo'},
       {value: 'trio', label: 'Trio'},
       {value: 'quatuor', label: 'Quatuor'},
-      {value: 'quintuor', label: 'Quintuor'},
+      {value: 'quintette', label: 'Quintette'},
       {value: 'more', label: 'Plus de 5 personnes...'}
     ]
     return selectNumbers
@@ -208,7 +208,7 @@ export default class RecipeForm extends React.Component {
                 <textarea type='text' placeholder='Description et objectifs de la composition...' ref={i => { this.description = i }} onChange={this.checkDescription} />
               </div>
               <div className='input-group'>
-                <div className='input-label'>Consignes</div>
+                <div className='input-label'>Scénario</div>
                 <textarea type='text' placeholder='Les consignes de la composition, comment la réaliser...' ref={i => { this.statement = i }} onChange={this.checkStatement} />
               </div>
             </div>

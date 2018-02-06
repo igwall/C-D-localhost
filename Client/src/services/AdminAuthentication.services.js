@@ -17,7 +17,6 @@ export function isAdminAuthenticated () {
     setAdminProfile()
     return true
   } else {
-    unsetAdminTokenHeader()
     return false
   }
 }

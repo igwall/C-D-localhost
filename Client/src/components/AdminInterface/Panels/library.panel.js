@@ -77,7 +77,7 @@ export default class LibraryPanel extends React.Component {
         )
       }
       default: {
-        return <div>Nothing for the moment</div>
+        return <div />
       }
     }
   }

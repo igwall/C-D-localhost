@@ -13,7 +13,7 @@ const RecipeSchema = new Schema({
   createdAt: {type: Date, default: Date.now},
   materials: [{type: Schema.Types.ObjectId, ref: 'Material'}],
   rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}],
-  number: {type: String, enum: ['solo', 'duo', 'trio', 'quatuor', 'quintuor', 'more']},
+  number: {type: String, enum: ['solo', 'duo', 'trio', 'quatuor', 'quintette', 'more']},
   validated: {type: Boolean, default: false}
 })
 mongoose.model('Recipe', RecipeSchema)

@@ -34,6 +34,7 @@ export default class Header extends React.Component {
       isAuthenticatedSimple: isAuthenticatedSimple(),
       redirectTo: ''
     }
+    this.quote = this.getRandomQuote()
   }
 
   componentDidMount () {
@@ -64,11 +65,13 @@ export default class Header extends React.Component {
     }
     const isAuthenticated = this.state.isAuthenticatedSimple
     const { currentUser } = this.props
-    const quote = this.getRandomQuote()
+    const quote = this.quote
     return <div className='host'>
-      <div className='logo-container'>
-        <img className='logo' src='/hut_logo.png' alt='hut_logo' height='150px' />
-      </div>
+      <Link to='/' style={{height: '100%'}}>
+        <div className='logo-container'>
+          <img className='logo' src='/hut_logo.png' alt='hut_logo' height='150px' />
+        </div>
+      </Link>
       <div className='header-container'>
         <Link to='/' style={{height: '100%'}}>
           <div className='app-name'>COMPOSE & DANSE</div>
@@ -76,6 +79,7 @@ export default class Header extends React.Component {
         {
           quote !== undefined
             ? <div className='quote-container'>
+              <div className='quote-title'>CITATION DU MOMENT</div>
               <span className='quote-text'>"{quote.text}"</span>
               <span className='quote-author'>{quote.author}</span>
             </div>

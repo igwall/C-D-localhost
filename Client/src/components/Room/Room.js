@@ -54,11 +54,12 @@ export default class Room extends React.Component {
 
   render () {
     const { currentUser, name, recipes } = this.props
+    const validatedRecipes = this.props.recipes.filter(recipe => recipe.validated)
     const randomRecipes = this.getRandomRecipes()
     let roomRecipes = []
     let doneRecipes = []
     if (currentUser !== undefined) {
-      this.props.recipes.map(recipe => {
+      validatedRecipes.map(recipe => {
         let bool = true
         currentUser.realisations.map(realisation => {
           if (recipe._id === realisation.recipe._id) bool = false

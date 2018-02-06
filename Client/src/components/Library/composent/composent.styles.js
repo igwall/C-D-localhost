@@ -36,13 +36,13 @@ export default css`
 .textBody {
   margin-top: 10px;
   text-align: justify;
-  
+  white-space: pre-line;
  }
  .collaborator-table-title{
   text-align: center;
   margin-right: 74%;
   padding-bottom: 8%;
-  Font-Weight: Bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 20px;
   
  
@@ -108,12 +108,12 @@ li {
 .Bio-title{
   margin-bottom: 5%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   }
   .Demarche-title{
     margin-bottom: 5%;
     font-size: 20px;
-    font-weight: bolder;
+    font-weight: ${constants.FONT_WEIGHT_BOLD};
     }
 .Demarche{
   padding-top : 5%;
@@ -139,7 +139,7 @@ li {
   margin-right: 25%;
   margin-top: 5%;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .artistBio{
   display: inline-block;
@@ -198,7 +198,7 @@ li {
 .books-title{
   margin-bottom: 13%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .book{
   max-height: 180px;
@@ -217,7 +217,7 @@ li {
 .diplome-title{
 margin-bottom: 5%;
 font-size: 20px;
-font-weight: bolder;
+font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .diplome{
 max-height: 140px;
@@ -228,7 +228,7 @@ margin-left: 5%;
   padding-bottom: 5%;
   margin-left: 4%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .pictures{
   width: 80%
@@ -255,7 +255,7 @@ margin-left: 5%;
   padding-bottom: 5%;
   margin-left: 4%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .videos{
   width: 80%
@@ -265,7 +265,7 @@ margin-left: 5%;
 .references-table-title{
   margin-left: 15%;
   padding-bottom: 2%;
-  Font-Weight: Bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 20px;
 }
 .references-list{
@@ -315,7 +315,7 @@ th, td {
 .audio-title{
   margin-bottom: 5%;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 .audio{
   max-height: 180px;
@@ -336,7 +336,7 @@ th, td {
 
 .video-label{
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   text-align: center;
   padding-top: 10px;
 }

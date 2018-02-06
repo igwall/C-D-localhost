@@ -204,6 +204,17 @@ export default class RecipesListAdmin extends React.Component {
     this.props.popoverManager.displayPopover()
   }
 
+  getNumber (number) {
+    switch (number) {
+      case 'more': {
+        return 'Plus de 5 personnes...'
+      }
+      default: {
+        return number.charAt(0).toUpperCase() + number.slice(1)
+      }
+    }
+  }
+
   render () {
     const { matchingRecipes, emptySearch, selectedMaterials, selectedRooms } = this.state
     let recipes = []
@@ -283,6 +294,7 @@ export default class RecipesListAdmin extends React.Component {
                             })
                           }
                           </div>
+                          <div className='element-other'>Nombre de participants : {this.getNumber(recipe.number)}</div>
                           <div className='element-date'>Créée le {dateFormatter(recipe.createdAt)}</div>
                         </div>
                       </div>

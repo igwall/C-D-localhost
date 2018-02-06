@@ -26,7 +26,7 @@ export default css`
 
 .panel-title {
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 20px;
 }
 
@@ -157,7 +157,7 @@ export default css`
 }
 
 span {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   cursor: pointer;
   text-decoration: underline;
 }

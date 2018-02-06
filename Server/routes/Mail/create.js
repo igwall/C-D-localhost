@@ -23,7 +23,7 @@ module.exports = (router, controller) => {
   * /mail:
   *   post:
   *     tags:
-  *       - Mail
+  *       - Mails
   *     description: Create a new mail
   *     summary: CREATE a new mail
   *     produces:
@@ -41,7 +41,7 @@ module.exports = (router, controller) => {
   *       500:
   *         description: Internal error
   */
-  router.post('/mail', (req, res) => {
+  router.post('/mails', (req, res) => {
     let requiredBody = ['email', 'name', 'number', 'sujet', 'message']
     requiredBody = Util.checkRequest(req.body, requiredBody)
     if (requiredBody.length > 0) {

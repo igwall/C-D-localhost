@@ -17,5 +17,7 @@
    */
 
     require('./create')(router, controller)
+    require('./delete')(router, controller)
+    require('./getAll')(router, controller)
   }
   

@@ -21,7 +21,7 @@ export default css`
 }
 
 .sidebar-title {
-  font-weight: bold;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   text-align: center;
   padding: 30px 0;
@@ -29,12 +29,15 @@ export default css`
 
 .sidebar-text {
   text-align: justify;
-  line-height: 150%;
+  line-height: 130%;
+  font-size: 17px;
+  color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
 .sidebar-more {
-  text-align: left;
-  font-weight: bold;
+  text-align: right;
+  font-size: 15px;
+  font-weight: ${constants.FONT_WEIGHT_BOLD};
 }
 
 .flat {
@@ -43,26 +46,40 @@ export default css`
   height: 100%;
   margin: auto;
   text-align: center;
+  position: relative;
 }
 
 .flat-text {
-  padding: 35px 10px;
+  padding: 0 10px;
+  margin-top: 10px;
   text-align: left;
 }
 
-.svg {
-  margin-left: -50px;
+svg {
+  position: absolute;
+  top: -10px;
+  left: 20%;
 }
 
 .room:hover {
   stroke-width: 1.5px;
   cursor: pointer;
-  fill: rgba(0,255,0,0.4);
 }
 
-.room-name:hover + .room{
-  stroke: green;
-  stroke-width: 1px;
-  cursor: pointer;
+.title-trapeze {
+  font-size: 13px;
 }
+
+.room-triangle:hover {
+  fill: rgba(255,50,50,0.6);
+}
+
+.room-trapeze:hover {
+  fill: rgba(0,255,255,0.6);
+}
+
+.room-library:hover {
+  fill: rgba(255,255,0,0.6);
+}
+
 `

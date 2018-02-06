@@ -6,6 +6,7 @@ import { setCollaborators } from '../../store/actions/collaborators.action'
 import { setMaterials } from '../../store/actions/material.action'
 import { setRecipes } from '../../store/actions/recipes.action'
 import { setRooms } from '../../store/actions/room.action'
+import { setMails } from '../../store/actions/mail.action'
 import { setQuotes } from '../../store/actions/quote.action'
 import { setReferences, setHotVideos } from '../../store/actions/library.action'
 import { setCollaborationRequests } from '../../store/actions/collaborationRequest.action'
@@ -14,6 +15,7 @@ import Icon from '../UI/Icon/Icon'
 import RecipesListAdmin from './Lists/recipes.list'
 import MaterialsList from './Lists/materials.list'
 import CollaboratorsList from './Lists/collaborators.list'
+import MailsList from './Lists/mails.list'
 import AdministratorsList from './Lists/administrators.list'
 import RecipeForm from './Forms/recipe.form'
 import MaterialForm from './Forms/material.form'
@@ -33,7 +35,8 @@ import LibraryPanel from './Panels/library.panel'
     quotes: store.quotes.elements,
     references: store.references.elements,
     hotVideos: store.hotVideos.elements,
-    currentAdmin: store.currentAdmin
+    currentAdmin: store.currentAdmin,
+    mails: store.mails.elements
   }
 })
 
@@ -55,6 +58,10 @@ export default class AdminInterface extends React.Component {
       console.error(err)
     })
     setCollaborators().then(() => {
+    }).catch(err => {
+      console.error(err)
+    })
+    setMails().then(() => {
     }).catch(err => {
       console.error(err)
     })
@@ -106,6 +113,10 @@ export default class AdminInterface extends React.Component {
     this.setState({content: 'collaboratorRequests'})
   }
 
+  displayMailsList () {
+    this.setState({content: 'mailsList'})
+  }
+
   displayMaterialsList () {
     this.setState({content: 'materialsList'})
   }
@@ -132,7 +143,7 @@ export default class AdminInterface extends React.Component {
 
   displayContent () {
     const content = this.state.content
-    const { quotes, references, hotVideos, materials, recipes, rooms, collaborators, administrators, collaborationRequests } = this.props
+    const { quotes, references, hotVideos, materials, recipes, rooms, collaborators, administrators, collaborationRequests, mails } = this.props
     const pendingRecipes = recipes.filter(recipe => {
       if (recipe !== null) return recipe.validated === false
       else return false
@@ -155,6 +166,11 @@ export default class AdminInterface extends React.Component {
       case 'collaboratorsList': {
         return (
           <CollaboratorsList popoverManager={this.props.popoverManager} collaborators={collaborators} />
+        )
+      }
+      case 'mailsList': {
+        return (
+          <MailsList popoverManager={this.props.popoverManager} mails={mails} />
         )
       }
       case 'administratorsList': {
@@ -251,6 +267,15 @@ export default class AdminInterface extends React.Component {
             <div className='button' onClick={() => this.displayCollaboratorRequests()}>
               <div className='button-icon'><Icon name='plus-square' color='' fontSize='' /></div>
               <div className='button-text'>DEMANDES DE COLLABORATION</div>
+            </div>
+          </div>
+        </div>
+        <div className='panel panel-messages'>
+          <div className='panel-title'>Messages</div>
+          <div className='panel-buttons'>
+            <div className='button' onClick={() => this.displayMailsList()}>
+              <div className='button-icon'><Icon name='th-list' color='' fontSize='' /></div>
+              <div className='button-text'>AFFICHER LES MESSAGES REÇUS</div>
             </div>
           </div>
         </div>
