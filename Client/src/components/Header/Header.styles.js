@@ -47,10 +47,19 @@ export default css`
 
 .quote-container {
   position: absolute;
-  bottom: 59px;
-  left: 80%;
+  top: 20px;
+  right: 20px;
+  width: calc(100% - 700px);
+  height: 80px;
+  overflow: auto;
   color: #fff;
-  font-size: 17px;
+  font-size: 13px;
+}
+
+.quote-title {
+ margin-bottom: 10px;
+ font-weight: ${constants.FONT_WEIGHT_BOLD}
+ font-size: 15px;
 }
 
 .quote-text {
@@ -60,7 +69,7 @@ export default css`
 
 .quote-author {
   margin-left: 10px;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .navbar {

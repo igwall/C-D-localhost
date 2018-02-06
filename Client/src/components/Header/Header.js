@@ -78,6 +78,7 @@ export default class Header extends React.Component {
         {
           quote !== undefined
             ? <div className='quote-container'>
+              <div className='quote-title'>CITATION DU MOMENT</div>
               <span className='quote-text'>"{quote.text}"</span>
               <span className='quote-author'>{quote.author}</span>
             </div>
