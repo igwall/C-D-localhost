@@ -34,6 +34,7 @@ export default class Header extends React.Component {
       isAuthenticatedSimple: isAuthenticatedSimple(),
       redirectTo: ''
     }
+    this.quote = this.getRandomQuote()
   }
 
   componentDidMount () {
@@ -64,7 +65,7 @@ export default class Header extends React.Component {
     }
     const isAuthenticated = this.state.isAuthenticatedSimple
     const { currentUser } = this.props
-    const quote = this.getRandomQuote()
+    const quote = this.quote
     return <div className='host'>
       <Link to='/' style={{height: '100%'}}>
         <div className='logo-container'>

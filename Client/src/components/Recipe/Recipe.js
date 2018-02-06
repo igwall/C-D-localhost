@@ -88,8 +88,7 @@ export default class Recipe extends React.Component {
         </div>
         <div className='recipeInfo'>
           <div className='number1'><div className='numberTitle' >Proposée par: </div>
-            <div className='text'> {recipe.author}</div>
-            {recipe.author !== undefined ? <div className='text'> {recipe.author.name}</div>
+            {recipe.collaborator !== undefined ? <div className='text'>{recipe.collaborator.firstname + ' ' + recipe.collaborator.lastname}</div>
               : <div className='text'> Muriel PIQUE</div> }
           </div>
 

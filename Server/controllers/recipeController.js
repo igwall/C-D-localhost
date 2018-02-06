@@ -66,43 +66,42 @@ recipeController.createRecipe = function (req) {
         materials.map(materialId => {
           materialController.addRecipeToMaterial(materialId, recipeToAdd)
           .then((data) => {
-            rooms.map(roomId => {
-              roomController.addRecipeToRoom(roomId, recipeToAdd)
-              .then((data) => {
-                if (collaboratorId !== undefined) {
-                  collaboratorController.addRecipeToCollaborator(collaboratorId, recipeToAdd)
-                  .then((data) => {
-                    Recipe.findOne({ '_id': item._id }).populate('rooms materials').exec(function (err, res) {
-                      if (err) {
-                        err.status = 500
-                        reject(err)
-                      } else {
-                        resolve(res)
-                      }
-                    })
-                  }).catch(err => {
-                    reject(err)
-                  })
-                } else {
-                  Recipe.findOne({ '_id': item._id }).populate('rooms materials collaborator').exec(function (err, res) {
-                    if (err) {
-                      err.status = 500
-                      reject(err)
-                    } else {
-                      resolve(res)
-                    }
-                  })
-                }
-              })
-              .catch((err) => {
-                reject(err)
-              })
-            })
+          }).catch(err => {
+            reject(err)
+          })
+        })
+        rooms.map(roomId => {
+          roomController.addRecipeToRoom(roomId, recipeToAdd)
+          .then((data) => {
           })
           .catch((err) => {
             reject(err)
           })
         })
+        if (collaboratorId !== undefined) {
+          collaboratorController.addRecipeToCollaborator(collaboratorId, recipeToAdd)
+          .then((data) => {
+            Recipe.findOne({ '_id': item._id }).populate('rooms materials').exec(function (err, res) {
+              if (err) {
+                err.status = 500
+                reject(err)
+              } else {
+                resolve(res)
+              }
+            })
+          }).catch(err => {
+            reject(err)
+          })
+        } else {
+          Recipe.findOne({ '_id': item._id }).populate('rooms materials collaborator').exec(function (err, res) {
+            if (err) {
+              err.status = 500
+              reject(err)
+            } else {
+              resolve(res)
+            }
+          })
+        }
       }
     })
   })

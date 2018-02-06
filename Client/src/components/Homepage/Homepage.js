@@ -39,8 +39,9 @@ export default class HomePage extends React.Component {
   }
 
   displayRoom (room) {
+    const validatedRecipes = this.props.recipes.filter(recipe => recipe.validated === true)
     this.props.popoverManager.setRenderedComponent(
-      <Room {...room} allRecipes={this.props.recipes} dismissPopover={this.props.popoverManager.dismissPopover} />
+      <Room {...room} allRecipes={validatedRecipes} dismissPopover={this.props.popoverManager.dismissPopover} />
     )
     this.props.popoverManager.displayPopover()
   }

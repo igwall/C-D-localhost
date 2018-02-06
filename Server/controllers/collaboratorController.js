@@ -33,10 +33,16 @@ collaboratorController.getOneCollaborator = function (materialId) {
     Collaborator.findOne({ '_id': materialId }).populate({
       path: 'recipes',
       model: 'Recipe',
-      populate: {
-        path: 'materials',
-        model: 'Material'
-      }
+      populate: [
+        {
+          path: 'materials',
+          model: 'Material'
+        },
+        {
+          path: 'rooms',
+          model: 'Room'
+        }
+      ]
     }).exec(function (err, res) {
       if (err) {
         err.status = 500
@@ -63,6 +69,7 @@ collaboratorController.createCollaborator = function (collaborator) {
     const collaboratorToAdd = new Collaborator(collab)
     collaboratorToAdd.save((err, item) => {
       if (err) {
+        console.log(err)
         reject(err)
       } else {
         userController.addCollaboratorToUser(item.user, item)

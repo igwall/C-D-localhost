@@ -52,8 +52,8 @@ export default css`
   width: calc(100% - 700px);
   height: 80px;
   overflow: auto;
-  color: #fff;
   font-size: 13px;
+  color: ${constants.TEXT_COLOR};
 }
 
 .quote-title {
@@ -65,6 +65,7 @@ export default css`
 .quote-text {
   font-style: italic;
   font-weight: ${constants.FONT_WEIGHT_BOLD};
+  color: ${constants.TEXT_SECONDARY_COLOR};
 }
 
 .quote-author {
