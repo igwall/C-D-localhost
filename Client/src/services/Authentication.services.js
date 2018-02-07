@@ -41,7 +41,6 @@ export function isAuthenticatedSimple () {
     setProfile()
     return true
   } else {
-    unsetTokenHeader()
     return false
   }
 }
