@@ -76,6 +76,7 @@
     "precommit": "jest --verbose && npm lint",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "serve -s build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "node scripts/test.js --env=jsdom",

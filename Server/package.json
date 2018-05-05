@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "deploy": "nodemon prod.js",
+    "heroku-postbuild": "cd ../Client && yarn --production=true && yarn deploy",
     "precommit": "npm run test",
     "test": "echo \"Error: no test specified\" && exit 1",
     "standard": "standard --verbose | snazzy",
