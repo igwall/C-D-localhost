@@ -20,12 +20,14 @@ export default css`
   width: 350px;
   padding: 0 15px;
   background: ${constants.SECONDARY_COLOR};
+  background-color: #ffffff;
   overflow: auto;
 }
 .sidebar-title {
   font-weight: bold;
   font-size: 25px;
   text-align: center;
+  background-color: #ffffff;
   padding: 30px 0;
 }
 .Block{
