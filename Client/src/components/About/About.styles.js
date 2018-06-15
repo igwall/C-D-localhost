@@ -19,10 +19,12 @@ export default css`
   height: 100%;
   width: 350px;
   padding: 0 15px;
+  background-color: #ffffff;
   background: ${constants.SECONDARY_COLOR};
   overflow: auto;
 }
 .sidebar-title {
+  background-color: #ffffff;
   font-weight: bold;
   font-size: 25px;
   text-align: center;
