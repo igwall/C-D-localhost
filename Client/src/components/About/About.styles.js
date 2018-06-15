@@ -20,7 +20,6 @@ export default css`
   width: 350px;
   padding: 0 15px;
   background-color: #ffffff;
-  //background: ${constants.SECONDARY_COLOR};
   overflow: auto;
 }
 .sidebar-title {
