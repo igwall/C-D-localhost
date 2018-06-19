@@ -6,7 +6,7 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  color: #fff;
+  color: #0000ff;
   overflow-y: hidden; 
   display: flex;
   align-items: first-baseline;
