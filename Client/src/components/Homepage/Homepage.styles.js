@@ -17,12 +17,12 @@ export default css`
   height: 100%;
   width: 350px;
   padding: 0 30px;
-  background-color: #0000ff;
+  background-color: red;
   background: ${constants.SECONDARY_COLOR};
 }
 
 .sidebar-title {
-  background-color: #0000ff;
+  background-color: red;
   font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   text-align: center;
