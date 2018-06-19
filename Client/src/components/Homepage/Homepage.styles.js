@@ -6,7 +6,7 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  color: #fff;
+  color: #0000ff;
   overflow-y: hidden; 
   display: flex;
   align-items: first-baseline;
@@ -17,12 +17,12 @@ export default css`
   height: 100%;
   width: 350px;
   padding: 0 30px;
-  background-color: #fff;
+  background-color: #0000ff;
   background: ${constants.SECONDARY_COLOR};
 }
 
 .sidebar-title {
-  background-color: #fff;
+  background-color: #0000ff;
   font-weight: ${constants.FONT_WEIGHT_BOLD};
   font-size: 25px;
   text-align: center;
