@@ -77,8 +77,8 @@ export default css`
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: ${constants.NAVBAR_COLOR};
-  color: #eee;
+  background: white;
+  color: ${constants.TEXT_PRIMARY_COLOR};
   font-size: 15px;
   height: 45px;
   display: flex;

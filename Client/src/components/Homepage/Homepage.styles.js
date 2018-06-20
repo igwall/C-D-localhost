@@ -6,7 +6,7 @@ export default css`
   height: 100%;
   width: 100%;
   background-color: ${constants.PRIMARY_COLOR};
-  color: #0000ff;
+  color: white;
   overflow-y: hidden; 
   display: flex;
   align-items: first-baseline;
@@ -16,24 +16,29 @@ export default css`
 .sidebar {
   height: 100%;
   width: 350px;
-  padding: 0 30px;
-  background-color: red;
-  background: ${constants.SECONDARY_COLOR};
+  padding: 0 0;
+  color: white;
+  background-color: white;
+  border-style: solid;
+  border-color: ${constants.TEXT_SECONDARY_COLOR};
+  border-weight: 1px;
 }
 
 .sidebar-title {
-  background-color: red;
+  background-color: ${constants.PRIMARY_COLOR};
   font-weight: ${constants.FONT_WEIGHT_BOLD};
+  width: 345px;
   font-size: 25px;
   text-align: center;
-  padding: 30px 0;
+  padding: 30px 30px;
 }
 
 .sidebar-text {
   text-align: justify;
   line-height: 130%;
   font-size: 17px;
-  color: ${constants.TEXT_SECONDARY_COLOR};
+  padding: 10px 30px;
+  color: ${constants.PRIMARY_COLOR};
 }
 
 .sidebar-more {
