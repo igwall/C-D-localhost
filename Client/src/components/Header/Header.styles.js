@@ -2,6 +2,12 @@ import css from 'styled-jsx/css'
 import constants from '../../constants'
 
 export default css`
+
+@font-face {
+  font-family: Montserrat;
+  src: url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');;
+}
+
 .host {
   position: relative;
   height: 150px;

@@ -27,6 +27,7 @@ export default css`
 .sidebar-title {
   background-color: ${constants.PRIMARY_COLOR};
   font-weight: ${constants.FONT_WEIGHT_BOLD};
+  color: white;
   width: 345px;
   font-size: 25px;
   text-align: center;
@@ -45,6 +46,7 @@ export default css`
   text-align: right;
   font-size: 15px;
   font-weight: ${constants.FONT_WEIGHT_BOLD};
+  color: ${constants.PRIMARY_COLOR};
 }
 
 .flat {
